@@ -1,10 +1,13 @@
 #include "Entity.h"
 
 int Entity::speed(0);
+sf::Vector2f Entity::player_position(200.f, 200.f);
 
 Entity::Entity():
 body(sf::Vector2f(50.f, 50.f)),
-position(200.f, 200.f)
+position(200.f, 200.f),
+lives(1),
+vel(0.f, 0.f)
 {
     body.setFillColor(sf::Color::White);
 }

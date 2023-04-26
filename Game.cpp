@@ -2,7 +2,8 @@
 
 Game::Game():
 window(sf::VideoMode(WIDTH, HEIGHT), "Project Simas"),
-player()
+player(),
+enemy()
 {
     window.setFramerateLimit(60);
     run();
@@ -24,8 +25,13 @@ void Game::run()
         }
 
         window.clear();
+
         player.move();
+        enemy.move();
+        
         player.draw(&window);
+        enemy.draw(&window);
+        
         window.display();
     }
 }
