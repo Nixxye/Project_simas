@@ -7,11 +7,10 @@ class EntityList
 private:
     class ElementList
     {
-    private:
-        ElementList* next;
-        ElementList* next;
-        Entity* data;
     public:
+        ElementList* next;
+        ElementList* prev;
+        Entity* data;
         ElementList(){}
         ~ElementList(){}
     };
@@ -21,7 +20,7 @@ public:
     EntityList();
     ~EntityList();
     void move();
-    void draw();
+    void draw(sf::RenderWindow* window);
     void add(Entity* ent);
 
 };

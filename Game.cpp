@@ -3,8 +3,13 @@
 Game::Game():
 window(sf::VideoMode(WIDTH, HEIGHT), "Project Simas"),
 player(),
-enemy()
+enemy(),
+list()
 {
+    list.add(static_cast<Entity*>(&player));
+    list.add(static_cast<Entity*>(&enemy));
+
+
     window.setFramerateLimit(60);
     run();
 }
@@ -26,12 +31,10 @@ void Game::run()
 
         window.clear();
 
-        player.move();
-        enemy.move();
+        list.move();
         
-        player.draw(&window);
-        enemy.draw(&window);
-        
+        list.draw(&window);
+
         window.display();
     }
 }
