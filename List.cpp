@@ -12,9 +12,9 @@ List<TN>::~List()
     Element<TN>* aux = first;
     while(!empty())
     {
-        if (aux)
+        if (first)
         {
-            aux = first.get_next();
+            aux = first->get_next();
             delete first;
             first = aux;
         }
@@ -23,8 +23,7 @@ List<TN>::~List()
 template <typename TN>
 void List<TN>::add(TN* elem)
 {
-    Element<TN>* aux = new Element<TN>();
-    aux->set_data(elem);
+    Element<TN>* aux = new Element<TN>(elem);
     aux->set_next(NULL);
     if (empty())
     {
@@ -45,12 +44,12 @@ void List<TN>::add(TN* elem)
     }
 }
 template <typename TN>
-void remove(TN* elem)
+void List<TN>::remove(TN* elem)
 {
     //...
 }
 template <typename TN>
-bool empty()
+bool List<TN>::empty()
 {
     return first? false: true;
 }
