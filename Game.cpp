@@ -6,8 +6,8 @@ player(),
 enemy(),
 list()
 {
-    list.add(static_cast<Entity*>(&player));
-    list.add(static_cast<Entity*>(&enemy));
+    //list.add(static_cast<Entity*>(&player));
+    //list.add(static_cast<Entity*>(&enemy));
 
 
     window.setFramerateLimit(60);
@@ -31,9 +31,9 @@ void Game::run()
 
         window.clear();
 
-        list.move();
+        //list.move();
         
-        list.draw(&window);
+        //list.draw(&window);
 
         window.display();
     }

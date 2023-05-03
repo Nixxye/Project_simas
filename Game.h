@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "Entity.h"
-#include "EntityList.h"
+#include "List.h"
 #include "Player.h"
 #include "Enemy.h"
 
@@ -16,7 +16,7 @@ private:
     sf::RenderWindow window;
     Player player;
     Enemy enemy;
-    EntityList list;
+    List<Entity> list;
 public:
     Game();
     ~Game();
