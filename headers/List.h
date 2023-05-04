@@ -6,7 +6,7 @@ using namespace std;
 
 
 template <class TYPE>
-class List
+class List 
 {
 public:
     List();
@@ -35,17 +35,21 @@ public:
         void set_prev(Element<TE> *p) { prev = p; }
         void set_data(TE *d) { data = d; }
     };
+    Element<TYPE>* begin() { return first; }
 
     void add(TYPE* elem);
     bool empty(){return first? false: true;}
-    Element<TYPE>* begin() { return first; }
+    const int get_size () const {return size;};
+    TYPE& operator [] (const int idx);
 private:
     Element<TYPE> *first;
+    int size;
 };
 
 template <class TYPE>
 List<TYPE>::List():
-first(NULL)
+first(NULL), 
+size(0)
 {
 
 }
@@ -54,10 +58,13 @@ template <class TYPE>
 List<TYPE>::~List()
 {
     Element<TYPE>* aux = first;
+    Element<TYPE>* aux_data = NULL;
     while(!empty())
     {
         if (first)
         {
+            aux_data = first->get_data();
+            delete aux_data;
             aux = first->get_next();
             delete first;
             first = aux;
@@ -69,6 +76,7 @@ template <class TYPE>
 void List<TYPE>::add(TYPE* elem)
 {
     Element<TYPE>* aux = new Element<TYPE>(elem);
+    size++;
     aux->set_next(NULL);
     if (empty())
     {
@@ -88,3 +96,20 @@ void List<TYPE>::add(TYPE* elem)
         
     }
 }
+
+template <class TYPE>
+TYPE& List<TYPE>::operator[](const int idx) {
+    Element<TYPE> * pAux = first;
+    
+    for (int i = 0 ; i < idx && i < size; i++)
+    {
+        pAux = first->get_next();
+    }
+
+    return *(pAux->data);
+
+}
+
+
+
+
