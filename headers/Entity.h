@@ -8,6 +8,8 @@
 class Entity
 {
 protected:
+    const int id;
+    static int count;
     sf::RectangleShape body;
     static int speed;
     sf::Vector2f position;

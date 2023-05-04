@@ -1,13 +1,14 @@
-#include "Game.h"
+#include "../headers/Game.h"
 
 Game::Game():
 window(sf::VideoMode(WIDTH, HEIGHT), "Project Simas"),
 player(),
 enemy(),
+platform(),
 list()
 {
-    //list.add(static_cast<Entity*>(&player));
-    //list.add(static_cast<Entity*>(&enemy));
+    list.add(static_cast<Entity*>(&player));
+    list.add(static_cast<Entity*>(&enemy));
 
 
     window.setFramerateLimit(60);
@@ -31,9 +32,13 @@ void Game::run()
 
         window.clear();
 
-        //list.move();
-        
-        //list.draw(&window);
+        //player.move();
+        //enemy.move();
+        list.move();
+        //player.draw(&window);
+        //enemy.draw(&window);
+        platform.draw(&window);
+        list.draw(&window);
 
         window.display();
     }
