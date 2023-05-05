@@ -21,5 +21,7 @@ public:
     ~Entity();
     void draw(sf::RenderWindow* wd);
     virtual void move() = 0;
+    void set_position(sf::Vector2f pos){position = pos;}
+    int get_speed(){return speed;}
 };
 

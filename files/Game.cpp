@@ -35,6 +35,7 @@ void Game::run()
         //player.move();
         //enemy.move();
         list.move();
+        list.stress_test();
         //player.draw(&window);
         //enemy.draw(&window);
         platform.draw(&window);

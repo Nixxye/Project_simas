@@ -4,52 +4,62 @@
 
 using namespace std;
 
-
 template <class TYPE>
-class List 
+class List
 {
+public:
+    template <class TE>
+    class Element
+    {
+    private:
+        TE* data;
+        Element<TE>* next;
+        Element<TE>* prev;
+    public:
+        Element():
+        data(NULL), next(NULL), prev(NULL)
+        {
+
+        }
+        ~Element()
+        {
+            data = NULL;
+            next = NULL;
+            prev = NULL;
+        }
+
+        void set_next(Element<TE>* n) {this->next = n;}
+        void set_prev(Element<TE>* p) {this->prev = p;}
+        void set_data(TE* d) {this->data = d;}
+
+        TE* get_data() {return data;}
+        Element<TYPE>* get_next() {return next;}
+        Element<TYPE>* get_prev() {return prev;}
+    };
+
+private:
+    Element<TYPE>* first;
+    Element<TYPE>* last;
+    int size;
+
 public:
     List();
     ~List();
 
-    template <typename TE>
-    class Element
-    {
-    private:
-        Element<TE> *next;
-        Element<TE> *prev;
-        TE *data;
+    void clear();
+    void push(TYPE* data);
 
-    public:
-        Element(TE *elem = NULL) : next(NULL), prev(NULL), data(elem) {}
-        ~Element()
-        {
-            next = NULL;
-            prev = NULL;
-            data = NULL;
-        }
-        Element<TE> *get_next() const { return next; }
-        Element<TE> *get_prev() const { return prev; }
-        TE *get_data() const { return data; }
-        void set_next(Element<TE> *n) { next = n; }
-        void set_prev(Element<TE> *p) { prev = p; }
-        void set_data(TE *d) { data = d; }
-    };
-    Element<TYPE>* begin() { return first; }
-
-    void add(TYPE* elem);
-    bool empty(){return first? false: true;}
-    const int get_size () const {return size;};
-    TYPE& operator [] (const int idx);
-private:
-    Element<TYPE> *first;
-    int size;
+    Element<TYPE>* get_first() {return first;}
+    Element<TYPE>* get_last() {return last;}
+    int get_size() {return size;}
+    void remove(TYPE* dt);
+    
+    //TYPE* operator[](int x);    
 };
 
 template <class TYPE>
 List<TYPE>::List():
-first(NULL), 
-size(0)
+first(NULL), last(NULL), size(0)
 {
 
 }
@@ -57,59 +67,79 @@ size(0)
 template <class TYPE>
 List<TYPE>::~List()
 {
-    Element<TYPE>* aux = first;
-    Element<TYPE>* aux_data = NULL;
-    while(!empty())
+    clear();    
+}
+
+
+template <class TYPE>
+void List<TYPE>::clear()
+{
+    Element<TYPE>* aux = NULL;
+    while (first)
     {
-        if (first)
-        {
-            aux_data = first->get_data();
-            delete aux_data;
-            aux = first->get_next();
-            delete first;
-            first = aux;
-        }
+        aux = first;
+        first = first->get_next();
+        if (aux->get_data())
+            delete aux->get_data();
     }
     first = NULL;
+    last = NULL;
+    size = 0;
 }
+
 template <class TYPE>
-void List<TYPE>::add(TYPE* elem)
+void List<TYPE>::push(TYPE *dt)
 {
-    Element<TYPE>* aux = new Element<TYPE>(elem);
-    size++;
-    aux->set_next(NULL);
-    if (empty())
+    if (dt)
     {
-        first = aux;
-        aux->set_prev(NULL);
-        return;
+        Element<TYPE>* new_elem = new Element<TYPE>();
+        new_elem->set_data(dt);
+        if (!first)
+        {
+            first = new_elem;
+            last = new_elem;
+        }
+        else
+        {
+            last->set_next(new_elem);
+            new_elem->set_prev(last);
+            last = new_elem;
+        }
+        size++;
     }
     else
     {
-        Element<TYPE>* it = first;
-        while(it->get_next())
-        {
-            it = it->next;
-        }
-        it->set_next(aux);
-        aux->set_prev(it);
-        
+        cout<<"Burro";
+        return;
     }
 }
-
 template <class TYPE>
-TYPE& List<TYPE>::operator[](const int idx) {
-    Element<TYPE> * pAux = first;
-    
-    for (int i = 0 ; i < idx && i < size; i++)
+void List<TYPE>::remove(TYPE* dt)
+{
+    Element<TYPE>* aux = first;
+    while (aux)
     {
-        pAux = first->get_next();
+        if (aux->get_data() == dt)
+        {
+            if (aux == first)
+            {
+                first = first->get_next();
+            }
+            else if (aux == last)
+            {
+                last = last->get_prev();
+                last->set_next(NULL);
+            }
+            else
+            {
+                aux->get_prev()->set_next(aux->get_next());
+                aux->get_next()->set_prev(aux->get_prev());
+            }
+            //delete aux->get_data();
+            delete aux;
+            size--;
+            return;
+        }
+        aux = aux->get_next();
     }
-
-    return *(pAux->data);
-
 }
-
-
-
-
