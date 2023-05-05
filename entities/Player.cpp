@@ -1,4 +1,4 @@
-#include "../headers/Player.h"
+#include "../entities/Player.h"
 
 Player::Player():
 Entity()
@@ -32,6 +32,10 @@ void Player::move()
     if (vel.x <= SPEED/2 && vel.x >= -SPEED/2)
     {
         vel.x = 0.0;
+    }
+    if (!grounded)
+    {
+        vel.y += G;
     }
     player_position += vel;
     body.setPosition(player_position);

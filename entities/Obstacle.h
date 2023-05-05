@@ -1,5 +1,5 @@
 #pragma once
-#include "../headers/Entity.h"
+#include "../entities/Entity.h"
 class Obstacle: public Entity
 {
 private:

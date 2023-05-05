@@ -23,7 +23,8 @@ public:
         }
         ~Element()
         {
-            delete data;            //delete aux->get_data();
+            if (data)
+                //delete data;            N SEI PQ N FUNCIONA
             data = NULL;
             next = NULL;
             prev = NULL;
@@ -54,6 +55,8 @@ public:
     Element<TYPE>* get_last() {return last;}
     int get_size() {return size;}
     void remove(TYPE* dt);
+
+    void print();
     
     //TYPE* operator[](int x);    
 };
@@ -75,12 +78,16 @@ List<TYPE>::~List()
 template <class TYPE>
 void List<TYPE>::clear()
 {
+    print();
     Element<TYPE>* aux = NULL;
+    int n =0;
     while (first)
     {
         aux = first;
         first = first->get_next();
-        delete aux;
+        if (aux)
+            delete aux;
+        n++;
     }
     first = NULL;
     last = NULL;
@@ -113,6 +120,7 @@ void List<TYPE>::push(TYPE *dt)
         return;
     }
 }
+//N USAR ESSA FUNÇÃO, DESTRUTORA FEITA POR UM ALUNO DE BSI
 template <class TYPE>
 void List<TYPE>::remove(TYPE* dt)
 {
@@ -140,5 +148,17 @@ void List<TYPE>::remove(TYPE* dt)
             return;
         }
         aux = aux->get_next();
+    }
+}
+template <class TYPE>
+void List<TYPE>::print()
+{
+    Element<TYPE> *aux = first;
+    int n = 0;
+    while (aux)
+    {
+        cout<<n<<"..."<<aux->get_data()<<endl;
+        aux = aux->get_next();
+        n++;
     }
 }

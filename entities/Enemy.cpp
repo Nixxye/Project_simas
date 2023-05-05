@@ -1,4 +1,4 @@
-#include "../headers/Enemy.h"
+#include "../entities/Enemy.h"
 
 Enemy::Enemy():
 Entity(),

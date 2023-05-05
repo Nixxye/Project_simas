@@ -1,6 +1,7 @@
-#include "../headers/EntityList.h"
-#include "../headers/Enemy.h"
+#include "../lists/EntityList.h"
+#include "../entities/Enemy.h"
 #include <iostream>
+
 
 EntityList::EntityList():
 list()
