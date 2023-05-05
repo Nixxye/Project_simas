@@ -48,12 +48,12 @@ void EntityList::stress_test()
     {
         Enemy* aux = new Enemy();
         aux->set_position(sf::Vector2f(x, y));
-        add(aux);
+        add(static_cast<Entity*>(aux));
     }
     if (n > 5)
     {
         if ((bool) rand() % 2)
-            list.remove(list.get_first()->get_next()->get_data());
+            list.remove(list.get_last()->get_data());
     }
     std::cout<<list.get_first()->get_data()->get_speed()<<std::endl;
 }

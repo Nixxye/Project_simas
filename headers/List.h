@@ -23,6 +23,7 @@ public:
         }
         ~Element()
         {
+            delete data;            //delete aux->get_data();
             data = NULL;
             next = NULL;
             prev = NULL;
@@ -33,8 +34,8 @@ public:
         void set_data(TE* d) {this->data = d;}
 
         TE* get_data() {return data;}
-        Element<TYPE>* get_next() {return next;}
-        Element<TYPE>* get_prev() {return prev;}
+        Element<TE>* get_next() {return next;}
+        Element<TE>* get_prev() {return prev;}
     };
 
 private:
@@ -70,7 +71,7 @@ List<TYPE>::~List()
     clear();    
 }
 
-
+ 
 template <class TYPE>
 void List<TYPE>::clear()
 {
@@ -79,8 +80,7 @@ void List<TYPE>::clear()
     {
         aux = first;
         first = first->get_next();
-        if (aux->get_data())
-            delete aux->get_data();
+        delete aux;
     }
     first = NULL;
     last = NULL;
@@ -135,7 +135,6 @@ void List<TYPE>::remove(TYPE* dt)
                 aux->get_prev()->set_next(aux->get_next());
                 aux->get_next()->set_prev(aux->get_prev());
             }
-            //delete aux->get_data();
             delete aux;
             size--;
             return;
