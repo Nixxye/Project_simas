@@ -16,14 +16,15 @@ public:
         Element<TE>* next;
         Element<TE>* prev;
     public:
+        
         Element():
         data(NULL), next(NULL), prev(NULL)
-        {
+        { 
 
         }
         ~Element()
         {
-            delete data;            //delete aux->get_data();
+            //delete data;            //delete aux->get_data();
             data = NULL;
             next = NULL;
             prev = NULL;
@@ -31,7 +32,10 @@ public:
 
         void set_next(Element<TE>* n) {this->next = n;}
         void set_prev(Element<TE>* p) {this->prev = p;}
-        void set_data(TE* d) {this->data = d;}
+        void set_data(TE* d) 
+        {
+            this->data = d;
+        }
 
         TE* get_data() {return data;}
         Element<TE>* get_next() {return next;}
@@ -80,7 +84,12 @@ void List<TYPE>::clear()
     {
         aux = first;
         first = first->get_next();
-        delete aux;
+        if (aux)
+        {
+            //delete aux->data;
+            remove(get_last()->get_data());
+            delete aux;
+        }
     }
     first = NULL;
     last = NULL;
@@ -117,13 +126,14 @@ template <class TYPE>
 void List<TYPE>::remove(TYPE* dt)
 {
     Element<TYPE>* aux = first;
-    while (aux)
+    while (aux && dt)
     {
         if (aux->get_data() == dt)
         {
             if (aux == first)
             {
-                first = first->get_next();
+                if(first)
+                    first = first->get_next();
             }
             else if (aux == last)
             {
@@ -135,7 +145,16 @@ void List<TYPE>::remove(TYPE* dt)
                 aux->get_prev()->set_next(aux->get_next());
                 aux->get_next()->set_prev(aux->get_prev());
             }
-            delete aux;
+            if (aux)
+            {
+                if (aux->get_data())
+                {
+                    delete (aux->get_data());
+                   // printf ("\n\n\nAAA\n\n\n");
+                    aux->set_data(NULL);
+                }
+                delete aux;
+            }
             size--;
             return;
         }
