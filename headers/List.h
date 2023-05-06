@@ -78,14 +78,16 @@ void List<TYPE>::remove_front()
         pAux = first->get_next();
         //delete (first->get_data());
         delete first;
+        size--;
         first = pAux;    
     }
 template <class TYPE>
 void List<TYPE>::clear()
     {
-        while (first != last)
+        while (size)
         {
             remove_front();
+            //printf ("\nSize:   %d", size);
         }
     }
 
