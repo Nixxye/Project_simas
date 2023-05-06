@@ -16,11 +16,11 @@ public:
         Element<TE>* next;
     public:   
         Element():data(NULL), next(NULL){}
-        ~Element() {set_data(NULL);}
         void set_next(Element<TE>* n) {next = n;}
         void set_data (TE* d) {data = d;}
         TE* get_data() {return data;}
         Element<TE>* get_next() {return next;}
+        ~Element() {set_data(NULL);}
 
     };
 
