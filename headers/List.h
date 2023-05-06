@@ -42,9 +42,13 @@ public:
 template <class TYPE>
 void List<TYPE>:: remove(TYPE* dt)
     {
+        if (first->get_data() == dt && last->get_data() == dt)
+        {
+            delete first;
+            delete last;
+        }
         Element<TYPE>* pAux = first;
         Element<TYPE>* prev = NULL;
-
         while (pAux != last) 
         {
             if (pAux->get_data() == dt) 
@@ -65,7 +69,6 @@ void List<TYPE>:: remove(TYPE* dt)
                 size--;
 
             }
-           
             prev = pAux;
             pAux = pAux->get_next();
         }
@@ -74,12 +77,15 @@ void List<TYPE>:: remove(TYPE* dt)
 template <class TYPE>
 void List<TYPE>::remove_front()
     {
-        Element<TYPE>* pAux = first;
-        pAux = first->get_next();
-        //delete (first->get_data());
-        delete first;
-        size--;
-        first = pAux;    
+        if(first)
+        {
+            Element<TYPE>* pAux = first;
+            pAux = first->get_next();
+            //delete (first->get_data());
+            delete first;
+            size--;
+            first = pAux;
+        }    
     }
 template <class TYPE>
 void List<TYPE>::clear()
