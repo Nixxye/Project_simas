@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/nix/Codes/C++/Game",
-      "program": "/home/nix/Codes/C++/Game/build/Debug/outDebug",
+      "cwd": "/home/nix/Codes/C++/Game/Project_simas",
+      "program": "/home/nix/Codes/C++/Game/Project_simas/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
