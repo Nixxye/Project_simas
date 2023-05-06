@@ -76,7 +76,7 @@ void List<TYPE>::remove_front()
     {
         Element<TYPE>* pAux = first;
         pAux = first->get_next();
-        delete (first->get_data());
+        //delete (first->get_data());
         delete first;
         first = pAux;    
     }
