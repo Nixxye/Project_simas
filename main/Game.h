@@ -10,7 +10,8 @@
 #include "../managers/ColisionManager.h"
 
 using namespace Managers;
-
+using namespace entes;
+using namespace list;
 #define WIDTH 1000
 #define HEIGHT 1000
 
@@ -22,7 +23,7 @@ private:
     Enemy enemy;
     Obstacle platform;
     EntityList list;
-    ColisionManager colision_manager;
+    //ColisionManager colision_manager;
 public:
     Game();
     ~Game();

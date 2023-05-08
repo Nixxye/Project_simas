@@ -12,7 +12,8 @@ namespace Managers
     }
     void ColisionManager::colide()
     {
-        auto A = player_list.get_first(), auto B = enemy_list.get_first();
+        List<Entity> aux;
+        List<Entity>::Element* A = player_list.get_first(), List<Entity>::Element* B = enemy_list.get_first();
         while (A)
         {
             A->set_grounded(false);

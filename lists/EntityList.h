@@ -3,7 +3,7 @@
 #include "../entities/Entity.h"
 #include "../lists/List.h"
 using namespace entes;
-
+using namespace list;
 class EntityList
 {
 private:

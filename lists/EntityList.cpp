@@ -2,7 +2,6 @@
 #include "../entities/Enemy.h"
 #include <iostream>
 
-
 EntityList::EntityList():
 list()
 {
@@ -54,7 +53,7 @@ void EntityList::stress_test()
     if (n > 15)
     {
         if ((bool) rand() % 2)
-            list.remove(list.get_last()->get_data());
+            list.remove(list.get_first()->get_next()->get_data());
     }
     std::cout<<list.get_first()->get_data()->get_speed()<<std::endl;
 }

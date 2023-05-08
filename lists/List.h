@@ -4,123 +4,112 @@
 
 using namespace std;
 
-template <class TYPE>
-class List 
+namespace list
 {
-public:
-    template <class TE>
-    class Element
-    {
+    template <class TYPE>
+    class List {
+    public:
+        template <class TE>
+        class Element {
+        private:
+            TE* data;
+            Element<TE>* next;
+        public:
+            Element() : data(NULL), next(NULL) {}
+            ~Element() {}
+
+            void set_next(Element<TE>* n) {this->next = n;}
+            void set_data(TE* d) {this->data = d;}
+
+            TE* get_data() {return data;}
+            Element<TE>* get_next() {return next;}
+        };
+
     private:
-        TE* data;
-        Element<TE>* next;
-    public:   
-        Element():data(NULL), next(NULL){}
-        void set_next(Element<TE>* n) {next = n;}
-        void set_data (TE* d) {data = d;}
-        TE* get_data() {return data;}
-        Element<TE>* get_next() {return next;}
-        ~Element() {set_data(NULL);}
+        Element<TYPE>* first;
+        Element<TYPE>* last;
+        int size;
+
+    public:
+        List() : first(NULL), last(NULL), size(0) {}
+
+        ~List() {
+            clear();
+        }
+
+        Element<TYPE>* get_first(){return first;}
+        Element<TYPE>* get_last(){return last;}
+        void clear() {
+            Element<TYPE>* aux = NULL;
+            while (first) {
+                aux = first;
+                first = first->get_next();
+                delete aux->get_data();
+                delete aux;
+            }
+            first = NULL;
+            last = NULL;
+            size = 0;
+        }
+
+        void push(TYPE* data) {
+            if (data) {
+                Element<TYPE>* new_elem = new Element<TYPE>();
+                new_elem->set_data(data);
+                if (!first) {
+                    first = new_elem;
+                    last = new_elem;
+                } else {
+                    last->set_next(new_elem);
+                    last = new_elem;
+                }
+                size++;
+            }
+        }
+
+        void print() {
+            Element<TYPE>* aux = first;
+            while (aux) {
+                cout << *(aux->get_data()) << " ";
+                aux = aux->get_next();
+            }
+            cout << endl;
+        }
+
+        int get_size() {return size;}
+
+        void remove(TYPE* dt)
+        {
+            Element<TYPE>* aux = first;
+            Element<TYPE>* prev = NULL;
+            prev = first;
+            while (aux)
+            {
+
+                if (aux->get_data() == dt)
+                {
+                    if (aux == first)
+                    {
+                        first = first->get_next();
+                    }
+                    else if (aux == last)
+                    {
+                        last = prev;
+                        last->set_next(NULL);
+                    }
+                    else
+                    {
+                        prev->set_next(aux->get_next());
+                    }
+                    delete aux;
+                    size--;
+                    return;
+                }
+                prev = aux;
+                aux = aux->get_next();
+            }
+        }
 
     };
 
-private:
-    Element<TYPE>* first;
-    Element<TYPE>* last;
-    int size;
-public:
-    List():first(NULL),last(NULL),size (0) {}
-    Element<TYPE>* get_first() {return first;}
-    Element<TYPE>* get_last() {return last;}
-    int get_size() {return size;}
-    void remove(TYPE* dt);
-   
-    void remove_front();
-    void clear();
-    void push(TYPE* dt);
-    ~List();
-};
-template <class TYPE>
-void List<TYPE>:: remove(TYPE* dt)
-    {
-        if (first->get_data() == dt && last->get_data() == dt)
-        {
-            delete first;
-            delete last;
-        }
-        Element<TYPE>* pAux = first;
-        Element<TYPE>* prev = NULL;
-        while (pAux != last) 
-        {
-            if (pAux->get_data() == dt) 
-            {
-                
-                if (pAux == first) {
-                    first = pAux->get_next();
-                } 
-                else if (pAux == last) {
-                    last = prev;
-                    prev->set_next(NULL);
-                } 
-                else
-                {
-                    prev->set_next(pAux->get_next());
-                }
-                delete (pAux);
-                size--;
-
-            }
-            prev = pAux;
-            pAux = pAux->get_next();
-        }
-        printf ("\n\nSize :%d\n", size);
-    }
-template <class TYPE>
-void List<TYPE>::remove_front()
-    {
-        if(first)
-        {
-            Element<TYPE>* pAux = first;
-            pAux = first->get_next();
-            //delete (first->get_data());
-            delete first;
-            size--;
-            first = pAux;
-        }    
-    }
-template <class TYPE>
-void List<TYPE>::clear()
-    {
-        while (size)
-        {
-            remove_front();
-            //printf ("\nSize:   %d", size);
-        }
-    }
-
-template <class TYPE>
-void List<TYPE>::push(TYPE* dt)
-     {
-        if (dt)
-        {
-            Element<TYPE>* new_elem = new Element<TYPE>();
-            new_elem->set_data(dt);
-            if (!first)
-            {
-                first = new_elem;
-                last = new_elem;
-            }
-            else
-            {
-                last->set_next(new_elem);
-                last = new_elem;
-            }
-            //new_elem->set_next(NULL);
-            size++;
-        }
-    }
-template <class TYPE>
-List<TYPE>::~List()
-{
-    clear();    
 }
