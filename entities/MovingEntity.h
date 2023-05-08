@@ -2,12 +2,12 @@
 #include "Entity.h"
 namespace entes
 {
-    class Entidade : public Entity
+    class MovingEntity : public Entity
     {
         protected:
         public:
-            Entidade();
-            ~Entidade();
+            MovingEntity();
+            ~MovingEntity();
         
     };
 }

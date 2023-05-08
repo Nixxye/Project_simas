@@ -1,8 +1,8 @@
 #pragma once
-#include "Entidade.h"
+#include "MovingEntity.h"
 using namespace entes;
 
-class Projetil : public Entidade
+class Projetil : public MovingEntity
 {
     private:
     public:

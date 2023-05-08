@@ -2,7 +2,7 @@
 using namespace entes;
 
 Character::Character():
-Entidade()
+MovingEntity()
 {
 
 }

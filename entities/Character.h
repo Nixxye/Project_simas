@@ -1,9 +1,9 @@
 #pragma once
-#include "Entidade.h"
+#include "MovingEntity.h"
 
 namespace entes
 {
-    class Character : public Entidade
+    class Character : public MovingEntity
     {
         private:
         public:

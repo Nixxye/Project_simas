@@ -3,6 +3,9 @@
 #include "Character.h"
 #include <SFML/Graphics.hpp>
 using namespace entes;
+
+
+
 class Enemy: public Character
 {
 protected:

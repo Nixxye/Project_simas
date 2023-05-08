@@ -1,11 +1,11 @@
 #include "Projetil.h"
 
 Projetil :: Projetil ():
-Entidade()
+MovingEntity()
 {
 
 }
 Projetil :: ~Projetil ()
 {
-    
+
 }

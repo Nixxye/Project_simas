@@ -1,7 +1,7 @@
 #pragma once
-#include "Entidade.h"
+#include "MovingEntity.h"
 using namespace entes;
-class Obstacle: public Entidade
+class Obstacle: public MovingEntity
 {
     protected:
     public:
