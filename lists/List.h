@@ -34,6 +34,7 @@ public:
     Element<TYPE>* get_last() {return last;}
     int get_size() {return size;}
     void remove(TYPE* dt);
+   
     void remove_front();
     void clear();
     void push(TYPE* dt);

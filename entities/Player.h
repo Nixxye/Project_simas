@@ -3,9 +3,10 @@
 #include <SFML/Graphics.hpp>
 #include <math.h>
 
-#include "Entity.h"
-
-class Player: public Entity
+#include "../entities/Character.h"
+using namespace entes;
+using namespace character;
+class Player: public Character
 {
 private:
 

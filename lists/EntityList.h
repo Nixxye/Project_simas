@@ -1,7 +1,8 @@
 #pragma once
 
-#include "../headers/Entity.h"
-#include "../headers/List.h"
+#include "../entities/Entity.h"
+#include "../lists/List.h"
+using namespace entes;
 
 class EntityList
 {
@@ -14,4 +15,6 @@ public:
     void draw(sf::RenderWindow* window);
     void add(Entity* ent);
     void stress_test();
+
+    auto get_first(){ return list.get_first()->get_data();}
 };
