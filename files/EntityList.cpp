@@ -48,7 +48,7 @@ void EntityList::stress_test()
     {
         Enemy* aux = new Enemy();
         aux->set_position(sf::Vector2f(x, y));
-        add(static_cast<Entity*>(aux));
+        add(aux);
     }
     if (n > 15)
     {

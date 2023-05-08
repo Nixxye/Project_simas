@@ -15,9 +15,6 @@ vel(0.f, 0.f)
     body.setFillColor(sf::Color::White);
 }
 
-Entity::~Entity()
-{
-}
 
 void Entity::draw(sf::RenderWindow *wd)
 {
