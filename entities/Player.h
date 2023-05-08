@@ -5,6 +5,7 @@
 
 #include "../entities/Character.h"
 using namespace entes;
+using namespace character;
 class Player: public Character
 {
 private:

@@ -1,13 +1,17 @@
 #pragma once
-#include "MovingEntity.h"
+#include "Entity.h"
 
 namespace entes
+
 {
-    class Character : public MovingEntity
+    namespace character
     {
-        private:
+    class Character : public Entity
+    {
+        protected:
         public:
             Character();
             ~Character();
     };
+    }
 }

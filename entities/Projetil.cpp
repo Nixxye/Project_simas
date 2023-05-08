@@ -1,7 +1,7 @@
 #include "Projetil.h"
 
 Projetil :: Projetil ():
-MovingEntity()
+Entity()
 {
 
 }
