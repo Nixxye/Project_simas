@@ -3,9 +3,9 @@
 #include <SFML/Graphics.hpp>
 #include <math.h>
 
-#include "../entities/Entity.h"
-
-class Player: public Entity
+#include "../entities/Character.h"
+using namespace entes;
+class Player: public Character
 {
 private:
 

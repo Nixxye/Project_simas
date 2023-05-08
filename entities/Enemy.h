@@ -1,11 +1,11 @@
 #pragma once
 
-#include "../entities/Entity.h"
+#include "Character.h"
 #include <SFML/Graphics.hpp>
-
-class Enemy: public Entity
+using namespace entes;
+class Enemy: public Character
 {
-private:
+protected:
     bool alive;
 public:
     Enemy();

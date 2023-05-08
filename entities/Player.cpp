@@ -1,7 +1,7 @@
 #include "../entities/Player.h"
 
 Player::Player():
-Entity()
+Character()
 {
     lives = 3;
 }
