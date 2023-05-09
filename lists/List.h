@@ -7,10 +7,12 @@ using namespace std;
 namespace list
 {
     template <class TYPE>
-    class List {
+    class List 
+    {
     public:
         template <class TE>
-        class Element {
+        class Element 
+        {
         private:
             TE* data;
             Element<TE>* next;
@@ -33,13 +35,15 @@ namespace list
     public:
         List() : first(NULL), last(NULL), size(0) {}
 
-        ~List() {
+        ~List() 
+        {
             clear();
         }
 
         Element<TYPE>* get_first(){return first;}
         Element<TYPE>* get_last(){return last;}
-        void clear() {
+        void clear() 
+        {
             Element<TYPE>* aux = NULL;
             while (first) {
                 aux = first;
@@ -52,8 +56,10 @@ namespace list
             size = 0;
         }
 
-        void push(TYPE* data) {
-            if (data) {
+        void push(TYPE* data) 
+        {
+            if (data) 
+            {
                 Element<TYPE>* new_elem = new Element<TYPE>();
                 new_elem->set_data(data);
                 if (!first) {
@@ -67,7 +73,8 @@ namespace list
             }
         }
 
-        void print() {
+        void print() 
+        {
             Element<TYPE>* aux = first;
             while (aux) {
                 cout << *(aux->get_data()) << " ";

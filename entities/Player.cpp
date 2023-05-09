@@ -1,4 +1,5 @@
 #include "../entities/Player.h"
+#include <iostream>
 
 Player::Player():
 Character()
@@ -37,6 +38,11 @@ void Player::move()
     {
         vel.y += G;
     }
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+    {
+        vel.y -= 10.f;
+    }
+    //std::cout<<body.getPosition().x<<" "<<body.getPosition().y<<std::endl;
     player_position += vel;
     body.setPosition(player_position);
     speed = (int) sqrt(vel.x*vel.x + vel.y*vel.y);

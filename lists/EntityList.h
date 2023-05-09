@@ -16,5 +16,5 @@ public:
     void add(Entity* ent);
     void stress_test();
 
-    auto get_first(){ return list.get_first()->get_data();}
+    auto get_first(){ return list.get_first();}
 };

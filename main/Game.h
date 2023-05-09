@@ -23,7 +23,7 @@ private:
     Enemy enemy;
     Obstacle platform;
     EntityList list;
-    //ColisionManager colision_manager;
+    ColisionManager colision_manager;
 public:
     Game();
     ~Game();

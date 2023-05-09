@@ -5,6 +5,8 @@
 #include "../entities/Obstacle.h"
 #include "../lists/EntityList.h"
 
+using namespace list;
+
 namespace Managers
 {
     class ColisionManager
