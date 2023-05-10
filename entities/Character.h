@@ -9,6 +9,10 @@ namespace entes
     class Character : public Entity
     {
         protected:
+
+            int lives;
+            bool alive;
+
         public:
             Character();
             ~Character();

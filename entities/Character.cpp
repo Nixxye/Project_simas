@@ -4,7 +4,9 @@ using namespace character;
 
 
 Character::Character():
-Entity()
+Entity(),
+lives(1),
+alive(true)
 {
 
 }

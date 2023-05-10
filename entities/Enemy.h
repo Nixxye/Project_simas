@@ -9,7 +9,7 @@ using namespace character;
 class Enemy: public Character
 {
 protected:
-    bool alive;
+
 public:
     Enemy();
     ~Enemy();

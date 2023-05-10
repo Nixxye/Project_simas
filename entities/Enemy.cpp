@@ -1,8 +1,8 @@
 #include "../entities/Enemy.h"
 
 Enemy::Enemy():
-Character(),
-alive(true)
+Character()
+
 {
     body.setFillColor(sf::Color::Magenta);
     body.setPosition(300.f, 300.f);
