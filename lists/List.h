@@ -18,7 +18,11 @@ namespace list
             Element<TE>* next;
         public:
             Element() : data(NULL), next(NULL) {}
-            ~Element() {}
+            ~Element()
+            {
+                if (data)
+                    delete data;
+            }
 
             void set_next(Element<TE>* n) {this->next = n;}
             void set_data(TE* d) {this->data = d;}
@@ -47,9 +51,10 @@ namespace list
             Element<TYPE>* aux = NULL;
             while (first) {
                 aux = first;
-                first = first->get_next();
-                delete aux->get_data();
-                delete aux;
+                if (first)
+                    first = first->get_next();
+                if (aux)
+                    delete aux;
             }
             first = NULL;
             last = NULL;
@@ -83,7 +88,7 @@ namespace list
             cout << endl;
         }
 
-        int get_size() {return size;}
+        const int get_size() const {return size;}
 
         void remove(TYPE* dt)
         {

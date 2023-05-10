@@ -6,7 +6,7 @@ player(),
 enemy(),
 platform(sf::Vector2f(100.f, 400.f), sf::Vector2f(500.f, 40.f)),
 platform1(sf::Vector2f(400.f, 550.f), sf::Vector2f(500.f, 40.f)),
-platform2(sf::Vector2f(700.f, 400.f), sf::Vector2f(100.f, 500.f)),
+platform2(sf::Vector2f(700.f, 400.f), sf::Vector2f(250.f, 500.f)),
 list()
 //colision_manager()
 {

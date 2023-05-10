@@ -1,5 +1,8 @@
 #include "../managers/ColisionManager.h"
 #include "ColisionManager.h"
+//Coeficiente de restituição 
+#define CR 0.65
+
 namespace Managers
 {
     ColisionManager::ColisionManager():
@@ -18,13 +21,11 @@ namespace Managers
         while (A)
         {
             A->get_data()->set_grounded(false);
-            /*
             while(B)
             {
-                //aux_col(A, B);
+                check_colision(A->get_data(), B->get_data());
                 B = B->get_next();
             }
-            */
             B = obstacle_list.get_first();
             while (B)
             {
@@ -38,29 +39,43 @@ namespace Managers
     {
         sf::Vector2f posA = A->get_position(), posB = B->get_position(), sizeA = A->get_size(), sizeB = B->get_size();
         sf::Vector2f d = posB - posA;
+        //sf::Vector2f aux = Vector2f(0.f, 0.f);
         if ((fabs(d.x) < (sizeA.x + sizeB.x)/2.0) && (fabs(d.y) < (sizeA.y + sizeB.y)/2.0))
         {
             //cout<<"EPAAAAA"<<endl;
             A->troca_cor();
             B->troca_cor();
-            cout<<posA.x<<" "<<posA.y<<" "<<posB.x<<" "<<posB.y<<" "<<d.x<<" "<<d.y<<endl;
+            //cout<<posA.x<<" "<<posA.y<<" "<<posB.x<<" "<<posB.y<<" "<<d.x<<" "<<d.y<<endl;
             //VERTICAL COLISION
             //below the player
-            if (posA.y < posB.y && A->get_vel().y > 0)
+            if (fabs(d.x) - fabs(sizeA.x + sizeB.x)/2.0 < fabs(d.y) - fabs(sizeA.y + sizeB.y)/2.0)
             {
-                A->set_position(sf::Vector2f(posA.x, posB.y - (sizeB.y + sizeA.y)/2.f));
-                A->set_vel(sf::Vector2f(A->get_vel().x, 0.f));
-                A->set_grounded(true);
+                //aux = -(B->get_vel());
+                //B->set_vel(aux);
+                if (posA.y < posB.y)
+                {
+                    A->set_position(sf::Vector2f(posA.x, posB.y - (sizeB.y + sizeA.y)/2.f));
+                    A->set_vel(sf::Vector2f(A->get_vel().x, 0.f));
+                    A->set_grounded(true);
+                }
+                else
+                {
+                    A->set_position(sf::Vector2f(posA.x, posB.y + (sizeB.y + sizeA.y)/2.f));
+                    A->set_vel(sf::Vector2f(A->get_vel().x, 0.f));
+                }
             }
-            if (posA.x < posB.x && A->get_vel().x > 0)
+            else if (fabs(d.x) - fabs(sizeA.x + sizeB.x)/2.0 > fabs(d.y) - fabs(sizeA.y + sizeB.y)/2.0)
             {
-                A->set_position(sf::Vector2f(posB.x - (sizeB.x + sizeA.x)/2.f, posA.y));
-                A->set_vel(sf::Vector2f(0.f, A->get_vel().y));   
-            }
-            else if (posA.x > posB.x && A->get_vel().x < 0)
-            {
-                A->set_position(sf::Vector2f(posB.x + (sizeB.x + sizeA.x)/2.f, posA.y));
-                A->set_vel(sf::Vector2f(0.f, A->get_vel().y));   
+                if (posA.x < posB.x)
+                {
+                    A->set_position(sf::Vector2f(posB.x - (sizeB.x + sizeA.x)/2.f, posA.y));
+                    A->set_vel(sf::Vector2f(-CR*A->get_vel().x, A->get_vel().y));  
+                }
+                else
+                {
+                    A->set_position(sf::Vector2f(posB.x + (sizeB.x + sizeA.x)/2.f, posA.y));
+                    A->set_vel(sf::Vector2f(-CR*A->get_vel().x, A->get_vel().y));  
+                }
             }
         }
     }
