@@ -1,4 +1,5 @@
 #include "../managers/ColisionManager.h"
+#include "ColisionManager.h"
 namespace Managers
 {
     ColisionManager::ColisionManager():
@@ -27,36 +28,50 @@ namespace Managers
             B = obstacle_list.get_first();
             while (B)
             {
-                aux_col(A->get_data(), B->get_data());
+                check_colision(A->get_data(), B->get_data());
                 B = B->get_next();
             }
             A = A->get_next();
         }
     }
-    void ColisionManager::aux_col(Entity* A, Entity* B)
+    void ColisionManager::check_colision(Entity* A, Entity* B)
     {
-        //VERTICAL COLISION:
-        //bellow the player
-        float xpA = A->get_position().x, ypA = A->get_position().y, xpB = B->get_position().x, ypB = B->get_position().y;
-        float xsA = A->get_size().x, ysA = A->get_size().y, xsB = B->get_size().x , ysB = B->get_size().y; 
-        if (ypA + ysA > ypB && ypA < ypB + ysB && ((xpA < xpB+xsB && xpA > xpB)||(xpA+xsA < xpB+xsB && xpA+xsA > xpB)||(xpA > xpB+xsB && xpA < xpB)))
+        sf::Vector2f posA = A->get_position(), posB = B->get_position(), sizeA = A->get_size(), sizeB = B->get_size();
+        sf::Vector2f d = posB - posA;
+        if ((fabs(d.x) < (sizeA.x + sizeB.x)/2.0) && (fabs(d.y) < (sizeA.y + sizeB.y)/2.0))
         {
-            A->set_position(sf::Vector2f(A->get_position().x, ypB-ysA));
-            A->set_vel(sf::Vector2f(A->get_vel().x, 0.f));
-            A->set_grounded(true);
             //cout<<"EPAAAAA"<<endl;
             A->troca_cor();
             B->troca_cor();
-            cout<<ypB-ysA<<" "<<ypB<<" "<< ypA<<endl;
+            cout<<posA.x<<" "<<posA.y<<" "<<posB.x<<" "<<posB.y<<" "<<d.x<<" "<<d.y<<endl;
+            //VERTICAL COLISION
+            //below the player
+            if (posA.y < posB.y && A->get_vel().y > 0)
+            {
+                A->set_position(sf::Vector2f(posA.x, posB.y - (sizeB.y + sizeA.y)/2.f));
+                A->set_vel(sf::Vector2f(A->get_vel().x, 0.f));
+                A->set_grounded(true);
+            }
+            if (posA.x < posB.x && A->get_vel().x > 0)
+            {
+                A->set_position(sf::Vector2f(posB.x - (sizeB.x + sizeA.x)/2.f, posA.y));
+                A->set_vel(sf::Vector2f(0.f, A->get_vel().y));   
+            }
+            else if (posA.x > posB.x && A->get_vel().x < 0)
+            {
+                A->set_position(sf::Vector2f(posB.x + (sizeB.x + sizeA.x)/2.f, posA.y));
+                A->set_vel(sf::Vector2f(0.f, A->get_vel().y));   
+            }
         }
     }
+
     /*
     void ColisionManager::aux_col(Entity* A, Entity* B)
     {
         //VERTICAL COLISION:
         //bellow the player
         float xpA = A->get_position().x, ypA = A->get_position().y, xpB = B->get_position().x, ypB = B->get_position().y;
-        float xsA = A->get_size().x, ysA = A->get_size().y, xsB = B->get_size().x , ysB = B->get_size().y; 
+        float xsA = A->get_size().x, ysA = A->get_size().y, xsB = B->get_size().x , ysB = B->get_size().y;
         if (ypA + ysA > ypB && ypA < ypB + ysB && ((xpA < xpB+xsB && xpA > xpB)||(xpA+xsA < xpB+xsB && xpA+xsA > xpB)||(xpA > xpB+xsB && xpA < xpB)))
         {
             A->set_position(sf::Vector2f(A->get_position().x, ypB-ysA));

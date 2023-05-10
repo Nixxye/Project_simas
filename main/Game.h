@@ -12,8 +12,8 @@
 using namespace Managers;
 using namespace entes;
 using namespace list;
-#define WIDTH 1000
-#define HEIGHT 1000
+#define WIDTH 800
+#define HEIGHT 600
 
 class Game
 {
@@ -21,7 +21,7 @@ private:
     sf::RenderWindow window;
     Player player;
     Enemy enemy;
-    Obstacle platform;
+    Obstacle platform, platform1, platform2;
     EntityList list;
     ColisionManager colision_manager;
 public:

@@ -1,7 +1,7 @@
 #include "../entities/Enemy.h"
 
-Enemy::Enemy():
-Character(),
+Enemy::Enemy(sf::Vector2f pos, sf::Vector2f size):
+Character(pos, size),
 alive(true)
 {
     body.setFillColor(sf::Color::Magenta);

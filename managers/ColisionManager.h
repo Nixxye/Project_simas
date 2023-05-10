@@ -25,7 +25,7 @@ namespace Managers
         void add_obstacle(Entity* ent){obstacle_list.add(ent);}
 
         void colide();
-        void aux_col(Entity* A, Entity* B);
+        void check_colision(Entity* A, Entity* B);
 
     };
 }

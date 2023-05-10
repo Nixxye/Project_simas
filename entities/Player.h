@@ -11,7 +11,7 @@ class Player: public Character
 private:
 
 public:
-    Player();
+    Player(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f size = sf::Vector2f(50.f, 50.f));
     ~Player();
     void move();
 };
