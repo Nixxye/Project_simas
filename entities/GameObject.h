@@ -11,6 +11,6 @@ protected:
 
 public:
     GameObject();
-    ~GameObject();
+    virtual ~GameObject();
 };
 

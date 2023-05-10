@@ -50,8 +50,7 @@ namespace Managers
             //below the player
             if (fabs(d.x) - fabs(sizeA.x + sizeB.x)/2.0 < fabs(d.y) - fabs(sizeA.y + sizeB.y)/2.0)
             {
-                //aux = -(B->get_vel());
-                //B->set_vel(aux);
+                B->set_vel(sf::Vector2f(-B->get_vel().x, -B->get_vel().y));
                 if (posA.y < posB.y)
                 {
                     A->set_position(sf::Vector2f(posA.x, posB.y - (sizeB.y + sizeA.y)/2.f));

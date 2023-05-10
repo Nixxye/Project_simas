@@ -17,7 +17,7 @@ namespace entes
             bool grounded;
         public:
             Entity(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f size = sf::Vector2f(50.f, 50.f));
-            ~Entity();
+            virtual ~Entity();
             void draw(sf::RenderWindow *wd);
 
             virtual void move() = 0;
