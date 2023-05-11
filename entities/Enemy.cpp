@@ -18,19 +18,23 @@ void Enemy::move()
     {
         if (player_position.x > position.x)
         {
-            vel.x += SPEED / 3;
+            if (vel.x < 3.f)
+                vel.x += SPEED / 3;
         }
         else if (player_position.x < position.x)
         {
-            vel.x -= SPEED / 3;
+            if (vel.x > -3.f)
+                vel.x -= SPEED / 3;
         }
         if (player_position.y > position.y)
         {
-            vel.y += SPEED / 3;
+            if (vel.y < 3.f)
+                vel.y += SPEED / 3;
         }
         else if (player_position.y < position.y)
         {
-            vel.y -= SPEED / 3;
+            if (vel.x > -3.f)
+                vel.y -= SPEED / 3;
         }
         //NELSON
         vel +=  sf::Vector2f(((float) (rand()%20))/1000 - SPEED/20, ((float) (rand()%20))/1000 - SPEED/20);

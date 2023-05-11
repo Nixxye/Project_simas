@@ -34,6 +34,18 @@ namespace Managers
             }
             A = A->get_next();
         }
+        A = enemy_list.get_first();
+        while (A)
+        {
+            B = obstacle_list.get_first();
+            A->get_data()->set_grounded(false);
+            while(B)
+            {
+                check_colision(A->get_data(), B->get_data());
+                B = B->get_next();
+            }
+            A = A->get_next();
+        }
     }
     void ColisionManager::check_colision(Entity* A, Entity* B)
     {
