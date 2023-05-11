@@ -1,4 +1,5 @@
 #include "../entities/Enemy.h"
+#include <math.h>
 
 Enemy::Enemy(sf::Vector2f pos, sf::Vector2f size):
 Character(pos, size),
@@ -18,19 +19,23 @@ void Enemy::move()
     {
         if (player_position.x > position.x)
         {
-            vel.x += SPEED / 3;
+            if (vel.x < 2.0)
+                vel.x += SPEED / 3;
         }
         else if (player_position.x < position.x)
         {
-            vel.x -= SPEED / 3;
+            if (vel.x > -2.0)
+                vel.x -= SPEED / 3;
         }
         if (player_position.y > position.y)
         {
-            vel.y += SPEED / 3;
+            if (vel.y < 2.0)
+                vel.y += SPEED / 3;
         }
         else if (player_position.y < position.y)
         {
-            vel.y -= SPEED / 3;
+            if (vel.y > -2.0)
+                vel.y -= SPEED / 3;
         }
         //NELSON
         vel +=  sf::Vector2f(((float) (rand()%20))/1000 - SPEED/20, ((float) (rand()%20))/1000 - SPEED/20);
