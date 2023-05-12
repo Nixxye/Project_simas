@@ -15,7 +15,7 @@ EntityList::~EntityList()
 
 void EntityList::move()
 {
-    auto aux = list.get_first();
+    List<Entity>::Element<Entity>* aux = list.get_first();
     while(aux)
     {
         aux->get_data()->move();
@@ -25,7 +25,7 @@ void EntityList::move()
 
 void EntityList::draw(sf::RenderWindow* window)
 {
-    auto aux = list.get_first();
+    List<Entity>::Element<Entity>* aux = list.get_first();
     while(aux)
     {
         aux->get_data()->draw(window);
@@ -37,7 +37,7 @@ void EntityList::add(Entity* ent)
 {
     list.push(ent);
 }
-
+/*
 void EntityList::stress_test()
 {
     int n = list.get_size();
@@ -57,4 +57,5 @@ void EntityList::stress_test()
     }
     std::cout<<list.get_first()->get_data()->get_speed()<<std::endl;
 }
+*/
 
