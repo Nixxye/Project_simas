@@ -8,11 +8,16 @@
 class GameObject
 {
 protected:
+<<<<<<< Updated upstream
     const int id;
     static int count;
     sf::RectangleShape body;
     static int speed;
     sf::Vector2f position;
+=======
+    
+
+>>>>>>> Stashed changes
 public:
     GameObject();
     ~GameObject();
