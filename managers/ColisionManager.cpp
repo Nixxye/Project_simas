@@ -34,6 +34,7 @@ namespace Managers
             }
             A = A->get_next();
         }
+        //TODO: Fazer uma função de colisão específica para inimigo-obstáculo e inimigo-player.
         A = enemy_list.get_first();
         while (A)
         {
