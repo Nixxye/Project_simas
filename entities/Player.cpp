@@ -1,7 +1,6 @@
 #include "../entities/Player.h"
-
-Player::Player():
-Character()
+Player::Player(sf::Vector2f pos, sf::Vector2f size):
+Character(pos, size)
 {
     lives = 3;
 }
@@ -10,14 +9,13 @@ Player::~Player()
 {
 }
 
-void Player::move()
+void Player::move(char direction)
 {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+    if (direction == 'L') //Left
     {
-        if (vel.y >= - VEL_MAX)
         vel.x += SPEED;
     }
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+    if (direction == 'R') //Right
     {
         vel.x -= SPEED;
     }
@@ -33,11 +31,18 @@ void Player::move()
     {
         vel.x = 0.0;
     }
+
+    
     if (!grounded)
     {
         vel.y += G;
     }
-    player_position += vel;
-    body.setPosition(player_position);
+    else if (direction == 'U') //Up
+    {
+        vel.y -= 10.f;
+    }
+    //std::cout<<body.getPosition().x<<" "<<body.getPosition().y<<std::endl;
+    //player_position += vel;
+    body.setPosition(body.getPosition() + vel);
     speed = (int) sqrt(vel.x*vel.x + vel.y*vel.y);
 }

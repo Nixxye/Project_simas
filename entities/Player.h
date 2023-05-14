@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <math.h>
-
+#include <string>
 #include "../entities/Character.h"
 using namespace entes;
 using namespace character;
@@ -13,5 +13,5 @@ private:
 public:
     Player();
     ~Player();
-    void move();
+    void move(char direction = ' ');
 };
