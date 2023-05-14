@@ -7,8 +7,8 @@ enemy(),
 platform(sf::Vector2f(100.f, 400.f), sf::Vector2f(500.f, 40.f)),
 platform1(sf::Vector2f(400.f, 550.f), sf::Vector2f(500.f, 40.f)),
 platform2(sf::Vector2f(700.f, 400.f), sf::Vector2f(250.f, 500.f)),
-list()
-//colision_manager()
+list(),
+colision_manager()
 {
     list.add(static_cast<Entity*>(&player));
     list.add(static_cast<Entity*>(&enemy));
@@ -47,10 +47,9 @@ void Game::run()
         //enemy.move();
         list.move();
         colision_manager.colide();
-        //list.stress_test();
         //player.draw(&window);
         //enemy.draw(&window);
-        platform.draw(&window);
+        //platform.draw(&window);
         list.draw(&window);
 
         window.display();

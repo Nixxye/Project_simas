@@ -10,7 +10,7 @@ list()
 
 EntityList::~EntityList()
 {
-    
+
 }
 
 void EntityList::move()
@@ -36,6 +36,24 @@ void EntityList::draw(sf::RenderWindow* window)
 void EntityList::add(Entity* ent)
 {
     list.push(ent);
+}
+void EntityList::set_position(sf::Vector2f pos)
+{
+    List<Entity>::Element<Entity>* aux = list.get_first();
+    while(aux)
+    {
+        aux->get_data()->set_position(pos);
+        aux = aux->get_next();        
+    }    
+}
+void EntityList::set_alive(bool a)
+{
+    List<Entity>::Element<Entity>* aux = list.get_first();
+    while(aux)
+    {
+        aux->get_data()->set_alive(a);
+        aux = aux->get_next();        
+    }    
 }
 /*
 void EntityList::stress_test()

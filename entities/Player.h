@@ -4,14 +4,17 @@
 #include <math.h>
 
 #include "../entities/Character.h"
-using namespace entes;
-using namespace character;
-class Player: public Character
-{
-private:
 
-public:
-    Player(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f size = sf::Vector2f(50.f, 50.f));
-    ~Player();
-    void move();
-};
+namespace characters
+{
+    class Player: public Character
+    {
+    private:
+
+    public:
+        Player(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f size = sf::Vector2f(50.f, 50.f));
+        ~Player();
+        void move();
+    };
+}
+

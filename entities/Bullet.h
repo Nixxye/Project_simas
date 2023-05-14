@@ -1,13 +1,16 @@
 #pragma once
 
-#include "Entity.h"
-namespace enemies
+#include "Character.h"
+namespace characters
 {
-    class Bullet
+    class Bullet: public Character
     {
     private:
-        int time;
+        float lifetime;
     public:
-
+        Bullet(float vx = 0.f, float vy = 0.f, float time = 100.f);
+        ~Bullet();
+        void run();
+        void move();
     };
 }

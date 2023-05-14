@@ -6,8 +6,6 @@ sf::Vector2f entes::Entity::player_position(200.f, 200.f);
 
 namespace entes
 {
-
-
     Entity::Entity(sf::Vector2f pos, sf::Vector2f size):
     GameObject(),
     id(count++),
@@ -15,7 +13,8 @@ namespace entes
     position(pos),
     lives(1),
     vel(0.f, 0.f),
-    grounded(false)
+    grounded(false),
+    alive(true)
     {
         
         body.setFillColor(sf::Color::White);

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 namespace list
 {
     template<class TYPE>
@@ -26,8 +28,13 @@ namespace list
             {}
             ~Element()
             {
+                //Colocar isso se for usar o delete
+                /*
                 if (data)
-                    delete data;
+                {
+                    //delete &data;
+                }
+                */
                 data = NULL;
                 pnext = NULL;
             }
@@ -48,32 +55,21 @@ namespace list
             while(pfirst)
             {
                 aux = pfirst;
-                if (pfirst)
-                {
-                    pfirst = pfirst->get_next();
+                pfirst = pfirst->get_next();
+                if (aux)
                     delete aux;
-                }
+
             }
         }
         void push(TYPE* elem)
         {
+            std::cout<<elem<<std::endl;
             if (!elem)
                 return;
             Element<TYPE>* aux = new Element<TYPE>();
             aux->set_data(elem);
-            if (!pfirst)
-            {
-                pfirst = aux;
-            }
-            else
-            {
-                Element<TYPE>* last = pfirst;
-                while(last->get_next())
-                {
-                    last = last->get_next();
-                }
-                last->set_next(aux);
-            }
+            aux->set_next(pfirst);
+            pfirst = aux;
         }
     };
 }

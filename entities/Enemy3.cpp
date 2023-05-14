@@ -1,11 +1,14 @@
 #include "Enemy3.h"
 
-Enemy3:: Enemy3():
-Enemy()
+namespace characters
 {
+    Enemy3:: Enemy3():
+    Enemy()
+    {
 
-}
-Enemy3:: ~Enemy3()
-{
-    
+    }
+    Enemy3:: ~Enemy3()
+    {
+        
+    }    
 }

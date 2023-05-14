@@ -1,11 +1,14 @@
 #pragma once 
 #include "Obstacle.h"
 
-class Obstacle2 : public Obstacle
+namespace obstacles
 {
-    private:
-    public:
-        Obstacle2();
-        ~Obstacle2();
-    
-};
+    class Obstacle2 : public Obstacle
+    {
+        private:
+        public:
+            Obstacle2();
+            ~Obstacle2();
+        
+    };    
+}

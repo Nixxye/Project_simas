@@ -14,6 +14,8 @@ public:
     void move();
     void draw(sf::RenderWindow* window);
     void add(Entity* ent);
+    void set_position(sf::Vector2f pos);
+    void set_alive(bool a);
     //void stress_test();
 
     List<Entity>::Element<Entity>* get_first(){ return list.get_first();}
