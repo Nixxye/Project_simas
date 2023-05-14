@@ -11,7 +11,7 @@ private:
 public:
     EntityList();
     ~EntityList();
-    void move();
+    void run();
     void draw(sf::RenderWindow* window);
     void add(Entity* ent);
     void set_position(sf::Vector2f pos);

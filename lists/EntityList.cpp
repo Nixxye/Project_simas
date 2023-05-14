@@ -13,12 +13,12 @@ EntityList::~EntityList()
 
 }
 
-void EntityList::move()
+void EntityList::run()
 {
     List<Entity>::Element<Entity>* aux = list.get_first();
     while(aux)
     {
-        aux->get_data()->move();
+        aux->get_data()->run();
         aux = aux->get_next();        
     }
 }

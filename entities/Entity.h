@@ -22,8 +22,8 @@ namespace entes
             virtual void draw(sf::RenderWindow *wd);
             
             //implementar o move dentro de run, para ser mais geral. plataformas n se movem.
-            //virtual void run() = 0;
-            virtual void move() = 0;
+            virtual void run() = 0;
+            //virtual void move() = 0;
 
             void set_position(sf::Vector2f pos){body.setPosition(pos);}
             void set_vel(sf::Vector2f v){vel = v;}

@@ -1,7 +1,5 @@
 #pragma once
 
-#include <iostream>
-
 namespace list
 {
     template<class TYPE>
@@ -63,7 +61,6 @@ namespace list
         }
         void push(TYPE* elem)
         {
-            std::cout<<elem<<std::endl;
             if (!elem)
                 return;
             Element<TYPE>* aux = new Element<TYPE>();

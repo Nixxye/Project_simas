@@ -13,7 +13,10 @@ namespace characters
     Enemy::~Enemy()
     {
     }
-
+    void Enemy::run()
+    {
+        move();
+    }
     void Enemy::move()
     {
         if (speed > 0.f)

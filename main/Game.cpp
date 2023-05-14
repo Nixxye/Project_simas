@@ -45,7 +45,7 @@ void Game::run()
 
         //player.move();
         //enemy.move();
-        list.move();
+        list.run();
         colision_manager.colide();
         //player.draw(&window);
         //enemy.draw(&window);

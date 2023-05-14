@@ -12,7 +12,10 @@ namespace characters
     Player::~Player()
     {
     }
-
+    void Player::run()
+    {
+        move();
+    }
     void Player::move()
     {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))

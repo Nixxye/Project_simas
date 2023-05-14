@@ -37,16 +37,11 @@ namespace characters
             attack();
             attack_delay = DELAY;
         }
+        
     }
     void Boss::move()
     {
-        bullets.move();
-        attack_delay--;
-        if (attack_delay < 0)
-        {
-            attack();
-            attack_delay = DELAY;
-        }
+
     }
 
     void Boss::attack()

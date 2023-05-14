@@ -11,5 +11,5 @@ namespace obstacles
     {
         
     }
-    void Obstacle::move(){}    
+    void Obstacle::run(){}    
 }
