@@ -10,15 +10,19 @@ namespace Managers {
     }
     GraphicsManager::~GraphicsManager()
     {
-
+        for (std::map<const std::string, sf::Texture*>::iterator it = textures.begin();it != textures.end();it++)
+            delete it->second;
+        textures.clear();
     }
     void GraphicsManager:: show ()
     {
-        window->display();
+        if (window_open())
+            window->display();
     }
     void GraphicsManager:: clean ()
     {
-        window->clear();
+        if (window_open())
+            window->clear();
     }
     void GraphicsManager:: draw (sf::RectangleShape* body)
     {
@@ -26,7 +30,7 @@ namespace Managers {
     }
     sf::Texture* GraphicsManager:: load_textures (std::string path)
     {
-        std::map<const std::string, sf::Texture*> :: iterator it = textures.find (path);;
+        std::map<const std::string, sf::Texture*> :: iterator it = textures.find(path);
         if (it != textures.end())
             return it->second;
 
@@ -50,5 +54,9 @@ namespace Managers {
     void GraphicsManager :: close_window ()
     {
          window->close();
+    }
+    bool GraphicsManager:: window_open ()
+    {
+        return (window->isOpen());
     }
 }

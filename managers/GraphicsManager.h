@@ -12,6 +12,7 @@ namespace Managers {
         sf::RenderWindow* window;
         sf::View cam;
         std::map<const std::string, sf::Texture*> textures;
+        sf::Font font;
 
     public:
         GraphicsManager();
@@ -23,6 +24,8 @@ namespace Managers {
         void center(sf::Vector2f position);
         sf::RenderWindow* get_window() const;
         void close_window ();
+        bool window_open();
+
 
     };
 }
