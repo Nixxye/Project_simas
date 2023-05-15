@@ -1,6 +1,7 @@
 #include "../lists/EntityList.h"
 #include "../entities/Enemy.h"
 #include <iostream>
+#include "EntityList.h"
 
 EntityList::EntityList():
 list()
@@ -15,21 +16,21 @@ EntityList::~EntityList()
 
 void EntityList::run()
 {
-    List<Entity>::Element<Entity>* aux = list.get_first();
-    while(aux)
+    List<Entity>::Iterator<Entity> aux = list.get_first();
+    while(aux != nullptr)
     {
-        aux->get_data()->run();
-        aux = aux->get_next();        
+        (*aux)->run();
+        aux++;        
     }
 }
 
 void EntityList::draw(sf::RenderWindow* window)
 {
-    List<Entity>::Element<Entity>* aux = list.get_first();
-    while(aux)
+    List<Entity>::Iterator<Entity> aux = list.get_first();
+    while(aux != nullptr)
     {
-        aux->get_data()->draw(window);
-        aux = aux->get_next();        
+        (*aux)->draw(window);
+        aux++;        
     }
 }
 
@@ -39,41 +40,24 @@ void EntityList::add(Entity* ent)
 }
 void EntityList::set_position(sf::Vector2f pos)
 {
-    List<Entity>::Element<Entity>* aux = list.get_first();
-    while(aux)
+    List<Entity>::Iterator<Entity> aux = list.get_first();
+    while(aux != nullptr)
     {
-        aux->get_data()->set_position(pos);
-        aux = aux->get_next();        
+        (*aux)->set_position(pos);
+        aux++;        
     }    
 }
 void EntityList::set_alive(bool a)
 {
-    List<Entity>::Element<Entity>* aux = list.get_first();
-    while(aux)
+    List<Entity>::Iterator<Entity> aux = list.get_first();
+    while(aux != nullptr)
     {
-        aux->get_data()->set_alive(a);
-        aux = aux->get_next();        
+        (*aux)->set_alive(a);
+        aux++;       
     }    
 }
-/*
-void EntityList::stress_test()
-{
-    int n = list.get_size();
-    int x = rand()%1000;
-    int y = rand()%1000;
-    
-    if (n < 20 && list.get_first()->get_data()->get_speed() > 0)
-    {
-        Enemy* aux = new Enemy();
-        aux->set_position(sf::Vector2f(x, y));
-        add(aux);
-    }
-    if (n > 15)
-    {
-        if ((bool) rand() % 2)
-            list.remove(list.get_first()->get_next()->get_data());
-    }
-    std::cout<<list.get_first()->get_data()->get_speed()<<std::endl;
-}
-*/
 
+int EntityList::get_size()
+{
+    return list.get_size();
+}

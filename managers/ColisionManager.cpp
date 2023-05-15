@@ -17,35 +17,35 @@ namespace Managers
     void ColisionManager::colide()
     {
         List<Entity> aux;
-        List<Entity>::Element<Entity>* A = player_list.get_first(),* B = enemy_list.get_first();
-        while (A)
+        List<Entity>::Iterator<Entity> A = player_list.get_first(),B = enemy_list.get_first();
+        while (A != nullptr)
         {
-            A->get_data()->set_grounded(false);
-            while(B)
+            (*A)->set_grounded(false);
+            while(B != nullptr)
             {
-                check_colision(A->get_data(), B->get_data());
-                B = B->get_next();
+                check_colision(*A, *B);
+                B++;
             }
             B = obstacle_list.get_first();
-            while (B)
+            while (B != nullptr)
             {
-                check_colision(A->get_data(), B->get_data());
-                B = B->get_next();
+                check_colision(*A, *B);
+                B++;
             }
-            A = A->get_next();
+            A++;
         }
         //TODO: Fazer uma função de colisão específica para inimigo-obstáculo e inimigo-player.
         A = enemy_list.get_first();
-        while (A)
+        while (A != nullptr)
         {
             B = obstacle_list.get_first();
-            A->get_data()->set_grounded(false);
-            while(B)
+            (*A)->set_grounded(false);
+            while(B != nullptr)
             {
-                check_colision(A->get_data(), B->get_data());
-                B = B->get_next();
+                check_colision(*A, *B);
+                B++;
             }
-            A = A->get_next();
+            A++;
         }
     }
     void ColisionManager::check_colision(Entity* A, Entity* B)

@@ -42,11 +42,47 @@ namespace list
             void set_data(TE* dt){data = dt;}
             void set_next(Element<TE>* next){pnext = next;}
         };
+        template <class TE>
+        class Iterator
+        {
+        private:
+            Element<TE>* current;
+        public:
+            Iterator(Element<TE>* c = nullptr):
+            current(c){}
+            ~Iterator(){}
+
+            Iterator& operator++()
+            {
+                current = current->next;
+                return *this;
+            }
+            Iterator& operator++(int)
+            {
+                current = current->get_next();
+                return *this;  
+            }
+            bool operator==(const Element<TE>* other) const
+            {
+                return current == other;
+            }
+
+            bool operator!=(const Element<TE>* other) const
+            {
+                return !(current == other);
+            }
+
+            TE* operator*()
+            {
+                return current->get_data();
+            }
+        };
     private:
         Element<TYPE>* pfirst;
         Element<TYPE>* plast;
     public:
-        Element<TYPE>*get_first(){return pfirst;}
+        Iterator<TYPE> get_first(){return Iterator<TYPE>(pfirst);}
+        Element<TYPE>* get_last(){return plast;}
         void clear()
         {
             Element<TYPE>* aux = NULL;
@@ -58,6 +94,17 @@ namespace list
                     delete aux;
 
             }
+        }
+        int get_size()
+        {
+            Element<TYPE>* aux = pfirst;
+            int n = 0;
+            while (aux)
+            {
+                n++;
+                aux = aux->get_next();
+            }
+            return n;
         }
         void push(TYPE* elem)
         {
