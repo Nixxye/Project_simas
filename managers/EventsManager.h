@@ -17,8 +17,5 @@ namespace Managers
             EventsManager();
             ~EventsManager();
             void run ();
-
-
-
     };
 }

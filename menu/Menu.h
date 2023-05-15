@@ -5,6 +5,7 @@ class Menu
 {
     private:
         bool active;
+        vector <Button>
     public:
         Menu();
         ~Menu();

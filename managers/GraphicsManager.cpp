@@ -6,7 +6,7 @@ namespace Managers {
     cam (sf::Vector2f(WIDTH / 2, HEIGHT / 2), sf::Vector2f(WIDTH, HEIGHT)),//centro e tamanho
     textures()
     {
-       
+       font->loadFromFile(FONT_PATH);
     }
     GraphicsManager::~GraphicsManager()
     {
@@ -47,6 +47,11 @@ namespace Managers {
         cam.setCenter (position);
         window->setView(cam);
     }
+    void center(sf::Vector2f position1, sf::Vector2f position2 )
+    {
+        cam.setCenter((position1.x+position2.x)/2,(position1.y+position2.y)/2);
+        window->setView(cam);
+    }
     sf::RenderWindow* GraphicsManager:: get_window () const 
     {
         return window;
@@ -58,5 +63,10 @@ namespace Managers {
     bool GraphicsManager:: window_open ()
     {
         return (window->isOpen());
+    }
+
+    sf::Font  GraphicsManager:: get_font () const
+    {
+        return font;
     }
 }
