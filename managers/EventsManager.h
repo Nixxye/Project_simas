@@ -1,5 +1,7 @@
 #include "GraphicsManager.h"
 #include "../entities/Player.h"
+#include "../main/Menu.h"
+
 
 namespace Managers
 {
@@ -7,7 +9,9 @@ namespace Managers
     {
         private:
             GraphicsManager* pGM;
-            Player* pPlayer;
+            Player* pPlayer1;
+            Player* pPlayer2;
+            Menu* pMenu;
 
         public:
             EventsManager();
