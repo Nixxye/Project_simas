@@ -1,17 +1,15 @@
 #pragma once 
 
-#include "../stages/Stage1"
+#include "../stages/Stage.h"
 
 namespace Stages
 {
-    class Stage1: public Stage1
+    class Stage1: public Stage
     {
-    private:
-        
     public:
         Stage1();
         ~Stage1();
-        void run() = 0;
+        void run();
         void create_enemies();
         void create_obstacles();
     };
