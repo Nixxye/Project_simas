@@ -1,5 +1,8 @@
 #pragma once
 
+#include <iostream>
+using namespace std;
+
 namespace list
 {
     template<class TYPE>
@@ -7,13 +10,15 @@ namespace list
     {
     public:
         List():
-        pfirst(NULL), plast(NULL)
+        pfirst(NULL),
+        size(0)
+        //, plast(NULL)
         {}
         ~List()
         {
             clear();
             pfirst = NULL;
-            plast = NULL;
+            //plast = NULL;
         }
         template <class TE>
         class Element
@@ -71,18 +76,21 @@ namespace list
             {
                 return !(current == other);
             }
-
+            void operator=(const Element<TE>* other)
+            {
+                current = other;
+            }
             TE* operator*()
             {
                 return current->get_data();
             }
+            const Element<TE>* get_current() const {return current;}
         };
     private:
         Element<TYPE>* pfirst;
-        Element<TYPE>* plast;
+        int size;
     public:
         Iterator<TYPE> get_first(){return Iterator<TYPE>(pfirst);}
-        Element<TYPE>* get_last(){return plast;}
         void clear()
         {
             Element<TYPE>* aux = NULL;
@@ -92,19 +100,12 @@ namespace list
                 pfirst = pfirst->get_next();
                 if (aux)
                     delete aux;
-
             }
+            size = 0;
         }
         int get_size()
         {
-            Element<TYPE>* aux = pfirst;
-            int n = 0;
-            while (aux)
-            {
-                n++;
-                aux = aux->get_next();
-            }
-            return n;
+            return size;
         }
         void push(TYPE* elem)
         {
@@ -114,6 +115,7 @@ namespace list
             aux->set_data(elem);
             aux->set_next(pfirst);
             pfirst = aux;
+            size++;
         }
     };
 }

@@ -46,8 +46,7 @@ namespace characters
         {
             vel.y -= 10.f;
         }
-        //std::cout<<body.getPosition().x<<" "<<body.getPosition().y<<std::endl;
-        //player_position += vel;
+
         body.setPosition(body.getPosition() + vel);
         player_position = body.getPosition();
         speed = (int) sqrt(vel.x*vel.x + vel.y*vel.y);

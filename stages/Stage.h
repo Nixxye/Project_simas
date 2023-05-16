@@ -17,7 +17,7 @@
 #include <string>
 #include <iostream>
 
-#define FILE_STAGE_1 "../savestate1.txt"
+#define FILE_STAGE_1 "saves/savestate1.dat"
 
 using namespace Managers;
 using namespace entes;

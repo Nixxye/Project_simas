@@ -5,6 +5,7 @@ namespace Stages
     Stage1::Stage1():
     Stage()
     {
+        filename = FILE_STAGE_1;
         run();
     }
 

@@ -7,13 +7,13 @@ namespace Stages
     enemies(),
     players(),
     colision_manager(),
-    window(sf::VideoMode(WIDTH, HEIGHT), "Project Simas"),
-    colision_manager()
+    window(sf::VideoMode(WIDTH, HEIGHT), "Project Simas")
     {
+        window.setFramerateLimit(60);
         load();
     }
 
-    Stages::Stage::~Stage()
+    Stage::~Stage()
     {
         save();
     }
@@ -28,38 +28,40 @@ namespace Stages
         if (enemy)
         {
             enemies.add(enemy);
-            colisionManager.add_enemy(enemy);
+            colision_manager.add_enemy(enemy);
         }
     }
     void Stage::add_obstacle(Entity *obstacle)
     {
         if (obstacle)
         {
-            enemies.add(obstacle);
-            colisionManager.add_obstacle(obstacle);
+            obstacles.add(obstacle);
+            colision_manager.add_obstacle(obstacle);
         }
     }
     void Stage::add_player(Entity *player)
     {
         if (player)
         {
-            enemies.add(player);
-            colisionManager.add_player(player);
+            players.add(player);
+            colision_manager.add_player(player);
         }
     }
     void Stage::save()
     {
         ofstream file(filename);
-        if (!filename)
+        if (!file)
             cout<<"ERROR"<<endl;
 
         file <<"#enemies"<<endl;
+        cout << enemies.get_size() << endl;
         file << enemies.get_size() << endl;
 
-        for (List<Enemy>::Iterator<Enemy> it = enemies.get_first(); it != nullptr; it++)
+        for (List<Entity>::Iterator<Entity> it = enemies.get_first(); it != nullptr; it++)
         {
-            file << (*it)->get_id() << " " << (*it)->get_position() << " " << (*it)->get_size() << " " << (*it)->get_vel() << (*it)->get_alive() << endl;
+            //file << (*it)->get_id() << " " << (*it)->get_position() << " " << (*it)->get_size() << " " << (*it)->get_vel() << (*it)->get_alive() << endl;
         }
+        file.close();
     }
     void Stage::load()
     {   
