@@ -3,9 +3,8 @@
 namespace Stages
 {
     Stage1::Stage1():
-    Stage()
+    Stage(FILE_STAGE_1)
     {
-        filename = FILE_STAGE_1;
         run();
     }
 

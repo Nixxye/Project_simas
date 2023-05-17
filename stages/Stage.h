@@ -17,7 +17,13 @@
 #include <string>
 #include <iostream>
 
-#define FILE_STAGE_1 "saves/savestate1.dat"
+//Windows:
+//#define FILE_STAGE_1 "saves/savestate1.dat"
+
+//Linux:
+#define FILE_STAGE_1 "../saves/savestate1.dat"
+
+//#define FILE_STAGE_1 "savestate1.dat"
 
 using namespace Managers;
 using namespace entes;
@@ -38,7 +44,7 @@ namespace Stages
         ColisionManager colision_manager;
         sf::RenderWindow window;
     public:
-        Stage();
+        Stage(string file = "");
         virtual ~Stage();
         virtual void run() = 0;
         virtual void create_enemies();
