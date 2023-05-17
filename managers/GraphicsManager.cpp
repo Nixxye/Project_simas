@@ -1,12 +1,25 @@
 #include "GraphicsManager.h"
 
 namespace Managers {
+
+
+    GraphicsManager* GraphicsManager::instance = nullptr;
+
+
+    GraphicsManager* GraphicsManager::get_instance() 
+    {
+        if (instance == nullptr) {
+            instance = new GraphicsManager();
+        }
+        return instance;
+    }
+
     GraphicsManager::GraphicsManager():
     window( new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), "Jogo")),
     cam (sf::Vector2f(WIDTH / 2, HEIGHT / 2), sf::Vector2f(WIDTH, HEIGHT)),//centro e tamanho
     textures()
     {
-       font->loadFromFile(FONT_PATH);
+       font.loadFromFile(FONT_PATH);
     }
     GraphicsManager::~GraphicsManager()
     {
@@ -47,7 +60,7 @@ namespace Managers {
         cam.setCenter (position);
         window->setView(cam);
     }
-    void center(sf::Vector2f position1, sf::Vector2f position2 )
+    void  GraphicsManager:: center(sf::Vector2f position1, sf::Vector2f position2 )
     {
         cam.setCenter((position1.x+position2.x)/2,(position1.y+position2.y)/2);
         window->setView(cam);

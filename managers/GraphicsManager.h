@@ -5,6 +5,7 @@
 #include <string>
 #define WIDTH 800
 #define HEIGHT 600
+#define FONT_PATH 
 namespace Managers {
     class GraphicsManager
     {
@@ -14,9 +15,14 @@ namespace Managers {
         std::map<const std::string, sf::Texture*> textures;
         sf::Font font;
 
-    public:
+
         GraphicsManager();
+        static GraphicsManager* instance;
+
+
+    public:
         ~GraphicsManager();
+        GraphicsManager* get_instance();
         void show();
         void clean();
         void draw(sf::RectangleShape* body);
