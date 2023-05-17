@@ -13,7 +13,7 @@ namespace Managers {
         sf::RenderWindow* window;
         sf::View cam;
         std::map<const std::string, sf::Texture*> textures;
-        sf::Font font;
+        sf::Font* font;
 
 
         GraphicsManager();
@@ -32,9 +32,7 @@ namespace Managers {
         sf::RenderWindow* get_window() const;
         void close_window ();
         bool window_open();
-        sf::Font get_font() const;
-
-
+        sf::Font* get_font() const;
 
     };
 }
