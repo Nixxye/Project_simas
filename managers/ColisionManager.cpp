@@ -34,7 +34,6 @@ namespace Managers
             }
             A++;
         }
-        //TODO: Fazer uma função de colisão específica para inimigo-obstáculo e inimigo-player.
         A = enemy_list.get_first();
         while (A != nullptr)
         {
@@ -52,15 +51,10 @@ namespace Managers
     {
         sf::Vector2f posA = A->get_position(), posB = B->get_position(), sizeA = A->get_size(), sizeB = B->get_size();
         sf::Vector2f d = posB - posA;
-        //sf::Vector2f aux = Vector2f(0.f, 0.f);
         if ((fabs(d.x) < (sizeA.x + sizeB.x)/2.0) && (fabs(d.y) < (sizeA.y + sizeB.y)/2.0))
         {
-            //cout<<"EPAAAAA"<<endl;
-            A->troca_cor();
-            B->troca_cor();
-            //cout<<posA.x<<" "<<posA.y<<" "<<posB.x<<" "<<posB.y<<" "<<d.x<<" "<<d.y<<endl;
-            //VERTICAL COLISION
-            //below the player
+            //A->troca_cor();
+            //B->troca_cor();
             if (fabs(d.x) - fabs(sizeA.x + sizeB.x)/2.0 < fabs(d.y) - fabs(sizeA.y + sizeB.y)/2.0)
             {
                 B->set_vel(sf::Vector2f(-B->get_vel().x, -B->get_vel().y));
@@ -91,24 +85,4 @@ namespace Managers
             }
         }
     }
-
-    /*
-    void ColisionManager::aux_col(Entity* A, Entity* B)
-    {
-        //VERTICAL COLISION:
-        //bellow the player
-        float xpA = A->get_position().x, ypA = A->get_position().y, xpB = B->get_position().x, ypB = B->get_position().y;
-        float xsA = A->get_size().x, ysA = A->get_size().y, xsB = B->get_size().x , ysB = B->get_size().y;
-        if (ypA + ysA > ypB && ypA < ypB + ysB && ((xpA < xpB+xsB && xpA > xpB)||(xpA+xsA < xpB+xsB && xpA+xsA > xpB)||(xpA > xpB+xsB && xpA < xpB)))
-        {
-            A->set_position(sf::Vector2f(A->get_position().x, ypB-ysA));
-            A->set_vel(sf::Vector2f(A->get_vel().x, 0.f));
-            A->set_grounded(true);
-            //cout<<"EPAAAAA"<<endl;
-            A->troca_cor();
-            B->troca_cor();
-            cout<<ypB-ysA<<" "<<ypB<<" "<< ypA<<endl;
-        }
-    }
-    */
 }
