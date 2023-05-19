@@ -1,4 +1,3 @@
 # Project_simas
- 
- //TODO: Todo o fucking trabalho.
- 
+ Aqui está o motivo para o cancelamento do curso dos alunos Jean e Isabela.
+
