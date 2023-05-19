@@ -9,7 +9,64 @@ namespace Managers {
     EventsManager :: ~EventsManager()
     {
 
+
     }
+    void EventsManager :: move_players (sf::Keyboard::Key key_code)
+    {
+        char direction = '0';
+        if (key_code  == sf::Keyboard::Space)
+        {
+            direction = 'U';
+        }
+        else if (key_code  == sf::Keyboard::A)
+        {
+            direction = 'L';
+        }
+        else if (key_code  == sf::Keyboard::D)
+        {
+            direction = 'R';
+        }
+
+        if (direction !=  '0' && pPlayer1 != nullptr)
+        {
+            pPlayer1-> move(direction);
+            return;
+        }
+
+        if (key_code  == sf::Keyboard::Up)
+        {
+            direction = 'U';
+        }
+        else if (key_code  == sf::Keyboard::Right)
+        {
+            direction = 'R';
+        }
+        else if (key_code  == sf::Keyboard::Left)
+        {
+            direction = 'L';
+        }
+        if (direction !=  '0' && pPlayer2 != nullptr)
+        {
+            pPlayer2-> move(direction);
+        }
+
+    }
+    void EventsManager :: notify_menu( sf::Keyboard::Key key_code, Menu* menu)
+    {
+        if (key_code  == sf::Keyboard::Up)
+        {
+            //menu->select_up();
+        } 
+        else if (key_code  == sf::Keyboard::Down)
+        {
+			//menu->select_down();
+        } 
+        else if (key_code  == sf::Keyboard::Enter) 
+        {
+			//menu->run();
+        }
+    }
+
     void EventsManager :: run ()
     {
         sf::Event event;
@@ -19,42 +76,29 @@ namespace Managers {
                 pGM->close_window();
             else if (event.type == sf::Event::KeyPressed)
             {
-                if (pMenu->is_active())
+                int state = pSM->get_current_state_id();
+                if (state == 0)
                 {
-                    //TODO
+                    notify_menu (event.key.code,pMainMenu);
                 }
-                if (!(pMenu->is_active()))
+                else if (state == 1)
                 {
-                    if (event.key.code == sf::Keyboard::Escape)
-                    {
-                        pPlayer1->move('U');
+                    if (event.key.code == sf::Keyboard:: Escape)
+                    {   
+                        pSM->set_current_state(PAUSE_MENU);
                     }
-                    else if (event.key.code == sf::Keyboard::D)
+                    else
                     {
-                        pPlayer1->move('L');
+                        move_players(event.key.code);
                     }
-                    else if (event.key.code == sf::Keyboard::A)
-                    {
-                        pPlayer1->move('R');
-                    }
-
-
-                    else if (event.key.code == sf::Keyboard::Up)
-                    {
-                        pPlayer2->move('U');
-                    }
-                    else if (event.key.code == sf::Keyboard::Left)
-                    {
-                        pPlayer2->move('L');
-                    }
-                    else if (event.key.code == sf::Keyboard::Right)
-                    {
-                        pPlayer2->move('R');
-                    }
+   
                 }
+                else if (state == 2)
+                {
+                    notify_menu(event.key.code, pPauseMenu);
+                }
+
             }
-
-         }
     }
 }
-    
+} 
