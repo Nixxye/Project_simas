@@ -12,16 +12,16 @@ namespace Stages
     {
         window.setFramerateLimit(60);
         load();
+        
+        //Entity* player1 = new Player();
+        //add_player(player1);
+        
+        //Entity* obstacle1 = new Obstacle();
+        //add_obstacle(obstacle1);
 
-        Entity* obstacle1 = new Obstacle();
-        add_obstacle(obstacle1);
-
-        Entity* player1 = new Player();
-        add_player(player1);
-        /*
-        Entity* enemy1 = new Enemy();
-        add_enemy(enemy1);
-        */
+        //Entity* enemy1 = new Enemy();
+        //add_enemy(enemy1);
+        
     }
 
     Stage::~Stage()
@@ -64,17 +64,35 @@ namespace Stages
         if (!file)
         {
             cout<<"ERROR 1"<<endl;
-            return;
+            exit(1);
         }
 
+        file <<"#players"<<endl;
+        file <<players.get_size() << endl << endl;
+
+        for (List<Entity>::Iterator<Entity> it = players.get_first(); it != nullptr; it++)
+        {
+            file << (*it)->get_id() <<endl<< (*it)->get_position().x << endl <<(*it)->get_position().y << endl<<(*it)->get_vel().x << endl<<(*it)->get_vel().y <<endl;
+        }
+        file << endl;
 
         file <<"#enemies"<<endl;
 
         file << enemies.get_size() << endl << endl;
         for (List<Entity>::Iterator<Entity> it = enemies.get_first(); it != nullptr; it++)
         {
-            file << (*it)->get_id() << " " << (*it)->get_position().x << " " << (*it)->get_position().y << " " << (*it)->get_vel().x << " " << (*it)->get_vel().y <<endl;
+            file << (*it)->get_id() <<endl<< (*it)->get_position().x << endl <<(*it)->get_position().y << endl<<(*it)->get_vel().x << endl<<(*it)->get_vel().y <<endl;
         }
+        file << endl;
+
+        file <<"#obstacles" <<endl;
+        file << obstacles.get_size() << endl << endl;
+        for (List<Entity>::Iterator<Entity> it = obstacles.get_first(); it != nullptr; it++)
+        {
+            file << (*it)->get_id() <<endl<< (*it)->get_position().x << endl <<(*it)->get_position().y << endl<<(*it)->get_vel().x << endl<<(*it)->get_vel().y <<endl;
+        }
+        file << endl;
+        
         file.close();
     }
     void Stage::load()
@@ -86,19 +104,20 @@ namespace Stages
 
         if (!file)
         {
-            cerr <<"ERROR: "<<filename<<endl;
-            return; //exit
+            cout <<"ERROR: 2"<<endl;
+            exit(2); //exit
         }
 
         
         getline(file, line);
-        if (line != "#enemies")
+        if (line != "#players")
         {
             cout << "ERROR 3 "<< endl;
             file.close();
-            return;//exit
+            exit(3);//exit
         }
         file >> n;
+        getline(file, line);
         getline(file, line);
         for (int i = 0; i < n; i++)
         {
@@ -106,22 +125,62 @@ namespace Stages
             float posX, posY, velX, velY;
 
             file >> id >> posX >> posY >> velX >> velY;
-            cout << id << " " << posX << " " << posY << " " << velX << " " << velY << endl;
+            cout << id << posX << posY << velX << velY << endl;
+            getline(file, line);
+            //Static cast;
+            aux = new Player(sf::Vector2f(posX, posY), sf::Vector2f(velX, velY), sf::Vector2f(50.f, 50.f));
+            add_player(aux);
+            cout<<"LOADED"<<endl;
+        }
+        getline(file, line);
+        getline(file, line);
+        if (line != "#enemies")
+        {
+            cout << "ERROR 3 "<< endl;
+            file.close();
+            exit(3);//exit
+        }
+        file >> n;
+        getline(file, line);
+        getline(file, line);
+        for (int i = 0; i < n; i++)
+        {
+            int id;
+            float posX, posY, velX, velY;
+
+            file >> id >> posX >> posY >> velX >> velY;
+            cout << id << posX << posY << velX << velY << endl;
             getline(file, line);
             //Static cast;
             aux = new Enemy(sf::Vector2f(posX, posY), sf::Vector2f(velX, velY), sf::Vector2f(50.f, 50.f));
             add_enemy(aux);
+            cout<<"LOADED"<<endl;
         }
+        getline(file, line);
+        getline(file, line);
+        if (line != "#obstacles")
+        {
+            cout << "ERROR 3 "<< endl;
+            file.close();
+            exit(3);//exit
+        }
+        file >> n;
+        getline(file, line);
+        getline(file, line);
+        for (int i = 0; i < n; i++)
+        {
+            int id;
+            float posX, posY, velX, velY;
 
-        Entity* obstacle1 = new Obstacle();
-        add_obstacle(obstacle1);
-
-        Entity* player1 = new Player();
-        add_player(player1);
-        /*
-        Entity* enemy1 = new Enemy();
-        add_enemy(enemy1);
-        */
+            file >> id >> posX >> posY >> velX >> velY;
+            cout << id << posX << posY << velX << velY << endl;
+            getline(file, line);
+            //Static cast;
+            aux = new Obstacle(sf::Vector2f(posX, posY), sf::Vector2f(800.f, 50.f));
+            add_obstacle(aux);
+            cout<<"LOADED"<<endl;
+        }
+        file.close();
     }
 }
  

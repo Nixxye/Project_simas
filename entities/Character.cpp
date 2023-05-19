@@ -2,10 +2,9 @@
 
 namespace characters
 {
-    Character::Character(sf::Vector2f pos, sf::Vector2f size, sf::Vector2f velocity):
-    Entity(pos, size)
+    Character::Character(sf::Vector2f pos, sf::Vector2f velocity, sf::Vector2f size):
+    Entity(pos, velocity, size)
     {
-        vel = velocity;
     }
     Character::~Character()
     {

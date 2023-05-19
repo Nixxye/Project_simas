@@ -32,12 +32,12 @@ namespace list
             ~Element()
             {
                 //Colocar isso se for usar o delete
-                /*
+                
                 if (data)
                 {
-                    //delete &data;
+                    delete data;
                 }
-                */
+                
                 data = NULL;
                 pnext = NULL;
             }

@@ -33,7 +33,7 @@ namespace Stages
             players.draw(&window);
             enemies.draw(&window);
             obstacles.draw(&window);
-
+            
             window.display();
         }
     }

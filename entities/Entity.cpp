@@ -6,13 +6,13 @@ sf::Vector2f entes::Entity::player_position(200.f, 200.f);
 
 namespace entes
 {
-    Entity::Entity(sf::Vector2f pos, sf::Vector2f size):
+    Entity::Entity(sf::Vector2f pos, sf::Vector2f velocity, sf::Vector2f size):
     GameObject(),
     id(count++),
     body(size),
     position(pos),
+    vel(velocity),
     lives(1),
-    vel(0.f, 0.f),
     grounded(false),
     alive(true)
     {

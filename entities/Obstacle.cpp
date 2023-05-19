@@ -3,7 +3,7 @@
 namespace obstacles
 {
     Obstacle::Obstacle(sf::Vector2f pos, sf::Vector2f size):
-    Entity(pos, size)
+    Entity(pos, sf::Vector2f(0.f, 0.f), size)
     {
 
     }

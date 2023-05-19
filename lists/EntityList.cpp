@@ -2,7 +2,7 @@
 #include "../entities/Enemy.h"
 #include <iostream>
 #include "EntityList.h"
-
+using namespace std;
 EntityList::EntityList():
 list()
 {
@@ -30,9 +30,11 @@ void EntityList::draw(sf::RenderWindow* window)
     while(aux != nullptr)
     {
         (*aux)->draw(window);
-        aux++;        
+         
+        //cout<<(*aux)->get_vel().x << " " <<(*aux)->get_vel().y << endl;
+        aux++; 
     }
-}
+ }   
 
 void EntityList::add(Entity* ent)
 {
