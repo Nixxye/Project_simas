@@ -12,13 +12,11 @@ namespace list
         List():
         pfirst(NULL),
         size(0)
-        //, plast(NULL)
         {}
         ~List()
         {
             clear();
             pfirst = NULL;
-            //plast = NULL;
         }
         template <class TE>
         class Element
@@ -31,13 +29,13 @@ namespace list
             {}
             ~Element()
             {
-                //Colocar isso se for usar o delete
-                
+                //Famoso paradoxo do tudo dá errado na lista lkçahsfdlkçjasdfs q ódio.
+                /*
                 if (data)
                 {
                     delete data;
                 }
-                
+                */
                 data = NULL;
                 pnext = NULL;
             }

@@ -12,16 +12,7 @@ namespace Stages
     {
         window.setFramerateLimit(60);
         load();
-        
-        //Entity* player1 = new Player();
-        //add_player(player1);
-        
-        //Entity* obstacle1 = new Obstacle();
-        //add_obstacle(obstacle1);
-
-        //Entity* enemy1 = new Enemy();
-        //add_enemy(enemy1);
-        
+        //ARRUMAR O DELETE DA LIST: COMO O MESMO PERSONAGEM ESTÁ EM MAIS DE UMA LISTA, PRECISA CHAMAR APENAS UM DELETE;       
     }
 
     Stage::~Stage()
