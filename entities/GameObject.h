@@ -1,26 +1,22 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#define G 0.09
+#define G 0.2
 #define SPEED 0.2
 #define VEL_MAX 4.0
 
 class GameObject
 {
 protected:
-<<<<<<< Updated upstream
+
     const int id;
     static int count;
     sf::RectangleShape body;
     static int speed;
     sf::Vector2f position;
-=======
-    
-
->>>>>>> Stashed changes
 public:
     GameObject();
-    ~GameObject();
+    virtual ~GameObject();
 
     void draw(sf::RenderWindow* wd);
     virtual void move() = 0;

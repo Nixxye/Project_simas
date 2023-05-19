@@ -1,11 +1,14 @@
 #pragma once 
 #include "Enemy.h"
 
-class Enemy2 : public Enemy
+namespace characters
 {
-    private:
-    public:
-        Enemy2();
-        ~Enemy2();
-    
-};
+    class Enemy2 : public Enemy
+    {
+        private:
+        public:
+            Enemy2();
+            ~Enemy2();
+        
+    };    
+}

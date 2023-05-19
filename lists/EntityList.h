@@ -3,7 +3,7 @@
 #include "../entities/Entity.h"
 #include "../lists/List.h"
 using namespace entes;
-
+using namespace list;
 class EntityList
 {
 private:
@@ -11,10 +11,14 @@ private:
 public:
     EntityList();
     ~EntityList();
-    void move();
+
+    void run();
     void draw(sf::RenderWindow* window);
     void add(Entity* ent);
-    void stress_test();
 
-    auto get_first(){ return list.get_first()->get_data();}
+    void set_position(sf::Vector2f pos);
+    void set_alive(bool a);
+
+    int get_size();
+    List<Entity>::Iterator<Entity> get_first(){ return list.get_first();}
 };

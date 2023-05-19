@@ -1,8 +1,8 @@
 #include "../lists/EntityList.h"
 #include "../entities/Enemy.h"
 #include <iostream>
-
-
+#include "EntityList.h"
+using namespace std;
 EntityList::EntityList():
 list()
 {
@@ -11,51 +11,55 @@ list()
 
 EntityList::~EntityList()
 {
-    
+
 }
 
-void EntityList::move()
+void EntityList::run()
 {
-    auto aux = list.get_first();
-    while(aux)
+    List<Entity>::Iterator<Entity> aux = list.get_first();
+    while(aux != nullptr)
     {
-        aux->get_data()->move();
-        aux = aux->get_next();        
+        (*aux)->run();
+        aux++;        
     }
 }
 
 void EntityList::draw(sf::RenderWindow* window)
 {
-    auto aux = list.get_first();
-    while(aux)
+    List<Entity>::Iterator<Entity> aux = list.get_first();
+    while(aux != nullptr)
     {
-        aux->get_data()->draw(window);
-        aux = aux->get_next();        
+        (*aux)->draw(window);
+         
+        //cout<<(*aux)->get_vel().x << " " <<(*aux)->get_vel().y << endl;
+        aux++; 
     }
-}
+ }   
 
 void EntityList::add(Entity* ent)
 {
     list.push(ent);
 }
-
-void EntityList::stress_test()
+void EntityList::set_position(sf::Vector2f pos)
 {
-    int n = list.get_size();
-    int x = rand()%1000;
-    int y = rand()%1000;
-    
-    if (n < 20 && list.get_first()->get_data()->get_speed() > 0)
+    List<Entity>::Iterator<Entity> aux = list.get_first();
+    while(aux != nullptr)
     {
-        Enemy* aux = new Enemy();
-        aux->set_position(sf::Vector2f(x, y));
-        add(aux);
-    }
-    if (n > 15)
+        (*aux)->set_position(pos);
+        aux++;        
+    }    
+}
+void EntityList::set_alive(bool a)
+{
+    List<Entity>::Iterator<Entity> aux = list.get_first();
+    while(aux != nullptr)
     {
-        if ((bool) rand() % 2)
-            list.remove(list.get_last()->get_data());
-    }
-    std::cout<<list.get_first()->get_data()->get_speed()<<std::endl;
+        (*aux)->set_alive(a);
+        aux++;       
+    }    
 }
 
+int EntityList::get_size()
+{
+    return list.get_size();
+}

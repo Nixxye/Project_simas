@@ -1,13 +1,15 @@
 #include "../entities/Obstacle.h"
 
-Obstacle::Obstacle(sf::Vector2f pos, sf::Vector2f size):
-Entity()
+namespace obstacles
 {
-    body.setPosition(pos);
-    body.setSize(size);
+    Obstacle::Obstacle(sf::Vector2f pos, sf::Vector2f size):
+    Entity(pos, sf::Vector2f(0.f, 0.f), size)
+    {
+
+    }
+    Obstacle::~Obstacle()
+    {
+        
+    }
+    void Obstacle::run(){}    
 }
-Obstacle::~Obstacle()
-{
-    
-}
-void Obstacle::move(){}

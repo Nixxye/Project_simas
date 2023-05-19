@@ -1,126 +1,119 @@
 #pragma once
 
 #include <iostream>
-
 using namespace std;
 
-template <class TYPE>
-class List 
+namespace list
 {
-public:
-    template <class TE>
-    class Element
+    template<class TYPE>
+    class List
     {
-    private:
-        TE* data;
-        Element<TE>* next;
-    public:   
-        Element():data(NULL), next(NULL){}
-        void set_next(Element<TE>* n) {next = n;}
-        void set_data (TE* d) {data = d;}
-        TE* get_data() {return data;}
-        Element<TE>* get_next() {return next;}
-        ~Element() {set_data(NULL);}
-
-    };
-
-private:
-    Element<TYPE>* first;
-    Element<TYPE>* last;
-    int size;
-public:
-    List():first(NULL),last(NULL),size (0) {}
-    Element<TYPE>* get_first() {return first;}
-    Element<TYPE>* get_last() {return last;}
-    int get_size() {return size;}
-    void remove(TYPE* dt);
-   
-    void remove_front();
-    void clear();
-    void push(TYPE* dt);
-    ~List();
-};
-template <class TYPE>
-void List<TYPE>:: remove(TYPE* dt)
-    {
-        if (first->get_data() == dt && last->get_data() == dt)
+    public:
+        List():
+        pfirst(NULL),
+        size(0)
+        {}
+        ~List()
         {
-            delete first;
-            delete last;
+            clear();
+            pfirst = NULL;
         }
-        Element<TYPE>* pAux = first;
-        Element<TYPE>* prev = NULL;
-        while (pAux != last) 
+        template <class TE>
+        class Element
         {
-            if (pAux->get_data() == dt) 
+        private:
+            TE* data;
+            Element<TE>* pnext;
+        public:
+            Element():data(NULL), pnext(NULL)
+            {}
+            ~Element()
             {
-                
-                if (pAux == first) {
-                    first = pAux->get_next();
-                } 
-                else if (pAux == last) {
-                    last = prev;
-                    prev->set_next(NULL);
-                } 
-                else
+                //Famoso paradoxo do tudo dá errado na lista lkçahsfdlkçjasdfs q ódio.
+                /*
+                if (data)
                 {
-                    prev->set_next(pAux->get_next());
+                    delete data;
                 }
-                delete (pAux);
-                size--;
+                */
+                data = NULL;
+                pnext = NULL;
+            }
+            TE* get_data() {return data;}
+            Element<TE>* get_next() {return pnext;}
 
-            }
-            prev = pAux;
-            pAux = pAux->get_next();
-        }
-        printf ("\n\nSize :%d\n", size);
-    }
-template <class TYPE>
-void List<TYPE>::remove_front()
-    {
-        if(first)
+            void set_data(TE* dt){data = dt;}
+            void set_next(Element<TE>* next){pnext = next;}
+        };
+        template <class TE>
+        class Iterator
         {
-            Element<TYPE>* pAux = first;
-            pAux = first->get_next();
-            //delete (first->get_data());
-            delete first;
-            size--;
-            first = pAux;
-        }    
-    }
-template <class TYPE>
-void List<TYPE>::clear()
-    {
-        while (size)
-        {
-            remove_front();
-            //printf ("\nSize:   %d", size);
-        }
-    }
+        private:
+            Element<TE>* current;
+        public:
+            Iterator(Element<TE>* c = nullptr):
+            current(c){}
+            ~Iterator(){}
 
-template <class TYPE>
-void List<TYPE>::push(TYPE* dt)
-     {
-        if (dt)
+            Iterator& operator++()
+            {
+                current = current->next;
+                return *this;
+            }
+            Iterator& operator++(int)
+            {
+                current = current->get_next();
+                return *this;  
+            }
+            bool operator==(const Element<TE>* other) const
+            {
+                return current == other;
+            }
+
+            bool operator!=(const Element<TE>* other) const
+            {
+                return !(current == other);
+            }
+            void operator=(const Element<TE>* other)
+            {
+                current = other;
+            }
+            TE* operator*()
+            {
+                return current->get_data();
+            }
+            const Element<TE>* get_current() const {return current;}
+        };
+    private:
+        Element<TYPE>* pfirst;
+        int size;
+    public:
+        Iterator<TYPE> get_first(){return Iterator<TYPE>(pfirst);}
+        void clear()
         {
-            Element<TYPE>* new_elem = new Element<TYPE>();
-            new_elem->set_data(dt);
-            if (!first)
+            Element<TYPE>* aux = NULL;
+            while(pfirst)
             {
-                first = new_elem;
-                last = new_elem;
+                aux = pfirst;
+                pfirst = pfirst->get_next();
+                if (aux)
+                    delete aux;
             }
-            else
-            {
-                last->set_next(new_elem);
-                last = new_elem;
-            }
-            //new_elem->set_next(NULL);
+            size = 0;
+        }
+        int get_size()
+        {
+            return size;
+        }
+        void push(TYPE* elem)
+        {
+            if (!elem)
+                return;
+            Element<TYPE>* aux = new Element<TYPE>();
+            aux->set_data(elem);
+            aux->set_next(pfirst);
+            pfirst = aux;
             size++;
         }
-    }
-template <class TYPE>
-List<TYPE>::~List()
-{
-    clear();    
+    };
 }
