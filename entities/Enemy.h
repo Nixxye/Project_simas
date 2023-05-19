@@ -15,4 +15,3 @@ namespace characters
         void move();
     };
 }
-

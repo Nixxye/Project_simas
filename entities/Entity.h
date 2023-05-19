@@ -41,7 +41,6 @@ namespace entes
                     body.setFillColor(sf::Color::Green);
                 else
                     body.setFillColor(sf::Color::Red);
-            }   
-        
+            }          
     };
 }
