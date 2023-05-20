@@ -12,6 +12,9 @@
 #include "../entities/Obstacle.h"
 #include "../lists/EntityList.h"
 #include "../managers/ColisionManager.h"
+#include "../managers/GraphicsManager.h"
+#include "../managers/EventsManager.h"
+
 
 #include <fstream>
 #include <string>
@@ -40,6 +43,7 @@ namespace Stages
         EntityList players;
         string filename;
         ColisionManager colision_manager;
+        EventsManager events_manager;
         sf::RenderWindow window;
     public:
         Stage(string file = "");
@@ -47,6 +51,7 @@ namespace Stages
         virtual void run() = 0;
         virtual void create_enemies();
         virtual void create_obstacles();
+        void draw(sf::RenderWindow* window);
         
         void add_enemy(Entity* enemy);
         void add_obstacle(Entity* obstacle);

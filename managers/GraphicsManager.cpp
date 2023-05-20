@@ -20,7 +20,7 @@ namespace Managers {
     cam (sf::Vector2f(WIDTH / 2, HEIGHT / 2), sf::Vector2f(WIDTH, HEIGHT)),//centro e tamanho
     textures()
     {
-       font->loadFromFile(FONT_PATH);
+       //font->loadFromFile(FONT_PATH);
     }
     GraphicsManager::~GraphicsManager()
     {

@@ -11,7 +11,6 @@ namespace Managers
 {
     class ColisionManager
     {
-    //considerando que o player é o primeiro elemento da lista;
     private:
         EntityList enemy_list;
         EntityList player_list;

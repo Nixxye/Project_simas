@@ -1,4 +1,5 @@
 #include "../stages/Stage.h"
+#include "Stage.h"
 
 namespace Stages
 {
@@ -7,6 +8,7 @@ namespace Stages
     enemies(),
     players(),
     colision_manager(),
+    events_manager(),
     window(sf::VideoMode(WIDTH, HEIGHT), "Project Simas"),
     filename(file)
     {
@@ -25,6 +27,11 @@ namespace Stages
     void Stage::create_obstacles()
     {
     }
+    void Stage::draw(sf::RenderWindow* window)
+    {
+        //N sei o q fazer aqui.
+    }
+
     void Stage::add_enemy(Entity* enemy)
     {
         if (enemy)
@@ -47,6 +54,7 @@ namespace Stages
         {
             players.add(player);
             colision_manager.add_player(player);
+            events_manager.set_player(player);
         }
     }
     void Stage::save()

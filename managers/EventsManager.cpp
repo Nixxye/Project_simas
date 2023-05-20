@@ -2,7 +2,8 @@
 
 
 namespace Managers {
-    EventsManager :: EventsManager ()
+    EventsManager :: EventsManager ():
+    pPlayer1(nullptr), pPlayer2(nullptr)
     {
 
     }
@@ -29,7 +30,7 @@ namespace Managers {
 
         if (direction !=  '0' && pPlayer1 != nullptr)
         {
-            pPlayer1-> move(direction);
+            pPlayer1->move(direction);
             return;
         }
 
@@ -85,7 +86,7 @@ namespace Managers {
                 {
                     if (event.key.code == sf::Keyboard:: Escape)
                     {   
-                        pSM->set_current_state(PAUSE_MENU);
+                        //pSM->set_current_state(PAUSE_MENU);
                     }
                     else
                     {
