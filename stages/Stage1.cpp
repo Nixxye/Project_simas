@@ -11,6 +11,7 @@ namespace Stages
     Stage1::~Stage1()
     {
     }
+    //Colocar o loop na principal
     void Stage1::run()
     {
         //Arrumar o código com o gerenciador de eventos e gráfico:
