@@ -18,7 +18,7 @@ namespace characters
         move();
     }
 
-    void Player::move()
+    void Player::move(char direction)
     {
         if (direction == 'R') //Right
         {

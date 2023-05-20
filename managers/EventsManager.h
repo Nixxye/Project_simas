@@ -5,6 +5,11 @@
 #include "../entities/Player2.h"
 #include "../menu/Menu.h"
 
+//incluído para testes:
+#include <iostream>
+using namespace std;
+
+using namespace characters;
 
 namespace Managers
 {
@@ -13,8 +18,8 @@ namespace Managers
         private:
             GraphicsManager* pGM;
             StateManager* pSM;
-            Player* pPlayer1;
-            Player* pPlayer2;
+            Entity* pPlayer1;
+            Entity* pPlayer2;
             Menu* pMainMenu;
             Menu* pPauseMenu;
 
@@ -24,5 +29,25 @@ namespace Managers
             void run ();
             void move_players(sf :: Keyboard :: Key key_code);
             void notify_menu(sf :: Keyboard :: Key key_code, Menu* menu);
+
+            //Funções criadas para fazer o programa rodar;
+            void set_player (Entity* player)
+            { 
+                if (!pPlayer1)
+                    pPlayer1 = player;
+                else if (!pPlayer2)
+                    pPlayer2 = player;
+                else
+                    cout<<"Seu burro, já tem 2 jogadores!"<<endl;
+            }
+        
+            const int n_players ()
+            {
+                if (pPlayer2)
+                    return 2;
+                if (pPlayer1)
+                    return 1;
+                return 0;
+            }
     };
 }
