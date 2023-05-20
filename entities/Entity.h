@@ -22,6 +22,7 @@ namespace entes
 
             virtual void draw(sf::RenderWindow *wd);
             virtual void run() = 0;
+            virtual void move(char direction = ' '){};
             //virtual void collide() = 0;
 
             void set_position(sf::Vector2f pos){body.setPosition(pos);}
@@ -41,7 +42,6 @@ namespace entes
                     body.setFillColor(sf::Color::Green);
                 else
                     body.setFillColor(sf::Color::Red);
-            }   
-        
+            }          
     };
 }

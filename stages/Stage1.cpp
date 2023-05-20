@@ -11,8 +11,10 @@ namespace Stages
     Stage1::~Stage1()
     {
     }
+    //Colocar o loop na principal
     void Stage1::run()
     {
+        //Arrumar o código com o gerenciador de eventos e gráfico:
         while (window.isOpen())
         {
             sf::Event event;
@@ -24,6 +26,7 @@ namespace Stages
 
             window.clear();
 
+            events_manager.move_players(sf::Event::KeyPressed);
             players.run();
             enemies.run();
             obstacles.run();

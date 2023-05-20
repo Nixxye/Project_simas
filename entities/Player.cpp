@@ -1,4 +1,5 @@
 #include "../entities/Player.h"
+
 #include <iostream>
 
 namespace characters
@@ -16,13 +17,14 @@ namespace characters
     {
         move();
     }
-    void Player::move()
+
+    void Player::move(char direction)
     {
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+        if (direction == 'R') //Right
         {
             vel.x += SPEED;
         }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        if (direction == 'L') //Left
         {
             vel.x -= SPEED;
         }
@@ -42,7 +44,7 @@ namespace characters
         {
             vel.y += G;
         }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+        else if (direction == 'U') //Up
         {
             vel.y -= 10.f;
         }
