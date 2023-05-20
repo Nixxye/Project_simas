@@ -24,20 +24,20 @@ namespace list
         private:
             TE* data;
             Element<TE>* pnext;
+            Element<TE>* plast;
         public:
-            Element():data(NULL), pnext(NULL)
+            Element():data(NULL), pnext(NULL), plast(NULL)
             {}
             ~Element()
             {
                 //Famoso paradoxo do tudo dá errado na lista lkçahsfdlkçjasdfs q ódio.
-                /*
+                
                 if (data)
                 {
                     delete data;
                 }
-                */
                 data = NULL;
-                pnext = NULL;
+                //pnext = NULL;
             }
             TE* get_data() {return data;}
             Element<TE>* get_next() {return pnext;}
@@ -110,10 +110,25 @@ namespace list
             if (!elem)
                 return;
             Element<TYPE>* aux = new Element<TYPE>();
-            aux->set_data(elem);
-            aux->set_next(pfirst);
-            pfirst = aux;
-            size++;
+            if (aux)
+            {
+                if (!pfirst)
+                {
+                    pfirst = aux;
+                    plast = aux;
+                }
+                else
+                {
+                    plast->set_next(aux);
+                    //
+                }
+                /*
+                aux->set_data(elem);
+                aux->set_next(pfirst);
+                pfirst = aux;
+                size++;
+                */
+            }
         }
     };
 }
