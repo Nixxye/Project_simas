@@ -6,6 +6,6 @@ using namespace Stages;
 
 int main()
 {
-    Stage1 stage1;
+    Game game;
     return 0;
 }

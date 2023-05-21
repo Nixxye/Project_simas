@@ -24,6 +24,6 @@ namespace characters
             void run();
             void move();
             void attack();
-            void draw(sf::RenderWindow* window);
+            void draw();
     };
 }

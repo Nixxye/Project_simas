@@ -27,8 +27,8 @@ namespace entes
 
     }
 
-    void Entity::draw(sf::RenderWindow *wd)
+    void Entity::draw()
     {
-        wd->draw(body);
+        graphics_manager->draw(&(this->body));
     }
 }

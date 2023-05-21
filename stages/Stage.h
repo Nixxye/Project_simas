@@ -24,7 +24,8 @@
 //#define FILE_STAGE_1 "saves/savestate1.dat"
 
 //Linux:
-#define FILE_STAGE_1 "../saves/savestate1.dat"
+#define FILE_STAGE_1 "../saves/stage1.dat"
+#define SAVE_STAGE_1 "../saves/savestate1.dat"
 
 using namespace Managers;
 using namespace entes;
@@ -41,17 +42,17 @@ namespace Stages
         EntityList obstacles;
         EntityList enemies;
         EntityList players;
-        string filename;
+        string save_file;
+        string stage_info;
         ColisionManager colision_manager;
         EventsManager events_manager;
-        sf::RenderWindow window;
     public:
-        Stage(string file = "");
+        Stage(string savefile = "", string infofile = "");
         virtual ~Stage();
         virtual void run() = 0;
         virtual void create_enemies();
         virtual void create_obstacles();
-        void draw(sf::RenderWindow* window);
+        void draw();
         
         void add_enemy(Entity* enemy);
         void add_obstacle(Entity* obstacle);

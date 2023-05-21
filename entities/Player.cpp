@@ -1,7 +1,5 @@
 #include "../entities/Player.h"
 
-#include <iostream>
-
 namespace characters
 {
     Player::Player(sf::Vector2f pos, sf::Vector2f velocity, sf::Vector2f size):
@@ -24,7 +22,7 @@ namespace characters
         {
             vel.x += SPEED;
         }
-        if (direction == 'L') //Left
+        else if (direction == 'L') //Left
         {
             vel.x -= SPEED;
         }
@@ -48,7 +46,6 @@ namespace characters
         {
             vel.y -= 10.f;
         }
-
         body.setPosition(body.getPosition() + vel);
         player_position = body.getPosition();
         speed = (int) sqrt(vel.x*vel.x + vel.y*vel.y);

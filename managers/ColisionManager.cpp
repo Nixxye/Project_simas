@@ -6,7 +6,7 @@
 namespace Managers
 {
     ColisionManager::ColisionManager():
-    enemy_list(), player_list(), obstacle_list()
+    enemy_list(nullptr), player_list(nullptr), obstacle_list(nullptr)
     {
 
     }
@@ -17,7 +17,7 @@ namespace Managers
     void ColisionManager::colide()
     {
         List<Entity> aux;
-        List<Entity>::Iterator<Entity> A = player_list.get_first(),B = enemy_list.get_first();
+        List<Entity>::Iterator<Entity> A = player_list->get_first(),B = enemy_list->get_first();
         while (A != nullptr)
         {
             (*A)->set_grounded(false);
@@ -26,7 +26,7 @@ namespace Managers
                 check_colision(*A, *B);
                 B++;
             }
-            B = obstacle_list.get_first();
+            B = obstacle_list->get_first();
             while (B != nullptr)
             {
                 check_colision(*A, *B);
@@ -34,10 +34,10 @@ namespace Managers
             }
             A++;
         }
-        A = enemy_list.get_first();
+        A = enemy_list->get_first();
         while (A != nullptr)
         {
-            B = obstacle_list.get_first();
+            B = obstacle_list->get_first();
             (*A)->set_grounded(false);
             while(B != nullptr)
             {
@@ -53,8 +53,6 @@ namespace Managers
         sf::Vector2f d = posB - posA;
         if ((fabs(d.x) < (sizeA.x + sizeB.x)/2.0) && (fabs(d.y) < (sizeA.y + sizeB.y)/2.0))
         {
-            //A->troca_cor();
-            //B->troca_cor();
             if (fabs(d.x) - fabs(sizeA.x + sizeB.x)/2.0 < fabs(d.y) - fabs(sizeA.y + sizeB.y)/2.0)
             {
                 B->set_vel(sf::Vector2f(-B->get_vel().x, -B->get_vel().y));

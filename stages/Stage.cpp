@@ -3,18 +3,19 @@
 
 namespace Stages
 {
-    Stage::Stage(string file):
+    Stage::Stage(string savefile, string infofile):
     obstacles(),
     enemies(),
     players(),
     colision_manager(),
     events_manager(),
-    window(sf::VideoMode(WIDTH, HEIGHT), "Project Simas"),
-    filename(file)
+    save_file(savefile),
+    stage_info(infofile)
     {
-        window.setFramerateLimit(60);
         load();
-        //ARRUMAR O DELETE DA LIST: COMO O MESMO PERSONAGEM ESTÁ EM MAIS DE UMA LISTA, PRECISA CHAMAR APENAS UM DELETE;       
+        colision_manager.set_enemy_list(&enemies);
+        colision_manager.set_player_list(&players);
+        colision_manager.set_obstacle_list(&obstacles);     
     }
 
     Stage::~Stage()
@@ -27,17 +28,17 @@ namespace Stages
     void Stage::create_obstacles()
     {
     }
-    void Stage::draw(sf::RenderWindow* window)
+    
+    void Stage::draw()
     {
         //N sei o q fazer aqui.
     }
-
+    
     void Stage::add_enemy(Entity* enemy)
     {
         if (enemy)
         {
             enemies.add(enemy);
-            colision_manager.add_enemy(enemy);
         }
     }
     void Stage::add_obstacle(Entity *obstacle)
@@ -45,7 +46,6 @@ namespace Stages
         if (obstacle)
         {
             obstacles.add(obstacle);
-            colision_manager.add_obstacle(obstacle);
         }
     }
     void Stage::add_player(Entity *player)
@@ -53,13 +53,12 @@ namespace Stages
         if (player)
         {
             players.add(player);
-            colision_manager.add_player(player);
             events_manager.set_player(player);
         }
     }
     void Stage::save()
     {
-        ofstream file(filename);
+        ofstream file(save_file);
         if (!file)
         {
             cout<<"ERROR 1"<<endl;
@@ -83,7 +82,7 @@ namespace Stages
             file << (*it)->get_id() <<endl<< (*it)->get_position().x << endl <<(*it)->get_position().y << endl<<(*it)->get_vel().x << endl<<(*it)->get_vel().y <<endl;
         }
         file << endl;
-
+        /*
         file <<"#obstacles" <<endl;
         file << obstacles.get_size() << endl << endl;
         for (List<Entity>::Iterator<Entity> it = obstacles.get_first(); it != nullptr; it++)
@@ -91,12 +90,12 @@ namespace Stages
             file << (*it)->get_id() <<endl<< (*it)->get_position().x << endl <<(*it)->get_position().y << endl<<(*it)->get_vel().x << endl<<(*it)->get_vel().y <<endl;
         }
         file << endl;
-        
+        */
         file.close();
     }
     void Stage::load()
     {   
-        ifstream file(filename);
+        ifstream file(save_file);
         int n = 0;
         Entity* aux = NULL;
         string line;
@@ -111,7 +110,7 @@ namespace Stages
         getline(file, line);
         if (line != "#players")
         {
-            cout << "ERROR 3 "<< endl;
+            cout << "ERROR 4 "<< endl;
             file.close();
             exit(3);//exit
         }
@@ -124,18 +123,18 @@ namespace Stages
             float posX, posY, velX, velY;
 
             file >> id >> posX >> posY >> velX >> velY;
-            cout << id << posX << posY << velX << velY << endl;
+            //cout << id << posX << posY << velX << velY << endl;
             getline(file, line);
             //Static cast;
             aux = new Player(sf::Vector2f(posX, posY), sf::Vector2f(velX, velY), sf::Vector2f(50.f, 50.f));
             add_player(aux);
-            cout<<"LOADED"<<endl;
+            //cout<<"LOADED"<<endl;
         }
         getline(file, line);
         getline(file, line);
         if (line != "#enemies")
         {
-            cout << "ERROR 3 "<< endl;
+            cout << "ERROR 51 "<< endl;
             file.close();
             exit(3);//exit
         }
@@ -148,38 +147,50 @@ namespace Stages
             float posX, posY, velX, velY;
 
             file >> id >> posX >> posY >> velX >> velY;
-            cout << id << posX << posY << velX << velY << endl;
+            //cout << id << posX << posY << velX << velY << endl;
             getline(file, line);
             //Static cast;
             aux = new Enemy(sf::Vector2f(posX, posY), sf::Vector2f(velX, velY), sf::Vector2f(50.f, 50.f));
             add_enemy(aux);
-            cout<<"LOADED"<<endl;
+            //cout<<"LOADED"<<endl;
         }
-        getline(file, line);
-        getline(file, line);
+        file.close();
+
+
+        ifstream file2(stage_info);
+
+        if (!file2)
+        {
+            cout <<"ERROR: 4"<<endl;
+            exit(2);
+        }
+
+        getline(file2, line);
+
         if (line != "#obstacles")
         {
-            cout << "ERROR 3 "<< endl;
-            file.close();
-            exit(3);//exit
+            cout << "ERROR 6 "<< endl;
+            file2.close();
+            exit(3);
         }
-        file >> n;
-        getline(file, line);
-        getline(file, line);
+        file2 >> n;
+
+        getline(file2, line);
+        getline(file2, line);
         for (int i = 0; i < n; i++)
         {
             int id;
-            float posX, posY, velX, velY;
+            float posX, posY, sizeX, sizeY;
 
-            file >> id >> posX >> posY >> velX >> velY;
-            cout << id << posX << posY << velX << velY << endl;
-            getline(file, line);
+            file2 >> posX >> posY >> sizeX >> sizeY;
+            //cout << id << posX << posY << velX << velY << endl;
+            getline(file2, line);
             //Static cast;
-            aux = new Obstacle(sf::Vector2f(posX, posY), sf::Vector2f(800.f, 50.f));
+            aux = new Obstacle(sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY));
             add_obstacle(aux);
-            cout<<"LOADED"<<endl;
+            //cout<<"LOADED"<<endl;
         }
-        file.close();
+        file2.close();
     }
 }
  

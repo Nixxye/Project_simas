@@ -2,7 +2,7 @@
 
 int GameObject::count(0);
 int GameObject::speed(0);
-
+GraphicsManager* GameObject::graphics_manager = GraphicsManager::get_instance();
 
 GameObject::GameObject():
 id(count++),

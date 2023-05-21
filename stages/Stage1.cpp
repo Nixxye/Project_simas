@@ -3,42 +3,29 @@
 namespace Stages
 {
     Stage1::Stage1():
-    Stage(FILE_STAGE_1)
+    Stage(SAVE_STAGE_1, FILE_STAGE_1)
     {
-        run();
+
     }
 
     Stage1::~Stage1()
     {
     }
-    //Colocar o loop na principal
     void Stage1::run()
     {
         //Arrumar o código com o gerenciador de eventos e gráfico:
-        while (window.isOpen())
-        {
-            sf::Event event;
-            while (window.pollEvent(event))
-            {
-                if (event.type == sf::Event::Closed)
-                    window.close();
-            }
+        //Feio, horrível, pavoroso, tira daqui!
+        sf::Event event;
+        events_manager.move_players(event);
+        players.run();
+        enemies.run();
+        obstacles.run();
 
-            window.clear();
-
-            events_manager.move_players(sf::Event::KeyPressed);
-            players.run();
-            enemies.run();
-            obstacles.run();
-
-            colision_manager.colide();
-
-            players.draw(&window);
-            enemies.draw(&window);
-            obstacles.draw(&window);
-            
-            window.display();
-        }
+        colision_manager.colide();
+        graphics_manager->center((*players.get_first())->get_position());
+        players.draw();
+        enemies.draw();
+        obstacles.draw();
     }
     void Stage1::create_enemies()
     {

@@ -27,7 +27,7 @@ namespace Managers
             EventsManager();
             ~EventsManager();
             void run ();
-            void move_players(sf :: Keyboard :: Key key_code);
+            void move_players(sf::Event key_code);
             void notify_menu(sf :: Keyboard :: Key key_code, Menu* menu);
 
             //Funções criadas para fazer o programa rodar;

@@ -1,7 +1,9 @@
 #include "../lists/EntityList.h"
 #include "../entities/Enemy.h"
+
+
 #include <iostream>
-#include "EntityList.h"
+
 using namespace std;
 EntityList::EntityList():
 list()
@@ -24,14 +26,12 @@ void EntityList::run()
     }
 }
 
-void EntityList::draw(sf::RenderWindow* window)
+void EntityList::draw()
 {
     List<Entity>::Iterator<Entity> aux = list.get_first();
     while(aux != nullptr)
     {
-        (*aux)->draw(window);
-         
-        //cout<<(*aux)->get_vel().x << " " <<(*aux)->get_vel().y << endl;
+        (*aux)->draw();
         aux++; 
     }
  }   
@@ -59,7 +59,3 @@ void EntityList::set_alive(bool a)
     }    
 }
 
-int EntityList::get_size()
-{
-    return list.get_size();
-}

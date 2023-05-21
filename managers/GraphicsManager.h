@@ -3,9 +3,11 @@
 #include <SFML/Graphics.hpp>
 #include <map>
 #include <string>
+
 #define WIDTH 800
 #define HEIGHT 600
 #define FONT_PATH 
+
 namespace Managers {
     class GraphicsManager
     {
@@ -22,12 +24,12 @@ namespace Managers {
 
     public:
         ~GraphicsManager();
-        GraphicsManager* get_instance();
+        static GraphicsManager* get_instance();
         void show();
         void clean();
         void draw(sf::RectangleShape* body);
         sf::Texture* load_textures(std::string path);
-        void center(sf::Vector2f position);
+        void center(sf::Vector2f position1);
         void center(sf::Vector2f position1, sf::Vector2f position2 );
         sf::RenderWindow* get_window() const;
         void close_window ();

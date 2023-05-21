@@ -20,6 +20,7 @@ namespace Managers {
     cam (sf::Vector2f(WIDTH / 2, HEIGHT / 2), sf::Vector2f(WIDTH, HEIGHT)),//centro e tamanho
     textures()
     {
+        window->setFramerateLimit(60);
        //font->loadFromFile(FONT_PATH);
     }
     GraphicsManager::~GraphicsManager()
@@ -27,6 +28,7 @@ namespace Managers {
         for (std::map<const std::string, sf::Texture*>::iterator it = textures.begin();it != textures.end();it++)
             delete it->second;
         textures.clear();
+        delete window;
     }
     void GraphicsManager:: show ()
     {
@@ -56,13 +58,14 @@ namespace Managers {
 
         return tex;
     }
-    void GraphicsManager:: center (sf::Vector2f position)
+    //Se sobrar tempo, arrumar as interações da câmera com os cantos da fase.
+    void GraphicsManager:: center (sf::Vector2f position1)
     {
-        cam.setCenter (position);
+        cam.setCenter (position1); 
         window->setView(cam);
 
     }
-    void  GraphicsManager:: center(sf::Vector2f position1, sf::Vector2f position2 )
+    void GraphicsManager:: center(sf::Vector2f position1, sf::Vector2f position2 )
     {
         cam.setCenter((position1.x+position2.x)/2,(position1.y+position2.y)/2);
         //if (position1.x)
@@ -74,7 +77,12 @@ namespace Managers {
     }
     void GraphicsManager :: close_window ()
     {
-         window->close();
+        sf::Event event;
+        while (window->pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                window->close();
+        }
     }
     bool GraphicsManager:: window_open ()
     {

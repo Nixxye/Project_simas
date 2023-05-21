@@ -12,37 +12,39 @@ namespace Managers {
 
 
     }
-    void EventsManager :: move_players (sf::Keyboard::Key key_code)
+    void EventsManager :: move_players (sf::Event key_code)
     {
         char direction = '0';
-        if (key_code  == sf::Keyboard::Space)
+        bool jump = false;
+        //Pulo e direção n funcionam ao mesmo tempo
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
         {
             direction = 'U';
         }
-        else if (key_code  == sf::Keyboard::A)
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
             direction = 'L';
         }
-        else if (key_code  == sf::Keyboard::D)
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
             direction = 'R';
         }
 
-        if (direction !=  '0' && pPlayer1 != nullptr)
+        if (pPlayer1 != nullptr)
         {
             pPlayer1->move(direction);
             return;
         }
 
-        if (key_code  == sf::Keyboard::Up)
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
         {
             direction = 'U';
         }
-        else if (key_code  == sf::Keyboard::Right)
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         {
             direction = 'R';
         }
-        else if (key_code  == sf::Keyboard::Left)
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         {
             direction = 'L';
         }
@@ -84,15 +86,14 @@ namespace Managers {
                 }
                 else if (state == 1)
                 {
-                    if (event.key.code == sf::Keyboard:: Escape)
+                    if (event.key.code == sf::Keyboard::Escape)
                     {   
                         //pSM->set_current_state(PAUSE_MENU);
                     }
                     else
                     {
-                        move_players(event.key.code);
+                        move_players(event);
                     }
-   
                 }
                 else if (state == 2)
                 {

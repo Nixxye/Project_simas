@@ -55,9 +55,9 @@ namespace characters
 
         bullets.set_position(sf::Vector2f(300.f, 100.f));
     }
-    void Boss::draw(sf::RenderWindow* window)  
+    void Boss::draw()  
     {
-        window->draw(this->body);
-        bullets.draw(window);
+        Entity::draw();
+        bullets.draw();
     }  
 }
