@@ -1,7 +1,7 @@
 #include "GraphicsManager.h"
 
-namespace Managers {
-
+namespace Managers
+ {
 
     GraphicsManager* GraphicsManager::instance = nullptr;
 
