@@ -29,7 +29,7 @@ namespace Observers
     void PlayerObserver :: notify (sf::Keyboard::Key key_code)
     {
         map <sf::Keyboard::Key,char> :: iterator it = PlayerKeys.find(key_code);
-        if (iterator == PlayerKeys.end())
+        if (it == PlayerKeys.end())
             return; 
         pPlayer->move(it->second);
     }

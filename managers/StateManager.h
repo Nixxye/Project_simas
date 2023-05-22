@@ -1,16 +1,25 @@
+#include "../States/State.h"
+#include <vector>
+
 #pragma once
 
 namespace Managers
 {
     class StateManager
     {
+        private:
+            States :: State* pCurrentState;
+            States :: State* pLastState;
+            std::vector< States::State*> vector_states;
+
         public:
             StateManager ();
             ~StateManager ();
-            void set_current_state (int i);
-            State* get_current_state ();
-            int get_current_state_id();
-        private:
-            State* pCurrent_State;
+            void set_CurrentState (int i);
+            States :: State* get_CurrentState ();
+            int get_CurrentStateID();
+            int get_LastStateID();
+            void add_state(States::State* pState);
+
     };
 }
