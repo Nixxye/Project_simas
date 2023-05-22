@@ -7,8 +7,8 @@
 #define WIDTH 800
 #define HEIGHT 600
 #define FONT_PATH 
-
-namespace Managers {
+namespace Managers 
+{
     class GraphicsManager
     {
     private:

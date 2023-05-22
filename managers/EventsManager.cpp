@@ -1,76 +1,41 @@
 #include "EventsManager.h"
+#include "../Observers/Observer.h"
 
 
-namespace Managers {
-    EventsManager :: EventsManager ():
-    pPlayer1(nullptr), pPlayer2(nullptr)
+namespace Managers 
+{
+
+    EventsManager* EventsManager::instance = nullptr;
+
+
+    EventsManager* EventsManager::get_instance() 
+    {
+        if (instance == nullptr) 
+        {
+            instance = new EventsManager();
+        }
+        return instance;
+    }
+
+    EventsManager :: EventsManager ()
     {
 
     }
-    EventsManager :: ~EventsManager()
+    EventsManager :: ~EventsManager ()
     {
 
 
     }
-    void EventsManager :: move_players (sf::Event key_code)
+    void  EventsManager :: add_observer(Observers::Observer* pObserver)
     {
-        char direction = '0';
-        bool jump = false;
-        //Pulo e direção n funcionam ao mesmo tempo
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-        {
-            direction = 'U';
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-        {
-            direction = 'L';
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-        {
-            direction = 'R';
-        }
-
-        if (pPlayer1 != nullptr)
-        {
-            pPlayer1->move(direction);
-            return;
-        }
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-        {
-            direction = 'U';
-        }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-        {
-            direction = 'R';
-        }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-        {
-            direction = 'L';
-        }
-        if (direction !=  '0' && pPlayer2 != nullptr)
-        {
-            pPlayer2-> move(direction);
-        }
-
+        list_observers.push_back(pObserver);
     }
-    void EventsManager :: notify_menu( sf::Keyboard::Key key_code, Menu* menu)
+    void  EventsManager :: remove_observer(Observers::Observer* pObserver)
     {
-        if (key_code  == sf::Keyboard::Up)
-        {
-            //menu->select_up();
-        } 
-        else if (key_code  == sf::Keyboard::Down)
-        {
-			//menu->select_down();
-        } 
-        else if (key_code  == sf::Keyboard::Enter) 
-        {
-			//menu->run();
-        }
+        list_observers.remove(pObserver);
     }
-
-    void EventsManager :: run ()
+  
+    void EventsManager :: run()
     {
         sf::Event event;
         while (pGM->get_window()->pollEvent(event))
@@ -79,28 +44,13 @@ namespace Managers {
                 pGM->close_window();
             else if (event.type == sf::Event::KeyPressed)
             {
-                int state = pSM->get_current_state_id();
-                if (state == 0)
+                for (it = list_observers.begin(); it != list_observers.end(); it++)
                 {
-                    notify_menu (event.key.code,pMainMenu);
-                }
-                else if (state == 1)
-                {
-                    if (event.key.code == sf::Keyboard::Escape)
-                    {   
-                        //pSM->set_current_state(PAUSE_MENU);
-                    }
-                    else
-                    {
-                        move_players(event);
-                    }
-                }
-                else if (state == 2)
-                {
-                    notify_menu(event.key.code, pPauseMenu);
+                    if ((*it)->is_active())
+                        (*it)->notify(event.key.code);
                 }
 
             }
+        }
     }
-}
 } 

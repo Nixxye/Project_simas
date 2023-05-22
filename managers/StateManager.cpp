@@ -4,19 +4,34 @@ namespace Managers
 {
     StateManager::StateManager()
     {
+
+
     }
     StateManager::~StateManager()
     {
+
+
     }
-    void StateManager::set_current_state(int i)
+    void StateManager::set_CurrentState(int i)
     {
+        pLastState = pCurrentState;
+        pCurrentState = vector_states[i];
     }
-    StateManager::State *StateManager::get_current_state()
+    States::State *StateManager::get_CurrentState()
     {
-        return nullptr;
+        return pCurrentState;
     }
-    int StateManager::get_current_state_id()
+    int StateManager::get_CurrentStateID()
     {
-        return 0;
+        return pCurrentState->get_id();
     }
+    int StateManager::get_LastStateID()
+    {
+        return pLastState->get_id();
+    }
+    void StateManager:: add_state(States::State* pState)
+    {
+       vector_states [pState->get_id()] = pState;
+    }
+
 }

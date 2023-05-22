@@ -6,16 +6,20 @@ namespace characters
     Character(pos, velocity, size)
     {
         lives = 3;
+        pPObserver = new Observers::PlayerObserver;
+        pPObserver->set_player(this);
     }
 
     Player::~Player()
     {
+        if(pPObserver)
+            delete pPObserver;
+        pPObserver = nullptr;
     }
     void Player::run()
     {
         move();
     }
-
     void Player::move(char direction)
     {
         if (direction == 'R') //Right
