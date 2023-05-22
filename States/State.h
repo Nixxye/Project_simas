@@ -20,9 +20,11 @@ namespace States
 
             virtual ~State();
 
-            void set_StateManager(Managers ::StateManager* pSM);
+            void set_StateManager(Managers::StateManager* pSM);
 
             int get_id() const;
+
+            virtual void run () = 0;
 
     };
 

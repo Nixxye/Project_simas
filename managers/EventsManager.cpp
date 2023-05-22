@@ -35,7 +35,7 @@ namespace Managers
         list_observers.remove(pObserver);
     }
   
-    void EventsManager :: run ()
+    void EventsManager :: run()
     {
         sf::Event event;
         while (pGM->get_window()->pollEvent(event))

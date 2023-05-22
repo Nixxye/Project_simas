@@ -5,7 +5,8 @@
 namespace Observers 
 {
 
-    Observer::Observer() 
+    Observer::Observer():
+    active(true)
     {
         this->pEM = Managers::EventsManager::getInstance();
         this->pSM = Managers::StateManager::getInstance();
