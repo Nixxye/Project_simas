@@ -21,11 +21,11 @@ namespace Managers {
         {
             direction = 'U';
         }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
             direction = 'L';
         }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
             direction = 'R';
         }
