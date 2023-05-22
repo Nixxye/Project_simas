@@ -21,12 +21,13 @@
 #include <iostream>
 
 //Windows:
-//#define FILE_STAGE_1 "saves/savestate1.dat"
-
+#define SAVE_STAGE_1 "saves/savestate1.dat"
+#define FILE_STAGE_1 "saves/stage1.dat"
 //Linux:
+/*
 #define FILE_STAGE_1 "../saves/stage1.dat"
 #define SAVE_STAGE_1 "../saves/savestate1.dat"
-
+*/
 using namespace Managers;
 using namespace entes;
 using namespace list;
