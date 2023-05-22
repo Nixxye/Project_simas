@@ -16,7 +16,7 @@ namespace Observers
     {
         private:
             Entities::Characters::Player* pPlayer;
-            map <sf::Keyboard::Key,char> PlayerKeys;
+            std :: map <sf::Keyboard::Key,char> PlayerKeys;
 
         public:
             PlayerObserver();
