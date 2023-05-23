@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-namespace list
+namespace Lists
 {
     template<class TYPE>
     class List

@@ -7,7 +7,6 @@ namespace Managers
 }
 namespace States 
 {
-
     class State 
     {
 
@@ -16,7 +15,8 @@ namespace States
             int id_state;
 
         public:
-            State(int id);
+            //ID de erro é -1
+            State(int id = -1);
 
             virtual ~State();
 

@@ -10,7 +10,7 @@
 #include <iostream>
 #pragma once
 using namespace std;
-using namespace characters;
+using namespace entes::Characters;
 
 
 namespace Observers 
@@ -29,10 +29,10 @@ namespace Managers
             std::list <Observers::Observer*> :: iterator it;
 
 
-            EventsManager();
+
             static EventsManager* instance;
         public:
-
+            EventsManager();
             ~EventsManager();
             EventsManager* get_instance();
             void remove_observer(Observers::Observer* pObserver);

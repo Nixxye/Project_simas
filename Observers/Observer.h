@@ -1,19 +1,16 @@
-#include <set>
 #include "../managers/EventsManager.h"
 #include "../managers/StateManager.h"
+#include <SFML/Graphics.hpp>
 #pragma once
-
 
 namespace Observers 
 {
-
     class Observer 
     {
         protected:
-            Managers :: EventsManager* pEM;
-            Managers :: StateManager*  pSM;           
+            Managers::EventsManager* pEM;
+            Managers::StateManager*  pSM;           
             bool active;
-
         public:
             Observer();
 
@@ -24,8 +21,5 @@ namespace Observers
             bool is_active () {return active;}
 
             void set_active (bool a) {active = a;}
-
-
-
     };
 }

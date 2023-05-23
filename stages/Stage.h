@@ -30,8 +30,8 @@
 */
 using namespace Managers;
 using namespace entes;
-using namespace list;
-using namespace characters;
+using namespace Lists;
+using namespace entes::Characters;
 using namespace obstacles;
 using namespace std;
 

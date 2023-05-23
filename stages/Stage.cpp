@@ -53,7 +53,6 @@ namespace Stages
         if (player)
         {
             players.add(player);
-            events_manager.set_player(player);
         }
     }
     void Stage::save()

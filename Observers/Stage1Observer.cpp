@@ -19,7 +19,7 @@ namespace Observers
     {
         switch (key_code)
         {
-            case (sf::Keyboard::Escape)
+            case (sf::Keyboard::A)
             {
                 //pSM->set_CurrentState (0);
             }

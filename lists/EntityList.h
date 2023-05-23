@@ -4,7 +4,7 @@
 #include "../lists/List.h"
 #
 using namespace entes;
-using namespace list;
+using namespace Lists;
 class EntityList
 {
 private:

@@ -4,7 +4,6 @@
 
 namespace States 
 {
-
     State::State(int id):
     id_state(id) 
     {
@@ -23,7 +22,7 @@ namespace States
 
     int State::get_id() const 
     {
-        return id;
+        return id_state;
     }
 
 } 

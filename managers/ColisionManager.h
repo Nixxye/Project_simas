@@ -5,7 +5,7 @@
 #include "../entities/Obstacle.h"
 #include "../lists/EntityList.h"
 
-using namespace list;
+using namespace Lists;
 
 namespace Managers
 {
