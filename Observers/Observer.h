@@ -1,16 +1,18 @@
-#include "../managers/EventsManager.h"
-#include "../managers/StateManager.h"
-#include <SFML/Graphics.hpp>
 #pragma once
 
+#include "../managers/EventsManager.h"
+#include "../managers/StateManager.h"
+
+#include <SFML/Graphics.hpp>
+using namespace Managers;
 namespace Observers 
 {
     class Observer 
     {
         protected:
-            Managers::EventsManager* pEM;
-            Managers::StateManager*  pSM;           
-            bool active;
+            EventsManager* pEM;
+            StateManager*  pSM;           
+
         public:
             Observer();
 
@@ -18,8 +20,5 @@ namespace Observers
             
             virtual void notify(sf::Keyboard::Key key_code) = 0;
 
-            bool is_active () {return active;}
-
-            void set_active (bool a) {active = a;}
     };
 }

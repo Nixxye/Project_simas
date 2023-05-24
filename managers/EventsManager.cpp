@@ -1,5 +1,5 @@
-#include "EventsManager.h"
-#include "../Observers/Observer.h"
+#include "../managers/EventsManager.h"
+#include "../observers/Observer.h"
 
 
 namespace Managers 
@@ -23,7 +23,11 @@ namespace Managers
     }
     EventsManager :: ~EventsManager ()
     {
-
+        for (it = list_observers.begin(); it != list_observers.end(); it++)
+        {
+            delete(*it);
+        }
+        list_observers.clear();
 
     }
     void  EventsManager :: add_observer(Observers::Observer* pObserver)
@@ -46,8 +50,7 @@ namespace Managers
             {
                 for (it = list_observers.begin(); it != list_observers.end(); it++)
                 {
-                    if ((*it)->is_active())
-                        (*it)->notify(event.key.code);
+                    (*it)->notify(event.key.code);
                 }
 
             }

@@ -2,8 +2,6 @@
 
 #include "Observer.h"
 
-
-
 namespace Stages 
 {
     class Stage1;

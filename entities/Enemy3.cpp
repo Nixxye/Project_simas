@@ -1,14 +1,18 @@
 #include "Enemy3.h"
 
-namespace characters
+namespace Entes
 {
-    Enemy3:: Enemy3():
-    Enemy()
+    namespace Characters
     {
+        Enemy3:: Enemy3():
+        Enemy()
+        {
 
-    }
-    Enemy3:: ~Enemy3()
-    {
-        
+        }
+        Enemy3:: ~Enemy3()
+        {
+            
+        }    
     }    
 }
+

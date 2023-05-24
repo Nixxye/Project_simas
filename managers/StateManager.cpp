@@ -2,6 +2,17 @@
 
 namespace Managers
 {
+     StateManager* StateManager::instance = nullptr;
+    
+    StateManager* StateManager::get_instance() 
+    {
+        if (instance == nullptr) 
+        {
+            instance = new StateManager();
+        }
+        return instance;
+    }
+
     StateManager::StateManager()
     {
 

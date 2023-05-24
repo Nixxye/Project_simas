@@ -5,9 +5,9 @@
 #include <string>
 
 #include "../entities/Character.h"
-#include "../Observers/PlayerObserver.h"
+#include "../observers/PlayerObserver.h"
 
-namespace entes
+namespace Entes
 {
     namespace Characters
     {

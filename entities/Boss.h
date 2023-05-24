@@ -5,7 +5,7 @@
 #include "../entities/Bullet.h"
 
 //TODO: Fazer a função move de enemy ser virtual e enemy 1 receber a função atual;
-namespace entes
+namespace Entes
 {
     namespace Characters
     {

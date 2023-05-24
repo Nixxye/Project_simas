@@ -4,10 +4,14 @@
 #include <map>
 
 
-namespace entes::Characters 
+namespace Entes
 {
-    class Player;
+    namespace Characters 
+    {
+        class Player;
+    }    
 }
+
 
 namespace Observers 
 {
@@ -15,7 +19,7 @@ namespace Observers
     class PlayerObserver : public Observer 
     {
         private:
-            entes::Characters::Player* pPlayer;
+            Entes::Characters::Player* pPlayer;
             std :: map <sf::Keyboard::Key,char> PlayerKeys;
 
         public:
@@ -25,9 +29,10 @@ namespace Observers
 
             void notify(sf::Keyboard::Key key_code);
 
-            void set_player(entes::Characters::Player* p);
+            void set_player(Entes::Characters::Player* p);
 
-            void set_PlayerKeys (sf::Keyboard::Key right, sf::Keyboard::Key left, sf::Keyboard::Key up);
+            void set_PlayerKeys (sf::Keyboard::Key right,\
+             sf::Keyboard::Key left, sf::Keyboard::Key up);
 
            
     };

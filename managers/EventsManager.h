@@ -1,16 +1,18 @@
-#include "GraphicsManager.h"
-#include "StateManager.h"
-#include "../entities/Player1.h"
-#include "../entities/Player.h"
-#include "../entities/Player2.h"
-#include "../menu/Menu.h"
-#include <list>
+#pragma once
+
+#include "../managers/GraphicsManager.h"
+#include "../managers/StateManager.h"
+
+//#include "../entities/Player.h"
+
+//#include "../menu/Menu.h"
 
 //incluído para testes:
 #include <iostream>
-#pragma once
+#include <list>
+
 using namespace std;
-using namespace entes::Characters;
+//using namespace Entes::Characters;
 
 
 namespace Observers 
@@ -20,7 +22,7 @@ namespace Observers
 
 namespace Managers
 {
-   class EventsManager
+    class EventsManager
     {
         private:
             GraphicsManager* pGM;
@@ -28,13 +30,12 @@ namespace Managers
             std::list <Observers::Observer*> list_observers;
             std::list <Observers::Observer*> :: iterator it;
 
-
-
             static EventsManager* instance;
-        public:
             EventsManager();
+        public:
             ~EventsManager();
-            EventsManager* get_instance();
+            
+            static EventsManager* get_instance();
             void remove_observer(Observers::Observer* pObserver);
             void add_observer (Observers::Observer* pObserver);
             void run ();

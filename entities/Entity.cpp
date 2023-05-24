@@ -1,10 +1,10 @@
 #include "Entity.h"
 
-int entes::Entity::speed(0);
-int entes::Entity::count(0);
-sf::Vector2f entes::Entity::player_position(200.f, 200.f);
+int Entes::Entity::speed(0);
+int Entes::Entity::count(0);
+sf::Vector2f Entes::Entity::player_position(200.f, 200.f);
 
-namespace entes
+namespace Entes
 {
     Entity::Entity(sf::Vector2f pos, sf::Vector2f velocity, sf::Vector2f size):
     GameObject(),

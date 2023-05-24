@@ -1,6 +1,6 @@
 #include "../entities/Bullet.h"
 
-namespace entes
+namespace Entes
 {
     namespace Characters
     {

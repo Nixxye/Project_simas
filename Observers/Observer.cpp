@@ -1,15 +1,13 @@
-
 #include "Observer.h"
 
 
 namespace Observers 
 {
 
-    Observer::Observer():
-    active(true)
+    Observer::Observer()
     {
-        this->pEM = Managers::EventsManager::getInstance();
-        this->pSM = Managers::StateManager::getInstance();
+        this->pEM = EventsManager::get_instance();
+        this->pSM = StateManager::get_instance();
         pEM->add_observer(this);
     }
 

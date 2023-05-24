@@ -8,7 +8,6 @@ namespace Stages
     enemies(),
     players(),
     colision_manager(),
-    events_manager(),
     save_file(savefile),
     stage_info(infofile)
     {
@@ -16,6 +15,7 @@ namespace Stages
         colision_manager.set_enemy_list(&enemies);
         colision_manager.set_player_list(&players);
         colision_manager.set_obstacle_list(&obstacles);     
+        events_manager = Managers::EventsManager::get_instance();
     }
 
     Stage::~Stage()

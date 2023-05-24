@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Character.h"
-namespace entes
+namespace Entes
 {
     namespace Characters
     {

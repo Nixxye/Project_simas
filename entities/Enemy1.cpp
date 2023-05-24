@@ -1,6 +1,6 @@
 #include "Enemy1.h"
 
-namespace entes
+namespace Entes
 {
     namespace Characters
     {

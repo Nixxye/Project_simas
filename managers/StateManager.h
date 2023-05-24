@@ -1,7 +1,9 @@
+#pragma once
+
 #include "../States/State.h"
 #include <vector>
 
-#pragma once
+
 
 namespace Managers
 {
@@ -11,10 +13,11 @@ namespace Managers
             States :: State* pCurrentState;
             States :: State* pLastState;
             std::vector< States::State*> vector_states;
-
+            static StateManager* instance;
         public:
             StateManager ();
             ~StateManager ();
+            static StateManager* get_instance();
             void set_CurrentState (int i);
             States :: State* get_CurrentState ();
             int get_CurrentStateID();

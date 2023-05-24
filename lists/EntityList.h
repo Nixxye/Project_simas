@@ -2,8 +2,8 @@
 
 #include "../entities/Entity.h"
 #include "../lists/List.h"
-#
-using namespace entes;
+
+using namespace Entes;
 using namespace Lists;
 class EntityList
 {

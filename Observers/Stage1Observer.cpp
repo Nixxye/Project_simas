@@ -17,14 +17,10 @@ namespace Observers
     }
     void Stage1Observer :: notify (sf::Keyboard::Key key_code)
     {
-        switch (key_code)
-        {
-            case (sf::Keyboard::A)
-            {
-                //pSM->set_CurrentState (0);
-            }
-                break;
-        }
+
+            if (sf::Keyboard::A == key_code)
+            { }
+                //pSM->set_CurrentState (0
     }
 
 }

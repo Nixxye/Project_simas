@@ -1,7 +1,7 @@
 #pragma once
 #include "Entity.h"
 
-using namespace entes;
+using namespace Entes;
 namespace obstacles
 {
     class Obstacle: public Entity

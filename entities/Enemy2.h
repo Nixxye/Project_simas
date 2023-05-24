@@ -1,7 +1,7 @@
 #pragma once 
 #include "Enemy.h"
 
-namespace entes
+namespace Entes
 {
     namespace Characters
     {

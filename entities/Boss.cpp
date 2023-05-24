@@ -3,7 +3,7 @@
 
 #define DELAY 1000
 
-namespace entes
+namespace Entes
 {
     namespace Characters
     {

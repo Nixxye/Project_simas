@@ -16,7 +16,7 @@ namespace Observers
     {
         pPlayer = nullptr;
     }
-    void PlayerObserver :: set_player (entes::Characters::Player* p)
+    void PlayerObserver :: set_player (Entes::Characters::Player* p)
     {
         pPlayer = p;
     }

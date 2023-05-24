@@ -14,7 +14,7 @@
 #include "../managers/ColisionManager.h"
 #include "../managers/GraphicsManager.h"
 #include "../managers/EventsManager.h"
-
+#include "../States/State.h"
 
 #include <fstream>
 #include <string>
@@ -29,9 +29,9 @@
 #define SAVE_STAGE_1 "../saves/savestate1.dat"
 */
 using namespace Managers;
-using namespace entes;
+using namespace Entes;
 using namespace Lists;
-using namespace entes::Characters;
+using namespace Entes::Characters;
 using namespace obstacles;
 using namespace std;
 
@@ -46,7 +46,7 @@ namespace Stages
         string save_file;
         string stage_info;
         ColisionManager colision_manager;
-        EventsManager events_manager;
+        EventsManager* events_manager;
     public:
         Stage(string savefile = "", string infofile = "");
         virtual ~Stage();
