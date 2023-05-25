@@ -1,4 +1,5 @@
 #include "../entities/Player.h"
+#include "Player.h"
 
 namespace Entes
 {
@@ -22,6 +23,7 @@ namespace Entes
         {
             move();
         }
+
         void Player::move(char direction, int pressed)
         {
             if (!pressed)
@@ -64,4 +66,3 @@ namespace Entes
         }
     }
 }
-

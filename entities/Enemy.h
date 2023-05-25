@@ -15,6 +15,7 @@ namespace Entes
             ~Enemy();
             void run();
             void move();
+            void collide(Entity* other){};
         };
     }    
 }

@@ -11,14 +11,17 @@ namespace Entes
 {
     namespace Characters
     {
-    private:
-
-    public:
-        Player(sf::Vector2f pos = sf::Vector2f(10.f, 0.f), sf::Vector2f velocity = sf::Vector2f(0.f, 0.f), sf::Vector2f size = sf::Vector2f(50.f, 50.f));
-        ~Player();
-        void run();
-        //Arrumar esse negócio feio
-        void move(char direction = ' ');
-        void collide(Entity* other){};
-    };
+        class Player: public Character
+        {
+        private:
+            Observers::PlayerObserver* pPObserver;
+        public:
+            Player(sf::Vector2f pos = sf::Vector2f(10.f, 0.f), sf::Vector2f velocity = sf::Vector2f(0.f, 0.f), sf::Vector2f size = sf::Vector2f(50.f, 50.f));
+            ~Player();
+            void run();
+            //Arrumar esse negócio feio
+            void move(char direction = ' ', int pressed = 0);
+            void collide(Entity* other){};
+        };
+    }
 }

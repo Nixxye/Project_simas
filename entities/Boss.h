@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Enemy.h"
+#include "../entities/Enemy.h"
 #include "../lists/EntityList.h"
 #include "../entities/Bullet.h"
 
@@ -9,6 +9,8 @@ namespace Entes
 {
     namespace Characters
     {
+        class Boss: public Enemy
+        {
         private:
             EntityList bullets;
             int attack_delay;
@@ -26,5 +28,6 @@ namespace Entes
             void attack();
             void draw();
             void collide(Entity* other){};
-    };
+        };
+    }
 }

@@ -5,12 +5,15 @@ namespace Entes
 {
     namespace Characters
     {
+        class Enemy1: public Enemy
+        {
         private:
         public:
             Enemy1();
             ~Enemy1();
             void collide(Entity* other){};
         
-    };   
+        };   
+    } 
 }
 
