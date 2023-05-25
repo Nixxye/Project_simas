@@ -1,4 +1,4 @@
-#include "Entity.h"
+#include "../entities/Entity.h"
 
 int Entes::Entity::speed(0);
 int Entes::Entity::count(0);

@@ -1,4 +1,4 @@
-#include "GameObject.h"
+#include "../entities/GameObject.h"
 
 int GameObject::count(0);
 int GameObject::speed(0);

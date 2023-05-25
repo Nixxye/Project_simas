@@ -1,15 +1,15 @@
-#include "Enemy2.h"
+#include "../entities/Enemy3.h"
 
 namespace Entes
 {
     namespace Characters
     {
-        Enemy2:: Enemy2():
+        Enemy3:: Enemy3():
         Enemy()
         {
 
         }
-        Enemy2:: ~Enemy2()
+        Enemy3:: ~Enemy3()
         {
             
         }    

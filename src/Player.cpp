@@ -1,5 +1,4 @@
 #include "../entities/Player.h"
-#include "Player.h"
 
 namespace Entes
 {
@@ -24,30 +23,26 @@ namespace Entes
             move();
         }
 
-        void Player::move(char direction, int pressed)
+        void Player::move(char direction)
         {
-            if (!pressed)
+
+            if (direction == 'R') //Right
             {
-                if (vel.x > 0)
-                {
-                    vel.x -= SPEED / 2;
-                }
-                else if (vel.x < 0)
-                {
-                    vel.x += SPEED / 2;
-                }
+                vel.x += SPEED;
             }
-            else
+            else if (direction == 'L') //Left
             {
-                if (direction == 'R') //Right
-                {
-                    vel.x += SPEED;
-                }
-                if (direction == 'L') //Left
-                {
-                    vel.x -= SPEED;
-                }
+                vel.x -= SPEED;
             }
+            else if (vel.x > 0)                               
+            {
+                vel.x -= SPEED / 2;
+            }
+            else if (vel.x < 0)
+            {
+                vel.x += SPEED / 2;
+            }
+
             if (vel.x <= SPEED/2 && vel.x >= -SPEED/2)
             {
                 vel.x = 0.0;
@@ -60,6 +55,7 @@ namespace Entes
             {
                 vel.y -= 10.f;
             }
+            //N sei pq a gravidade está mais rápida quando nos movemos;
             body.setPosition(body.getPosition() + vel);
             player_position = body.getPosition();
             speed = (int) sqrt(vel.x*vel.x + vel.y*vel.y);

@@ -1,4 +1,4 @@
-#include "PlayerObserver.h"
+#include "../observers/PlayerObserver.h"
 #include "../entities/Player.h"
 
 namespace Observers 
@@ -26,12 +26,12 @@ namespace Observers
         PlayerKeys [key_left] = 'L';
         PlayerKeys [key_up] = 'U';
     }
-    void PlayerObserver :: notify (sf::Keyboard::Key key_code, int pressed)
+    void PlayerObserver :: notify (sf::Keyboard::Key key_code)
     {
         std::map <sf::Keyboard::Key,char> :: iterator it = PlayerKeys.find(key_code);
         if (it == PlayerKeys.end())
             return; 
-        pPlayer->move(it->second, pressed);
+        pPlayer->move(it->second);
         //std::cout<<it->second<<std::endl;
     }
 

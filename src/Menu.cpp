@@ -1,4 +1,4 @@
-#include "Menu.h"
+#include "../menu/Menu.h"
 
 Menu :: Menu()
 {

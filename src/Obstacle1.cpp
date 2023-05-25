@@ -1,4 +1,4 @@
-#include "Obstacle1.h"
+#include "../entities/Obstacle1.h"
 
 namespace obstacles
 {

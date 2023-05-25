@@ -1,5 +1,4 @@
 #include "../stages/Stage.h"
-#include "Stage.h"
 
 namespace Stages
 {

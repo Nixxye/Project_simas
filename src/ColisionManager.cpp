@@ -1,5 +1,4 @@
 #include "../managers/ColisionManager.h"
-#include "ColisionManager.h"
 //Coeficiente de restituição 
 #define CR 0.65
 
