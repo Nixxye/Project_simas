@@ -9,24 +9,22 @@ namespace Entes
 {
     namespace Characters
     {
-        class Boss: public Enemy
-        {
-            private:
-                EntityList bullets;
-                int attack_delay;
-                Bullet b1;
-                Bullet b2;
-                Bullet b3;
-                Bullet b4;
-                Bullet b5;
-                Bullet b6;
-            public:
-                Boss();
-                ~Boss();
-                void run();
-                void move();
-                void attack();
-                void draw();
-        };
-    }
+        private:
+            EntityList bullets;
+            int attack_delay;
+            Bullet b1;
+            Bullet b2;
+            Bullet b3;
+            Bullet b4;
+            Bullet b5;
+            Bullet b6;
+        public:
+            Boss();
+            ~Boss();
+            void run();
+            void move();
+            void attack();
+            void draw();
+            void collide(Entity* other){};
+    };
 }
