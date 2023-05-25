@@ -20,7 +20,7 @@ namespace Entes
             ~Player();
             void run();
             //Arrumar esse negócio feio
-            void move(char direction = ' ');
+            void move(char direction = '0');
         };
     }
 }

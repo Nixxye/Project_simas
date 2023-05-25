@@ -15,10 +15,7 @@ void Game::run()
 {
     while (graphics_manager->window_open())
     {
-        graphics_manager->close_window();
-
         graphics_manager->clean();
-
 
         stage1.run();
         

@@ -19,7 +19,7 @@ namespace Managers
 
     EventsManager :: EventsManager ()
     {
-
+        pGM = GraphicsManager::get_instance();
     }
     EventsManager :: ~EventsManager ()
     {
@@ -48,12 +48,14 @@ namespace Managers
                 pGM->close_window();
             else if (event.type == sf::Event::KeyPressed)
             {
+                cout<<event.key.code<<endl;
                 for (it = list_observers.begin(); it != list_observers.end(); it++)
                 {
                     (*it)->notify(event.key.code);
                 }
 
             }
+            
         }
     }
 } 

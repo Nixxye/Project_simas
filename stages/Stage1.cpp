@@ -16,8 +16,7 @@ namespace Stages
     {
         //Arrumar o código com o gerenciador de eventos e gráfico:
         //Feio, horrível, pavoroso, tira daqui!
-        //sf::Event event;
-        //events_manager.move_players(event);
+        events_manager->run();
         players.run();
         enemies.run();
         obstacles.run();

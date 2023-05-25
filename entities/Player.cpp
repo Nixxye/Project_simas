@@ -24,25 +24,28 @@ namespace Entes
         }
         void Player::move(char direction)
         {
+            if (direction == '0')
+            {
+                if (vel.x > 0)
+                {
+                    vel.x -= SPEED / 2;
+                }
+                else if (vel.x < 0)
+                {
+                    vel.x += SPEED / 2;
+                }
+                if (vel.x <= SPEED/2 && vel.x >= -SPEED/2)
+                {
+                    vel.x = 0.0;
+                }
+            }
             if (direction == 'R') //Right
             {
                 vel.x += SPEED;
             }
-            else if (direction == 'L') //Left
+            if (direction == 'L') //Left
             {
                 vel.x -= SPEED;
-            }
-            else if (vel.x > 0)
-            {
-                vel.x -= SPEED / 2;
-            }
-            else if (vel.x < 0)
-            {
-                vel.x += SPEED / 2;
-            }
-            if (vel.x <= SPEED/2 && vel.x >= -SPEED/2)
-            {
-                vel.x = 0.0;
             }
             if (!grounded)
             {

@@ -7,9 +7,11 @@ namespace Observers
     PlayerObserver::PlayerObserver():
     Observer()
     {
-        PlayerKeys [sf::Keyboard::A] = 'R';
-        PlayerKeys [sf::Keyboard::D] = 'L';
+    
+        PlayerKeys [sf::Keyboard::A] = 'L';
+        PlayerKeys [sf::Keyboard::D] = 'R';
         PlayerKeys [sf::Keyboard::W] = 'U';
+        
     }
 
     PlayerObserver::~PlayerObserver() 
@@ -28,10 +30,11 @@ namespace Observers
     }
     void PlayerObserver :: notify (sf::Keyboard::Key key_code)
     {
-        map <sf::Keyboard::Key,char> :: iterator it = PlayerKeys.find(key_code);
+        std::map <sf::Keyboard::Key,char> :: iterator it = PlayerKeys.find(key_code);
         if (it == PlayerKeys.end())
             return; 
         pPlayer->move(it->second);
+        //std::cout<<it->second<<std::endl;
     }
 
 } 
