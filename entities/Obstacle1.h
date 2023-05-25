@@ -9,6 +9,7 @@ namespace obstacles
         public:
             Obstacle1();
             ~Obstacle1();
+            void collide(Entity* other){};
         
     };    
 }

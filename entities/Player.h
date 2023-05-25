@@ -17,5 +17,6 @@ namespace characters
         void run();
         //Arrumar esse negócio feio
         void move(char direction = ' ');
+        void collide(Entity* other){};
     };
 }

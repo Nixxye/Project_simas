@@ -25,5 +25,6 @@ namespace characters
             void move();
             void attack();
             void draw();
+            void collide(Entity* other){};
     };
 }

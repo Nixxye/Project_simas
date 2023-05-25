@@ -12,5 +12,6 @@ namespace characters
         ~Bullet();
         void run();
         void move();
+        void collide(Entity* other){};
     };
 }

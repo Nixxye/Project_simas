@@ -23,7 +23,8 @@ namespace entes
             virtual void draw();
             virtual void run() = 0;
             virtual void move(char direction = ' '){};
-            //virtual void collide() = 0;
+            //Função pode mudar.
+            virtual void collide(Entity* other) = 0;
 
             void set_position(sf::Vector2f pos){body.setPosition(pos);}
             void set_grounded(bool g){grounded = g;}

@@ -9,6 +9,7 @@ namespace characters
         public:
             Enemy2();
             ~Enemy2();
+            void collide(Entity* other){};
         
     };    
 }
