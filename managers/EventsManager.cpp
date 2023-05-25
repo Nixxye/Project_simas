@@ -20,6 +20,10 @@ namespace Managers
     EventsManager :: EventsManager ()
     {
         pGM = GraphicsManager::get_instance();
+
+        list_keys.push_back(sf::Keyboard::A);
+        list_keys.push_back(sf::Keyboard::W);
+        list_keys.push_back(sf::Keyboard::D);
     }
     EventsManager :: ~EventsManager ()
     {
@@ -42,6 +46,17 @@ namespace Managers
     void EventsManager :: run()
     {
         sf::Event event;
+        for (it_keys = list_keys.begin(); it_keys != list_keys.end();it_keys++)
+        {
+            if (sf::Keyboard::isKeyPressed(*it_keys))
+            {
+                for (it = list_observers.begin(); it != list_observers.end(); it++)
+                {
+                    (*it)->notify((*it_keys),1);
+                }
+            }
+
+        }
         while (pGM->get_window()->pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
@@ -51,7 +66,7 @@ namespace Managers
                 cout<<event.key.code<<endl;
                 for (it = list_observers.begin(); it != list_observers.end(); it++)
                 {
-                    (*it)->notify(event.key.code, (event.type == sf::Event::KeyPressed? 1 : 0));
+                    //(*it)->notify(event.key.code, (event.type == sf::Event::KeyPressed? 1 : 0));
                 }
             }
             

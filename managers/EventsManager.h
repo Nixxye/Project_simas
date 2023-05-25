@@ -29,7 +29,9 @@ namespace Managers
             StateManager* pSM;
             std::list <Observers::Observer*> list_observers;
             std::list <Observers::Observer*> :: iterator it;
-
+            std :: list <sf::Keyboard::Key> list_keys;
+            std :: list <sf::Keyboard::Key> :: iterator it_keys;
+            
             static EventsManager* instance;
             EventsManager();
         public:
