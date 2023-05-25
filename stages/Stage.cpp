@@ -82,15 +82,6 @@ namespace Stages
             file << (*it)->get_id() <<endl<< (*it)->get_position().x << endl <<(*it)->get_position().y << endl<<(*it)->get_vel().x << endl<<(*it)->get_vel().y <<endl;
         }
         file << endl;
-        /*
-        file <<"#obstacles" <<endl;
-        file << obstacles.get_size() << endl << endl;
-        for (List<Entity>::Iterator<Entity> it = obstacles.get_first(); it != nullptr; it++)
-        {
-            file << (*it)->get_id() <<endl<< (*it)->get_position().x << endl <<(*it)->get_position().y << endl<<(*it)->get_vel().x << endl<<(*it)->get_vel().y <<endl;
-        }
-        file << endl;
-        */
         file.close();
     }
     void Stage::load()
