@@ -61,6 +61,7 @@ namespace Managers
         {
             if (event.type == sf::Event::Closed)
                 pGM->close_window();
+            /*
             else if (event.type == sf::Event::KeyPressed || event.type == sf::Event::KeyReleased)
             {
                 cout<<event.key.code<<endl;
@@ -69,6 +70,7 @@ namespace Managers
                     //(*it)->notify(event.key.code, (event.type == sf::Event::KeyPressed? 1 : 0));
                 }
             }
+            */
             
         }
     }
