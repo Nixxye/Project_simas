@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../States/State.h"
+#include "../states/State.h"
 #include <vector>
 
 

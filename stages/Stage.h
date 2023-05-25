@@ -14,20 +14,22 @@
 #include "../managers/ColisionManager.h"
 #include "../managers/GraphicsManager.h"
 #include "../managers/EventsManager.h"
-#include "../States/State.h"
+#include "../states/State.h"
 
 #include <fstream>
 #include <string>
 #include <iostream>
 
 //Windows:
+/*
 #define SAVE_STAGE_1 "saves/savestate1.dat"
 #define FILE_STAGE_1 "saves/stage1.dat"
+*/
 //Linux:
-/*
+
 #define FILE_STAGE_1 "../saves/stage1.dat"
 #define SAVE_STAGE_1 "../saves/savestate1.dat"
-*/
+
 using namespace Managers;
 using namespace Entes;
 using namespace Lists;

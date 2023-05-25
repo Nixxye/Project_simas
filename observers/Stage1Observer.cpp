@@ -15,7 +15,7 @@ namespace Observers
     {
         pStage1 = pS;
     }
-    void Stage1Observer :: notify (sf::Keyboard::Key key_code)
+    void Stage1Observer :: notify (sf::Keyboard::Key key_code, int pressed)
     {
 
             if (sf::Keyboard::A == key_code)

@@ -22,9 +22,9 @@ namespace Entes
         {
             move();
         }
-        void Player::move(char direction)
+        void Player::move(char direction, int pressed)
         {
-            if (direction == '0')
+            if (!pressed)
             {
                 if (vel.x > 0)
                 {
@@ -34,18 +34,21 @@ namespace Entes
                 {
                     vel.x += SPEED / 2;
                 }
-                if (vel.x <= SPEED/2 && vel.x >= -SPEED/2)
+            }
+            else
+            {
+                if (direction == 'R') //Right
                 {
-                    vel.x = 0.0;
+                    vel.x += SPEED;
+                }
+                if (direction == 'L') //Left
+                {
+                    vel.x -= SPEED;
                 }
             }
-            if (direction == 'R') //Right
+            if (vel.x <= SPEED/2 && vel.x >= -SPEED/2)
             {
-                vel.x += SPEED;
-            }
-            if (direction == 'L') //Left
-            {
-                vel.x -= SPEED;
+                vel.x = 0.0;
             }
             if (!grounded)
             {

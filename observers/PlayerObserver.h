@@ -27,7 +27,7 @@ namespace Observers
 
             ~PlayerObserver();
 
-            void notify(sf::Keyboard::Key key_code);
+            void notify(sf::Keyboard::Key key_code, int pressed);
 
             void set_player(Entes::Characters::Player* p);
 
