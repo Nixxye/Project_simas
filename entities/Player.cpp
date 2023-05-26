@@ -50,11 +50,11 @@ namespace Entes
             {
                 vel.x = 0.0;
             }
-            if (!grounded)
+            if (!grounded && direction == '0')
             {
                 vel.y += G;
             }
-            else if (direction == 'U') //Up
+            else if (grounded && direction == 'U') //Up
             {
                 vel.y -= 10.f;
             }

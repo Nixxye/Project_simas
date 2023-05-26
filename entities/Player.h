@@ -19,8 +19,14 @@ namespace Entes
             Player(sf::Vector2f pos = sf::Vector2f(10.f, 0.f), sf::Vector2f velocity = sf::Vector2f(0.f, 0.f), sf::Vector2f size = sf::Vector2f(50.f, 50.f));
             ~Player();
             void run();
+<<<<<<< Updated upstream
             //Arrumar esse negócio feio
             void move(char direction = '0', int pressed = 0);
+=======
+            // Arrumar esse negócio feio
+            void move(char direction = '0');
+            void collide(Entity *other){};
+>>>>>>> Stashed changes
         };
     }
 }
