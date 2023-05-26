@@ -34,11 +34,11 @@ namespace Entes
             {
                 vel.x -= SPEED;
             }
-            else if (vel.x > 0)                               
+            if (direction == '0' && vel.x > 0)                               
             {
                 vel.x -= SPEED / 2;
             }
-            else if (vel.x < 0)
+            else if (direction == '0' && vel.x < 0)
             {
                 vel.x += SPEED / 2;
             }
@@ -53,12 +53,15 @@ namespace Entes
             }
             else if (direction == 'U') //Up
             {
-                vel.y -= 10.f;
+                vel.y -= 20.f;
             }
             //N sei pq a gravidade está mais rápida quando nos movemos;
-            body.setPosition(body.getPosition() + vel);
-            player_position = body.getPosition();
-            speed = (int) sqrt(vel.x*vel.x + vel.y*vel.y);
+            if (direction == '0')
+            {
+                body.setPosition(body.getPosition() + vel);
+                player_position = body.getPosition();
+                speed = (int) sqrt(vel.x*vel.x + vel.y*vel.y);
+            }
         }
     }
 }
