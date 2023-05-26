@@ -1,61 +1,61 @@
 #include "../lists/EntityList.h"
-#include "../entities/Enemy.h"
+//#include "../entities/Enemy.h"
 
-
-#include <iostream>
-
-using namespace std;
-EntityList::EntityList():
-list()
+namespace Lists
 {
-
-}
-
-EntityList::~EntityList()
-{
-
-}
-
-void EntityList::run()
-{
-    List<Entity>::Iterator<Entity> aux = list.get_first();
-    while(aux != nullptr)
+    EntityList::EntityList():
+    list()
     {
-        (*aux)->run();
-        aux++;        
+
     }
-}
 
-void EntityList::draw()
-{
-    List<Entity>::Iterator<Entity> aux = list.get_first();
-    while(aux != nullptr)
+    EntityList::~EntityList()
     {
-        (*aux)->draw();
-        aux++; 
+
     }
- }   
 
-void EntityList::add(Entity* ent)
-{
-    list.push(ent);
-}
-void EntityList::set_position(sf::Vector2f pos)
-{
-    List<Entity>::Iterator<Entity> aux = list.get_first();
-    while(aux != nullptr)
+    void EntityList::run()
     {
-        (*aux)->set_position(pos);
-        aux++;        
+        Lists::List<Entes::Entity>::Iterator<Entes::Entity> aux = list.get_first();
+        while(aux != nullptr)
+        {
+            (*aux)->run();
+            aux++;        
+        }
+    }
+
+    void EntityList::draw()
+    {
+        Lists::List<Entes::Entity>::Iterator<Entes::Entity> aux = list.get_first();
+        while(aux != nullptr)
+        {
+            (*aux)->draw();
+            aux++; 
+        }
+    }   
+
+    void EntityList::add(Entes::Entity* ent)
+    {
+        list.push(ent);
+    }
+    void EntityList::set_position(sf::Vector2f pos)
+    {
+        Lists::List<Entes::Entity>::Iterator<Entes::Entity> aux = list.get_first();
+        while(aux != nullptr)
+        {
+            (*aux)->set_position(pos);
+            aux++;        
+        }    
+    }
+    void EntityList::set_alive(bool a)
+    {
+        Lists::List<Entes::Entity>::Iterator<Entes::Entity> aux = list.get_first();
+        while(aux != nullptr)
+        {
+            (*aux)->set_alive(a);
+            aux++;       
+        }    
     }    
 }
-void EntityList::set_alive(bool a)
-{
-    List<Entity>::Iterator<Entity> aux = list.get_first();
-    while(aux != nullptr)
-    {
-        (*aux)->set_alive(a);
-        aux++;       
-    }    
-}
+
 

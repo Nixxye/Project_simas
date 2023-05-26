@@ -1,15 +1,20 @@
 #pragma once 
+
 #include "Obstacle.h"
 
-namespace obstacles
+namespace Entes
 {
-    class Obstacle2 : public Obstacle
+    namespace Obstacles
     {
-        private:
-        public:
-            Obstacle2();
-            ~Obstacle2();
-            void collide(Entity* other){};
-        
-    };    
+        class Obstacle2 : public Obstacle
+        {
+            private:
+            public:
+                Obstacle2();
+                ~Obstacle2();
+                void collide(Entity* other){};
+            
+        };    
+    }    
 }
+

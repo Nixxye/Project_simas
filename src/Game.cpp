@@ -1,7 +1,7 @@
 #include "../main/Game.h"
 
 Game::Game():
-graphics_manager(GraphicsManager::get_instance()),
+graphics_manager(Managers::GraphicsManager::get_instance()),
 stage1()
 {
     run();

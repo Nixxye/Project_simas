@@ -11,10 +11,6 @@
 #include <iostream>
 #include <list>
 
-using namespace std;
-//using namespace Entes::Characters;
-
-
 namespace Observers 
 {
     class Observer;

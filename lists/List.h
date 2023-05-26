@@ -1,7 +1,5 @@
 #pragma once
 
-#include <iostream>
-using namespace std;
 
 namespace Lists
 {
@@ -29,7 +27,6 @@ namespace Lists
             {}
             ~Element()
             {
-                //Famoso paradoxo do tudo dá errado na lista lkçahsfdlkçjasdfs q ódio.
                 if (data)
                 {
                     delete data;

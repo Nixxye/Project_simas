@@ -3,11 +3,10 @@
 
 namespace Observers 
 {
-
     Observer::Observer()
     {
-        this->pEM = EventsManager::get_instance();
-        this->pSM = StateManager::get_instance();
+        this->pEM = Managers::EventsManager::get_instance();
+        this->pSM = Managers::StateManager::get_instance();
         pEM->add_observer(this);
     }
 
@@ -15,5 +14,4 @@ namespace Observers
     {
         pEM->remove_observer(this);
     }
-
 } 

@@ -30,36 +30,31 @@
 #define FILE_STAGE_1 "../saves/stage1.dat"
 #define SAVE_STAGE_1 "../saves/savestate1.dat"
 
-using namespace Managers;
-using namespace Entes;
-using namespace Lists;
-using namespace Entes::Characters;
-using namespace obstacles;
-using namespace std;
-
 namespace Stages
 {
     class Stage: public GameObject
     {
     protected:
-        EntityList obstacles;
-        EntityList enemies;
-        EntityList players;
-        string save_file;
-        string stage_info;
-        ColisionManager colision_manager;
-        EventsManager* events_manager;
+        Lists::EntityList obstacles;
+        Lists::EntityList enemies;
+        Lists::EntityList players;
+
+        std::string save_file;
+        std::string stage_info;
+        
+        Managers::ColisionManager colision_manager;
+        Managers::EventsManager* events_manager;
     public:
-        Stage(string savefile = "", string infofile = "");
+        Stage(std::string savefile = "", std::string infofile = "");
         virtual ~Stage();
         virtual void run() = 0;
         virtual void create_enemies();
         virtual void create_obstacles();
         void draw();
         
-        void add_enemy(Entity* enemy);
-        void add_obstacle(Entity* obstacle);
-        void add_player(Entity* player);
+        void add_enemy(Entes::Entity* enemy);
+        void add_obstacle(Entes::Entity* obstacle);
+        void add_player(Entes::Entity* player);
 
         void save();
         void load();

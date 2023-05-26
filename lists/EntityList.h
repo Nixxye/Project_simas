@@ -3,23 +3,24 @@
 #include "../entities/Entity.h"
 #include "../lists/List.h"
 
-using namespace Entes;
-using namespace Lists;
-class EntityList
+namespace Lists
 {
-private:
-    List<Entity> list;
-public:
-    EntityList();
-    ~EntityList();
+    class EntityList
+    {
+    private:
+        Lists::List<Entes::Entity> list;
+    public:
+        EntityList();
+        ~EntityList();
 
-    void run();
-    void draw();
-    void add(Entity* ent);
+        void run();
+        void draw();
+        void add(Entes::Entity* ent);
 
-    void set_position(sf::Vector2f pos);
-    void set_alive(bool a);
+        void set_position(sf::Vector2f pos);
+        void set_alive(bool a);
 
-    const int get_size() const { return list.get_size();}
-    List<Entity>::Iterator<Entity> get_first(){ return list.get_first();}
-};
+        const int get_size() const { return list.get_size();}
+        Lists::List<Entes::Entity>::Iterator<Entes::Entity> get_first(){ return list.get_first();}
+    };    
+}

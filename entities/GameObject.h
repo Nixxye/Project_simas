@@ -7,8 +7,6 @@
 #define SPEED 0.2
 #define VEL_MAX 4.0
 
-using namespace Managers;
-
 class GameObject
 {
 protected:
@@ -18,7 +16,7 @@ protected:
     sf::RectangleShape body;
     static int speed;
     sf::Vector2f position;
-    static GraphicsManager* graphics_manager;
+    static Managers::GraphicsManager* graphics_manager;
 public:
     GameObject();
     virtual ~GameObject();

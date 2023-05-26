@@ -2,7 +2,7 @@
 
 namespace Stages
 {
-    Stage::Stage(string savefile, string infofile):
+    Stage::Stage(std::string savefile, std::string infofile):
     obstacles(),
     enemies(),
     players(),
@@ -33,21 +33,21 @@ namespace Stages
         //N sei o q fazer aqui.
     }
     
-    void Stage::add_enemy(Entity* enemy)
+    void Stage::add_enemy(Entes::Entity* enemy)
     {
         if (enemy)
         {
             enemies.add(enemy);
         }
     }
-    void Stage::add_obstacle(Entity *obstacle)
+    void Stage::add_obstacle(Entes::Entity *obstacle)
     {
         if (obstacle)
         {
             obstacles.add(obstacle);
         }
     }
-    void Stage::add_player(Entity *player)
+    void Stage::add_player(Entes::Entity *player)
     {
         if (player)
         {
@@ -56,42 +56,42 @@ namespace Stages
     }
     void Stage::save()
     {
-        ofstream file(save_file);
+        std::ofstream file(save_file);
         if (!file)
         {
-            cout<<"ERROR 1"<<endl;
+            std::cout<<"ERROR 1"<<std::endl;
             exit(1);
         }
 
-        file <<"#players"<<endl;
-        file <<players.get_size() << endl << endl;
+        file <<"#players"<<std::endl;
+        file <<players.get_size() << std::endl << std::endl;
 
-        for (List<Entity>::Iterator<Entity> it = players.get_first(); it != nullptr; it++)
+        for (Lists::List<Entes::Entity>::Iterator<Entes::Entity> it = players.get_first(); it != nullptr; it++)
         {
-            file << (*it)->get_id() <<endl<< (*it)->get_position().x << endl <<(*it)->get_position().y << endl<<(*it)->get_vel().x << endl<<(*it)->get_vel().y <<endl;
+            file << (*it)->get_id() <<std::endl<< (*it)->get_position().x << std::endl <<(*it)->get_position().y << std::endl<<(*it)->get_vel().x << std::endl<<(*it)->get_vel().y <<std::endl;
         }
-        file << endl;
+        file << std::endl;
 
-        file <<"#enemies"<<endl;
+        file <<"#enemies"<<std::endl;
 
-        file << enemies.get_size() << endl << endl;
-        for (List<Entity>::Iterator<Entity> it = enemies.get_first(); it != nullptr; it++)
+        file << enemies.get_size() << std::endl << std::endl;
+        for (Lists::List<Entes::Entity>::Iterator<Entes::Entity> it = enemies.get_first(); it != nullptr; it++)
         {
-            file << (*it)->get_id() <<endl<< (*it)->get_position().x << endl <<(*it)->get_position().y << endl<<(*it)->get_vel().x << endl<<(*it)->get_vel().y <<endl;
+            file << (*it)->get_id() <<std::endl<< (*it)->get_position().x << std::endl <<(*it)->get_position().y << std::endl<<(*it)->get_vel().x << std::endl<<(*it)->get_vel().y <<std::endl;
         }
-        file << endl;
+        file << std::endl;
         file.close();
     }
     void Stage::load()
     {   
-        ifstream file(save_file);
+        std::ifstream file(save_file);
         int n = 0;
-        Entity* aux = NULL;
-        string line;
+        Entes::Entity* aux = NULL;
+        std::string line;
 
         if (!file)
         {
-            cout <<"ERROR: 2"<<endl;
+            std::cout <<"ERROR: 2"<<std::endl;
             exit(2); //exit
         }
 
@@ -99,7 +99,7 @@ namespace Stages
         getline(file, line);
         if (line != "#players")
         {
-            cout << "ERROR 4 "<< endl;
+            std::cout << "ERROR 4 "<< std::endl;
             file.close();
             exit(3);//exit
         }
@@ -115,7 +115,7 @@ namespace Stages
             //cout << id << posX << posY << velX << velY << endl;
             getline(file, line);
             //Static cast;
-            aux = new Player(sf::Vector2f(posX, posY), sf::Vector2f(velX, velY), sf::Vector2f(50.f, 50.f));
+            aux = new Entes::Characters::Player(sf::Vector2f(posX, posY), sf::Vector2f(velX, velY), sf::Vector2f(50.f, 50.f));
             add_player(aux);
             //cout<<"LOADED"<<endl;
         }
@@ -123,13 +123,13 @@ namespace Stages
         getline(file, line);
         if (line != "#enemies")
         {
-            cout << "ERROR 51 "<< endl;
+            std::cout << "ERROR 51 "<< std::endl;
             file.close();
             exit(3);//exit
         }
         file >> n;
-        getline(file, line);
-        getline(file, line);
+        std::getline(file, line);
+        std::getline(file, line);
         for (int i = 0; i < n; i++)
         {
             int id;
@@ -137,35 +137,35 @@ namespace Stages
 
             file >> id >> posX >> posY >> velX >> velY;
             //cout << id << posX << posY << velX << velY << endl;
-            getline(file, line);
+            std::getline(file, line);
             //Static cast;
-            aux = new Enemy(sf::Vector2f(posX, posY), sf::Vector2f(velX, velY), sf::Vector2f(50.f, 50.f));
+            aux = new Entes::Characters::Enemy(sf::Vector2f(posX, posY), sf::Vector2f(velX, velY), sf::Vector2f(50.f, 50.f));
             add_enemy(aux);
             //cout<<"LOADED"<<endl;
         }
         file.close();
 
 
-        ifstream file2(stage_info);
+        std::ifstream file2(stage_info);
 
         if (!file2)
         {
-            cout <<"ERROR: 4"<<endl;
+            std::cout <<"ERROR: 4"<<std::endl;
             exit(2);
         }
 
-        getline(file2, line);
+        std::getline(file2, line);
 
         if (line != "#obstacles")
         {
-            cout << "ERROR 6 "<< endl;
+            std::cout << "ERROR 6 "<< std::endl;
             file2.close();
             exit(3);
         }
         file2 >> n;
 
-        getline(file2, line);
-        getline(file2, line);
+        std::getline(file2, line);
+        std::getline(file2, line);
         for (int i = 0; i < n; i++)
         {
             int id;
@@ -173,9 +173,9 @@ namespace Stages
 
             file2 >> posX >> posY >> sizeX >> sizeY;
             //cout << id << posX << posY << velX << velY << endl;
-            getline(file2, line);
+            std::getline(file2, line);
             //Static cast;
-            aux = new Obstacle(sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY));
+            aux = new Entes::Obstacles::Obstacle(sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY));
             add_obstacle(aux);
             //cout<<"LOADED"<<endl;
         }

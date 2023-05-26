@@ -4,14 +4,14 @@
 #include "../managers/StateManager.h"
 
 #include <SFML/Graphics.hpp>
-using namespace Managers;
+
 namespace Observers 
 {
     class Observer 
     {
         protected:
-            EventsManager* pEM;
-            StateManager*  pSM;           
+            Managers::EventsManager* pEM;
+            Managers::StateManager*  pSM;           
 
         public:
             Observer();

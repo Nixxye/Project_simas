@@ -1,14 +1,18 @@
 #include "../entities/Obstacle3.h"
 
-namespace obstacles
+namespace Entes
 {
-    Obstacle3:: Obstacle3():
-    Obstacle()
+    namespace Obstacles
     {
+        Obstacle3:: Obstacle3():
+        Obstacle()
+        {
 
-    }
-    Obstacle3:: ~Obstacle3()
-    {
-        
-    }
+        }
+        Obstacle3:: ~Obstacle3()
+        {
+            
+        }
+    }    
 }
+

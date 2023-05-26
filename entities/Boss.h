@@ -12,7 +12,7 @@ namespace Entes
         class Boss: public Enemy
         {
         private:
-            EntityList bullets;
+            Lists::EntityList bullets;
             int attack_delay;
             Bullet b1;
             Bullet b2;
