@@ -3,8 +3,6 @@
 #include "../states/State.h"
 #include <vector>
 
-
-
 namespace Managers
 {
     class StateManager
