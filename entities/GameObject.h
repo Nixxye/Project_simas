@@ -17,6 +17,7 @@ protected:
     static int speed;
     sf::Vector2f position;
     static Managers::GraphicsManager* graphics_manager;
+    sf :: Texture* texture;
 public:
     GameObject();
     virtual ~GameObject();

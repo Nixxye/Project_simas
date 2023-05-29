@@ -7,7 +7,10 @@ namespace Entes
         Enemy::Enemy(sf::Vector2f pos, sf::Vector2f velocity, sf::Vector2f size):
         Character(pos, velocity, size)
         {
-            body.setFillColor(sf::Color::Magenta);
+            texture = graphics_manager->load_textures("../entities/enemy.png");
+            body.setTexture(texture);
+            
+            //body.setFillColor(sf::Color::Magenta);
             //body.setPosition(300.f, 300.f);
         }
 

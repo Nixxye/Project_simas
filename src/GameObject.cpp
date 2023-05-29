@@ -9,6 +9,7 @@ id(count++),
 body(sf::Vector2f(50.f, 50.f)),
 position(200.f, 200.f)
 {
+
 }
 
 
