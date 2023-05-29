@@ -28,6 +28,7 @@ namespace Managers
         void show();
         void clean();
         void draw(sf::RectangleShape* body);
+        void draw(sf::Text* text);
         sf::Texture* load_textures(std::string path);
         void center(sf::Vector2f position1);
         void center(sf::Vector2f position1, sf::Vector2f position2 );

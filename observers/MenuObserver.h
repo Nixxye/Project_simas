@@ -1,11 +1,13 @@
 #pragma once 
 
-#include "Observer.h"
- 
+#include "../observers/Observer.h"
+
+
 namespace Menus
 {
     class Menu;
 }
+
 namespace Observers
 {
     class MenuObserver: public Observer
@@ -15,7 +17,7 @@ namespace Observers
     public:
         MenuObserver();
         ~MenuObserver();
-        void notify(sf::Keyboard::Key key_code)
-        void set_menu(Menus::Menu *pM) { if (pM) { pMenu = pM; }}
-    }
+        void notify(sf::Keyboard::Key key_code);
+        void set_menu(Menus::Menu *pM) { pMenu = pM; }
+    };
 }

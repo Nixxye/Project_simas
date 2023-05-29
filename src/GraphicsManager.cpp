@@ -44,6 +44,10 @@ namespace Managers
     {
         window->draw(*body);
     }
+    void GraphicsManager:: draw (sf::Text* text)
+    {
+        window->draw(*text);
+    }
     sf::Texture* GraphicsManager:: load_textures (std::string path)
     {
         std::map<const std::string, sf::Texture*> :: iterator it = textures.find(path);
