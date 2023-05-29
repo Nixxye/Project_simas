@@ -81,6 +81,11 @@ namespace Managers
         //if (position1.x)
         window->setView(cam);
     }
+    void GraphicsManager::reset_camera()
+    {
+        cam.setCenter(sf::Vector2f(WIDTH / 2, HEIGHT / 2));
+        window->setView(cam);
+    }
     sf::RenderWindow* GraphicsManager:: get_window () const 
     {
         return window;

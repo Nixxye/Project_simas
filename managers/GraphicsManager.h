@@ -35,6 +35,7 @@ namespace Managers
         sf::Texture* load_textures(std::string path);
         void center(sf::Vector2f position1);
         void center(sf::Vector2f position1, sf::Vector2f position2 );
+        void reset_camera();
         sf::RenderWindow* get_window() const;
         void close_window ();
         bool window_open();

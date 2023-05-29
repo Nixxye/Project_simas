@@ -27,6 +27,7 @@ namespace Managers
         list_keys.push_back(sf::Keyboard::Up);
         list_keys.push_back(sf::Keyboard::Down);
         list_keys.push_back(sf::Keyboard::Enter);
+        list_keys.push_back(sf::Keyboard::Escape);
     }
     EventsManager :: ~EventsManager ()
     {

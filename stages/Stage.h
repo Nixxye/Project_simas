@@ -15,6 +15,8 @@
 #include "../managers/GraphicsManager.h"
 #include "../managers/EventsManager.h"
 #include "../states/State.h"
+#include "../observers/StageObserver.h"
+#include "../stages/Stage.h"
 
 #include <fstream>
 #include <string>
@@ -32,9 +34,11 @@
 
 namespace Stages
 {
-    class Stage: public GameObject
+    class Stage: public GameObject, public States::State
     {
     protected:
+        Observers::StageObserver* pSObserver;
+
         Lists::EntityList obstacles;
         Lists::EntityList enemies;
         Lists::EntityList players;
@@ -45,7 +49,7 @@ namespace Stages
         Managers::ColisionManager colision_manager;
         Managers::EventsManager* events_manager;
     public:
-        Stage(std::string savefile = "", std::string infofile = "");
+        Stage(std::string savefile = "", std::string infofile = "", int id = -1);
         virtual ~Stage();
         virtual void run() = 0;
         virtual void create_enemies();
@@ -58,5 +62,7 @@ namespace Stages
 
         void save();
         void load();
+
+        void setObservers();
     };
 }

@@ -38,8 +38,7 @@ namespace Managers
     }
     int StateManager::get_CurrentStateID()
     {
-        return 0;
-        //return pCurrentState->get_id();
+        return currentState;
     }
     int StateManager::get_LastStateID()
     {

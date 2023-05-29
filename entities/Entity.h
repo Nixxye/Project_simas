@@ -1,5 +1,8 @@
 #pragma once
+
 #include "GameObject.h"
+#include "../observers/Observer.h"
+
 namespace Entes
 {
     class Entity : public GameObject
@@ -37,12 +40,7 @@ namespace Entes
             sf::Vector2f get_size(){return body.getSize();} 
             const int get_id() const {return id;}
             const bool get_alive() const {return alive;}
-            //Função de teste:
-            void troca_cor(){
-                if (body.getFillColor() == sf::Color::Red)
-                    body.setFillColor(sf::Color::Green);
-                else
-                    body.setFillColor(sf::Color::Red);
-            }          
+
+            virtual Observers::Observer* get_observer() {return nullptr;}     
     };
 }

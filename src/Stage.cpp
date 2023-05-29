@@ -2,7 +2,8 @@
 
 namespace Stages
 {
-    Stage::Stage(std::string savefile, std::string infofile):
+    Stage::Stage(std::string savefile, std::string infofile, int id):
+    States::State(id),
     obstacles(),
     enemies(),
     players(),
@@ -15,11 +16,17 @@ namespace Stages
         colision_manager.set_player_list(&players);
         colision_manager.set_obstacle_list(&obstacles);     
         events_manager = Managers::EventsManager::get_instance();
+
+        pSObserver = new Observers::StageObserver(id);
+        pSObserver->set_stage(this);
+        setObservers();
     }
 
     Stage::~Stage()
     {
         save();
+        if (pSObserver)
+            delete pSObserver;
     }
     void Stage::create_enemies()
     {
@@ -180,6 +187,15 @@ namespace Stages
             //cout<<"LOADED"<<endl;
         }
         file2.close();
+    }
+    void Stage::setObservers()
+    {
+        Lists::List<Entes::Entity>::Iterator<Entes::Entity> aux = players.get_first();
+        while(aux != nullptr)
+        {
+            pSObserver->add_player_observer((*aux)->get_observer());
+            aux++; 
+        }
     }
 }
  

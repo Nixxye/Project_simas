@@ -23,6 +23,7 @@ namespace Entes
             // Arrumar esse negócio feio
             void move(char direction = '0');
             void collide(Entity *other){};
+            Observers::Observer* get_observer() { return pPObserver; }
         };
     }
 }
