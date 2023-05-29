@@ -5,9 +5,9 @@ namespace Menus
     MainMenu::MainMenu():
     Menu(3)
     {   
-        buttons[0]->setString("Start");
-        buttons[1]->setString("Ranking");
-        buttons[2]->setString("Quit");
+        buttons[0]->set_name("Start");
+        buttons[1]->set_name("Ranking");
+        buttons[2]->set_name("Quit");
     }
     MainMenu::~MainMenu()
     {

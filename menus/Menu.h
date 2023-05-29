@@ -7,6 +7,7 @@
 #include "../entities/GameObject.h"
 #include "../managers/EventsManager.h"
 #include "../observers/MenuObserver.h"
+#include "../menus/Button.h"
 
 namespace Menus
 {
@@ -14,7 +15,7 @@ namespace Menus
     {
         protected:
             const int MAX_BUTTONS;
-            std::vector<sf::Text*> buttons;
+            std::vector<Button*> buttons;
             int selected_index;
             Observers::MenuObserver* pMenuObserver;
             Managers::EventsManager* pEventManager;
