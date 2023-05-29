@@ -6,7 +6,7 @@ namespace Stages
     Stage(SAVE_STAGE_1, FILE_STAGE_1),
     State(1)
     {
-
+        
     }
 
     Stage1::~Stage1()
@@ -16,7 +16,7 @@ namespace Stages
     {
         //Arrumar o código com o gerenciador de eventos e gráfico:
         //Feio, horrível, pavoroso, tira daqui!
-        events_manager->run();
+        //events_manager->run();
         players.run();
         enemies.run();
         obstacles.run();

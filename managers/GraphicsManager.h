@@ -1,5 +1,5 @@
 #pragma once
-//TODOTODOTODOTODOTODOTODOTODO
+
 #include <SFML/Graphics.hpp>
 #include <map>
 #include <string>
@@ -7,7 +7,8 @@
 
 #define WIDTH 800
 #define HEIGHT 600
-#define FONT_PATH "../saves/ARCADECLASSIC.TTF"
+//Linux:
+#define FONT_PATH "../saves/PressStart2P-Regular.ttf"
 
 namespace Managers 
 {

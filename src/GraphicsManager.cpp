@@ -16,18 +16,17 @@ namespace Managers
     }
 
     GraphicsManager::GraphicsManager():
-    window( new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), "Jogo")),
+    window( new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), "Project Simas")),
     cam (sf::Vector2f(WIDTH / 2, HEIGHT / 2), sf::Vector2f(WIDTH, HEIGHT)),//centro e tamanho
     textures()
     {
         window->setFramerateLimit(60);
-        /*
-        if (!(font->loadFromFile(FONT_PATH)))
+        font = new sf::Font;
+        if (!font->loadFromFile(FONT_PATH))
         {
-            std::cout<<"ERROR: TEXTURA N CARREGADA"<<std::endl;
+            std::cout<<"ERROR: FONTE N CARREGADA"<<std::endl;
             exit(1);
         }
-        */
     }
     GraphicsManager::~GraphicsManager()
     {
@@ -35,6 +34,7 @@ namespace Managers
             delete it->second;
         textures.clear();
         delete window;
+        delete font;
     }
     void GraphicsManager:: show ()
     {

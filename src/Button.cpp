@@ -12,13 +12,13 @@ namespace Menus
     text()
     {
         body.setOrigin(SIZEX / 2, SIZEY / 2);
-        text.setOrigin(SIZEX / 2, SIZEY / 2);
+        text.setOrigin(SIZEX / 2 - 50, SIZEY / 2 - 25);
 
         body.setFillColor(sf::Color::White);
 
-        sf::Font* font = graphics_manager->get_font();
-        text.setFont(*font);
-        text.setFillColor(sf::Color::Green);
+        text.setFont(*graphics_manager->get_font());
+        text.setFillColor(sf::Color::Black);
+        text.setCharacterSize(60);
 
         body.setPosition(position);
         text.setPosition(position);
@@ -29,7 +29,7 @@ namespace Menus
     }
     void Button::draw()
     {
-        //graphics_manager->draw(&body);
+        graphics_manager->draw(&body);
         graphics_manager->draw(&text);
         //std::cout<<"Printando"<<std::endl;
     }

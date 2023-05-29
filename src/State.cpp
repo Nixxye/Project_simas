@@ -5,9 +5,10 @@
 namespace States 
 {
     State::State(int id):
-    id_state(id) 
+    id_state(id),
+    pSM(Managers :: StateManager ::get_instance())
     {
-
+        pSM->add_state(this);
     }
 
     State::~State() 

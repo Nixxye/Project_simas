@@ -4,8 +4,8 @@
 
 #include "../managers/GraphicsManager.h"
 
-#define SIZEX 400.f
-#define SIZEY 50.f
+#define SIZEX 600.f
+#define SIZEY 80.f
 
 namespace Menus
 {
