@@ -3,10 +3,11 @@
 #include <SFML/Graphics.hpp>
 #include <map>
 #include <string>
+#include <iostream>
 
 #define WIDTH 800
 #define HEIGHT 600
-#define FONT_PATH 
+#define FONT_PATH "../saves/ARCADECLASSIC.TTF"
 namespace Managers 
 {
     class GraphicsManager

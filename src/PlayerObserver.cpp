@@ -7,6 +7,7 @@ namespace Observers
     PlayerObserver::PlayerObserver():
     Observer()
     {
+        pEM->add_observer(this);
         PlayerKeys [sf::Keyboard::A] = 'L';
         PlayerKeys [sf::Keyboard::D] = 'R';
         PlayerKeys [sf::Keyboard::W] = 'U'; 

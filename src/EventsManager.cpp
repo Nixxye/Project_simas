@@ -41,6 +41,10 @@ namespace Managers
     {
         list_observers.push_back(pObserver);
     }
+    void  EventsManager :: add_menu_observer(Observers::Observer* pObserver)
+    {
+        list_menu_observers.push_back(pObserver);
+    }
     void  EventsManager :: remove_observer(Observers::Observer* pObserver)
     {
         list_observers.remove(pObserver);
@@ -58,10 +62,16 @@ namespace Managers
                     (*it)->notify((*it_keys));
                 }
             }
-
         }
         while (pGM->get_window()->pollEvent(event))
         {
+            if (event.type == sf::Event::KeyPressed)
+            {
+                for (it = list_menu_observers.begin(); it != list_menu_observers.end(); it++)
+                {
+                    (*it)->notify((event.key.code));
+                } 
+            }
             if (event.type == sf::Event::Closed)
                 pGM->close_window();
         }

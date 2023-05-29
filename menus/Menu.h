@@ -8,10 +8,11 @@
 #include "../managers/EventsManager.h"
 #include "../observers/MenuObserver.h"
 #include "../menus/Button.h"
+#include "../states/State.h"
 
 namespace Menus
 {
-    class Menu: public GameObject
+    class Menu: public GameObject//, public States::State
     {
         protected:
             const int MAX_BUTTONS;

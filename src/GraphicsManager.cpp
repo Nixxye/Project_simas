@@ -21,7 +21,11 @@ namespace Managers
     textures()
     {
         window->setFramerateLimit(60);
-       //font->loadFromFile(FONT_PATH);
+        if (!(font->loadFromFile(FONT_PATH)))
+        {
+            std::cout<<"ERROR: TEXTURA N CARREGADA"<<std::endl;
+            exit(1);
+        }
     }
     GraphicsManager::~GraphicsManager()
     {
@@ -56,7 +60,7 @@ namespace Managers
 
         sf::Texture* tex = new sf::Texture();
 
-        tex->loadFromFile(path);
+        !tex->loadFromFile(path);
         
         textures[path] = tex;
 

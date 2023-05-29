@@ -6,7 +6,7 @@ namespace Observers
     MenuObserver::MenuObserver():
     Observer()
     {
-
+        pEM->add_menu_observer(this);
     }
     MenuObserver::~MenuObserver()
     {
@@ -19,7 +19,7 @@ namespace Observers
             std::cout<<"EITAAAAAAAAAAA"<<std::endl;
             return;
         }
-        std::cout<<"Teste"<<std::endl;
+        //std::cout<<"Teste"<<std::endl;
         if (key_code == sf::Keyboard::Up)
             pMenu->move_up();
         if (key_code == sf::Keyboard::Down)

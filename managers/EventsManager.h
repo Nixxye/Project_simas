@@ -24,6 +24,7 @@ namespace Managers
             GraphicsManager* pGM;
             StateManager* pSM;
             std::list <Observers::Observer*> list_observers;
+            std::list <Observers::Observer*> list_menu_observers;
             std::list <Observers::Observer*> :: iterator it;
             
             std :: list <sf::Keyboard::Key> list_keys;
@@ -37,6 +38,7 @@ namespace Managers
             static EventsManager* get_instance();
             void remove_observer(Observers::Observer* pObserver);
             void add_observer (Observers::Observer* pObserver);
+            void add_menu_observer (Observers::Observer* pObserver);
             void run ();
     };
 }

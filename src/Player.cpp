@@ -54,11 +54,15 @@ namespace Entes
             else if (direction == 'U') //Up
             {
                 vel.y -= 10.f;
+                //body.setPosition(body.getPosition() + sf::Vector2f(0.f, 0.5));
             }
-            //N sei pq a gravidade está mais rápida quando nos movemos;
-            body.setPosition(body.getPosition() + vel);
-            player_position = body.getPosition();
-            speed = (int) sqrt(vel.x*vel.x + vel.y*vel.y);
+            //N sei pq a gravidade está mais rápida quando nos movemos; -> Gimmick
+            if (direction == '0')
+            {
+                body.setPosition(body.getPosition() + vel);
+                player_position = body.getPosition();
+                speed = (int) sqrt(vel.x*vel.x + vel.y*vel.y);   
+            }
         }
     }
 }

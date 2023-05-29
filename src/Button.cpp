@@ -16,9 +16,8 @@ namespace Menus
 
         body.setFillColor(sf::Color::White);
 
-        //sf::Font* font = graphics_manager->get_font();
-        //text.setFont(*font);
-        //text.setCharacterSize(100);
+        sf::Font* font = graphics_manager->get_font();
+        text.setFont(*font);
         text.setFillColor(sf::Color::Green);
 
         body.setPosition(position);
@@ -30,7 +29,7 @@ namespace Menus
     }
     void Button::draw()
     {
-        graphics_manager->draw(&body);
+        //graphics_manager->draw(&body);
         graphics_manager->draw(&text);
         //std::cout<<"Printando"<<std::endl;
     }
