@@ -8,6 +8,7 @@
 #define WIDTH 800
 #define HEIGHT 600
 #define FONT_PATH "../saves/ARCADECLASSIC.TTF"
+
 namespace Managers 
 {
     class GraphicsManager

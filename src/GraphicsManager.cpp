@@ -21,11 +21,13 @@ namespace Managers
     textures()
     {
         window->setFramerateLimit(60);
+        /*
         if (!(font->loadFromFile(FONT_PATH)))
         {
             std::cout<<"ERROR: TEXTURA N CARREGADA"<<std::endl;
             exit(1);
         }
+        */
     }
     GraphicsManager::~GraphicsManager()
     {
