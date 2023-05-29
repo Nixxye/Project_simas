@@ -14,7 +14,7 @@ namespace Menus
     {
         protected:
             const int MAX_BUTTONS;
-            std::vector<sf::Text> buttons;
+            std::vector<sf::Text*> buttons;
             int selected_index;
             Observers::MenuObserver* pMenuObserver;
             Managers::EventsManager* pEventManager;

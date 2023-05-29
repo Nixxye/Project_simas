@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+
 #include "../stages/Stage1.h"
 #include "../managers/GraphicsManager.h"
 #include "../menus/MainMenu.h"
