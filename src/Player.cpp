@@ -10,6 +10,7 @@ namespace Entes
             lives = 3;
             pPObserver = new Observers::PlayerObserver;
             pPObserver->set_player(this);
+            body.setFillColor(sf:: Color :: Green);
         }
 
         Player::~Player()
