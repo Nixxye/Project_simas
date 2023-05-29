@@ -31,6 +31,7 @@
 
 #define FILE_STAGE_1 "../saves/stage1.dat"
 #define SAVE_STAGE_1 "../saves/savestate1.dat"
+#define SAVE_BASE_1 "../saves/savebase1.dat"
 
 namespace Stages
 {
@@ -45,11 +46,12 @@ namespace Stages
 
         std::string save_file;
         std::string stage_info;
+        std::string save_base;
         
         Managers::ColisionManager colision_manager;
         Managers::EventsManager* events_manager;
     public:
-        Stage(std::string savefile = "", std::string infofile = "", int id = -1);
+        Stage(std::string savefile = "", std::string infofile = "", std::string savebase = "", int id = -1);
         virtual ~Stage();
         virtual void run() = 0;
         virtual void create_enemies();
@@ -62,6 +64,7 @@ namespace Stages
 
         void save();
         void load();
+        void reset();
 
         void setObservers();
     };

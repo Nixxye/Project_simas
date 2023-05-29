@@ -1,6 +1,7 @@
 #include "../managers/StateManager.h"
 //para testes
 #include <iostream>
+
 namespace Managers
 {
      StateManager* StateManager::instance = nullptr;
@@ -58,5 +59,10 @@ namespace Managers
             exit(1);
         }
         vector_states[currentState]->run();
+    }
+
+    void Managers::StateManager::reset_current_state()
+    {
+        vector_states[currentState]->reset();
     }
 }

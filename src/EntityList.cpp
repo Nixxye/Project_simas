@@ -1,5 +1,4 @@
 #include "../lists/EntityList.h"
-//#include "../entities/Enemy.h"
 
 namespace Lists
 {
@@ -37,6 +36,10 @@ namespace Lists
     void EntityList::add(Entes::Entity* ent)
     {
         list.push(ent);
+    }
+    void EntityList::clear()
+    {
+        list.clear();
     }
     void EntityList::set_position(sf::Vector2f pos)
     {

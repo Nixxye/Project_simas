@@ -26,5 +26,6 @@ namespace Managers
             void add_state(States::State* pState);
 
             void run();
+            void reset_current_state();
     };
 }

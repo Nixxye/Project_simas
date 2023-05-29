@@ -25,6 +25,13 @@ namespace Menus
             if (!current_stage)
                 States::State::pSM->set_CurrentState(1);
             break;
+        case 1:
+            if (!current_stage)
+            {
+                States::State::pSM->set_CurrentState(1);
+                States::State::pSM->reset_current_state();
+            }
+            break;
         case 3:
             graphics_manager->close_window();
             break;
