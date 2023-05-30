@@ -26,6 +26,7 @@ namespace Stages
         {
             Lists::List<Entes::Entity>::Iterator<Entes::Entity> it = players.get_first();
             Lists::List<Entes::Entity>::Iterator<Entes::Entity> it2 = it++;
+            it = players.get_first();
             if (players.get_size()==1)
             {
                 graphics_manager->center((*it)->get_position());
@@ -33,6 +34,7 @@ namespace Stages
             else 
             {
                 //printf ("%d",players.get_size());
+
                 graphics_manager->center((*it)->get_position(),(*it2)->get_position());
             }
         }
