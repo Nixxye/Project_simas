@@ -25,17 +25,17 @@ namespace Stages
         if (pSM->get_CurrentStateID() == id_state)
         {
             Lists::List<Entes::Entity>::Iterator<Entes::Entity> it = players.get_first();
-            Lists::List<Entes::Entity>::Iterator<Entes::Entity> it2 = it++;
-            it = players.get_first();
+            it++;
+
             if (players.get_size()==1)
             {
-                graphics_manager->center((*it)->get_position());
+                graphics_manager->center((*players.get_first())->get_position());
             }
             else 
             {
                 //printf ("%d",players.get_size());
 
-                graphics_manager->center((*it)->get_position(),(*it2)->get_position());
+                graphics_manager->center((*it)->get_position(),(*players.get_first())->get_position());
             }
         }
         else
