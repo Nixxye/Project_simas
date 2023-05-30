@@ -24,6 +24,7 @@ namespace States
             int get_id() const;
 
             virtual void run () = 0;
+            virtual void reset() {};
 
     };
 

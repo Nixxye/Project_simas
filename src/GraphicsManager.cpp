@@ -21,7 +21,12 @@ namespace Managers
     textures()
     {
         window->setFramerateLimit(60);
-       //font->loadFromFile(FONT_PATH);
+        font = new sf::Font;
+        if (!font->loadFromFile(FONT_PATH))
+        {
+            std::cout<<"ERROR: FONTE N CARREGADA"<<std::endl;
+            exit(1);
+        }
     }
     GraphicsManager::~GraphicsManager()
     {
@@ -29,6 +34,7 @@ namespace Managers
             delete it->second;
         textures.clear();
         delete window;
+        delete font;
     }
     void GraphicsManager:: show ()
     {
@@ -44,6 +50,10 @@ namespace Managers
     {
         window->draw(*body);
     }
+    void GraphicsManager:: draw (sf::Text* text)
+    {
+        window->draw(*text);
+    }
     sf::Texture* GraphicsManager:: load_textures (std::string path)
     {
         std::map<const std::string, sf::Texture*> :: iterator it = textures.find(path);
@@ -52,7 +62,7 @@ namespace Managers
 
         sf::Texture* tex = new sf::Texture();
 
-        tex->loadFromFile(path);
+        !tex->loadFromFile(path);
         
         textures[path] = tex;
 
@@ -69,6 +79,11 @@ namespace Managers
     {
         cam.setCenter((position1.x+position2.x)/2,(position1.y+position2.y)/2);
         //if (position1.x)
+        window->setView(cam);
+    }
+    void GraphicsManager::reset_camera()
+    {
+        cam.setCenter(sf::Vector2f(WIDTH / 2, HEIGHT / 2));
         window->setView(cam);
     }
     sf::RenderWindow* GraphicsManager:: get_window () const 

@@ -7,6 +7,7 @@ namespace Observers
     PlayerObserver::PlayerObserver():
     Observer()
     {
+        //pEM->add_observer(this);
         PlayerKeys [sf::Keyboard::A] = 'L';
         PlayerKeys [sf::Keyboard::D] = 'R';
         PlayerKeys [sf::Keyboard::W] = 'U'; 
@@ -32,7 +33,6 @@ namespace Observers
         if (it == PlayerKeys.end())
             return; 
         pPlayer->move(it->second);
-        //std::cout<<it->second<<std::endl;
     }
 
 } 

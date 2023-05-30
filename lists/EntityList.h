@@ -17,6 +17,8 @@ namespace Lists
         void draw();
         void add(Entes::Entity* ent);
 
+        void clear();
+
         void set_position(sf::Vector2f pos);
         void set_alive(bool a);
 

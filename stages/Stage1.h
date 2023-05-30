@@ -4,7 +4,7 @@
 
 namespace Stages
 {
-    class Stage1: public Stage, public States :: State
+    class Stage1: public Stage
     {
     public:
         Stage1();

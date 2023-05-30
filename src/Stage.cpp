@@ -2,24 +2,32 @@
 
 namespace Stages
 {
-    Stage::Stage(std::string savefile, std::string infofile):
+    Stage::Stage(std::string savefile, std::string infofile, std::string savebase, int id):
+    States::State(id),
     obstacles(),
     enemies(),
     players(),
     colision_manager(),
     save_file(savefile),
-    stage_info(infofile)
+    stage_info(infofile),
+    save_base(savebase)
     {
         load();
         colision_manager.set_enemy_list(&enemies);
         colision_manager.set_player_list(&players);
         colision_manager.set_obstacle_list(&obstacles);     
         events_manager = Managers::EventsManager::get_instance();
+
+        pSObserver = new Observers::StageObserver(id);
+        pSObserver->set_stage(this);
+        setObservers();
     }
 
     Stage::~Stage()
     {
         save();
+        if (pSObserver)
+            delete pSObserver;
     }
     void Stage::create_enemies()
     {
@@ -180,6 +188,42 @@ namespace Stages
             //cout<<"LOADED"<<endl;
         }
         file2.close();
+    }
+    void Stage::reset()
+    {
+        enemies.clear();
+        players.clear();
+
+        std::ifstream sourceFile(save_base, std::ios::binary);
+        if (!sourceFile)
+        {
+            std::cout<<"ERROR 15"<<std::endl;
+            return;
+        }
+        std::ofstream destinationFile (save_file, std::ios::binary);
+        if (!destinationFile)
+        {
+            std::cout<<"ERROR 13"<<std::endl;
+            return;
+        }
+        destinationFile << sourceFile.rdbuf();
+
+        sourceFile.close();
+        destinationFile.close();
+        
+        //std::cout<<"Copied"<<std::endl;
+
+        load();
+    }
+
+    void Stage::setObservers()
+    {
+        Lists::List<Entes::Entity>::Iterator<Entes::Entity> aux = players.get_first();
+        while(aux != nullptr)
+        {
+            pSObserver->add_player_observer((*aux)->get_observer());
+            aux++; 
+        }
     }
 }
  

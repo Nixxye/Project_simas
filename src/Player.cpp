@@ -10,9 +10,6 @@ namespace Entes
             lives = 3;
             pPObserver = new Observers::PlayerObserver;
             pPObserver->set_player(this);
-            //body.setFillColor(sf:: Color :: Green);
-            texture = graphics_manager->load_textures("../entities/player.png");
-            body.setTexture(texture);
         }
 
         Player::~Player()
@@ -37,11 +34,11 @@ namespace Entes
             {
                 vel.x -= SPEED;
             }
-            if (direction == '0' && vel.x > 0)                               
+            else if (vel.x > 0)                               
             {
                 vel.x -= SPEED / 2;
             }
-            else if (direction == '0' && vel.x < 0)
+            else if (vel.x < 0)
             {
                 vel.x += SPEED / 2;
             }
@@ -56,14 +53,15 @@ namespace Entes
             }
             else if (direction == 'U') //Up
             {
-                vel.y -= 20.f;
+                vel.y -= 10.f;
+                //body.setPosition(body.getPosition() + sf::Vector2f(0.f, 0.5));
             }
-            //N sei pq a gravidade está mais rápida quando nos movemos;
+            //N sei pq a gravidade está mais rápida quando nos movemos; -> Gimmick
             if (direction == '0')
             {
                 body.setPosition(body.getPosition() + vel);
                 player_position = body.getPosition();
-                speed = (int) sqrt(vel.x*vel.x + vel.y*vel.y);
+                speed = (int) sqrt(vel.x*vel.x + vel.y*vel.y);   
             }
         }
     }

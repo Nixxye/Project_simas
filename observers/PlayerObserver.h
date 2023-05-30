@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Observer.h"
+#include "../observers/Observer.h"
 #include <map>
 
 

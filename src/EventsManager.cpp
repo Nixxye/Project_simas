@@ -24,6 +24,10 @@ namespace Managers
         list_keys.push_back(sf::Keyboard::A);
         list_keys.push_back(sf::Keyboard::W);
         list_keys.push_back(sf::Keyboard::D);
+        list_keys.push_back(sf::Keyboard::Up);
+        list_keys.push_back(sf::Keyboard::Down);
+        list_keys.push_back(sf::Keyboard::Enter);
+        list_keys.push_back(sf::Keyboard::Escape);
     }
     EventsManager :: ~EventsManager ()
     {
@@ -37,6 +41,10 @@ namespace Managers
     void  EventsManager :: add_observer(Observers::Observer* pObserver)
     {
         list_observers.push_back(pObserver);
+    }
+    void  EventsManager :: add_menu_observer(Observers::Observer* pObserver)
+    {
+        list_menu_observers.push_back(pObserver);
     }
     void  EventsManager :: remove_observer(Observers::Observer* pObserver)
     {
@@ -55,22 +63,18 @@ namespace Managers
                     (*it)->notify((*it_keys));
                 }
             }
-
         }
         while (pGM->get_window()->pollEvent(event))
         {
+            if (event.type == sf::Event::KeyPressed)
+            {
+                for (it = list_menu_observers.begin(); it != list_menu_observers.end(); it++)
+                {
+                    (*it)->notify((event.key.code));
+                } 
+            }
             if (event.type == sf::Event::Closed)
                 pGM->close_window();
-            /*
-            else if (event.type == sf::Event::KeyPressed || event.type == sf::Event::KeyReleased)
-            {
-                //cout<<event.key.code<<endl;
-                for (it = list_observers.begin(); it != list_observers.end(); it++)
-                {
-                    //(*it)->notify(event.key.code, (event.type == sf::Event::KeyPressed? 1 : 0));
-                }
-            }
-            */
         }
     }
 } 
