@@ -13,6 +13,7 @@ namespace Entes
                 Obstacle3();
                 ~Obstacle3();
                 void collide(Entity* other){};
+                void run(){}
         };    
     }    
 }

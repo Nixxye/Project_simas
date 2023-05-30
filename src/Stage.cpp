@@ -28,14 +28,7 @@ namespace Stages
         save();
         if (pSObserver)
             delete pSObserver;
-    }
-    void Stage::create_enemies()
-    {
-    }
-    void Stage::create_obstacles()
-    {
-    }
-    
+    }    
     void Stage::draw()
     {
         //N sei o q fazer aqui.
@@ -195,6 +188,10 @@ namespace Stages
         enemies.clear();
         players.clear();
         obstacles.clear();
+
+        std::cout<<enemies.get_size()<<std::endl;
+        std::cout<<players.get_size()<<std::endl;
+        std::cout<<obstacles.get_size()<<std::endl;
 
         std::ifstream sourceFile(save_base, std::ios::binary);
         if (!sourceFile)

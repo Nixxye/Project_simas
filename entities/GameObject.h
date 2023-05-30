@@ -32,7 +32,5 @@ public:
 
     sf::Vector2f get_position(){return body.getPosition();}
     sf::Vector2f get_size(){return body.getSize();} 
-    
-    //if grounded -> without g effects;
 };
 
