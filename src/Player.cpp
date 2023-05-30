@@ -4,11 +4,19 @@ namespace Entes
 {
     namespace Characters
     {
-        Player::Player(sf::Vector2f pos, sf::Vector2f velocity, sf::Vector2f size):
+        Player::Player(int index,sf::Vector2f pos, sf::Vector2f velocity, sf::Vector2f size):
         Character(pos, velocity, size)
         {
             lives = 3;
-            pPObserver = new Observers::PlayerObserver;
+            if (index == 1)
+            {
+                pPObserver = new Observers::PlayerObserver(1);
+            }
+            else if (index == 2)
+            {
+                pPObserver = new Observers::PlayerObserver(2);   
+            }
+            
             pPObserver->set_player(this);
         }
 

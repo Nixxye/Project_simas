@@ -23,7 +23,19 @@ namespace Stages
         colision_manager.colide();
         //else horrível
         if (pSM->get_CurrentStateID() == id_state)
-            graphics_manager->center((*players.get_first())->get_position());
+        {
+            Lists::List<Entes::Entity>::Iterator<Entes::Entity> it = players.get_first();
+            Lists::List<Entes::Entity>::Iterator<Entes::Entity> it2 = it++;
+            if (players.get_size()==1)
+            {
+                graphics_manager->center((*it)->get_position());
+            }
+            else 
+            {
+                //printf ("%d",players.get_size());
+                graphics_manager->center((*it)->get_position(),(*it2)->get_position());
+            }
+        }
         else
             graphics_manager->reset_camera();
         players.draw();

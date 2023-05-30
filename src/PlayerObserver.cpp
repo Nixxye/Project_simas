@@ -4,13 +4,22 @@
 namespace Observers 
 {
 
-    PlayerObserver::PlayerObserver():
+    PlayerObserver::PlayerObserver(int i):
     Observer()
     {
         //pEM->add_observer(this);
-        PlayerKeys [sf::Keyboard::A] = 'L';
-        PlayerKeys [sf::Keyboard::D] = 'R';
-        PlayerKeys [sf::Keyboard::W] = 'U'; 
+        if (i == 1)
+        {
+            PlayerKeys [sf::Keyboard::A] = 'L';
+            PlayerKeys [sf::Keyboard::D] = 'R';
+            PlayerKeys [sf::Keyboard::W] = 'U'; 
+        }
+        if (i == 2)
+        {
+            PlayerKeys [sf::Keyboard::Left] = 'L';
+            PlayerKeys [sf::Keyboard::Right] = 'R';
+            PlayerKeys [sf::Keyboard::Up] = 'U'; 
+        }
     }
 
     PlayerObserver::~PlayerObserver() 

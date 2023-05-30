@@ -16,8 +16,9 @@ namespace Managers
     void ColisionManager::colide()
     {
         Lists::List<Entes::Entity> aux;
-        Lists::List<Entes::Entity>::Iterator<Entes::Entity> A = player_list->get_first(),B = enemy_list->get_first();
-        while (A != nullptr)
+        Lists::List<Entes::Entity>::Iterator<Entes::Entity> A,B = enemy_list->get_first();
+        
+        for (A = player_list->get_first(); A != nullptr; A++)
         {
             (*A)->set_grounded(false);
             while(B != nullptr)
@@ -31,7 +32,6 @@ namespace Managers
                 check_colision(*A, *B);
                 B++;
             }
-            A++;
         }
         A = enemy_list->get_first();
         while (A != nullptr)
