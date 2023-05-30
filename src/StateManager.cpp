@@ -63,7 +63,7 @@ namespace Managers
 
     void Managers::StateManager::reset_current_state()
     {
-        std::cout<<"Entrou"<<std::endl;
+        //std::cout<<"Entrou"<<std::endl;
         vector_states[currentState]->reset();
     }
 }
