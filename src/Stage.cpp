@@ -191,8 +191,10 @@ namespace Stages
     }
     void Stage::reset()
     {
+        std::cout<<"No reset"<<std::endl;
         enemies.clear();
         players.clear();
+        obstacles.clear();
 
         std::ifstream sourceFile(save_base, std::ios::binary);
         if (!sourceFile)
@@ -211,9 +213,11 @@ namespace Stages
         sourceFile.close();
         destinationFile.close();
         
-        //std::cout<<"Copied"<<std::endl;
+        std::cout<<"Copied"<<std::endl;
 
         load();
+
+        std::cout<<"Loaded"<<std::endl;
     }
 
     void Stage::setObservers()

@@ -27,11 +27,20 @@
 #define SAVE_STAGE_1 "saves/savestate1.dat"
 #define FILE_STAGE_1 "saves/stage1.dat"
 #define SAVE_BASE_1 "saves/savebase1.dat"
+
+#define SAVE_STAGE_2 "saves/savestate2.dat"
+#define FILE_STAGE_2 "saves/stage2.dat"
+#define SAVE_BASE_2 "saves/savebase2.dat"
+
 //Linux:
 /*
 #define FILE_STAGE_1 "../saves/stage1.dat"
 #define SAVE_STAGE_1 "../saves/savestate1.dat"
 #define SAVE_BASE_1 "../saves/savebase1.dat"
+
+#define SAVE_STAGE_2 "../saves/savestate2.dat"
+#define FILE_STAGE_2 "../saves/stage2.dat"
+#define SAVE_BASE_2 "../saves/savebase2.dat"
 */
 namespace Stages
 {
@@ -53,7 +62,6 @@ namespace Stages
     public:
         Stage(std::string savefile = "", std::string infofile = "", std::string savebase = "", int id = -1);
         virtual ~Stage();
-        virtual void run() = 0;
         virtual void create_enemies();
         virtual void create_obstacles();
         void draw();

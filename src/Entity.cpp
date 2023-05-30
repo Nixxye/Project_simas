@@ -29,6 +29,6 @@ namespace Entes
 
     void Entity::draw()
     {
-        graphics_manager->draw(&(this->body));
+        graphics_manager->draw(&body);
     }
 }

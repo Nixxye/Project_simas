@@ -1,17 +1,17 @@
-#include "../stages/Stage1.h"
+#include "../stages/Stage2.h"
 
 namespace Stages
 {
-    Stage1::Stage1():
-    Stage(SAVE_STAGE_1, FILE_STAGE_1, SAVE_BASE_1, 1)
+    Stage2::Stage2():
+    Stage(SAVE_STAGE_2, FILE_STAGE_2, SAVE_BASE_2, 2)
     {
         
     }
 
-    Stage1::~Stage1()
+    Stage2::~Stage2()
     {
     }
-    void Stage1::run()
+    void Stage2::run()
     {
         players.run();
         enemies.run();
@@ -26,5 +26,5 @@ namespace Stages
         players.draw();
         enemies.draw();
         obstacles.draw();
-    }
+    }   
 }

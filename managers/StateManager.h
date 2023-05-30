@@ -9,8 +9,6 @@ namespace Managers
     {
         private:
             int currentState;
-            //States :: State* pCurrentState;
-            //States :: State* pLastState;
             std::vector<States::State*> vector_states;
             static StateManager* instance;
         public:

@@ -5,6 +5,7 @@ graphics_manager(Managers::GraphicsManager::get_instance()),
 state_manager(Managers::StateManager::get_instance()),
 events_manager(Managers::EventsManager::get_instance()),
 stage1(),
+stage2(),
 main_menu()
 {
     run();

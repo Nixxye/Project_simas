@@ -21,11 +21,8 @@ namespace Managers
         std::map<const std::string, sf::Texture*> textures;
         sf::Font* font;
 
-
         GraphicsManager();
         static GraphicsManager* instance;
-
-
     public:
         ~GraphicsManager();
         static GraphicsManager* get_instance();
@@ -41,6 +38,5 @@ namespace Managers
         void close_window ();
         bool window_open();
         sf::Font* get_font() const;
-
     };
 }

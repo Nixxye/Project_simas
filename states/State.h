@@ -14,7 +14,6 @@ namespace States
             int id_state;
 
         public:
-            //ID de erro é -1
             State(int id = -1);
 
             virtual ~State();
@@ -24,7 +23,7 @@ namespace States
             int get_id() const;
 
             virtual void run () = 0;
-            virtual void reset() {};
+            virtual void reset() { return; };
 
     };
 
