@@ -11,9 +11,6 @@ namespace Entes
             const int id;
             static int count;
             
-            sf::RectangleShape body;
-            static int speed;
-            sf::Vector2f position;
             sf::Vector2f vel;
             static sf::Vector2f player_position;
             int lives;
