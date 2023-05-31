@@ -3,7 +3,7 @@
 namespace Menus
 {
     Menu :: Menu(int n_buttons, int id):
-    GameObject(),
+    Ent(),
     State(id),
     MAX_BUTTONS(n_buttons),
     buttons(),

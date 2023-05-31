@@ -16,7 +16,7 @@ namespace Managers
     }
 
     StateManager::StateManager():
-    currentState(0)
+    currentStateID(0)
     {
         //tamanho 5 por enquanto.
         vector_states.resize(5);
@@ -28,23 +28,22 @@ namespace Managers
     }
     void StateManager::set_CurrentState(int i)
     {
-        currentState = i;
+        currentStateID = i;
         //pLastState = pCurrentState;
         //pCurrentState = vector_states[i];
     }
     States::State *StateManager::get_CurrentState()
     {
-        return vector_states[currentState];
-        //return pCurrentState;
+        if (!vector_states[currentStateID])
+        {
+            std::cout<<"Q bonito heim"<<std::endl;
+            exit(1);
+        }
+        return vector_states[currentStateID];
     }
     int StateManager::get_CurrentStateID()
     {
-        return currentState;
-    }
-    int StateManager::get_LastStateID()
-    {
-        return 0;
-        //return pLastState->get_id();
+        return currentStateID;
     }
     void StateManager:: add_state(States::State* pState)
     {
@@ -52,17 +51,18 @@ namespace Managers
     }
     void StateManager::run()
     {
+        //Inutil?
         //std::cout<<"Rodando "<<currentState<<std::endl;
-        if (!vector_states[currentState])
+        if (!vector_states[currentStateID])
         {
             std::cout<<"Q bonito heim"<<std::endl;
             exit(1);
         }
-        vector_states[currentState]->run();
+        vector_states[currentStateID]->run();
     }
 
     void Managers::StateManager::reset_current_state()
     {
-        vector_states[currentState]->reset();
+        vector_states[currentStateID]->reset();
     }
 }

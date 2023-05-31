@@ -29,17 +29,17 @@ namespace Stages
 
             if (players.get_size()==1)
             {
-                graphics_manager->center((*players.get_first())->get_position());
+                pGM->center((*players.get_first())->get_position());
             }
             else 
             {
                 //printf ("%d",players.get_size());
 
-                graphics_manager->center((*it)->get_position(),(*players.get_first())->get_position());
+                pGM->center((*it)->get_position(),(*players.get_first())->get_position());
             }
         }
         else
-            graphics_manager->reset_camera();
+            pGM->reset_camera();
         players.draw();
         enemies.draw();
         obstacles.draw();

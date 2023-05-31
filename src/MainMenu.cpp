@@ -33,7 +33,7 @@ namespace Menus
             }
             break;
         case 3:
-            graphics_manager->close_window();
+            pGM->close_window();
             break;
         }
     }

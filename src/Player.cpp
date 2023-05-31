@@ -33,14 +33,13 @@ namespace Entes
 
         void Player::move(char direction)
         {
-
             if (direction == 'R') //Right
             {
-                vel.x += SPEED;
+                vel.x += 2*SPEED;
             }
             else if (direction == 'L') //Left
             {
-                vel.x -= SPEED;
+                vel.x -= 2*SPEED;
             }
             else if (vel.x > 0)                               
             {
@@ -57,7 +56,8 @@ namespace Entes
             }
             if (!grounded)
             {
-                vel.y += G;
+                if (direction == '0')
+                    vel.y += G;
             }
             else if (direction == 'U') //Up
             {

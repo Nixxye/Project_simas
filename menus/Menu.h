@@ -13,7 +13,7 @@
 
 namespace Menus
 {
-    class Menu: public GameObject, public States::State
+    class Menu: public Ent, public States::State
     {
         protected:
             const int MAX_BUTTONS;

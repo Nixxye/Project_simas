@@ -11,9 +11,9 @@
 class Game
 {
 private:
-    Managers::GraphicsManager* graphics_manager;
-    Managers::StateManager* state_manager;
-    Managers::EventsManager* events_manager;
+    Managers::GraphicsManager*  pGM;
+    Managers::StateManager* pSM;
+    Managers::EventsManager* pEM;
     Stages::Stage1 stage1;    
     Menus::MainMenu main_menu;
 public:

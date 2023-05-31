@@ -7,7 +7,7 @@ sf::Vector2f Entes::Entity::player_position(200.f, 200.f);
 namespace Entes
 {
     Entity::Entity(sf::Vector2f pos, sf::Vector2f velocity, sf::Vector2f size):
-    GameObject(),
+    Ent(),
     id(count++),
     body(size),
     position(pos),
@@ -26,9 +26,10 @@ namespace Entes
     {
 
     }
-
     void Entity::draw()
     {
-        graphics_manager->draw(&(this->body));
+        pGM->draw(&(this->body));
     }
+
+
 }

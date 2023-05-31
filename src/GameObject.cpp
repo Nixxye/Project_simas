@@ -1,10 +1,10 @@
 #include "../entities/GameObject.h"
 
-int GameObject::count(0);
-int GameObject::speed(0);
-Managers::GraphicsManager* GameObject::graphics_manager = Managers::GraphicsManager::get_instance();
+int Ent::count(0);
+int Ent::speed(0);
+Managers::GraphicsManager* Ent::pGM = Managers::GraphicsManager::get_instance();
 
-GameObject::GameObject():
+Ent::Ent():
 id(count++),
 body(sf::Vector2f(50.f, 50.f)),
 position(200.f, 200.f)
@@ -13,6 +13,7 @@ position(200.f, 200.f)
 }
 
 
-GameObject::~GameObject()
+Ent::~Ent()
 {
 }
+

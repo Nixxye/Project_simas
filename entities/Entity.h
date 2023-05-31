@@ -5,7 +5,7 @@
 
 namespace Entes
 {
-    class Entity : public GameObject
+    class Entity : public Ent
     {
         protected:
             const int id;
@@ -22,7 +22,6 @@ namespace Entes
         public:
             Entity(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f velocity = sf::Vector2f(0.f, 0.f), sf::Vector2f size = sf::Vector2f(50.f, 50.f));
             virtual ~Entity();
-
             virtual void draw();
             virtual void run() = 0;
             virtual void move(char direction = ' '){};

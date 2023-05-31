@@ -8,7 +8,7 @@ namespace Managers
     class StateManager
     {
         private:
-            int currentState;
+            int currentStateID;
             //States :: State* pCurrentState;
             //States :: State* pLastState;
             std::vector<States::State*> vector_states;
@@ -21,8 +21,6 @@ namespace Managers
             void set_CurrentState (int i);
             States :: State* get_CurrentState ();
             int get_CurrentStateID();
-            int get_LastStateID();
-
             void add_state(States::State* pState);
 
             void run();

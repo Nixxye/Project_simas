@@ -7,7 +7,7 @@
 #define SPEED 0.2
 #define VEL_MAX 4.0
 
-class GameObject
+class Ent
 {
 protected:
 
@@ -16,17 +16,15 @@ protected:
     sf::RectangleShape body;
     static int speed;
     sf::Vector2f position;
-    static Managers::GraphicsManager* graphics_manager;
+    static Managers::GraphicsManager* pGM;
     sf :: Texture* texture;
 public:
-    GameObject();
-    virtual ~GameObject();
+    Ent();
+    virtual ~Ent();
 
     virtual void draw() = 0;
 
     void set_position(sf::Vector2f pos){body.setPosition(pos);}
-
-
 
     int get_speed(){return speed;}
 
