@@ -8,9 +8,11 @@ namespace Entes
     class Entity : public GameObject
     {
         protected:
+            //era const
             const int id;
             static int count;
-            
+            int damage;
+
             sf::RectangleShape body;
             static int speed;
             sf::Vector2f position;
@@ -19,8 +21,9 @@ namespace Entes
             int lives;
             bool grounded;
             bool alive;
+
         public:
-            Entity(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f velocity = sf::Vector2f(0.f, 0.f), sf::Vector2f size = sf::Vector2f(50.f, 50.f));
+            Entity(int index = -1, sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f velocity = sf::Vector2f(0.f, 0.f), sf::Vector2f size = sf::Vector2f(50.f, 50.f));
             virtual ~Entity();
 
             virtual void draw();

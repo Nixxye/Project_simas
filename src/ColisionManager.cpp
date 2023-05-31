@@ -41,6 +41,7 @@ namespace Managers
             while(B != nullptr)
             {
                 check_colision(*A, *B);
+                (*A)->collide(*B);
                 B++;
             }
             A++;
