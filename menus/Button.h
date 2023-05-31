@@ -14,7 +14,7 @@ namespace Menus
     private:
         sf::RectangleShape body;
         sf::Text text;
-        static Managers::GraphicsManager* graphics_manager;
+        static Managers::GraphicsManager* pGM;
     public:
         Button(sf::Vector2f position = sf::Vector2f(0.f, 0.f));
         ~Button();  

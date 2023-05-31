@@ -5,7 +5,7 @@
 
 namespace Menus
 {
-    Managers::GraphicsManager* Button::graphics_manager(Managers::GraphicsManager::get_instance());
+    Managers::GraphicsManager* Button::pGM(Managers::GraphicsManager::get_instance());
 
     Button::Button(sf::Vector2f position):
     body(sf::Vector2f(SIZEX, SIZEY)),
@@ -16,7 +16,7 @@ namespace Menus
 
         body.setFillColor(sf::Color::White);
 
-        text.setFont(*graphics_manager->get_font());
+        text.setFont(*pGM->get_font());
         text.setFillColor(sf::Color::Black);
         text.setCharacterSize(60);
 
@@ -29,8 +29,8 @@ namespace Menus
     }
     void Button::draw()
     {
-        graphics_manager->draw(&body);
-        graphics_manager->draw(&text);
+        pGM->draw(&body);
+        pGM->draw(&text);
         //std::cout<<"Printando"<<std::endl;
     }
     void Button::change_color()

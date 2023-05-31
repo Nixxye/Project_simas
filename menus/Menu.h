@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 
-#include "../entities/GameObject.h"
+#include "../entities/Ent.h"
 #include "../managers/EventsManager.h"
 #include "../observers/MenuObserver.h"
 #include "../menus/Button.h"

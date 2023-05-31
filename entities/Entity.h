@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GameObject.h"
+#include "Ent.h"
 #include "../observers/Observer.h"
 
 namespace Entes
