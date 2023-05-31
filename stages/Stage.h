@@ -7,7 +7,9 @@
 
 #include "../entities/Entity.h"
 #include "../entities/Player.h"
-#include "../entities/Enemy.h"
+#include "../entities/Enemy1.h"
+#include "../entities/Enemy2.h"
+#include "../entities/Enemy3.h"
 #include "../entities/Boss.h"
 #include "../entities/Obstacle.h"
 #include "../lists/EntityList.h"
@@ -73,6 +75,8 @@ namespace Stages
         void save();
         void load();
         void reset();
+
+        Entes::Entity* create_enemy(int id, sf::Vector2f pos, sf::Vector2f vel, sf::Vector2f size);
 
         void setObservers();
     };

@@ -4,8 +4,8 @@ namespace Entes
 {
     namespace Characters
     {
-        Enemy::Enemy(sf::Vector2f pos, sf::Vector2f velocity, sf::Vector2f size):
-        Character(pos, velocity, size)
+        Enemy::Enemy(int index, sf::Vector2f pos, sf::Vector2f velocity, sf::Vector2f size):
+        Character(index, pos, velocity, size)
         {
             //texture = graphics_manager->load_textures("../entities/enemy.png");
             //body.setTexture(texture);
@@ -23,6 +23,7 @@ namespace Entes
         }
         void Enemy::move()
         {
+            /*
             if (speed > 0.f)
             {
                 if (player_position.x > position.x)
@@ -50,7 +51,7 @@ namespace Entes
                 position+=sf::Vector2f(speed*vel.x, speed*vel.y);
                 body.setPosition(position);
             }
-
+            */
         }
     }
 }

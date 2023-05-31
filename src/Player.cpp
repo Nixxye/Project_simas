@@ -5,7 +5,7 @@ namespace Entes
     namespace Characters
     {
         Player::Player(sf::Vector2f pos, sf::Vector2f velocity, sf::Vector2f size):
-        Character(pos, velocity, size)
+        Character(0, pos, velocity, size)
         {
             lives = 3;
             pPObserver = new Observers::PlayerObserver;
@@ -62,6 +62,22 @@ namespace Entes
                 body.setPosition(body.getPosition() + vel);
                 player_position = body.getPosition();
                 speed = (int) sqrt(vel.x*vel.x + vel.y*vel.y);   
+            }
+        }
+
+        void Player::collide(Entity *other)
+        {
+            int index = other->get_id();
+            
+            switch (index)
+            {
+                //Inimigo;
+            case 1:
+                /* code */
+                break;
+            
+            default:
+                break;
             }
         }
     }

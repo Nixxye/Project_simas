@@ -140,7 +140,7 @@ namespace Stages
             //cout << id << posX << posY << velX << velY << endl;
             std::getline(file, line);
             //Static cast;
-            aux = new Entes::Characters::Enemy(sf::Vector2f(posX, posY), sf::Vector2f(velX, velY), sf::Vector2f(50.f, 50.f));
+            aux = create_enemy(id, sf::Vector2f(posX, posY), sf::Vector2f(velX, velY), sf::Vector2f(50.f, 50.f));
             add_enemy(aux);
             //cout<<"LOADED"<<endl;
         }
@@ -176,7 +176,8 @@ namespace Stages
             //cout << id << posX << posY << velX << velY << endl;
             std::getline(file2, line);
             //Static cast;
-            aux = new Entes::Obstacles::Obstacle(sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY));
+            //Mudar dps o id:
+            aux = new Entes::Obstacles::Obstacle(11, sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY));
             add_obstacle(aux);
             //cout<<"LOADED"<<endl;
         }
@@ -225,6 +226,24 @@ namespace Stages
             pSObserver->add_player_observer((*aux)->get_observer());
             aux++; 
         }
+    }
+
+    Entes::Entity* Stage::create_enemy(int id, sf::Vector2f pos, sf::Vector2f vel, sf::Vector2f size)
+    {
+        Entes::Entity* aux = NULL;
+        switch (id)
+        {
+        case 1:
+            aux = new Entes::Characters::Enemy1(pos, vel, size);
+            break;
+        case 2:
+            aux = new Entes::Characters::Enemy2(pos, vel, size);
+        case 3:
+            aux = new Entes::Characters::Enemy3(pos, vel, size);
+        default:
+            break;
+        }
+        return aux;
     }
 }
  

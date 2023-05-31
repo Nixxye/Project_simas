@@ -21,7 +21,7 @@ namespace Entes
             ~Player();
             void run();
             void move(char direction = '0');
-            void collide(Entity *other){};
+            void collide(Entity *other);
             Observers::Observer* get_observer() { return pPObserver; }
         };
     }
