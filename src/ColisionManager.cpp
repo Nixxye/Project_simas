@@ -99,4 +99,58 @@ namespace Managers
             }
         }
     }
+    void ColisionManager::collide_attack(Entes::Characters::Player* Attacker)
+    {
+        std::cout<<"Entrou"<<std::endl;
+        //Segmentation fault na próxima linha:
+        Lists::List<Entes::Entity>::Iterator<Entes::Entity> B = enemy_list->get_first();
+
+        std::cout<<"HM"<<std::endl;
+        sf::Vector2f posA = Attacker->get_attack_position(), sizeA = Attacker->get_attack_size();
+        sf::Vector2f posB, sizeB;
+        std::cout<<"Teste"<<std::endl;
+        while (B != nullptr)
+        {
+            posB = (*B)->get_position();
+            sizeB = (*B)->get_size();
+
+            sf::Vector2f d = posB - posA;
+            if ((fabs(d.x) < (sizeA.x + sizeB.x)/2.0) && (fabs(d.y) < (sizeA.y + sizeB.y)/2.0))
+            {
+                if (fabs(d.x) - fabs(sizeA.x + sizeB.x)/2.0 < fabs(d.y) - fabs(sizeA.y + sizeB.y)/2.0)
+                {
+                    if (posA.y < posB.y)
+                    {
+                        
+                        (*B)->collide(Attacker, "Below");
+                        (*B)->set_grounded(true);
+                    }
+                    else
+                    {
+                        (*B)->collide(Attacker, "Above");
+                        (*B)->set_vel(sf::Vector2f((*B)->get_vel().x, 0.f));
+                    }
+                }
+                else if (fabs(d.x) - fabs(sizeA.x + sizeB.x)/2.0 > fabs(d.y) - fabs(sizeA.y + sizeB.y)/2.0)
+                {
+                    if (posA.x < posB.x)
+                    {
+                        (*B)->collide(Attacker, "Right");
+                        (*B)->set_position(sf::Vector2f(posB.x - (sizeB.x + sizeA.x)/2.f, posA.y));
+                        (*B)->set_vel(sf::Vector2f(-CR*(*B)->get_vel().x, (*B)->get_vel().y));  
+                    }
+                    else
+                    {
+                        (*B)->collide((*B), "Left");
+                        (*B)->set_position(sf::Vector2f(posB.x + (sizeB.x + sizeA.x)/2.f, posA.y));
+                        (*B)->set_vel(sf::Vector2f(-CR*(*B)->get_vel().x, (*B)->get_vel().y));  
+                    }
+                }
+            }
+
+            B++;
+        }
+
+        
+    }
 }

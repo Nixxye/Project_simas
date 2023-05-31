@@ -64,19 +64,45 @@ namespace Entes
             //ifs e dano
             sf::Vector2f pos = other->get_position();
             sf::Vector2f s = other->get_size();
-            //colisão com paredes:
-            if (direction == "Right")
+            switch (index)
             {
-                vel.x = -SPEED;
-                motion_counter = -TIME;
-                //std::cout<<direction<<std::endl;
+                //Attack -> arrumar o lance do id dps:
+            case 0:
+                if (direction == "Right")
+                {
+                    vel.x = -5*SPEED;
+                    //std::cout<<direction<<std::endl;
+                }
+                else if (direction == "Left")
+                {
+                    vel.x = 5*SPEED;
+                }
+                else if (direction == "Above")
+                {
+                    vel.y = 5*SPEED;
+                }
+                else if (direction == "Below")
+                {
+                    vel.y = -5*SPEED;
+                }
+                break;
+                //Plataformas
+            default:
+                if (direction == "Right")
+                {
+                    vel.x = -SPEED;
+                    motion_counter = -TIME;
+                    //std::cout<<direction<<std::endl;
+                }
+                else if (direction == "Left")
+                {
+                    vel.x = SPEED;
+                    motion_counter = TIME;
+                }
+                position += sf::Vector2f(speed*vel.x / 10, speed*vel.y / 10);            
+                break;
             }
-            else if (direction == "Left")
-            {
-                vel.x = SPEED;
-                motion_counter = TIME;
-            }
-            position += sf::Vector2f(speed*vel.x / 10, speed*vel.y / 10);
+
 
         }  
     }    

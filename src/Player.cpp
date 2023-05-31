@@ -1,5 +1,7 @@
 #include "../entities/Player.h"
 
+#include "../managers/ColisionManager.h"
+
 namespace Entes
 {
     namespace Characters
@@ -169,6 +171,8 @@ namespace Entes
                 }
                 graphics_manager->draw(&attack_body);
 
+                colision_manager->collide_attack(this);
+                //Por enquanto is_attacking é inútil:
                 is_attacking = false;
             }
         }
