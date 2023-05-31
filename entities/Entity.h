@@ -10,10 +10,8 @@ namespace Entes
         protected:
             const int id;
             static int count;
-            
             sf::Vector2f vel;
             static sf::Vector2f player_position;
-            int lives;
             bool grounded;
             bool alive;
         public:

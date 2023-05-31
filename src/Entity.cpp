@@ -10,7 +10,6 @@ namespace Entes
     Ent(size, pos),
     id(count++),
     vel(velocity),
-    lives(1),
     grounded(false),
     alive(true)
     {
