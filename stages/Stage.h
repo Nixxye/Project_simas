@@ -25,7 +25,7 @@
 #include <iostream>
 
 //Windows:
-/*
+
 #define SAVE_STAGE_1 "saves/savestate1.dat"
 #define FILE_STAGE_1 "saves/stage1.dat"
 #define SAVE_BASE_1 "saves/savebase1.dat"
@@ -33,9 +33,9 @@
 #define SAVE_STAGE_2 "saves/savestate2.dat"
 #define FILE_STAGE_2 "saves/stage2.dat"
 #define SAVE_BASE_2 "saves/savebase2.dat"
-*/
-//Linux:
 
+//Linux:
+/*
 #define FILE_STAGE_1 "../saves/stage1.dat"
 #define SAVE_STAGE_1 "../saves/savestate1.dat"
 #define SAVE_BASE_1 "../saves/savebase1.dat"
@@ -43,7 +43,7 @@
 #define SAVE_STAGE_2 "../saves/savestate2.dat"
 #define FILE_STAGE_2 "../saves/stage2.dat"
 #define SAVE_BASE_2 "../saves/savebase2.dat"
-
+*/
 namespace Stages
 {
     class Stage: public GameObject, public States::State

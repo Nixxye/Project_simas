@@ -11,7 +11,7 @@ namespace Entes
         public:
             Enemy2(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f velocity = sf::Vector2f(50.f, 50.f), sf::Vector2f size = sf::Vector2f(0.f, 0.f));
             ~Enemy2();
-            void collide(Entity* other){};
+            void collide(Entity* other, std::string direction = ""){};
         
         };    
     }

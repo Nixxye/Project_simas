@@ -30,7 +30,7 @@ namespace Entes
             virtual void run() = 0;
             virtual void move(char direction = ' '){};
             //Função pode mudar.
-            virtual void collide(Entity* other) = 0;
+            virtual void collide(Entity* other, std::string  direction = "") = 0;
 
             void set_position(sf::Vector2f pos){body.setPosition(pos);}
             void set_grounded(bool g){grounded = g;}

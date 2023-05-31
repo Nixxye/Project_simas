@@ -188,12 +188,12 @@ namespace Stages
         //std::cout<<"No reset"<<std::endl;
         enemies.clear();
         players.clear();
-        obstacles.clear();
+        //obstacles.clear();
 
         std::cout<<enemies.get_size()<<std::endl;
         std::cout<<players.get_size()<<std::endl;
         std::cout<<obstacles.get_size()<<std::endl;
-
+        /*
         std::ifstream sourceFile(save_base, std::ios::binary);
         if (!sourceFile)
         {
@@ -210,12 +210,72 @@ namespace Stages
 
         sourceFile.close();
         destinationFile.close();
-        
+        */
         //std::cout<<"Copied"<<std::endl;
 
-        load();
+        //load();
 
         //std::cout<<"Loaded"<<std::endl;
+        std::ifstream file(save_base);
+        int n = 0;
+        Entes::Entity* aux = NULL;
+        std::string line;
+
+        if (!file)
+        {
+            std::cout <<"ERROR: 2"<<std::endl;
+            exit(2); //exit
+        }
+
+        
+        getline(file, line);
+        if (line != "#players")
+        {
+            std::cout << "ERROR 4 "<< std::endl;
+            file.close();
+            exit(3);//exit
+        }
+        file >> n;
+        getline(file, line);
+        getline(file, line);
+        for (int i = 0; i < n; i++)
+        {
+            int id;
+            float posX, posY, velX, velY;
+
+            file >> id >> posX >> posY >> velX >> velY;
+            //cout << id << posX << posY << velX << velY << endl;
+            getline(file, line);
+            //Static cast;
+            aux = new Entes::Characters::Player(sf::Vector2f(posX, posY), sf::Vector2f(velX, velY), sf::Vector2f(50.f, 50.f));
+            add_player(aux);
+            //cout<<"LOADED"<<endl;
+        }
+        getline(file, line);
+        getline(file, line);
+        if (line != "#enemies")
+        {
+            std::cout << "ERROR 51 "<< std::endl;
+            file.close();
+            exit(3);//exit
+        }
+        file >> n;
+        std::getline(file, line);
+        std::getline(file, line);
+        for (int i = 0; i < n; i++)
+        {
+            int id;
+            float posX, posY, velX, velY;
+
+            file >> id >> posX >> posY >> velX >> velY;
+            //cout << id << posX << posY << velX << velY << endl;
+            std::getline(file, line);
+            //Static cast;
+            aux = create_enemy(id, sf::Vector2f(posX, posY), sf::Vector2f(velX, velY), sf::Vector2f(50.f, 50.f));
+            add_enemy(aux);
+            //cout<<"LOADED"<<endl;
+        }
+        file.close();
     }
 
     void Stage::setObservers()

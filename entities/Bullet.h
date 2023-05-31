@@ -14,7 +14,7 @@ namespace Entes
                 ~Bullet();
                 void run();
                 void move();
-                void collide(Entity* other){};
+                void collide(Entity* other, std::string direction = ""){};
         };  
     }
 }

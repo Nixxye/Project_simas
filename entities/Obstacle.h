@@ -12,7 +12,7 @@ namespace Entes
                 Obstacle(int index = -1, sf::Vector2f pos = sf::Vector2f(100.f, 600.f), sf::Vector2f size = sf::Vector2f(1000.f, 100.f));
                 ~Obstacle();
                 void run();
-                void collide(Entes::Entity* other){};
+                void collide(Entes::Entity* other, std::string  direction = ""){};
         };    
     }
 }

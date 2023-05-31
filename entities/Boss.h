@@ -27,7 +27,7 @@ namespace Entes
             void move();
             void attack();
             void draw();
-            void collide(Entity* other){};
+            void collide(Entity* other, std::string direction = ""){};
         };
     }
 }

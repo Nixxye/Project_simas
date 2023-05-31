@@ -65,7 +65,7 @@ namespace Entes
             }
         }
 
-        void Player::collide(Entity *other)
+        void Player::collide(Entity *other, std::string direction)
         {
             int index = other->get_id();
             

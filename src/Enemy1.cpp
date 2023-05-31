@@ -18,6 +18,7 @@ namespace Entes
         {
             if (speed > 0)
             {
+                /*
                 if (grounded)
                 {
                     vel.y -= 5.f;
@@ -42,27 +43,37 @@ namespace Entes
                         vel.x = 0;
                     }
                 }  
-                if (!grounded)
-                    vel.y += G;             
-                position += sf::Vector2f(speed*vel.x / 2, speed*vel.y / 2);
+                */
+                if (grounded)
+                {
+                    vel.y -= 5.f;
+                }
+                else
+                    vel.y += G;       
+                if (motion_counter > 0)
+                    vel.x += SPEED/3;
+                else 
+                    vel.x -= SPEED/3;      
+                position += sf::Vector2f(speed*vel.x / 10, speed*vel.y / 10);
                 body.setPosition(position);
             }
         }
-        void Enemy1::collide(Entity* other)
+        void Enemy1::collide(Entity* other, std::string direction)
         {
             int index = other->get_id();
             //ifs e dano
             sf::Vector2f pos = other->get_position();
             sf::Vector2f s = other->get_size();
-            
-            if (pos.y + s.y / 2 <= position.y || pos.y - s.y / 2 >= position.y)
+
+            if (direction == "Right")
             {
-                if (pos.x + s.x / 2 >= position.x)
-                {
-                    motion_counter = - TIME;
-                }
-                else
-                    motion_counter = TIME;                
+                vel.x = -SPEED;
+                motion_counter = -TIME;
+            }
+            else if (direction == "Left")
+            {
+                vel.x = SPEED;
+                motion_counter = TIME;
             }
 
         }  

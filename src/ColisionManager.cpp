@@ -41,7 +41,6 @@ namespace Managers
             while(B != nullptr)
             {
                 check_colision(*A, *B);
-                (*A)->collide(*B);
                 B++;
             }
             A++;
@@ -55,15 +54,17 @@ namespace Managers
         {
             if (fabs(d.x) - fabs(sizeA.x + sizeB.x)/2.0 < fabs(d.y) - fabs(sizeA.y + sizeB.y)/2.0)
             {
-                B->set_vel(sf::Vector2f(-B->get_vel().x, -B->get_vel().y));
+                //B->set_vel(sf::Vector2f(-B->get_vel().x, -B->get_vel().y));
                 if (posA.y < posB.y)
                 {
+                    A->collide(B, "Above");
                     A->set_position(sf::Vector2f(posA.x, posB.y - (sizeB.y + sizeA.y)/2.f));
                     A->set_vel(sf::Vector2f(A->get_vel().x, 0.f));
                     A->set_grounded(true);
                 }
                 else
                 {
+                    A->collide(B, "Below");
                     A->set_position(sf::Vector2f(posA.x, posB.y + (sizeB.y + sizeA.y)/2.f));
                     A->set_vel(sf::Vector2f(A->get_vel().x, 0.f));
                 }
@@ -72,11 +73,13 @@ namespace Managers
             {
                 if (posA.x < posB.x)
                 {
+                    A->collide(B, "Right");
                     A->set_position(sf::Vector2f(posB.x - (sizeB.x + sizeA.x)/2.f, posA.y));
                     A->set_vel(sf::Vector2f(-CR*A->get_vel().x, A->get_vel().y));  
                 }
                 else
                 {
+                    A->collide(B, "Left");
                     A->set_position(sf::Vector2f(posB.x + (sizeB.x + sizeA.x)/2.f, posA.y));
                     A->set_vel(sf::Vector2f(-CR*A->get_vel().x, A->get_vel().y));  
                 }
