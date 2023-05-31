@@ -8,7 +8,7 @@ namespace Entes
         Enemy(1, pos, velocity, size),
         motion_counter(TIME)
         {
-            damage = 5;
+            damage = 2;
         }
         Enemy1:: ~Enemy1()
         {
@@ -64,17 +64,19 @@ namespace Entes
             //ifs e dano
             sf::Vector2f pos = other->get_position();
             sf::Vector2f s = other->get_size();
-
+            //colisão com paredes:
             if (direction == "Right")
             {
                 vel.x = -SPEED;
                 motion_counter = -TIME;
+                //std::cout<<direction<<std::endl;
             }
             else if (direction == "Left")
             {
                 vel.x = SPEED;
                 motion_counter = TIME;
             }
+            position += sf::Vector2f(speed*vel.x / 10, speed*vel.y / 10);
 
         }  
     }    

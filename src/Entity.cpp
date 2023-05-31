@@ -12,7 +12,7 @@ namespace Entes
     body(size),
     position(pos),
     vel(velocity),
-    lives(1),
+    life(1),
     grounded(false),
     alive(true)
     {
@@ -29,6 +29,7 @@ namespace Entes
 
     void Entity::draw()
     {
-        graphics_manager->draw(&body);
+        if (alive)
+            graphics_manager->draw(&body);
     }
 }

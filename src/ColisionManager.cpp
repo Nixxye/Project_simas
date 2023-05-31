@@ -19,31 +19,42 @@ namespace Managers
         Lists::List<Entes::Entity>::Iterator<Entes::Entity> A = player_list->get_first(),B = enemy_list->get_first();
         while (A != nullptr)
         {
-            (*A)->set_grounded(false);
-            while(B != nullptr)
+            if ((*A)->get_alive())
             {
-                check_colision(*A, *B);
-                B++;
+                (*A)->set_grounded(false);
+                while(B != nullptr)
+                {
+                    if ((*B)->get_alive())
+                        check_colision(*A, *B);
+                    B++;
+                }
+                B = obstacle_list->get_first();
+                while (B != nullptr)
+                {
+                    if ((*B)->get_alive())
+                        check_colision(*A, *B);
+                    B++;
+                }
+                A++;
             }
-            B = obstacle_list->get_first();
-            while (B != nullptr)
-            {
-                check_colision(*A, *B);
-                B++;
-            }
-            A++;
+
         }
         A = enemy_list->get_first();
         while (A != nullptr)
         {
-            B = obstacle_list->get_first();
-            (*A)->set_grounded(false);
-            while(B != nullptr)
+            if ((*A)->get_alive())
             {
-                check_colision(*A, *B);
-                B++;
+                B = obstacle_list->get_first();
+                (*A)->set_grounded(false);
+                while(B != nullptr)
+                {
+                    if ((*B)->get_alive())
+                        check_colision(*A, *B);
+                    B++;
+                }
+                A++;                
             }
-            A++;
+
         }
     }
     void ColisionManager::check_colision(Entes::Entity* A, Entes::Entity* B)
@@ -57,15 +68,17 @@ namespace Managers
                 //B->set_vel(sf::Vector2f(-B->get_vel().x, -B->get_vel().y));
                 if (posA.y < posB.y)
                 {
-                    A->collide(B, "Above");
+                    
                     A->set_position(sf::Vector2f(posA.x, posB.y - (sizeB.y + sizeA.y)/2.f));
                     A->set_vel(sf::Vector2f(A->get_vel().x, 0.f));
+                    A->collide(B, "Below");
                     A->set_grounded(true);
                 }
                 else
                 {
-                    A->collide(B, "Below");
+                    
                     A->set_position(sf::Vector2f(posA.x, posB.y + (sizeB.y + sizeA.y)/2.f));
+                    A->collide(B, "Above");
                     A->set_vel(sf::Vector2f(A->get_vel().x, 0.f));
                 }
             }

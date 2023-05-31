@@ -18,7 +18,7 @@ namespace Entes
             sf::Vector2f position;
             sf::Vector2f vel;
             static sf::Vector2f player_position;
-            int lives;
+            int life;
             bool grounded;
             bool alive;
 
@@ -43,6 +43,7 @@ namespace Entes
             sf::Vector2f get_size(){return body.getSize();} 
             const int get_id() const {return id;}
             const bool get_alive() const {return alive;}
+            const int get_damage() const {return damage;}
 
             virtual Observers::Observer* get_observer() {return nullptr;}     
     };

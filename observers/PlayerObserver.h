@@ -32,8 +32,7 @@ namespace Observers
             void set_player(Entes::Characters::Player* p);
 
             void set_PlayerKeys (sf::Keyboard::Key right,
-             sf::Keyboard::Key left, sf::Keyboard::Key up);
-
+            sf::Keyboard::Key left, sf::Keyboard::Key up, sf::Keyboard::Key attack);
            
     };
 
