@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 
 namespace Lists
 {
@@ -94,6 +95,8 @@ namespace Lists
                     delete aux;
             }
             size = 0;
+            //novo:
+            pfirst = nullptr;
         }
         const int get_size() const
         {

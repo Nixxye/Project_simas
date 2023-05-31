@@ -3,6 +3,11 @@
 #include "GameObject.h"
 #include "../observers/Observer.h"
 
+namespace Managers
+{
+    class ColisionManager;
+}
+
 namespace Entes
 {
     class Entity : public GameObject
@@ -36,6 +41,7 @@ namespace Entes
             void set_grounded(bool g){grounded = g;}
             void set_alive(bool a){alive = a;}
             void set_vel(sf::Vector2f v){vel = v;}
+            virtual void set_colision_manager(Managers::ColisionManager* cm) { }
 
             sf::Vector2f get_vel(){return vel;}
             int get_speed(){return speed;}
