@@ -66,10 +66,11 @@ namespace Stages
         }
 
         file <<"#players"<<std::endl;
-        file <<players.get_size() << std::endl << std::endl;
+        file <<players.get_size() << std::endl;
 
         for (Lists::List<Entes::Entity>::Iterator<Entes::Entity> it = players.get_first(); it != nullptr; it++)
         {
+            file << std::endl;
             file << (*it)->get_id() <<std::endl<< (*it)->get_position().x << std::endl <<(*it)->get_position().y << std::endl<<(*it)->get_vel().x << std::endl<<(*it)->get_vel().y <<std::endl;
         }
         file << std::endl;
@@ -79,7 +80,8 @@ namespace Stages
         file << enemies.get_size() << std::endl << std::endl;
         for (Lists::List<Entes::Entity>::Iterator<Entes::Entity> it = enemies.get_first(); it != nullptr; it++)
         {
-            file << (*it)->get_id() <<std::endl<< (*it)->get_position().x << std::endl <<(*it)->get_position().y << std::endl<<(*it)->get_vel().x << std::endl<<(*it)->get_vel().y <<std::endl;
+            file << std::endl;
+            file << (*it)->get_id() <<std::endl<< (*it)->get_position().x << std::endl <<(*it)->get_position().y << std::endl<<(*it)->get_vel().x << std::endl<<(*it)->get_vel().y <<std::endl<<std::endl;
         }
         file << std::endl;
         file.close();
@@ -190,11 +192,11 @@ namespace Stages
         enemies.clear();
         players.clear();
         //obstacles.clear();
-
+        /*
         std::cout<<enemies.get_size()<<std::endl;
         std::cout<<players.get_size()<<std::endl;
         std::cout<<obstacles.get_size()<<std::endl;
-
+        */
         std::ifstream file(save_base);
         int n = 0;
         Entes::Entity* aux = NULL;
@@ -226,7 +228,7 @@ namespace Stages
             //cout << id << posX << posY << velX << velY << endl;
             getline(file, line);
             //Static cast;
-            aux = new Entes::Characters::Player(sf::Vector2f(posX, posY), sf::Vector2f(velX, velY), sf::Vector2f(50.f, 50.f));
+            aux = new Entes::Characters::Player(i + 1, sf::Vector2f(posX, posY), sf::Vector2f(velX, velY), sf::Vector2f(50.f, 50.f));
             add_player(aux);
             //cout<<"LOADED"<<endl;
         }
@@ -234,7 +236,7 @@ namespace Stages
         getline(file, line);
         if (line != "#enemies")
         {
-            std::cout << "ERROR 51 "<< std::endl;
+            std::cout << "ERROR: 53 "<< std::endl;
             file.close();
             exit(3);//exit
         }

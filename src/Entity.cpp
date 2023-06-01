@@ -2,6 +2,8 @@
 
 
 int Entes::Entity::count(0);
+int Entes::Entity::speed(0);
+
 sf::Vector2f Entes::Entity::player_position(200.f, 200.f);
 
 namespace Entes

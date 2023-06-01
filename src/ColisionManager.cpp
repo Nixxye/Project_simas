@@ -37,8 +37,6 @@ namespace Managers
                     B++;
                 }
             }
-            A++;
-
         }
         A = enemy_list->get_first();
         while (A != nullptr)

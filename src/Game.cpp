@@ -22,7 +22,7 @@ void Game::run()
         pGM->clean();
         
         pEM->run();
-        pSM->get_CurrentState()->run();
+        pSM->run();
         //main_menu.run();
         //stage1.run();
         

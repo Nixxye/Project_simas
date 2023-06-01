@@ -4,7 +4,7 @@
 
 namespace Managers
 {
-     StateManager* StateManager::instance = nullptr;
+    StateManager* StateManager::instance = nullptr;
     
     StateManager* StateManager::get_instance() 
     {
@@ -40,11 +40,6 @@ namespace Managers
         return currentState;
     }
     //Tirar
-    int StateManager::get_LastStateID()
-    {
-        return 0;
-        //return pLastState->get_id();
-    }
     void StateManager:: add_state(States::State* pState)
     {
         //std::cout<<"Adicionando estado "<<pState->get_id()<<std::endl;

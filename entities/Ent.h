@@ -14,7 +14,7 @@ protected:
     const int id;
     static int count;
     sf::RectangleShape body;
-    static int speed;
+    //static int speed;
     sf::Vector2f position;
     static Managers::GraphicsManager* pGM;
     sf :: Texture* texture;
@@ -26,7 +26,7 @@ public:
 
     void set_position(sf::Vector2f pos){body.setPosition(pos);}
 
-    int get_speed(){return speed;}
+    //int get_speed(){return speed;}
 
     sf::Vector2f get_position(){return body.getPosition();}
     sf::Vector2f get_size(){return body.getSize();} 

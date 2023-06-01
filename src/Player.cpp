@@ -16,14 +16,14 @@ namespace Entes
             life = 20;
             damage = 3;
             //lives = 3;
+            pPObserver = new Observers::PlayerObserver(index);
+            std::cout<<"Added player "<<index<<std::endl;
             if (index == 1)
             {
-                pPObserver = new Observers::PlayerObserver(1);
                 texture = pGM->load_textures("../assets/player.png");
             }
             else if (index == 2)
             {
-                pPObserver = new Observers::PlayerObserver(2);
                 texture = pGM->load_textures("../assets/player2.png");
             }
             pPObserver->set_player(this);
