@@ -59,11 +59,12 @@ namespace Managers
             exit(1);
         }
         vector_states[currentState]->run();
+        //std::cout<<"eita"<<std::endl;
     }
 
     void Managers::StateManager::reset_current_state()
     {
-        //std::cout<<"Entrou"<<std::endl;
         vector_states[currentState]->reset();
+        std::cout<<"Burro"<<std::endl;
     }
 }

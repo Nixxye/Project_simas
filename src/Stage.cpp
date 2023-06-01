@@ -194,29 +194,7 @@ namespace Stages
         std::cout<<enemies.get_size()<<std::endl;
         std::cout<<players.get_size()<<std::endl;
         std::cout<<obstacles.get_size()<<std::endl;
-        /*
-        std::ifstream sourceFile(save_base, std::ios::binary);
-        if (!sourceFile)
-        {
-            std::cout<<"ERROR 15"<<std::endl;
-            return;
-        }
-        std::ofstream destinationFile (save_file, std::ios::binary);
-        if (!destinationFile)
-        {
-            std::cout<<"ERROR 13"<<std::endl;
-            return;
-        }
-        destinationFile << sourceFile.rdbuf();
 
-        sourceFile.close();
-        destinationFile.close();
-        */
-        //std::cout<<"Copied"<<std::endl;
-
-        //load();
-
-        //std::cout<<"Loaded"<<std::endl;
         std::ifstream file(save_base);
         int n = 0;
         Entes::Entity* aux = NULL;

@@ -2,11 +2,15 @@
 
 #include "../managers/StateManager.h"
 
+
+
 namespace States 
 {
+
+    Managers::StateManager *State::pSM(Managers::StateManager::get_instance());
+
     State::State(int id):
-    id_state(id),
-    pSM(Managers :: StateManager ::get_instance())
+    id_state(id)
     {
         pSM->add_state(this);
     }

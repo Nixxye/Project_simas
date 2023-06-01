@@ -23,20 +23,20 @@ namespace Menus
         {
         case 0:
             if (current_stage == 1)
-                States::State::pSM->set_CurrentState(1);
+                pSM->set_CurrentState(1);
             else
-                States::State::pSM->set_CurrentState(2);
+                pSM->set_CurrentState(2);
             break;
         case 1:
             if (current_stage == 1)
             {
-                States::State::pSM->set_CurrentState(1);
+                pSM->set_CurrentState(1);
             }
             else
             {
-                States::State::pSM->set_CurrentState(2);
+                pSM->set_CurrentState(2);
             }
-            States::State::pSM->reset_current_state();
+            pSM->reset_current_state();
             break;
         case 3:
             graphics_manager->close_window();

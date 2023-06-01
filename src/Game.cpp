@@ -25,7 +25,8 @@ void Game::run()
         state_manager->run();
         //main_menu.run();
         //stage1.run();
-        
+        //std::cout<<"Eita2"<<std::endl;
         graphics_manager->show();
+        //std::cout<<"Eita3"<<std::endl;
     }  
 }

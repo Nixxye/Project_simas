@@ -10,7 +10,8 @@ namespace States
     {
 
         protected:
-            Managers :: StateManager* pSM;
+        //Fiz static agr:
+            static Managers :: StateManager* pSM;
             int id_state;
 
         public:
