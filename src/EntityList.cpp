@@ -28,7 +28,8 @@ namespace Lists
         Lists::List<Entes::Entity>::Iterator<Entes::Entity> aux = list.get_first();
         while(aux != nullptr)
         {
-            (*aux)->draw();
+            if ((*aux)->get_alive())
+                (*aux)->draw();
             aux++; 
         }
     }   

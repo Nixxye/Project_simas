@@ -20,6 +20,8 @@ namespace Entes
         void Enemy::run()
         {
             move();
+            if (alive && life < 0)
+                alive = false;
         }
         void Enemy::move()
         {

@@ -9,6 +9,7 @@ namespace Entes
         motion_counter(TIME)
         {
             damage = 2;
+            life = 10;
         }
         Enemy1:: ~Enemy1()
         {
@@ -64,6 +65,8 @@ namespace Entes
             //ifs e dano
             sf::Vector2f pos = other->get_position();
             sf::Vector2f s = other->get_size();
+            life -= other->get_damage();
+
             switch (index)
             {
                 //Attack -> arrumar o lance do id dps:

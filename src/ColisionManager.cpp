@@ -118,16 +118,20 @@ namespace Managers
 
         while (B != nullptr)
         {
-            posB = (*B)->get_position();
-            sizeB = (*B)->get_size();
-            //std::cout<<"Colidu"<<std::endl;
-            sf::Vector2f d = posB - posA;
-            if ((fabs(d.x) < (sizeA.x + sizeB.x)/2.0) && (fabs(d.y) < (sizeA.y + sizeB.y)/2.0))
+            if ((*B)->get_alive())
             {
-                (*B)->collide(Attacker, direction);
+                posB = (*B)->get_position();
+                sizeB = (*B)->get_size();
+                //std::cout<<"Colidu"<<std::endl;
+                sf::Vector2f d = posB - posA;
+                if ((fabs(d.x) < (sizeA.x + sizeB.x)/2.0) && (fabs(d.y) < (sizeA.y + sizeB.y)/2.0))
+                {
+                    (*B)->collide(Attacker, direction);
+                }
+
+                B++;                
             }
 
-            B++;
         }
 
         

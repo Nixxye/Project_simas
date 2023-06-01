@@ -14,6 +14,7 @@ namespace Entes
         {
             attack_body.setOrigin(attack_body.getSize().x / 2, attack_body.getSize().y / 2);
             life = 20;
+            damage = 3;
             pPObserver = new Observers::PlayerObserver;
             pPObserver->set_player(this);
         }
