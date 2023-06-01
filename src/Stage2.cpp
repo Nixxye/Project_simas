@@ -20,9 +20,9 @@ namespace Stages
         colision_manager.colide();
         //else horrível
         if (pSM->get_CurrentStateID() == id_state)
-            graphics_manager->center((*players.get_first())->get_position());
+            pGM->center((*players.get_first())->get_position());
         else
-            graphics_manager->reset_camera();
+            pGM->reset_camera();
         players.draw();
         enemies.draw();
         obstacles.draw();

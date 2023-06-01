@@ -46,7 +46,7 @@
 */
 namespace Stages
 {
-    class Stage: public GameObject, public States::State
+    class Stage: public Ent, public States::State
     {
     protected:
         Observers::StageObserver* pSObserver;

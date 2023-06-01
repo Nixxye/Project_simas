@@ -15,7 +15,7 @@ namespace Entes
             attack_body.setOrigin(attack_body.getSize().x / 2, attack_body.getSize().y / 2);
             life = 20;
             damage = 3;
-                        lives = 3;
+            //lives = 3;
             if (index == 1)
             {
                 pPObserver = new Observers::PlayerObserver(1);
@@ -185,7 +185,7 @@ namespace Entes
                 {
                    attack_body.setPosition(sf::Vector2f(body.getPosition().x - body.getSize().x / 2 - attack_body.getSize().x / 2, body.getPosition().y)); 
                 }
-                graphics_manager->draw(&attack_body);
+                pGM->draw(&attack_body);
 
                 colision_manager->collide_attack(this, direction);
                 //Por enquanto is_attacking é inútil:
