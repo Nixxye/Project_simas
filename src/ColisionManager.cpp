@@ -35,8 +35,8 @@ namespace Managers
                         check_colision(*A, *B);
                     B++;
                 }
-                A++;
             }
+            A++;
 
         }
         A = enemy_list->get_first();
@@ -51,10 +51,9 @@ namespace Managers
                     if ((*B)->get_alive())
                         check_colision(*A, *B);
                     B++;
-                }
-                A++;                
+                }                 
             }
-
+            A++;
         }
     }
     void ColisionManager::check_colision(Entes::Entity* A, Entes::Entity* B)
@@ -122,15 +121,15 @@ namespace Managers
             {
                 posB = (*B)->get_position();
                 sizeB = (*B)->get_size();
-                //std::cout<<"Colidu"<<std::endl;
+
                 sf::Vector2f d = posB - posA;
                 if ((fabs(d.x) < (sizeA.x + sizeB.x)/2.0) && (fabs(d.y) < (sizeA.y + sizeB.y)/2.0))
                 {
                     (*B)->collide(Attacker, direction);
                 }
-
-                B++;                
+              
             }
+            B++;
 
         }
 
