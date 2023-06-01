@@ -77,8 +77,9 @@ namespace Managers
     }
     void GraphicsManager:: center(sf::Vector2f position1, sf::Vector2f position2 )
     {
+
+        //printf("\nP1: %f e %f P2: %f e %f",position1.x, position1.y,position2.x,position2.y);
         cam.setCenter((position1.x+position2.x)/2,(position1.y+position2.y)/2);
-        //if (position1.x)
         window->setView(cam);
     }
     void GraphicsManager::reset_camera()

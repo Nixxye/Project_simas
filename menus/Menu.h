@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 
-#include "../entities/GameObject.h"
+#include "../entities/Ent.h"
 #include "../managers/EventsManager.h"
 #include "../observers/MenuObserver.h"
 #include "../menus/Button.h"
@@ -13,14 +13,14 @@
 
 namespace Menus
 {
-    class Menu: public GameObject, public States::State
+    class Menu: public Ent, public States::State
     {
         protected:
             const int MAX_BUTTONS;
             std::vector<Button*> buttons;
             int selected_index;
             Observers::MenuObserver* pMenuObserver;
-            Managers::EventsManager* pEventManager;
+            Managers::EventsManager* pEventsManager;
         public:
             Menu(int n_buttons = 0, int id = -1);
             ~Menu();

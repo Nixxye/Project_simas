@@ -23,7 +23,7 @@ namespace Observers
             std :: map <sf::Keyboard::Key,char> PlayerKeys;
 
         public:
-            PlayerObserver();
+            PlayerObserver(int i = 1);
 
             ~PlayerObserver();
 

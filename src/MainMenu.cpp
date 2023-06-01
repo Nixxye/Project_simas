@@ -39,7 +39,7 @@ namespace Menus
             States::State::pSM->reset_current_state();
             break;
         case 3:
-            graphics_manager->close_window();
+            pGM->close_window();
             break;
         }
     }

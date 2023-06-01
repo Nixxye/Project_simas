@@ -116,7 +116,7 @@ namespace Stages
             //cout << id << posX << posY << velX << velY << endl;
             getline(file, line);
             //Static cast;
-            aux = new Entes::Characters::Player(sf::Vector2f(posX, posY), sf::Vector2f(velX, velY), sf::Vector2f(50.f, 50.f));
+            aux = new Entes::Characters::Player(i+1,sf::Vector2f(posX, posY), sf::Vector2f(velX, velY), sf::Vector2f(50.f, 50.f));
             add_player(aux);
             //cout<<"LOADED"<<endl;
         }
