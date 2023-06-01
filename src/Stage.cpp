@@ -77,7 +77,7 @@ namespace Stages
 
         file <<"#enemies"<<std::endl;
 
-        file << enemies.get_size() << std::endl << std::endl;
+        file << enemies.get_size() << std::endl;
         for (Lists::List<Entes::Entity>::Iterator<Entes::Entity> it = enemies.get_first(); it != nullptr; it++)
         {
             file << std::endl;
