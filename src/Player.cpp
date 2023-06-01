@@ -95,6 +95,7 @@ namespace Entes
                 //std::cout<<direction<<std::endl;
                 if (direction == "Above")
                 {
+                    life -= dmg;
                     vel.y = 40 * SPEED;
                     other->set_vel(sf::Vector2f(other->get_vel().x, -5 * SPEED));
                 }
@@ -107,11 +108,13 @@ namespace Entes
                 }
                 else if (direction == "Left")
                 {
+                    life -= dmg;
                     vel.x = -40 * SPEED;
                     other->set_vel(sf::Vector2f(-5 * SPEED, other->get_vel().y));
                 }
                 else if (direction == "Right")
                 {
+                    life -= dmg;
                     vel.x = 40 * SPEED;
                     other->set_vel(sf::Vector2f(5 * SPEED, other->get_vel().y));
                 }
