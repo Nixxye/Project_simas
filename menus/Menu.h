@@ -20,7 +20,7 @@ namespace Menus
             std::vector<Button*> buttons;
             int selected_index;
             Observers::MenuObserver* pMenuObserver;
-            Managers::EventsManager* pEventManager;
+            Managers::EventsManager* pEventsManager;
         public:
             Menu(int n_buttons = 0, int id = -1);
             ~Menu();

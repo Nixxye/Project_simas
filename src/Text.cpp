@@ -2,12 +2,12 @@
 
 namespace Menus
 {
-    Managers::GraphicsManager* Text::graphics_manager(Managers::GraphicsManager::get_instance());
+    Managers::GraphicsManager* Text::pGM(Managers::GraphicsManager::get_instance());
 
     Text::Text(std::string n)
     {
         text.setString(n);
-        text.setFont(*graphics_manager->get_font());
+        text.setFont(*pGM->get_font());
         text.setCharacterSize(80);
         text.setPosition(sf::Vector2f(100.f, 25.f));
     }
@@ -29,6 +29,6 @@ namespace Menus
     }
     void Text::draw()
     {
-        graphics_manager->draw(&text);
+        pGM->draw(&text);
     }
 }

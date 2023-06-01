@@ -9,7 +9,7 @@ namespace Menus
     buttons(),
     selected_index(0)
     {
-        pEventManager = Managers::EventsManager::get_instance();
+        pEventsManager = Managers::EventsManager::get_instance();
         for (int i = 0; i < MAX_BUTTONS; i++)
         {
             buttons.push_back(new Button(sf::Vector2f(WIDTH / 2, (i + 2) *(20 + SIZEY))));
@@ -59,7 +59,7 @@ namespace Menus
     }
     void Menu :: run()
     {
-        pEventManager->run();
+        pEventsManager->run();
         draw();
     }
 }

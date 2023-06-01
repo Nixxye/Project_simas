@@ -11,7 +11,7 @@ namespace Menus
     {
     private:
         sf::Text text;
-        static Managers::GraphicsManager* graphics_manager;
+        static Managers::GraphicsManager* pGM;
     public:
         Text(std::string n = " ");
         ~Text();
