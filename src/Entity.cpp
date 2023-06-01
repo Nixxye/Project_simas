@@ -8,6 +8,7 @@ namespace Entes
 {
     Entity::Entity(int index, sf::Vector2f pos, sf::Vector2f velocity, sf::Vector2f size):
     GameObject(),
+    damage(0),
     id(index),
     body(size),
     position(pos),

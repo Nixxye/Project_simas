@@ -8,8 +8,8 @@
 #define WIDTH 800
 #define HEIGHT 600
 //Linux:
-#define FONT_PATH "../assets/PressStart2P-Regular.ttf"
-//#define FONT_PATH "assets/PressStart2P-Regular.ttf"
+//#define FONT_PATH "../assets/PressStart2P-Regular.ttf"
+#define FONT_PATH "assets/PressStart2P-Regular.ttf"
 
 namespace Managers 
 {
