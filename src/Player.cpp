@@ -7,12 +7,12 @@ namespace Entes
     namespace Characters
     {
         Player::Player(sf::Vector2f pos, sf::Vector2f velocity, sf::Vector2f size):
-        attack_body(size),
+        attack_body(sf::Vector2f(size.x * 2, size.y * 2)),
         is_attacking(false),
         Character(0, pos, velocity, size),
         attack_delay(0)
         {
-            attack_body.setOrigin(size.x / 2, size.y / 2);
+            attack_body.setOrigin(attack_body.getSize().x / 2, attack_body.getSize().y / 2);
             life = 20;
             pPObserver = new Observers::PlayerObserver;
             pPObserver->set_player(this);
@@ -32,7 +32,7 @@ namespace Entes
             {
                 //DAR UM JEITO DE FAZER UM GAME OVER DECENTE:
                 std::cout<<"Faleceu"<<std::endl;
-                exit(1);
+                //exit(1);
             }
             move();
             attack_delay--;
@@ -89,7 +89,7 @@ namespace Entes
             int dmg = other->get_damage();
             if (dmg)
             {
-                life -= dmg;
+                //life -= dmg;
                 //substituir:
                 //std::cout<<direction<<std::endl;
                 if (direction == "Above")
@@ -126,52 +126,52 @@ namespace Entes
             if (attack_delay <= 0)
             {
                 attack_delay = ATTACK_DELAY;
-                char direction = ' ';
+                std::string direction = " ";
                 std::cout<<"Attacking"<<std::endl;
                 is_attacking = true;
 
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
                 {
-                    direction = 'U';
+                    direction = "Above";
                 }
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
                 {
-                    direction = 'L';
+                    direction = "Left";
                 }
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
                 {
-                    direction = 'R';
+                    direction = "Right";
                 }
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
                 {
-                    direction = 'D';
+                    direction = "Down";
                 }
                 else 
                 {
                     if (vel.x >= 0)
-                        direction = 'R';
+                        direction = "Right";
                     else 
-                        direction = 'L';
+                        direction = "Left";
                 }
-                if (direction == 'U')
+                if (direction == "Above")
                 {
-                    attack_body.setPosition(sf::Vector2f(body.getPosition().x, body.getPosition().y - body.getSize().y));
+                    attack_body.setPosition(sf::Vector2f(body.getPosition().x, body.getPosition().y - body.getSize().y / 2 - attack_body.getSize().y / 2));
                 }
-                else if (direction == 'R')
+                else if (direction == "Right")
                 {
-                   attack_body.setPosition(sf::Vector2f(body.getPosition().x + body.getSize().x, body.getPosition().y)); 
+                   attack_body.setPosition(sf::Vector2f(body.getPosition().x + body.getSize().x / 2 + attack_body.getSize().x / 2, body.getPosition().y)); 
                 }
-                if (direction == 'D')
+                if (direction == "Down")
                 {
-                    attack_body.setPosition(sf::Vector2f(body.getPosition().x, body.getPosition().y + body.getSize().y));
+                    attack_body.setPosition(sf::Vector2f(body.getPosition().x, body.getPosition().y + body.getSize().y / 2 + attack_body.getSize().y / 2));
                 }
-                else if (direction == 'L')
+                else if (direction == "Left")
                 {
-                   attack_body.setPosition(sf::Vector2f(body.getPosition().x - body.getSize().x, body.getPosition().y)); 
+                   attack_body.setPosition(sf::Vector2f(body.getPosition().x - body.getSize().x / 2 - attack_body.getSize().x / 2, body.getPosition().y)); 
                 }
                 graphics_manager->draw(&attack_body);
 
-                colision_manager->collide_attack(this);
+                colision_manager->collide_attack(this, direction);
                 //Por enquanto is_attacking é inútil:
                 is_attacking = false;
             }

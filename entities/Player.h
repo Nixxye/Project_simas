@@ -12,7 +12,7 @@ namespace Managers
     class ColisionManager;
 }
 
-#define ATTACK_DELAY 100
+#define ATTACK_DELAY 30
 
 namespace Entes
 {

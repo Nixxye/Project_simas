@@ -49,11 +49,11 @@ namespace Entes
                     vel.y -= 5.f;
                 }
                 else
-                    vel.y += G;       
+                    vel.y += G;      
                 if (motion_counter > 0)
-                    vel.x += SPEED/3;
+                    vel.x += SPEED / 4;
                 else 
-                    vel.x -= SPEED/3;      
+                    vel.x -= SPEED / 4;      
                 position += sf::Vector2f(speed*vel.x / 10, speed*vel.y / 10);
                 body.setPosition(position);
             }
@@ -68,26 +68,27 @@ namespace Entes
             {
                 //Attack -> arrumar o lance do id dps:
             case 0:
+                std::cout<<direction<<" "<<vel.x<<" "<<vel.y<<std::endl;
                 if (direction == "Right")
                 {
-                    vel.x = -5*SPEED;
+                    vel.x = 100*SPEED;
                     //std::cout<<direction<<std::endl;
                 }
                 else if (direction == "Left")
                 {
-                    vel.x = 5*SPEED;
+                    vel.x = -100*SPEED;
                 }
                 else if (direction == "Above")
                 {
-                    vel.y = 5*SPEED;
+                    vel.y = 100*SPEED;
                 }
                 else if (direction == "Below")
                 {
-                    vel.y = -5*SPEED;
+                    vel.y = -40*SPEED;
                 }
                 break;
                 //Plataformas
-            default:
+            case 11:
                 if (direction == "Right")
                 {
                     vel.x = -SPEED;
@@ -96,12 +97,15 @@ namespace Entes
                 }
                 else if (direction == "Left")
                 {
+                    //Arrumar:
                     vel.x = SPEED;
                     motion_counter = TIME;
                 }
-                position += sf::Vector2f(speed*vel.x / 10, speed*vel.y / 10);            
+                //position += sf::Vector2f(speed*vel.x / 10, speed*vel.y / 10);          
                 break;
+                
             }
+            move();
 
 
         }  
