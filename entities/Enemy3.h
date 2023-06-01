@@ -9,9 +9,9 @@ namespace Entes
         {
         private:
         public:
-            Enemy3();
+            Enemy3(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f velocity = sf::Vector2f(50.f, 50.f), sf::Vector2f size = sf::Vector2f(0.f, 0.f));
             ~Enemy3();
-            void collide(Entity* other){};
+            void collide(Entity* other, std::string direction = ""){};
         
         };    
     }

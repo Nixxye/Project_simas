@@ -53,6 +53,7 @@ namespace Stages
         if (player)
         {
             players.add(player);
+            player->set_colision_manager(&colision_manager);
         }
     }
     void Stage::save()
@@ -140,7 +141,7 @@ namespace Stages
             //cout << id << posX << posY << velX << velY << endl;
             std::getline(file, line);
             //Static cast;
-            aux = new Entes::Characters::Enemy(sf::Vector2f(posX, posY), sf::Vector2f(velX, velY), sf::Vector2f(50.f, 50.f));
+            aux = create_enemy(id, sf::Vector2f(posX, posY), sf::Vector2f(velX, velY), sf::Vector2f(50.f, 50.f));
             add_enemy(aux);
             //cout<<"LOADED"<<endl;
         }
@@ -176,7 +177,8 @@ namespace Stages
             //cout << id << posX << posY << velX << velY << endl;
             std::getline(file2, line);
             //Static cast;
-            aux = new Entes::Obstacles::Obstacle(sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY));
+            //Mudar dps o id:
+            aux = new Entes::Obstacles::Obstacle(11, sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY));
             add_obstacle(aux);
             //cout<<"LOADED"<<endl;
         }
@@ -187,34 +189,72 @@ namespace Stages
         //std::cout<<"No reset"<<std::endl;
         enemies.clear();
         players.clear();
-        obstacles.clear();
+        //obstacles.clear();
 
         std::cout<<enemies.get_size()<<std::endl;
         std::cout<<players.get_size()<<std::endl;
         std::cout<<obstacles.get_size()<<std::endl;
 
-        std::ifstream sourceFile(save_base, std::ios::binary);
-        if (!sourceFile)
-        {
-            std::cout<<"ERROR 15"<<std::endl;
-            return;
-        }
-        std::ofstream destinationFile (save_file, std::ios::binary);
-        if (!destinationFile)
-        {
-            std::cout<<"ERROR 13"<<std::endl;
-            return;
-        }
-        destinationFile << sourceFile.rdbuf();
+        std::ifstream file(save_base);
+        int n = 0;
+        Entes::Entity* aux = NULL;
+        std::string line;
 
-        sourceFile.close();
-        destinationFile.close();
+        if (!file)
+        {
+            std::cout <<"ERROR: 2"<<std::endl;
+            exit(2); //exit
+        }
+
         
-        //std::cout<<"Copied"<<std::endl;
+        getline(file, line);
+        if (line != "#players")
+        {
+            std::cout << "ERROR 4 "<< std::endl;
+            file.close();
+            exit(3);//exit
+        }
+        file >> n;
+        getline(file, line);
+        getline(file, line);
+        for (int i = 0; i < n; i++)
+        {
+            int id;
+            float posX, posY, velX, velY;
 
-        load();
+            file >> id >> posX >> posY >> velX >> velY;
+            //cout << id << posX << posY << velX << velY << endl;
+            getline(file, line);
+            //Static cast;
+            aux = new Entes::Characters::Player(sf::Vector2f(posX, posY), sf::Vector2f(velX, velY), sf::Vector2f(50.f, 50.f));
+            add_player(aux);
+            //cout<<"LOADED"<<endl;
+        }
+        getline(file, line);
+        getline(file, line);
+        if (line != "#enemies")
+        {
+            std::cout << "ERROR 51 "<< std::endl;
+            file.close();
+            exit(3);//exit
+        }
+        file >> n;
+        std::getline(file, line);
+        std::getline(file, line);
+        for (int i = 0; i < n; i++)
+        {
+            int id;
+            float posX, posY, velX, velY;
 
-        //std::cout<<"Loaded"<<std::endl;
+            file >> id >> posX >> posY >> velX >> velY;
+            //cout << id << posX << posY << velX << velY << endl;
+            std::getline(file, line);
+            //Static cast;
+            aux = create_enemy(id, sf::Vector2f(posX, posY), sf::Vector2f(velX, velY), sf::Vector2f(50.f, 50.f));
+            add_enemy(aux);
+            //cout<<"LOADED"<<endl;
+        }
+        file.close();
     }
 
     void Stage::setObservers()
@@ -225,6 +265,24 @@ namespace Stages
             pSObserver->add_player_observer((*aux)->get_observer());
             aux++; 
         }
+    }
+
+    Entes::Entity* Stage::create_enemy(int id, sf::Vector2f pos, sf::Vector2f vel, sf::Vector2f size)
+    {
+        Entes::Entity* aux = NULL;
+        switch (id)
+        {
+        case 1:
+            aux = new Entes::Characters::Enemy1(pos, vel, size);
+            break;
+        case 2:
+            aux = new Entes::Characters::Enemy2(pos, vel, size);
+        case 3:
+            aux = new Entes::Characters::Enemy3(pos, vel, size);
+        default:
+            break;
+        }
+        return aux;
     }
 }
  

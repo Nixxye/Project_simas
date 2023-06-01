@@ -6,10 +6,14 @@ sf::Vector2f Entes::Entity::player_position(200.f, 200.f);
 
 namespace Entes
 {
-    Entity::Entity(sf::Vector2f pos, sf::Vector2f velocity, sf::Vector2f size):
-    Ent(size, pos),
-    id(count++),
+    Entity::Entity(int index, sf::Vector2f pos, sf::Vector2f velocity, sf::Vector2f size):
+    GameObject(),
+    damage(0),
+    id(index),
+    body(size),
+    position(pos),
     vel(velocity),
+    life(1),
     grounded(false),
     alive(true)
     {
@@ -24,7 +28,8 @@ namespace Entes
     }
     void Entity::draw()
     {
-        pGM->draw(&(this->body));
+        if (alive)
+            graphics_manager->draw(&body);
     }
 
 

@@ -23,6 +23,7 @@ namespace Managers
         void set_obstacle_list(Lists::EntityList* list){ if (list) { obstacle_list = list; }}
 
         void colide();
+        void collide_attack(Entes::Characters::Player* Attacker, std::string direction);
         void check_colision(Entes::Entity* A, Entes::Entity* B);
 
     };

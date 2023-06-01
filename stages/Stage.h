@@ -7,7 +7,9 @@
 
 #include "../entities/Entity.h"
 #include "../entities/Player.h"
-#include "../entities/Enemy.h"
+#include "../entities/Enemy1.h"
+#include "../entities/Enemy2.h"
+#include "../entities/Enemy3.h"
 #include "../entities/Boss.h"
 #include "../entities/Obstacle.h"
 #include "../lists/EntityList.h"
@@ -23,7 +25,7 @@
 #include <iostream>
 
 //Windows:
-/*
+
 #define SAVE_STAGE_1 "saves/savestate1.dat"
 #define FILE_STAGE_1 "saves/stage1.dat"
 #define SAVE_BASE_1 "saves/savebase1.dat"
@@ -31,9 +33,9 @@
 #define SAVE_STAGE_2 "saves/savestate2.dat"
 #define FILE_STAGE_2 "saves/stage2.dat"
 #define SAVE_BASE_2 "saves/savebase2.dat"
-*/
-//Linux:
 
+//Linux:
+/*
 #define FILE_STAGE_1 "../saves/stage1.dat"
 #define SAVE_STAGE_1 "../saves/savestate1.dat"
 #define SAVE_BASE_1 "../saves/savebase1.dat"
@@ -41,7 +43,7 @@
 #define SAVE_STAGE_2 "../saves/savestate2.dat"
 #define FILE_STAGE_2 "../saves/stage2.dat"
 #define SAVE_BASE_2 "../saves/savebase2.dat"
-
+*/
 namespace Stages
 {
     class Stage: public GameObject, public States::State
@@ -73,6 +75,8 @@ namespace Stages
         void save();
         void load();
         void reset();
+
+        Entes::Entity* create_enemy(int id, sf::Vector2f pos, sf::Vector2f vel, sf::Vector2f size);
 
         void setObservers();
     };

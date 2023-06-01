@@ -12,7 +12,7 @@ namespace Entes
             public:
                 Obstacle2();
                 ~Obstacle2();
-                void collide(Entity* other){};
+                void collide(Entity* other, std::string  direction = ""){};
                 void run(){}
             
         };    
