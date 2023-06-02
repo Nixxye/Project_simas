@@ -16,6 +16,7 @@
 #include "../managers/ColisionManager.h"
 #include "../managers/GraphicsManager.h"
 #include "../managers/EventsManager.h"
+#include "../managers/StateManager.h"
 #include "../states/State.h"
 #include "../observers/StageObserver.h"
 #include "../stages/Stage.h"
@@ -50,6 +51,7 @@ namespace Stages
     {
     protected:
         Observers::StageObserver* pSObserver;
+        Managers::StateManager* pSM;
 
         Lists::EntityList obstacles;
         Lists::EntityList enemies;

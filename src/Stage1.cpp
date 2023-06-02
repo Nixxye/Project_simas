@@ -35,13 +35,29 @@ namespace Stages
             //std::cout<<players.get_size()<<std::endl;
             if (players.get_size()==1)
             {
-                pGM->center((*players.get_first())->get_position());
+                if ((*players.get_first())->get_alive())
+                    pGM->center((*players.get_first())->get_position());
+                else
+                {
+                     pSM->set_CurrentState(0); // vai ser o gameover ou stage 2
+                     pGM->reset_camera();
+                }
+                    
             }
             else 
             {
                 //printf ("%d",players.get_size());
-
-                pGM->center((*it)->get_position(),(*players.get_first())->get_position());
+                if ((*players.get_first())->get_alive() && (*it)->get_alive())
+                    pGM->center((*it)->get_position(),(*players.get_first())->get_position());
+                else if (!(*players.get_first())->get_alive() && !(*it)->get_alive()) 
+                {
+                    pSM->set_CurrentState(0); // mudar para o gameover ou stage 2
+                    pGM->reset_camera();
+                }
+                else if(!(*players.get_first())->get_alive())
+                    pGM->center((*it)->get_position());
+                else 
+                    pGM->center((*players.get_first())->get_position());
             }
         }
         else

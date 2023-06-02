@@ -4,6 +4,7 @@ namespace Stages
 {
     Stage::Stage(std::string savefile, std::string infofile, std::string savebase, int id):
     States::State(id),
+    pSM(Managers::StateManager::get_instance()),
     obstacles(),
     enemies(),
     players(),
