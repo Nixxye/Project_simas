@@ -28,5 +28,6 @@ namespace Observers
             pMenu->select();
         if (key_code == sf::Keyboard::Right ||key_code == sf::Keyboard::Left)
             pMenu->move_horizontally();
+        
     }
 }

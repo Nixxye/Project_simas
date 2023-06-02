@@ -1,15 +1,15 @@
-#include "../entities/Obstacle3.h"
+#include "../entities/SimplePlatform.h"
 
 namespace Entes
 {
     namespace Obstacles
     {
-        Obstacle3:: Obstacle3():
+        SimplePlatform:: SimplePlatform():
         Obstacle()
         {
 
         }
-        Obstacle3:: ~Obstacle3()
+        SimplePlatform:: ~SimplePlatform()
         {
             
         }

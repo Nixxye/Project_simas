@@ -34,8 +34,12 @@ namespace Stages
             else 
             {
                 //printf ("%d",players.get_size());
-
-                pGM->center((*it)->get_position(),(*players.get_first())->get_position());
+                if ((*players.get_first())->get_alive() && (*it)->get_alive())
+                    pGM->center((*it)->get_position(),(*players.get_first())->get_position());
+                else if(!(*players.get_first())->get_alive())
+                    pGM->center((*it)->get_position());
+                else 
+                    pGM->center((*players.get_first())->get_position());
             }
         }
         else

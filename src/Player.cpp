@@ -31,7 +31,16 @@ namespace Entes
             pPObserver = nullptr;
         }
         void Player::run()
-        {
+        { 
+            if (lives < 0)
+                alive = false;
+            if (!alive)
+            {
+                
+                //DAR UM JEITO DE FAZER UM GAME OVER DECENTE:
+                std::cout<<"Faleceu"<<std::endl;
+                //exit(1);
+            }
             move();
         }
 

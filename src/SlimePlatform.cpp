@@ -1,15 +1,15 @@
-#include "../entities/Obstacle1.h"
+#include "../entities/SlimePlatform.h"
 
 namespace Entes
 {
     namespace Obstacles
     {
-        Obstacle1:: Obstacle1():
+        SlimePlatform:: SlimePlatform():
         Obstacle()
         {
 
         }
-        Obstacle1:: ~Obstacle1()
+        SlimePlatform:: ~SlimePlatform()
         {
             
         }    
