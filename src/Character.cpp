@@ -10,7 +10,6 @@ namespace Entes
         {
             body.setOrigin(body.getSize()/2.f);
             body.setPosition(pos);
-            
         }
         Character::~Character()
         {
