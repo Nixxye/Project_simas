@@ -40,7 +40,6 @@ namespace Stages
     {
     protected:
         Observers::StageObserver* pSObserver;
-        Managers::StateManager* pSM;
 
         Lists::EntityList obstacles;
         Lists::EntityList enemies;
