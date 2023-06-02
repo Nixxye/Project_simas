@@ -36,6 +36,8 @@ namespace Stages
                 //printf ("%d",players.get_size());
                 if ((*players.get_first())->get_alive() && (*it)->get_alive())
                     pGM->center((*it)->get_position(),(*players.get_first())->get_position());
+                else if (!(*players.get_first())->get_alive() && !(*it)->get_alive()) 
+                    pSM->set_CurrentState(0); // mudar para o gameover
                 else if(!(*players.get_first())->get_alive())
                     pGM->center((*it)->get_position());
                 else 

@@ -17,6 +17,7 @@
 #include "../states/State.h"
 #include "../observers/StageObserver.h"
 #include "../stages/Stage.h"
+#include "../managers/StateManager.h"
 
 #include <fstream>
 #include <string>
@@ -39,6 +40,7 @@ namespace Stages
     {
     protected:
         Observers::StageObserver* pSObserver;
+        Managers::StateManager* pSM;
 
         Lists::EntityList obstacles;
         Lists::EntityList enemies;
