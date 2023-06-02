@@ -35,10 +35,6 @@ namespace Managers
     {
         return vector_states[currentState];
     }
-    int StateManager::get_CurrentStateID()
-    {
-        return currentState;
-    }
     //Tirar
     void StateManager:: add_state(States::State* pState)
     {
@@ -60,6 +56,5 @@ namespace Managers
     void Managers::StateManager::reset_current_state()
     {
         vector_states[currentState]->reset();
-        std::cout<<"Burro"<<std::endl;
     }
 }

@@ -29,5 +29,9 @@ namespace States
     {
         return id_state;
     }
+    const bool State::get_active()
+    {
+        return (id_state == pSM->get_CurrentStateID() ? true : false);
+    }
 
 } 
