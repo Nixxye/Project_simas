@@ -10,12 +10,17 @@ namespace Menus
     stage1("Stage 1"),
     stage2("Stage 2"),
     player1 ("1 Player"),
-    player2 ("2 Players")
+    player2 ("2 Players"),
+    game( "Game++")
     {   
-
-
-        player1.setPosition(sf::Vector2f(100.f, 80.f));
-        player2.setPosition(sf::Vector2f(100.f, 80.f));
+        game.setSize(50);
+        game.setPosition(sf::Vector2f(250.f, 25.f));
+        game.set_color(0);
+        stage1.setPosition(sf::Vector2f(100.f, 80.f));
+        stage2.setPosition(sf::Vector2f(100.f, 80.f));
+        
+        player1.setPosition(sf::Vector2f(100.f, 125.f));
+        player2.setPosition(sf::Vector2f(100.f, 125.f));
         //player1.setPosition(sf::Vector2f(WIDTH / 2, (2) *(20 + SIZEY)));
         //player2.setPosition(sf::Vector2f(WIDTH / 2, (2) *(20 + SIZEY)));
         buttons[0]->set_name("Continue");
@@ -50,7 +55,7 @@ namespace Menus
             break;
         case 2:
         {
-            States::State::pSM->set_CurrentState(4);
+            States::State::pSM->set_CurrentState(3);
             //printf ("Oi menu\n");
             //States::State::pSM->reset_current_state();
         }
@@ -71,6 +76,7 @@ namespace Menus
     }
     void MainMenu::draw()
     {
+        game.draw();
         if (!current_player)
             player1.draw();
         else 

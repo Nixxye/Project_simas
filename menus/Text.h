@@ -20,5 +20,6 @@ namespace Menus
         void setSize(int t);
         void setName(std::string n);
         void draw();
+        void set_color(int c);
     };
 }
