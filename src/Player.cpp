@@ -1,5 +1,4 @@
 #include "../entities/Player.h"
-
 #include "../managers/ColisionManager.h"
 
 namespace Entes
@@ -17,7 +16,7 @@ namespace Entes
             damage = 3;
             //lives = 3;
             pPObserver = new Observers::PlayerObserver(index);
-            std::cout<<"Added player "<<index<<std::endl;
+            //std::cout<<"Added player "<<index<<std::endl;
             if (index == 1)
             {
                 texture = pGM->load_textures("../assets/player.png");
@@ -100,40 +99,62 @@ namespace Entes
             int index = other->get_id();
             //colisão bolas do barreto:
             int dmg = other->get_damage();
-            if (dmg)
+            switch (index)
             {
-                //life -= dmg;
-                //substituir:
-                //std::cout<<direction<<std::endl;
-                if (direction == "Above")
+            case 1:
+                if (dmg)
                 {
                     life -= dmg;
-                    vel.y = 40 * SPEED;
-                    other->set_vel(sf::Vector2f(other->get_vel().x, -5 * SPEED));
+                    if (direction == "Above")
+                    {
+                        life -= dmg;
+                        vel.y = 40 * SPEED;
+                        other->set_vel(sf::Vector2f(other->get_vel().x, -5 * SPEED));
+                    }
+                    else if (direction == "Below")
+                    {
+                        grounded = true;
+                        move('U');
+                        vel = sf::Vector2f(vel.x, -vel.y);
+                        other->set_vel(sf::Vector2f(other->get_vel().x, 5 * SPEED));
+                    }
+                    else if (direction == "Left")
+                    {
+                        life -= dmg;
+                        vel = sf::Vector2f(-vel.x, vel.y);
+                        other->set_vel(sf::Vector2f(-5 * SPEED, other->get_vel().y));
+                    }
+                    else if (direction == "Right")
+                    {
+                        life -= dmg;
+                        vel = sf::Vector2f(-vel.x, vel.y);
+                        other->set_vel(sf::Vector2f(5 * SPEED, other->get_vel().y));
+                    }
+                    std::cout<<"Player: "<<life<<std::endl;
+                    move();
                 }
-                else if (direction == "Below")
+                break;
+            case 11:
+                if (direction == "Below")
                 {
-                    grounded = true;
-                    move('U');
-                    
-                    other->set_vel(sf::Vector2f(other->get_vel().x, 5 * SPEED));
+                    vel = sf::Vector2f(vel.x, 0.f);
+                }
+                else if (direction == "Above")
+                {
+                    vel = sf::Vector2f(vel.x, 0.f);
                 }
                 else if (direction == "Left")
                 {
-                    life -= dmg;
-                    vel.x = -40 * SPEED;
-                    other->set_vel(sf::Vector2f(-5 * SPEED, other->get_vel().y));
+                    vel = sf::Vector2f(-CR*vel.x, vel.y);  
+ 
                 }
                 else if (direction == "Right")
                 {
-                    life -= dmg;
-                    vel.x = 40 * SPEED;
-                    other->set_vel(sf::Vector2f(5 * SPEED, other->get_vel().y));
+                    vel = sf::Vector2f(-CR*vel.x, vel.y);
                 }
-                std::cout<<life<<std::endl;
-                move();
-                //std::cout<<vel.x<<" "<<vel.y<<std::endl;
+                break;
             }
+            
         }
 
         void Player::attack()

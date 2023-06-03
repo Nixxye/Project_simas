@@ -6,6 +6,9 @@
 #include "../entities/Obstacle.h"
 #include "../lists/EntityList.h"
 
+//Coeficiente de restituição 
+#define CR 0.65
+
 namespace Managers
 {
     class ColisionManager
@@ -24,6 +27,7 @@ namespace Managers
 
         void colide();
         void collide_attack(Entes::Characters::Player* Attacker, std::string direction);
+        void collide_bullets(Entes::Entity* Bullet);
         void check_colision(Entes::Entity* A, Entes::Entity* B);
 
     };

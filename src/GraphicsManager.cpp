@@ -50,6 +50,10 @@ namespace Managers
     {
         window->draw(*body);
     }
+    void GraphicsManager:: draw (sf::CircleShape* body)
+    {
+        window->draw(*body);
+    }
     void GraphicsManager:: draw (sf::Text* text)
     {
         window->draw(*text);

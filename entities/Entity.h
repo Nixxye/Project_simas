@@ -26,6 +26,7 @@ namespace Entes
             int life;
             bool grounded;
             bool alive;
+            Managers::ColisionManager* colision_manager;
 
         public:
             Entity(int index = -1, sf::Vector2f velocity = sf::Vector2f(0.f, 0.f));
@@ -40,7 +41,7 @@ namespace Entes
             void set_grounded(bool g){grounded = g;}
             void set_alive(bool a){alive = a;}
             void set_vel(sf::Vector2f v){vel = v;}
-            virtual void set_colision_manager(Managers::ColisionManager* cm) { }
+            void set_colision_manager(Managers::ColisionManager* cm) { colision_manager = cm; }
 
             sf::Vector2f get_vel(){return vel;}
             int get_speed(){return speed;}

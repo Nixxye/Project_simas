@@ -12,14 +12,17 @@ namespace Entes
             float lifetime;
             sf::CircleShape body;
         public:
-            Bullet(float vx = 0.f, float vy = 0.f, float time = 100.f);
+            Bullet(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f velocity = sf::Vector2f(50.f, 50.f), float time = 100.f);
             ~Bullet();
             void run();
             void move();
+            //N sei se precisa;
+            void draw();
             void collide(Entity* other, std::string direction = ""){};
             sf::Vector2f get_position() { return body.getPosition(); }
             //Mudar isso dps;
-            sf::Vector2f get_size() {return sf::Vector2(body.getRadius(), body.getRadius()); } 
+            sf::Vector2f get_size() {return sf::Vector2f(body.getRadius(), body.getRadius()); } 
             void set_position(sf::Vector2f pos) { body.setPosition(pos); }
+            float get_lifetime() { return lifetime; }
     };  
 }

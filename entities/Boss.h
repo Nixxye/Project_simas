@@ -14,20 +14,17 @@ namespace Entes
         private:
             Lists::EntityList bullets;
             int attack_delay;
-            Bullet b1;
-            Bullet b2;
-            Bullet b3;
-            Bullet b4;
-            Bullet b5;
-            Bullet b6;
         public:
-            Boss();
+            Boss(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f velocity = sf::Vector2f(50.f, 50.f), sf::Vector2f size = sf::Vector2f(0.f, 0.f));
             ~Boss();
             void run();
             void move();
             void attack();
             void draw();
-            void collide(Entity* other, std::string direction = ""){};
+            void collide(Entity* other, std::string direction = "");
+            Lists::List<Entes::Entity>::Iterator<Entes::Entity> get_bullets() { return bullets.get_first(); }
+            void add_bullet(Entes::Entity* bullet);
+            const int get_n_bullets() const { return bullets.get_size(); }
         };
     }
 }

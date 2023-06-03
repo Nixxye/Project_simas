@@ -1,31 +1,21 @@
 #include "../entities/Boss.h"
 #include <iostream>
+#include "../managers/ColisionManager.h"
 
-#define DELAY 1000
+#define DELAY 300
 
 namespace Entes
 {
     namespace Characters
     {
-        Boss::Boss():
-        Enemy(),
+        Boss::Boss(sf::Vector2f pos, sf::Vector2f velocity, sf::Vector2f size):
+        Enemy(3, pos, velocity, size),
         bullets(),
-        attack_delay(DELAY),
-        b1(),
-        b2(),
-        b3(),
-        b4(),
-        b5(),
-        b6()
+        attack_delay(DELAY)
         {
-            body.setPosition(300.f, 100.f);
-
-            bullets.add(static_cast<Entity*>(&b1));
-            bullets.add(static_cast<Entity*>(&b2));
-            bullets.add(static_cast<Entity*>(&b3));
-            bullets.add(static_cast<Entity*>(&b4));
-            bullets.add(static_cast<Entity*>(&b5));
-            bullets.add(static_cast<Entity*>(&b6));
+            //Teste:
+            //bullets.clear();
+            //std::cout<<"N na inicial. "<<bullets.get_size()<<std::endl;
         }
         Boss::~Boss()
         {
@@ -40,27 +30,52 @@ namespace Entes
                 attack_delay = DELAY;
             }
             
+            Lists::List<Entes::Entity>::Iterator<Entes::Entity> aux = bullets.get_first();
+
+            while(aux != nullptr)
+            {
+                colision_manager->collide_bullets(*aux);           
+                aux++;        
+            }
+            move();
         }
         void Boss::move()
         {
-
+            bullets.run();
         }
 
         void Boss::attack()
         {
-            b1.set_vel(sf::Vector2f(1.f, 0.f));
-            b2.set_vel(sf::Vector2f(-1.f, 0.f));
-            b3.set_vel(sf::Vector2f(1.f, -1.f));
-            b4.set_vel(sf::Vector2f(-1.f, -1.f));
-            b5.set_vel(sf::Vector2f(1.f, -2.f));
-            b6.set_vel(sf::Vector2f(-1.f, -2.f));
+            std::cout<<"O boss tá lá"<<std::endl;
+            Lists::List<Entes::Entity>::Iterator<Entes::Entity> aux = bullets.get_first();
+            
+            float vx = 0.f, vy = 0.f;
 
-            bullets.set_position(sf::Vector2f(300.f, 100.f));
+            while(aux != nullptr)
+            {
+                (*aux)->set_alive(true);
+
+                vx = ((rand() % 50) - 25) / 10.f;
+                vy = ((rand() % 50) - 40) / 10.f;
+                (*aux)->set_position(body.getPosition());
+                (*aux)->set_vel(sf::Vector2f(vx, vy));
+                
+                aux++;        
+            } 
+            bullets.set_position(body.getPosition());
+        }
+        void Boss::collide(Entity* other, std::string direction)
+        {
         }
         void Boss::draw()  
         {
-            Entity::draw();
+            if (alive)
+                pGM->draw(&body);
             bullets.draw();
-        }  
+        } 
+        void Boss::add_bullet(Entes::Entity* bullet)
+        {
+            bullets.add(bullet);
+        }
     }
 }

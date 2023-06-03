@@ -1,6 +1,4 @@
 #include "../managers/ColisionManager.h"
-//Coeficiente de restituição 
-#define CR 0.65
 
 namespace Managers
 {
@@ -66,18 +64,14 @@ namespace Managers
                 //B->set_vel(sf::Vector2f(-B->get_vel().x, -B->get_vel().y));
                 if (posA.y < posB.y)
                 {
-                    
                     A->set_position(sf::Vector2f(posA.x, posB.y - (sizeB.y + sizeA.y)/2.f));
-                    A->set_vel(sf::Vector2f(A->get_vel().x, 0.f));
                     A->collide(B, "Below");
                     A->set_grounded(true);
                 }
                 else
-                {
-                    
+                {    
                     A->set_position(sf::Vector2f(posA.x, posB.y + (sizeB.y + sizeA.y)/2.f));
                     A->collide(B, "Above");
-                    A->set_vel(sf::Vector2f(A->get_vel().x, 0.f));
                 }
             }
             else if (fabs(d.x) - fabs(sizeA.x + sizeB.x)/2.0 > fabs(d.y) - fabs(sizeA.y + sizeB.y)/2.0)
@@ -85,14 +79,12 @@ namespace Managers
                 if (posA.x < posB.x)
                 {
                     A->collide(B, "Right");
-                    A->set_position(sf::Vector2f(posB.x - (sizeB.x + sizeA.x)/2.f, posA.y));
-                    A->set_vel(sf::Vector2f(-CR*A->get_vel().x, A->get_vel().y));  
+                    A->set_position(sf::Vector2f(posB.x - (sizeB.x + sizeA.x)/2.f, posA.y)); 
                 }
                 else
                 {
                     A->collide(B, "Left");
                     A->set_position(sf::Vector2f(posB.x + (sizeB.x + sizeA.x)/2.f, posA.y));
-                    A->set_vel(sf::Vector2f(-CR*A->get_vel().x, A->get_vel().y));  
                 }
             }
         }
@@ -134,4 +126,32 @@ namespace Managers
 
         
     }
+    void ColisionManager::collide_bullets(Entes::Entity* bullet)
+    {
+        Lists::List<Entes::Entity> aux;
+        Lists::List<Entes::Entity>::Iterator<Entes::Entity> B = player_list->get_first();
+        
+        while(B != nullptr)
+        {
+            if ((*B)->get_alive())
+                check_colision(bullet, *B);
+            B++;
+        }
+        B = enemy_list->get_first();
+        while (B != nullptr)
+        {
+            if ((*B)->get_alive())
+                check_colision(bullet, *B);
+            B++;
+        }
+        B = obstacle_list->get_first();
+        while (B != nullptr)
+        {
+            if ((*B)->get_alive())
+                check_colision(bullet, *B);
+            B++;
+            //Colisão barreto;
+        }
+    }
 }
+

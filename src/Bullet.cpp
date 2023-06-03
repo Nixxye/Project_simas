@@ -2,11 +2,13 @@
 
 namespace Entes
 {
-    Bullet::Bullet(float vx, float vy, float time):
+    Bullet::Bullet(sf::Vector2f pos, sf::Vector2f velocity, float time):
+    Entity(4, velocity),
     lifetime(time), 
-    body(25)
+    body(10)
     {
-        vel = sf::Vector2f(vx, vy);
+        body.setPosition(pos);
+        //vel = velocity;
     }
     Bullet::~Bullet()
     {
@@ -15,6 +17,10 @@ namespace Entes
     void Bullet::run()
     {
         move();
+    }
+    void Bullet::draw()
+    {
+        pGM->draw(&body);
     }
     void Bullet::move()
     {
