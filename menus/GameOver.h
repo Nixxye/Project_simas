@@ -19,6 +19,7 @@ namespace Menus
         std :: string points_string;
         Text name;
         Observers::GameOverObserver*  pGOObserver;
+        bool buttons_active;
 
 
 
@@ -44,6 +45,8 @@ namespace Menus
         void select ();
 
         void save ();
+
+        void buttons_draw();
 
     };
 

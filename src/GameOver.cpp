@@ -4,7 +4,7 @@
 namespace Menus
 {
     GameOver::GameOver():
-    Menu(1, 3),
+    Menu(2, 3),
     title("Game Over")
     {   
         title.setSize(60);
@@ -13,6 +13,7 @@ namespace Menus
         pGOObserver = new Observers::GameOverObserver;
         pGOObserver->set_menu(this);
         set_points(123);
+        buttons_active = false;
 
     }
     GameOver::~GameOver()
@@ -24,6 +25,11 @@ namespace Menus
     {
         title.draw();
         name.draw();
+        if (buttons_active)
+        {
+            buttons_draw();
+            printf ("\n\n\nOIIIIII");
+        }
     } 
     void GameOver::add_name(std::string c)
     {
@@ -39,7 +45,10 @@ namespace Menus
         name_string.append (points_string);
     
         name.setName(name_string);
-        name.setPosition(sf::Vector2f(60.f, 200.f));
+        name.setPosition(sf::Vector2f(60.f, 450.f));
+        buttons_active = true;
+
+
     } 
 
     std::string GameOver :: get_name_string ()
@@ -56,7 +65,18 @@ namespace Menus
     void GameOver::draw_name()
     {
         name.draw();
+
     } 
+
+    void GameOver :: buttons_draw ()
+    {
+        buttons[0]->set_name("Menu");
+        buttons[1]->set_name("Quit");
+        for (int i = 0; i < 2; i++)
+        {
+            buttons[i]->draw();
+        }
+    }
 
     void GameOver  :: move_horizontally (int i)
     {
@@ -66,6 +86,18 @@ namespace Menus
     void GameOver  :: select ()
     {
         
+        if (buttons_active)
+        {
+            switch (selected_index)
+            {
+            case 0:
+                    States::State::pSM->set_CurrentState(0);
+                break;
+            case 1:
+                pGM->close_window();
+                break;
+            }
+        }
     }
 
     void GameOver :: save ()
