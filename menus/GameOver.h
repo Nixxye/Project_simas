@@ -16,6 +16,7 @@ namespace Menus
     private:
         Text title;
         std::string name_string ;
+        std :: string points_string;
         Text name;
         Observers::GameOverObserver*  pGOObserver;
 
@@ -30,13 +31,15 @@ namespace Menus
 
         void add_name(std::string c);
 
-        void set_name (std::string s);
+        void set_final_name ();
+
+        void set_points (int p);
 
         std::string get_name_string ();
 
         void draw_name ();
 
-        void move_horizontally(int i );
+        void move_horizontally(int i);
 
         void select ();
 

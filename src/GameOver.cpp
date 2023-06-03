@@ -12,6 +12,8 @@ namespace Menus
         name_string = "Name:";
         pGOObserver = new Observers::GameOverObserver;
         pGOObserver->set_menu(this);
+        set_points(123);
+
     }
     GameOver::~GameOver()
     {
@@ -29,15 +31,25 @@ namespace Menus
         printf ("Oi\n");
     } 
 
-    void GameOver::set_name(std::string s)
+    void GameOver::set_final_name()
     {
-        name.setName(s);
+        if (name_string == "Name:")
+            return;
+        name_string.append (" - points:");
+        name_string.append (points_string);
+    
+        name.setName(name_string);
         name.setPosition(sf::Vector2f(60.f, 200.f));
     } 
 
     std::string GameOver :: get_name_string ()
     {
         return name_string;
+    }
+
+    void  GameOver :: set_points (int p)
+    {
+        points_string = std::to_string(p);
     }
 
 
@@ -58,6 +70,6 @@ namespace Menus
 
     void GameOver :: save ()
     {
-
+         
     }
 }

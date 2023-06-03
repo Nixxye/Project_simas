@@ -48,8 +48,7 @@ namespace Observers
         }
         if (key_code == sf::Keyboard::Enter)
         {
-            pGO->set_name(pGO->get_name_string());
-            pGO->draw_name();
+            pGO->set_final_name();
         }
         std::map <sf::Keyboard::Key,std::string> :: iterator it = keys.find(key_code);
         if (it == keys.end())
