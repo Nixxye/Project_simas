@@ -6,6 +6,7 @@
 #include "../managers/GraphicsManager.h"
 #include "../menus/MainMenu.h"
 #include "../menus/GameOver.h"
+#include "../menus/Ranking.h"
 #include "../managers/StateManager.h"
 #include "../managers/EventsManager.h"
 
@@ -18,6 +19,8 @@ private:
     Stages::Stage1 stage1;    
     Menus::MainMenu main_menu;
     Menus :: GameOver game_over;
+    Menus :: Ranking ranking;
+
 public:
     Game();
     ~Game();

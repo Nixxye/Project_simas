@@ -18,7 +18,6 @@ namespace Menus
     {
         pGM->reset_camera();
         title.draw();
-        
     } 
     void GameOver::add_name(std::string c)
     {
@@ -28,6 +27,7 @@ namespace Menus
     void GameOver::set_name(std::string s)
     {
         name.setName(s);
+        name.setPosition(sf::Vector2f(WIDTH / 2, (5)*(20 + SIZEY)));
     } 
 
     std::string GameOver :: get_name_string ()
@@ -41,7 +41,7 @@ namespace Menus
         name.draw();
     } 
 
-    void GameOver  :: move_horizontally ()
+    void GameOver  :: move_horizontally (int i)
     {
 
     }

@@ -8,7 +8,7 @@ namespace Menus
     {
         text.setString(n);
         text.setFont(*pGM->get_font());
-        text.setCharacterSize(60);
+        text.setCharacterSize(30);
         text.setPosition(sf::Vector2f(100.f, 25.f));
     }
     Text::~Text()

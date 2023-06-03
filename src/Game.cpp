@@ -6,7 +6,8 @@ pSM(Managers::StateManager::get_instance()),
 pEM(Managers::EventsManager::get_instance()),
 stage1(),
 main_menu(),
-game_over()
+game_over(),
+ranking()
 {
     run();
 }

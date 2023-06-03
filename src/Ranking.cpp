@@ -6,6 +6,9 @@ namespace Menus
     Ranking::Ranking(std::string ranking):
     Menu(1, 4),
     title("Ranking"),
+    first("1 name - points"),
+    second("2 name - points"),
+    third("3 name - points"),
     ranking_file(ranking)
     {   
         load();
@@ -19,15 +22,26 @@ namespace Menus
 
     }
 
-    void Ranking::move_horizontally()
+    void Ranking::move_horizontally(int i)
     {
 
     }
     void Ranking::draw()
     {
+        
+        pGM->reset_camera();
+
+        title.setSize(70);
+        title.setPosition(sf::Vector2f(WIDTH / 6, (2) *( SIZEY)));
         title.draw();
+
+        first.setPosition(sf::Vector2f(WIDTH / 6, (3) *(SIZEY)));
         first.draw();
+
+        second.setPosition(sf::Vector2f(WIDTH / 6, (4) *(SIZEY)));
         second.draw();
+
+        third.setPosition(sf::Vector2f(WIDTH / 6, (5) *( SIZEY)));
         third.draw();
 
 
