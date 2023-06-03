@@ -10,6 +10,7 @@ namespace Menus
     class MainMenu: public Menu
     {
     private:
+        Observers::MenuObserver* pMenuObserver;
         int current_stage;
         int current_player;
         Text stage1;

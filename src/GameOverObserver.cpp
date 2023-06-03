@@ -48,6 +48,12 @@ namespace Observers
             std::cout<<"EITAAAAAAAAAAA"<<std::endl;
             return;
         }
+        if (key_code == sf::Keyboard::Up)
+            pGO->move_up();
+        if (key_code == sf::Keyboard::Down)
+            pGO->move_down();
+        if (key_code == sf::Keyboard::Enter)
+            pGO->select();
         if (key_code == sf::Keyboard::Enter)
         {
             pGO->set_final_name();

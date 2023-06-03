@@ -21,5 +21,6 @@ namespace Menus
         void draw();
         void change_color();
         void set_name(std::string name);
+        void set_position(sf::Vector2f position);
     };
 }

@@ -4,7 +4,7 @@
 namespace Menus
 {
     Ranking::Ranking(std::string ranking):
-    Menu(1, 4),
+    Menu(2, 4),
     title("Ranking"),
     first("1 name - points"),
     second("2 name - points"),
@@ -12,6 +12,11 @@ namespace Menus
     ranking_file(ranking)
     {   
         load();
+        buttons[0]->set_name("Menu");
+        buttons[0]->set_position(sf::Vector2f(400.f, 420.f));
+
+        buttons[1]->set_name("Quit");
+        buttons[1]->set_position(sf::Vector2f(400.f, 520.f));
     }
     Ranking::~Ranking()
     {
@@ -19,7 +24,15 @@ namespace Menus
     }
     void Ranking::select()
     {
-
+        switch (selected_index)
+        {
+        case 0:
+            States::State::pSM->set_CurrentState(0);
+            break;
+        case 1:
+            pGM->close_window();
+            break;
+        }
     }
 
     void Ranking::move_horizontally(int i)
@@ -43,6 +56,11 @@ namespace Menus
 
         third.setPosition(sf::Vector2f(50.f, 320.f));
         third.draw();
+
+        for (int i = 0; i < 2; i++)
+        {
+            buttons[i]->draw();
+        }
 
 
     } 

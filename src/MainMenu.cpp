@@ -22,10 +22,16 @@ namespace Menus
         buttons[1]->set_name("New Game");
         buttons[2]->set_name("Ranking");
         buttons[3]->set_name("Quit");
+
+        pMenuObserver = new Observers::MenuObserver;
+        pMenuObserver->set_menu(this);
     }
     MainMenu::~MainMenu()
     {
-
+        if (pMenuObserver)
+            delete pMenuObserver;
+        
+        pMenuObserver = nullptr;
     }
     void MainMenu::select()
     {
@@ -44,7 +50,7 @@ namespace Menus
             break;
         case 2:
         {
-            States::State::pSM->set_CurrentState(3);
+            States::State::pSM->set_CurrentState(4);
             States::State::pSM->reset_current_state();
         }
             break;
