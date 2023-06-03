@@ -7,6 +7,8 @@ namespace Menus
     Menu(1, 3),
     title("Game Over")
     {   
+        title.setSize(60);
+        title.setPosition(sf::Vector2f(60.f, 80.f));
         name_string = "Name:";
     }
     GameOver::~GameOver()
@@ -16,7 +18,6 @@ namespace Menus
 
     void GameOver::draw()
     {
-        pGM->reset_camera();
         title.draw();
     } 
     void GameOver::add_name(std::string c)
