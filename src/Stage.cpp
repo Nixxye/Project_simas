@@ -21,6 +21,7 @@ namespace Stages
         pSObserver = new Observers::StageObserver(id);
         pSObserver->set_stage(this);
         setObservers();
+
     }
 
     Stage::~Stage()
@@ -39,6 +40,7 @@ namespace Stages
     void Stage::draw()
     {
         //N sei o q fazer aqui.
+        pGM->draw(&(this->body));
     }
     
     void Stage::add_enemy(Entes::Entity* enemy)

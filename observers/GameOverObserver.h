@@ -14,7 +14,7 @@ namespace Observers
     {
     private:
         Menus::GameOver* pGO;
-        std :: map <sf::Keyboard::Key,char> keys;
+        std :: map <sf::Keyboard::Key,std::string> keys;
     public:
         GameOverObserver();
         ~GameOverObserver();

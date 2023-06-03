@@ -1,5 +1,6 @@
 #include "../menus/MainMenu.h"
 
+
 namespace Menus
 {
     MainMenu::MainMenu():
@@ -32,6 +33,7 @@ namespace Menus
                 States::State::pSM->reset_current_state();
             }
             break;
+
         case 3:
             pGM->close_window();
             break;

@@ -36,7 +36,7 @@ namespace Managers
     {
         if (!vector_states[currentStateID])
         {
-            std::cout<<"Q bonito heim"<<std::endl;
+            std::cout<<"Q feio heim"<<std::endl;
             exit(1);
         }
         return vector_states[currentStateID];
@@ -47,6 +47,7 @@ namespace Managers
     }
     void StateManager:: add_state(States::State* pState)
     {
+      //std::cout<<"OIII"<<std::endl;
        vector_states[pState->get_id()] = pState;
     }
     void StateManager::run()

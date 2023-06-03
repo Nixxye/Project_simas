@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <string>
 
 #include "../menus/Menu.h"
 #include "../observers/GameOverObserver.h"
@@ -14,7 +15,7 @@ namespace Menus
     {
     private:
         Text title;
-        Text points;
+        std::string name_string ;
         Text name;
 
     public:
@@ -24,9 +25,19 @@ namespace Menus
 
         void draw();
 
+        void add_name(std::string c);
+
+        void set_name (std::string s);
+
+        std::string get_name_string ();
+
+        void draw_name ();
+
+        void move_horizontally();
+
         void select ();
 
-        void set_name (char c);
+        void save ();
 
     };
 

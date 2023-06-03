@@ -53,6 +53,7 @@ namespace Managers
     void GraphicsManager:: draw (sf::Text* text)
     {
         window->draw(*text);
+
     }
     sf::Texture* GraphicsManager:: load_textures (std::string path)
     {
