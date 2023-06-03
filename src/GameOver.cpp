@@ -14,6 +14,7 @@ namespace Menus
         pGOObserver->set_menu(this);
         set_points(123);
         buttons_active = false;
+        final_name = false;
 
     }
     GameOver::~GameOver()
@@ -39,6 +40,8 @@ namespace Menus
 
     void GameOver::set_final_name()
     {
+        if (final_name)
+            return;
         if (name_string == "Name:")
             return;
         name_string.append (" - points:");
@@ -46,7 +49,8 @@ namespace Menus
     
         name.setName(name_string);
         name.setPosition(sf::Vector2f(60.f, 450.f));
-        buttons_active = true;
+        buttons_active = false;
+        final_name = true;
 
 
     } 
@@ -85,13 +89,22 @@ namespace Menus
 
     void GameOver  :: select ()
     {
+        if (!buttons_active)
+        {
+            buttons_active = true;
+            return;
+        }
         
         if (buttons_active)
         {
             switch (selected_index)
             {
             case 0:
+            {
+                buttons_active = false;
                 States::State::pSM->set_CurrentState(0);
+
+            }
                 break;
             case 1:
                 pGM->close_window();

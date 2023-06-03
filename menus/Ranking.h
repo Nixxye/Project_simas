@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "../observers/RankingObserver.h"
 
 #include "../menus/Menu.h"
 #define RANKING "../saves/arquivojkdjk"
@@ -16,6 +17,8 @@ namespace Menus
         Text second;
         Text third;
         std::string ranking_file;
+        Observers::RankingObserver*  pRObserver;
+        bool buttons_active;
     public:
         Ranking(std::string ranking = "");
         ~Ranking();

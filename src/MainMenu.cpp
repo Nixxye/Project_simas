@@ -51,7 +51,8 @@ namespace Menus
         case 2:
         {
             States::State::pSM->set_CurrentState(4);
-            States::State::pSM->reset_current_state();
+            //printf ("Oi menu\n");
+            //States::State::pSM->reset_current_state();
         }
             break;
         case 3:

@@ -19,7 +19,7 @@ namespace Managers
     currentStateID(0)
     {
         //tamanho 5 por enquanto.
-        vector_states.resize(5);
+        vector_states.resize(6);
     }
     StateManager::~StateManager()
     {
@@ -29,6 +29,7 @@ namespace Managers
     void StateManager::set_CurrentState(int i)
     {
         currentStateID = i;
+        printf ("State:%d", currentStateID);
         //pLastState = pCurrentState;
         //pCurrentState = vector_states[i];
     }

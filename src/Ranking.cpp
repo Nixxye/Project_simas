@@ -11,27 +11,49 @@ namespace Menus
     third("3 name - points"),
     ranking_file(ranking)
     {   
+
+
         load();
         buttons[0]->set_name("Menu");
         buttons[0]->set_position(sf::Vector2f(400.f, 420.f));
 
         buttons[1]->set_name("Quit");
         buttons[1]->set_position(sf::Vector2f(400.f, 520.f));
+
+
+        buttons_active = false;
+        pRObserver = new Observers::RankingObserver();
+        pRObserver->set_menu(this);
     }
     Ranking::~Ranking()
     {
-
+        if (pRObserver)
+            delete pRObserver;
+        
+        pRObserver = nullptr;
     }
     void Ranking::select()
     {
-        switch (selected_index)
+        if (!buttons_active)
         {
-        case 0:
-            States::State::pSM->set_CurrentState(0);
-            break;
-        case 1:
-            pGM->close_window();
-            break;
+            buttons_active = true;
+            return;
+        }
+        
+        if (buttons_active)
+        {
+            switch (selected_index)
+            {
+            case 0:
+            {
+                States::State::pSM->set_CurrentState(0);
+                buttons_active = false;
+            }
+                break;
+            case 1:
+                pGM->close_window();
+                break;
+            }
         }
     }
 
@@ -41,8 +63,7 @@ namespace Menus
     }
     void Ranking::draw()
     {
-        
-        pGM->reset_camera();
+        printf ("\nDraw Ranking");
 
         title.setSize(70);
         title.setPosition(sf::Vector2f(50.f, 80.f));

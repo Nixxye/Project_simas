@@ -52,11 +52,11 @@ namespace Observers
             pGO->move_up();
         if (key_code == sf::Keyboard::Down)
             pGO->move_down();
-        if (key_code == sf::Keyboard::Enter)
-            pGO->select();
+
         if (key_code == sf::Keyboard::Enter)
         {
             pGO->set_final_name();
+            pGO->select();
         }
         std::map <sf::Keyboard::Key,std::string> :: iterator it = keys.find(key_code);
         if (it == keys.end())
