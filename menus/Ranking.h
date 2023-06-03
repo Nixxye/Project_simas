@@ -5,7 +5,7 @@
 #include "../observers/RankingObserver.h"
 
 #include "../menus/Menu.h"
-#define RANKING "../saves/arquivojkdjk"
+#define RANKING "../saves/ranking.dat"
 
 namespace Menus
 {
