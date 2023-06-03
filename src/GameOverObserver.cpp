@@ -41,6 +41,8 @@ namespace Observers
     }
     void GameOverObserver::notify(sf::Keyboard::Key key_code)
     {
+        if (pSM->get_CurrentStateID() != 3)
+            return;
         if (!pGO)
         {
             std::cout<<"EITAAAAAAAAAAA"<<std::endl;

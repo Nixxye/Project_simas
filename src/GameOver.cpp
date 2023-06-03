@@ -91,7 +91,7 @@ namespace Menus
             switch (selected_index)
             {
             case 0:
-                    States::State::pSM->set_CurrentState(0);
+                States::State::pSM->set_CurrentState(0);
                 break;
             case 1:
                 pGM->close_window();
