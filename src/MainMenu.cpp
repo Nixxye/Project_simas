@@ -44,7 +44,7 @@ namespace Menus
             break;
         case 2:
         {
-            States::State::pSM->set_CurrentState(4);
+            States::State::pSM->set_CurrentState(3);
             States::State::pSM->reset_current_state();
         }
             break;

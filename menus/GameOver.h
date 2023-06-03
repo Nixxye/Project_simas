@@ -17,6 +17,9 @@ namespace Menus
         Text title;
         std::string name_string ;
         Text name;
+        Observers::GameOverObserver*  pGOObserver;
+
+
 
     public:
         GameOver();

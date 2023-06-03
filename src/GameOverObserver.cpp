@@ -54,6 +54,6 @@ namespace Observers
         std::map <sf::Keyboard::Key,std::string> :: iterator it = keys.find(key_code);
         if (it == keys.end())
             return; 
-        pGO->set_name(it->second);
+        pGO->add_name(it->second);
     }
 }
