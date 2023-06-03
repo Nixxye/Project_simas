@@ -32,16 +32,16 @@ namespace Menus
         pGM->reset_camera();
 
         title.setSize(70);
-        title.setPosition(sf::Vector2f(WIDTH / 6, (2) *( SIZEY)));
+        title.setPosition(sf::Vector2f(50.f, 80.f));
         title.draw();
 
-        first.setPosition(sf::Vector2f(WIDTH / 6, (3) *(SIZEY)));
+        first.setPosition(sf::Vector2f(50.f, 160.f));
         first.draw();
 
-        second.setPosition(sf::Vector2f(WIDTH / 6, (4) *(SIZEY)));
+        second.setPosition(sf::Vector2f(50.f, 240.f));
         second.draw();
 
-        third.setPosition(sf::Vector2f(WIDTH / 6, (5) *( SIZEY)));
+        third.setPosition(sf::Vector2f(50.f, 320.f));
         third.draw();
 
 
