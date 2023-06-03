@@ -54,6 +54,7 @@ namespace Stages
         Lists::EntityList obstacles;
         Lists::EntityList enemies;
         Lists::EntityList players;
+        Lists::EntityList bullets;
 
         std::string save_file;
         std::string stage_info;
@@ -71,13 +72,14 @@ namespace Stages
         void add_enemy(Entes::Entity* enemy);
         void add_obstacle(Entes::Entity* obstacle);
         void add_player(Entes::Entity* player);
+        void add_bullet(Entes::Entity* bullet);
 
         void save();
         void load();
         void reset();
 
         Entes::Entity* create_enemy(int id, sf::Vector2f pos, sf::Vector2f vel, sf::Vector2f size);
-        void create_bullet(int id, sf::Vector2f pos, sf::Vector2f vel, float lifetime, Entes::Entity* boss);
+        Entes::Entity* create_bullet(int id, sf::Vector2f pos, sf::Vector2f vel, float lifetime, Entes::Entity* boss);
 
         void setObservers();
     };

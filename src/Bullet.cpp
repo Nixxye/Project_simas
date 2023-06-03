@@ -1,4 +1,5 @@
 #include "../entities/Bullet.h"
+#include "../managers/ColisionManager.h"
 
 namespace Entes
 {
@@ -31,5 +32,33 @@ namespace Entes
             if (speed > 0.f)
                 body.setPosition(body.getPosition() + sf::Vector2f(vel.x * speed, vel.y * speed));    
         }
+    }
+    void Bullet::call_colision()
+    {
+        colision_manager->collide_bullets(this);
+    }
+    void Bullet::collide(Entity* other, std::string direction)
+    {
+        int index = other->get_id();
+        switch (index)
+        {
+            //Player:
+        case 0:
+            colision_manager->elastic_colision(this, other);
+            break;
+            //Other Bullet:
+        case 11:
+            if (direction == "Right" || direction == "Left")
+            {
+                vel = sf::Vector2f(- CR*vel.x, vel.y);
+            }
+            else 
+            {
+                vel = sf::Vector2f(vel.x, - CR*vel.y);
+            }
+        default:
+            break;
+        }
+        move();
     }
 }

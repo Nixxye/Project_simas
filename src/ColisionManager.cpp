@@ -1,4 +1,6 @@
 #include "../managers/ColisionManager.h"
+#include <math.h>
+
 
 namespace Managers
 {
@@ -66,12 +68,14 @@ namespace Managers
                 {
                     A->set_position(sf::Vector2f(posA.x, posB.y - (sizeB.y + sizeA.y)/2.f));
                     A->collide(B, "Below");
+                    B->collide(A, "Above");
                     A->set_grounded(true);
                 }
                 else
                 {    
                     A->set_position(sf::Vector2f(posA.x, posB.y + (sizeB.y + sizeA.y)/2.f));
                     A->collide(B, "Above");
+                    B->collide(A, "Below");
                 }
             }
             else if (fabs(d.x) - fabs(sizeA.x + sizeB.x)/2.0 > fabs(d.y) - fabs(sizeA.y + sizeB.y)/2.0)
@@ -79,11 +83,13 @@ namespace Managers
                 if (posA.x < posB.x)
                 {
                     A->collide(B, "Right");
+                    B->collide(A, "Left");
                     A->set_position(sf::Vector2f(posB.x - (sizeB.x + sizeA.x)/2.f, posA.y)); 
                 }
                 else
                 {
                     A->collide(B, "Left");
+                    B->collide(A, "Right");
                     A->set_position(sf::Vector2f(posB.x + (sizeB.x + sizeA.x)/2.f, posA.y));
                 }
             }
@@ -150,8 +156,36 @@ namespace Managers
             if ((*B)->get_alive())
                 check_colision(bullet, *B);
             B++;
-            //Colisão barreto;
+            
         }
+    }
+    //Colisão barreto;
+    void ColisionManager::elastic_colision(Entes::Entity* A, Entes::Entity* B)
+    {
+        sf::Vector2f posA = A->get_position(), posB = B->get_position(), sizeA = A->get_size(), sizeB = B->get_size();
+        sf::Vector2f d = posB - posA;
+        if (d.x <= A->get_size().x + B->get_size().x || d.y <= A->get_size().y + B->get_size().y)
+        {
+            //Cria os eixos de colisão:
+            sf::Vector2f y_axis = sf::Vector2f(A->get_position().x - B->get_position().x, A->get_position().y - B->get_position().y);
+            sf::Vector2f x_axis = sf::Vector2f(y_axis.y, -y_axis.x);
+            //Normaliza os eixos:
+            y_axis = y_axis / sqrt(y_axis.x * y_axis.x + y_axis.y * y_axis.y);
+            x_axis = x_axis / sqrt(x_axis.x * x_axis.x + x_axis.y * x_axis.y);
+            //Projeta as velocidades nos novos eixos:
+            sf::Vector2f vy1 = y_axis * (A->get_vel().x * y_axis.x + A->get_vel().y * y_axis.y); 
+            sf::Vector2f vy2 = y_axis * (B->get_vel().x * y_axis.x + B->get_vel().y * y_axis.y);
+            sf::Vector2f vx1 = y_axis * (A->get_vel().x * x_axis.x + A->get_vel().y * x_axis.y); 
+            sf::Vector2f vx2 = y_axis * (B->get_vel().x * x_axis.x + B->get_vel().y * x_axis.y);
+        
+            sf::Vector2f vf1 = (((vy1 * A->get_mass()) + (vy2 * B->get_mass())) * (float) (1+CR) /(A->get_mass() + B->get_mass())) + vy1 * (float) (-CR);
+            sf::Vector2f vf2 = (((vy1 * A->get_mass()) + (vy2 * B->get_mass())) * (float) (1+CR) /(A->get_mass() + B->get_mass())) + vy2 * (float) (-CR);
+
+            A->set_vel(vf1 + vx1);
+            A->move();
+            B->set_vel(vf2 + vx2);
+            B->move();
+        } 
     }
 }
 

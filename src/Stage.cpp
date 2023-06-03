@@ -1,5 +1,7 @@
 #include "../stages/Stage.h"
 
+//PODE APAGAR TUDO RELACIONADO À LISTA DE BALAS AQUI:
+
 namespace Stages
 {
     Stage::Stage(std::string savefile, std::string infofile, std::string savebase, int id):
@@ -7,6 +9,7 @@ namespace Stages
     obstacles(),
     enemies(),
     players(),
+    bullets(),
     colision_manager(),
     save_file(savefile),
     stage_info(infofile),
@@ -16,6 +19,8 @@ namespace Stages
         colision_manager.set_enemy_list(&enemies);
         colision_manager.set_player_list(&players);
         colision_manager.set_obstacle_list(&obstacles);     
+        //colision_manager.set_bullet_list(&bullets);
+
         events_manager = Managers::EventsManager::get_instance();
 
         pSObserver = new Observers::StageObserver(id);
@@ -53,7 +58,14 @@ namespace Stages
         if (player)
         {
             players.add(player);
-            player->set_colision_manager(&colision_manager);
+            //player->set_colision_manager(&colision_manager);
+        }
+    }
+    void Stage::add_bullet(Entes::Entity* bullet)
+    {
+        if (bullet)
+        {
+            bullets.add(bullet);
         }
     }
     void Stage::save()
@@ -186,7 +198,9 @@ namespace Stages
                 {
                     file >> id >> posX >> posY >> velX >> velY >> lifetime;
                     std::getline(file, line);
-                    create_bullet(id, sf::Vector2f(posX, posY), sf::Vector2f(velX, velY), lifetime, aux);
+                    bullet = create_bullet(id, sf::Vector2f(posX, posY), sf::Vector2f(velX, velY), lifetime, aux);
+
+                    //add_bullet(bullet);
                     //std::cout<<"LOADED"<<std::endl;
                 }
 
@@ -237,6 +251,7 @@ namespace Stages
         //std::cout<<"No reset"<<std::endl;
         enemies.clear();
         players.clear();
+
         //obstacles.clear();
         /*
         std::cout<<enemies.get_size()<<std::endl;
@@ -323,7 +338,8 @@ namespace Stages
                 {
                     file >> id >> posX >> posY >> velX >> velY >> lifetime;
                     std::getline(file, line);
-                    create_bullet(id, sf::Vector2f(posX, posY), sf::Vector2f(velX, velY), lifetime, aux);
+                    bullet = create_bullet(id, sf::Vector2f(posX, posY), sf::Vector2f(velX, velY), lifetime, aux);
+                    //add_bullet(bullet);
                     //std::cout<<"LOADED"<<std::endl;
                 }
 
@@ -362,7 +378,7 @@ namespace Stages
         return static_cast<Entes::Entity*>(aux);
     }
 
-    void Stage::create_bullet(int id, sf::Vector2f pos, sf::Vector2f vel, float lifetime, Entes::Entity* boss)
+    Entes::Entity* Stage::create_bullet(int id, sf::Vector2f pos, sf::Vector2f vel, float lifetime, Entes::Entity* boss)
     {
         Entes::Characters::Boss* pBoss = static_cast<Entes::Characters::Boss*>(boss);
         Entes::Entity* bullet = NULL;
@@ -371,6 +387,7 @@ namespace Stages
         bullet->set_colision_manager(&colision_manager);
 
         pBoss->add_bullet(static_cast<Entes::Entity*>(bullet));
+        return static_cast<Entes::Entity*>(bullet);
     }
 }
  

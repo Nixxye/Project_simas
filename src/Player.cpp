@@ -80,7 +80,7 @@ namespace Entes
             }
             else if (direction == 'U') //Up
             {
-                vel.y -= 15.f;
+                vel.y -= 10.f;
                 body.setPosition(body.getPosition() + sf::Vector2f(0.f, 0.5));
             }
             //N sei pq a gravidade está mais rápida quando nos movemos; -> Gimmick

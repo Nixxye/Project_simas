@@ -18,7 +18,8 @@ namespace Entes
             void move();
             //N sei se precisa;
             void draw();
-            void collide(Entity* other, std::string direction = ""){};
+            void collide(Entity* other, std::string direction = "");
+            void call_colision();
             sf::Vector2f get_position() { return body.getPosition(); }
             //Mudar isso dps;
             sf::Vector2f get_size() {return sf::Vector2f(body.getRadius(), body.getRadius()); } 

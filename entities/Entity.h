@@ -26,6 +26,7 @@ namespace Entes
             int life;
             bool grounded;
             bool alive;
+            float mass;
             Managers::ColisionManager* colision_manager;
 
         public:
@@ -50,6 +51,7 @@ namespace Entes
             const int get_id() const {return id;}
             const bool get_alive() const {return alive;}
             const int get_damage() const {return damage;}
+            const float get_mass() const {return mass;}
 
             virtual Observers::Observer* get_observer() {return nullptr;}     
     };

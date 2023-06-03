@@ -11,7 +11,7 @@ namespace Entes
         Boss::Boss(sf::Vector2f pos, sf::Vector2f velocity, sf::Vector2f size):
         Enemy(3, pos, velocity, size),
         bullets(),
-        attack_delay(DELAY)
+        attack_delay(0)
         {
             //Teste:
             //bullets.clear();
@@ -19,7 +19,7 @@ namespace Entes
         }
         Boss::~Boss()
         {
-
+            bullets.clear();
         }
         void Boss::run()
         {
@@ -30,12 +30,13 @@ namespace Entes
                 attack_delay = DELAY;
             }
             
+            //Verifica as colisões das bolinhas:
+            //collide_bullets();
             Lists::List<Entes::Entity>::Iterator<Entes::Entity> aux = bullets.get_first();
-
-            while(aux != nullptr)
+            while (aux != nullptr)
             {
-                colision_manager->collide_bullets(*aux);           
-                aux++;        
+                (static_cast<Entes::Bullet*>(*aux))->call_colision();
+                aux++;
             }
             move();
         }
@@ -76,6 +77,14 @@ namespace Entes
         void Boss::add_bullet(Entes::Entity* bullet)
         {
             bullets.add(bullet);
+        }
+        void Boss::collide_bullets()
+        {
+            for (Lists::List<Entes::Entity>::Iterator<Entes::Entity> i = bullets.get_first(); i != nullptr; i++)
+                for (Lists::List<Entes::Entity>::Iterator<Entes::Entity> j = bullets.get_first(); j != nullptr; j++)
+                {
+                    colision_manager->elastic_colision(*i, *j);
+                }
         }
     }
 }

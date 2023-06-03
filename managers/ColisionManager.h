@@ -17,6 +17,7 @@ namespace Managers
         Lists::EntityList* enemy_list;
         Lists::EntityList* player_list;
         Lists::EntityList* obstacle_list;
+        Lists::EntityList* bullet_list;
     public:
         ColisionManager();
         ~ColisionManager();
@@ -24,11 +25,13 @@ namespace Managers
         void set_enemy_list(Lists::EntityList* list){ if (list) { enemy_list = list; }}
         void set_player_list(Lists::EntityList* list){ if (list) { player_list = list; }}
         void set_obstacle_list(Lists::EntityList* list){ if (list) { obstacle_list = list; }}
+        void set_bullet_list(Lists::EntityList* list){ if (list) { bullet_list = list; }}
 
         void colide();
         void collide_attack(Entes::Characters::Player* Attacker, std::string direction);
         void collide_bullets(Entes::Entity* Bullet);
         void check_colision(Entes::Entity* A, Entes::Entity* B);
+        void elastic_colision(Entes::Entity* A, Entes::Entity* B);
 
     };
 }

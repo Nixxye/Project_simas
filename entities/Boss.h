@@ -22,6 +22,7 @@ namespace Entes
             void attack();
             void draw();
             void collide(Entity* other, std::string direction = "");
+            void collide_bullets();
             Lists::List<Entes::Entity>::Iterator<Entes::Entity> get_bullets() { return bullets.get_first(); }
             void add_bullet(Entes::Entity* bullet);
             const int get_n_bullets() const { return bullets.get_size(); }

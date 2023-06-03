@@ -18,7 +18,9 @@ namespace Entes
     vel(velocity),
     life(1),
     grounded(false),
-    alive(true)
+    alive(true),
+    //Arrumar a massa dps:
+    mass(1)
     {
         //body.setPosition(pos);
         /*
