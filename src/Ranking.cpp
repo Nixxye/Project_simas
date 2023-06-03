@@ -12,7 +12,13 @@ namespace Menus
     ranking_file(ranking)
     {   
 
+        title.setSize(70);
+        title.setPosition(sf::Vector2f(160.f, 80.f));
+        title.set_color(0);
 
+        first.setPosition(sf::Vector2f(110.f, 160.f));
+        second.setPosition(sf::Vector2f(110.f, 240.f));
+        third.setPosition(sf::Vector2f(110.f, 320.f));
         load();
         buttons[0]->set_name("Menu");
         buttons[0]->set_position(sf::Vector2f(400.f, 420.f));
@@ -63,19 +69,17 @@ namespace Menus
     }
     void Ranking::draw()
     {
-        printf ("\nDraw Ranking");
+        //printf ("\nDraw Ranking");
 
-        title.setSize(70);
-        title.setPosition(sf::Vector2f(50.f, 80.f));
+
+
         title.draw();
 
-        first.setPosition(sf::Vector2f(50.f, 160.f));
+ 
         first.draw();
 
-        second.setPosition(sf::Vector2f(50.f, 240.f));
         second.draw();
 
-        third.setPosition(sf::Vector2f(50.f, 320.f));
         third.draw();
 
         for (int i = 0; i < 2; i++)
