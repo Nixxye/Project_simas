@@ -7,8 +7,9 @@ namespace Menus
     Menu(2, 3),
     title("Game Over")
     {   
-        title.setSize(60);
-        title.setPosition(sf::Vector2f(60.f, 80.f));
+        title.setSize(65);
+        title.setPosition(sf::Vector2f(120.f, 80.f));
+        title.set_color(0);
         name_string = "Name:";
         pGOObserver = new Observers::GameOverObserver;
         pGOObserver->set_menu(this);
