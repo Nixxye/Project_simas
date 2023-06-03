@@ -26,7 +26,7 @@ namespace Menus
     {
         title.draw();
         name.draw();
-        if (buttons_active)
+        if (buttons_active && final_name)
         {
             buttons_draw();
             printf ("\n\n\nOIIIIII");
