@@ -13,6 +13,7 @@ namespace Entes
         bullets(),
         attack_delay(0)
         {
+            life = 30;
             //Teste:
             //bullets.clear();
             //std::cout<<"N na inicial. "<<bullets.get_size()<<std::endl;
@@ -23,6 +24,8 @@ namespace Entes
         }
         void Boss::run()
         {
+            if (alive && life < 0)
+                alive = false;
             attack_delay--;
             if (attack_delay < 0)
             {
@@ -42,6 +45,11 @@ namespace Entes
         }
         void Boss::move()
         {
+            if (!grounded)
+                vel.y += G;
+            //Voar voar, subir subir...
+            vel.y -= (rand() % (int) (10*G)) / 10.f + G * 2 / 3;
+            body.setPosition(body.getPosition() + vel);
             bullets.run();
         }
 
@@ -67,11 +75,30 @@ namespace Entes
         }
         void Boss::collide(Entity* other, std::string direction)
         {
+            int index = other->get_id();
+            switch (index)
+            {
+            case 11:
+                if (direction == "Right" || direction == "Left")
+                {
+                    vel = sf::Vector2f(- CR*vel.x, vel.y);
+                }
+                else 
+                {
+                    vel = sf::Vector2f(vel.x, - CR*vel.y);
+                }
+                break;
+            
+            default:
+                break;
+            }
         }
         void Boss::draw()  
         {
             if (alive)
+            {
                 pGM->draw(&body);
+            }
             bullets.draw();
         } 
         void Boss::add_bullet(Entes::Entity* bullet)

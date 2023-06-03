@@ -9,7 +9,8 @@
 
 #define ATTACK_DELAY 30
 //Implementar se tiver tempo, um recoil;
-#define RECOIL 1
+#define RECOIL 5
+#define DMG 3
 
 namespace Entes
 {

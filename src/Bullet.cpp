@@ -17,7 +17,19 @@ namespace Entes
     }
     void Bullet::run()
     {
-        move();
+        if (alive)
+        {
+            move();
+            lifetime--;
+            if (lifetime <= 0)
+                alive = false;
+        }
+        
+    }
+    void Bullet::set_alive(bool a)
+    {
+        lifetime = TIME;
+        alive = a;
     }
     void Bullet::draw()
     {

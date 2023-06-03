@@ -58,7 +58,7 @@ namespace Stages
         if (player)
         {
             players.add(player);
-            //player->set_colision_manager(&colision_manager);
+            player->set_colision_manager(&colision_manager);
         }
     }
     void Stage::add_bullet(Entes::Entity* bullet)

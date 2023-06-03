@@ -12,6 +12,7 @@ namespace Entes
         class Boss: public Enemy
         {
         private:
+            //Podemos fazer balas com propridedades diferentes se der tempo:
             Lists::EntityList bullets;
             int attack_delay;
         public:

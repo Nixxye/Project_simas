@@ -40,7 +40,7 @@ namespace Entes
 
             virtual void set_position(sf::Vector2f pos) = 0;
             void set_grounded(bool g){grounded = g;}
-            void set_alive(bool a){alive = a;}
+            virtual void set_alive(bool a){alive = a;}
             void set_vel(sf::Vector2f v){vel = v;}
             void set_colision_manager(Managers::ColisionManager* cm) { colision_manager = cm; }
 

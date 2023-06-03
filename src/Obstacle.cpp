@@ -8,8 +8,6 @@ namespace Entes
         Entes::Entity(index, sf::Vector2f(0.f, 0.f)),
         body(size)
         {
-            texture = pGM->load_textures("../assets/obstacle.png");
-            body.setTexture(texture);
             body.setOrigin(body.getSize()/2.f);
             body.setPosition(pos);
             

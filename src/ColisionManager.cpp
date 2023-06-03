@@ -95,14 +95,16 @@ namespace Managers
             }
         }
     }
-    void ColisionManager::collide_attack(Entes::Characters::Player* Attacker, std::string direction)
+    int ColisionManager::collide_attack(Entes::Characters::Player* Attacker, std::string direction)
     {
-        //std::cout<<"Entrou"<<std::endl;
-        Lists::List<Entes::Entity>::Iterator<Entes::Entity> B = enemy_list->get_first();
+        int return_value = 0;
 
+        Lists::List<Entes::Entity>::Iterator<Entes::Entity> B = enemy_list->get_first();
         sf::Vector2f posA = Attacker->get_attack_position(), sizeA = Attacker->get_attack_size();
+
         sf::Vector2f posB, sizeB;
         std::string new_direction;
+
         if (direction == "Above")
             new_direction = "Below";
         else if (direction == "Below")
@@ -114,6 +116,7 @@ namespace Managers
 
         while (B != nullptr)
         {
+            //std::cout<<"No Loop"<<std::endl;
             if ((*B)->get_alive())
             {
                 posB = (*B)->get_position();
@@ -122,15 +125,13 @@ namespace Managers
                 sf::Vector2f d = posB - posA;
                 if ((fabs(d.x) < (sizeA.x + sizeB.x)/2.0) && (fabs(d.y) < (sizeA.y + sizeB.y)/2.0))
                 {
+                    return_value++;
                     (*B)->collide(Attacker, direction);
-                }
-              
+                }  
             }
             B++;
-
         }
-
-        
+        return return_value;        
     }
     void ColisionManager::collide_bullets(Entes::Entity* bullet)
     {
@@ -164,7 +165,7 @@ namespace Managers
     {
         sf::Vector2f posA = A->get_position(), posB = B->get_position(), sizeA = A->get_size(), sizeB = B->get_size();
         sf::Vector2f d = posB - posA;
-        if (d.x <= A->get_size().x + B->get_size().x || d.y <= A->get_size().y + B->get_size().y)
+        if (d.x <= A->get_size().x/2 + B->get_size().x/2 || d.y <= A->get_size().y/2 + B->get_size().y/2)
         {
             //Cria os eixos de colisão:
             sf::Vector2f y_axis = sf::Vector2f(A->get_position().x - B->get_position().x, A->get_position().y - B->get_position().y);

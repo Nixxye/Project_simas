@@ -13,7 +13,7 @@ namespace Entes
         {
             attack_body.setOrigin(attack_body.getSize().x / 2, attack_body.getSize().y / 2);
             life = 20;
-            damage = 3;
+            damage = 0;
             //lives = 3;
             pPObserver = new Observers::PlayerObserver(index);
             //std::cout<<"Added player "<<index<<std::endl;
@@ -160,6 +160,7 @@ namespace Entes
         void Player::attack()
         {
             //Pegar as teclas do player
+            damage = DMG;
             if (attack_delay <= 0)
             {
                 attack_delay = ATTACK_DELAY;
@@ -206,12 +207,26 @@ namespace Entes
                 {
                    attack_body.setPosition(sf::Vector2f(body.getPosition().x - body.getSize().x / 2 - attack_body.getSize().x / 2, body.getPosition().y)); 
                 }
+                
                 pGM->draw(&attack_body);
 
-                colision_manager->collide_attack(this, direction);
+                if(colision_manager->collide_attack(this, direction))
+                {
+                    if(direction == "Left")
+                        vel = sf::Vector2f(RECOIL, vel.y);
+                    else if(direction == "Right")
+                        vel = sf::Vector2f(-RECOIL, vel.y);
+                    else if(direction == "Above")
+                        vel = sf::Vector2f(vel.x, -RECOIL);
+                    else if(direction == "Right")
+                        vel = sf::Vector2f(vel.x, RECOIL);
+                
+                }
+
                 //Por enquanto is_attacking é inútil:
                 is_attacking = false;
             }
+            damage = 0;
         }
     }
 }

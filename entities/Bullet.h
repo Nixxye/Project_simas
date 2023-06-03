@@ -3,6 +3,7 @@
 #include "../entities/Entity.h"
 #include <SFML/Graphics.hpp>
 
+#define TIME 200
 
 namespace Entes
 {
@@ -22,7 +23,8 @@ namespace Entes
             void call_colision();
             sf::Vector2f get_position() { return body.getPosition(); }
             //Mudar isso dps;
-            sf::Vector2f get_size() {return sf::Vector2f(body.getRadius(), body.getRadius()); } 
+            void set_alive(bool a);
+            sf::Vector2f get_size() {return sf::Vector2f(body.getRadius()*2, body.getRadius()*2); } 
             void set_position(sf::Vector2f pos) { body.setPosition(pos); }
             float get_lifetime() { return lifetime; }
     };  
