@@ -29,6 +29,7 @@ namespace Managers
         void show();
         void clean();
         void draw(sf::RectangleShape* body);
+        void draw(sf::CircleShape* body);
         void draw(sf::Text* text);
         sf::Texture* load_textures(std::string path);
         

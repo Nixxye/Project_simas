@@ -55,8 +55,7 @@ namespace Entes
                     vel.x += SPEED / 4;
                 else 
                     vel.x -= SPEED / 4;      
-                position += sf::Vector2f(speed*vel.x / 10, speed*vel.y / 10);
-                body.setPosition(position);
+                body.setPosition(body.getPosition() + sf::Vector2f(speed*vel.x / 10, speed*vel.y / 10));
             }
         }
         void Enemy1::collide(Entity* other, std::string direction)

@@ -26,6 +26,7 @@ namespace States
             virtual void run () = 0;
             //Deixar virtual puro e colocar uma no menu para ver se funciona no windows;
             virtual void reset() { return; }
+            const bool get_active();
             //Tbm tirei um ;
     };
 

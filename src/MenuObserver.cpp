@@ -20,13 +20,16 @@ namespace Observers
             return;
         }
         //std::cout<<"Teste"<<std::endl;
-        if (key_code == sf::Keyboard::Up)
-            pMenu->move_up();
-        if (key_code == sf::Keyboard::Down)
-            pMenu->move_down();
-        if (key_code == sf::Keyboard::Enter)
-            pMenu->select();
-        if (key_code == sf::Keyboard::Right ||key_code == sf::Keyboard::Left)
-            pMenu->move_horizontally();
+        if (pMenu->get_active())
+        {
+            if (key_code == sf::Keyboard::Up)
+                pMenu->move_up();
+            if (key_code == sf::Keyboard::Down)
+                pMenu->move_down();
+            if (key_code == sf::Keyboard::Enter)
+                pMenu->select();
+            if (key_code == sf::Keyboard::Right ||key_code == sf::Keyboard::Left)
+                pMenu->move_horizontally();            
+        }
     }
 }

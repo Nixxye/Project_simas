@@ -1,27 +1,38 @@
 #obstacles
 5
 
+11
 400
 600
 800
 50
 
+11
 400
 0
 800
 50
 
+11
 25
 300
 50
 600
 
+11
 775
 300
 50
 600
 
+11
 400
 450
 300
 20
+
+Modo de usar:
+posição x do centro
+posição y do centro
+tamanho em x
+tamanho em y

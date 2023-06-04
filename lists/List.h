@@ -104,7 +104,7 @@ namespace Lists
         }
         void push(TYPE* elem)
         {
-            if (!elem)
+            if (!elem) 
                 return;
             Element<TYPE>* aux = new Element<TYPE>();
             if (aux)
