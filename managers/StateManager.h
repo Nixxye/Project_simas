@@ -20,8 +20,6 @@ namespace Managers
             States :: State* get_CurrentState ();
             int get_CurrentStateID();
             void add_state(States::State* pState);
-
-            void execute();
             void reset_current_state();
     };
 }
