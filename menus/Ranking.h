@@ -12,7 +12,6 @@ namespace Menus
     class Ranking: public Menu
     {
     private:
-        Text title;
         Text first;
         Text second;
         Text third;

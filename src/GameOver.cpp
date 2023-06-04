@@ -4,8 +4,7 @@
 namespace Menus
 {
     GameOver::GameOver():
-    Menu(2, 3),
-    title("Game Over")
+    Menu(2, 3,"GameOver")
     {   
         title.setSize(65);
         title.setPosition(sf::Vector2f(120.f, 80.f));

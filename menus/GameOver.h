@@ -14,7 +14,6 @@ namespace Menus
     class GameOver : public Menu 
     {
     private:
-        Text title;
         std::string name_string ;
         std :: string points_string;
         Text name;

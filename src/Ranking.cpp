@@ -4,8 +4,7 @@
 namespace Menus
 {
     Ranking::Ranking(std::string ranking):
-    Menu(2, 4),
-    title("Ranking"),
+    Menu(2, 4, "Ranking"),
     first("1 name - points"),
     second("2 name - points"),
     third("3 name - points"),

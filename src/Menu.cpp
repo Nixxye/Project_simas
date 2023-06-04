@@ -2,12 +2,13 @@
 
 namespace Menus
 {
-    Menu :: Menu(int n_buttons, int id):
+    Menu :: Menu(int n_buttons, int id, std:: string t):
     Ent(),
     State(id),
     MAX_BUTTONS(n_buttons),
     buttons(),
-    selected_index(0)
+    selected_index(0),
+    title(t)
     {
         pEventsManager = Managers::EventsManager::get_instance();
         for (int i = 0; i < MAX_BUTTONS; i++)

@@ -17,7 +17,6 @@ namespace Menus
         Text stage2;
         Text player1;
         Text player2;
-        Text game;
     public:
         MainMenu();
         ~MainMenu();
