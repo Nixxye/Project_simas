@@ -11,11 +11,12 @@ namespace Stages
     Stage2::~Stage2()
     {
     }
-    void Stage2::run()
+    /*
+    void Stage2::execute()
     {
-        players.run();
-        enemies.run();
-        obstacles.run();
+        players.execute();
+        enemies.execute();
+        obstacles.execute();
 
         colision_manager.colide();
         //else horrível
@@ -26,5 +27,6 @@ namespace Stages
         players.draw();
         enemies.draw();
         obstacles.draw();
-    }   
+    }  
+    */ 
 }

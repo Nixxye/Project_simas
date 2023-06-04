@@ -10,7 +10,8 @@ namespace States
     {
 
         protected:
-            Managers :: StateManager* pSM;
+            //Colocar static?
+            static Managers :: StateManager* pSM;
             const int id_state;
 
         public:

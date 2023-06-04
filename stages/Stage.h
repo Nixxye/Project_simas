@@ -69,9 +69,7 @@ namespace Stages
     public:
         Stage(std::string savefile = "", std::string infofile = "", std::string savebase = "", int id = -1);
         virtual ~Stage();
-        virtual void execute() = 0;
-        virtual void create_enemies();
-        virtual void create_obstacles();
+        void execute();
         void draw();
 
         void add_enemy(Entes::Entity* enemy);

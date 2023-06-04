@@ -17,7 +17,7 @@ namespace Entes
     {
 
     }
-    void Bullet::run()
+    void Bullet::execute()
     {
         if (alive)
         {

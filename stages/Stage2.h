@@ -9,7 +9,6 @@ namespace Stages
     public:
         Stage2();
         ~Stage2();
-        void run();
     };
 }
 

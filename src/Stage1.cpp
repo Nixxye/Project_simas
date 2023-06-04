@@ -12,20 +12,20 @@ namespace Stages
     Stage1::~Stage1()
     {
     }
+    /*
     void Stage1::execute()
     {
         //std::cout<<"Testeee"<<std::endl;
 
-        players.run();
-        enemies.run();
-        obstacles.run();
+        players.execute();
+        enemies.execute();
+        obstacles.execute();
         /*
         std::cout<<"Ui"<<std::endl;
         std::cout<<players.get_size()<<std::endl;
         std::cout<<enemies.get_size()<<std::endl;
         std::cout<<obstacles.get_size()<<std::endl;
 
-        */
         colision_manager.colide();
         draw();
         //else horrível
@@ -64,4 +64,5 @@ namespace Stages
         enemies.draw();
         obstacles.draw();
     }
+    */
 }

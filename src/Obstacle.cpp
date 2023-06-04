@@ -16,7 +16,7 @@ namespace Entes
         {
             
         }
-        void Obstacle::run(){}    
+        void Obstacle::execute(){}    
         void Obstacle::draw()
         {
             if (alive)

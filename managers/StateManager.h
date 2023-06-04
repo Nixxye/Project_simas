@@ -18,7 +18,7 @@ namespace Managers
             static StateManager* get_instance();
             void set_CurrentState (int i);
             States :: State* get_CurrentState ();
-            int get_CurrentStateID() { return currentState; }
+            int get_CurrentStateID();
             void add_state(States::State* pState);
 
             void execute();

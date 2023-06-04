@@ -28,24 +28,24 @@ namespace Managers
     }
     void StateManager::set_CurrentState(int i)
     {
-        currentStateID = i;
-        printf ("State:%d", currentStateID);
+        currentState = i;
+        printf ("State:%d", currentState);
         //pLastState = pCurrentState;
         //pCurrentState = vector_states[i];
     }
     //N funciona
     States::State *StateManager::get_CurrentState()
     {
-        if (!vector_states[currentStateID])
+        if (!vector_states[currentState])
         {
             std::cout<<"Q feio heim"<<std::endl;
             exit(1);
         }
-        return vector_states[currentStateID];
+        return vector_states[currentState];
     }
     int StateManager::get_CurrentStateID()
     {
-        return currentStateID;
+        return currentState;
     }
     //Tirar
     void StateManager:: add_state(States::State* pState)
@@ -61,7 +61,7 @@ namespace Managers
             std::cout<<"Q bonito heim "<<currentState<<std::endl;
             exit(1);
         }
-        vector_states[currentStateID]->execute();
+        vector_states[currentState]->execute();
     }
 
     void Managers::StateManager::reset_current_state()
