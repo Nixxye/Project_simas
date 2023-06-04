@@ -17,6 +17,7 @@ namespace Menus
         std::string name_string ;
         std :: string points_string;
         Text name;
+        Text instructions;
         Observers::GameOverObserver*  pGOObserver;
         bool buttons_active;
         bool name_active;
@@ -42,7 +43,7 @@ namespace Menus
         void draw_name ();
 
         void active_name();
-        
+
         void select ();
 
         void save ();

@@ -4,8 +4,11 @@
 namespace Menus
 {
     GameOver::GameOver():
-    Menu(2, 3,"GameOver")
+    Menu(2, 3,"Game Over"),
+    instructions("Aperte Tab e escreva seu nome")
     {   
+        instructions.setSize(20);
+        instructions.setPosition(sf::Vector2f(100.f, 180.f));
         title.setSize(65);
         title.setPosition(sf::Vector2f(120.f, 80.f));
         title.set_color(0);
@@ -31,6 +34,10 @@ namespace Menus
         {
             buttons_draw();
             printf ("\n\n\nOIIIIII");
+        }
+        else
+        {
+            instructions.draw();
         }
     } 
     void GameOver::add_name(std::string c)
