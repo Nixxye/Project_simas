@@ -26,14 +26,7 @@ namespace Observers
             pSM->set_CurrentState(0);
             graphics_manager->reset_camera();
         }    
-       /* else
-        {
-            //std::cout<<key_code<<std::endl;
-            for (std::list <Observers::Observer*> :: iterator it = player_observers.begin(); it != player_observers.end(); it++)
-            {
-                (*it)->notify(key_code);
-            }    
-        }    */       
+
     }
 
 }
