@@ -1,5 +1,5 @@
 #include "../managers/GraphicsManager.h"
-#include "../managers/ColisionManager.h"
+
 
 namespace Managers
  {
@@ -89,7 +89,7 @@ namespace Managers
 
         //printf("\nP1: %f e %f P2: %f e %f",position1.x, position1.y,position2.x,position2.y);
 
-        if (fabs((position1.x+position2.x)/2)< WIDTH / 2)
+        if (((position1.x+position2.x)/2)< WIDTH / 2)
         {
             cam.setCenter(WIDTH/2,(position1.y+position2.y)/2);
         }
