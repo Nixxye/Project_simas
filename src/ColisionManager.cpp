@@ -99,9 +99,10 @@ namespace Managers
     {
         int return_value = 0;
 
+        Lists::List<Entes::Entity>::Iterator<Entes::Entity> bullet;
         Lists::List<Entes::Entity>::Iterator<Entes::Entity> B = enemy_list->get_first();
         sf::Vector2f posA = Attacker->get_attack_position(), sizeA = Attacker->get_attack_size();
-
+         sf::Vector2f d_bullet;
         sf::Vector2f posB, sizeB;
         std::string new_direction;
 
@@ -127,8 +128,37 @@ namespace Managers
                 {
                     return_value++;
                     (*B)->collide(Attacker, direction);
+                    //Chefão:
+
                     //Attacker->collide(*B, direction);
                 }  
+                if ((*B)->get_id() == 3)
+                {
+                    bullet = (static_cast<Entes::Characters::Boss*>(*B))->get_bullets();
+                    while (bullet != nullptr)
+                    {
+                        d_bullet = posA - (*bullet)->get_position();
+                        if ((fabs(d_bullet.x) < (sizeA.x + sizeB.x)/2.0) && (fabs(d_bullet.y) < (sizeA.y + sizeB.y)/2.0))
+                        {
+                            return_value++;
+                            //std::cout<<"Colidu"<<std::endl;
+                            (*bullet)->collide(Attacker, direction);
+                            if (!static_cast<Entes::Bullet*>(*bullet)->get_friendly())
+                            {
+                                if (direction == "Below")
+                                    attack_and_bullets(sizeA, Attacker->get_position(), sf::Vector2f(Attacker->get_vel().x, -5.f), *bullet);
+                                else if (direction == "Above")
+                                    attack_and_bullets(sizeA, Attacker->get_position(), sf::Vector2f(Attacker->get_vel().x, 5.f), *bullet);
+                                else if (direction == "Right")
+                                    attack_and_bullets(sizeA, Attacker->get_position(), sf::Vector2f(-5.f, Attacker->get_vel().x), *bullet);
+                                else if (direction == "Left")
+                                    attack_and_bullets(sizeA, Attacker->get_position(), sf::Vector2f(5.f, Attacker->get_vel().x), *bullet);
+                            }
+                                //attack_and_bullets(sizeA, Attacker->get_position(), Attacker->get_vel(), *bullet);
+                        }
+                        bullet++;
+                    }
+                }
             }
             B++;
         }
@@ -139,19 +169,26 @@ namespace Managers
         Lists::List<Entes::Entity> aux;
         Lists::List<Entes::Entity>::Iterator<Entes::Entity> B = player_list->get_first();
         
-        while(B != nullptr)
+        if (!(static_cast<Entes::Bullet*>(bullet)->get_friendly()))
         {
-            if ((*B)->get_alive())
-                check_colision(bullet, *B);
-            B++;
+            while(B != nullptr)
+            {
+                if ((*B)->get_alive())
+                    check_colision(bullet, *B);
+                B++;
+            }
         }
-        B = enemy_list->get_first();
-        while (B != nullptr)
+        else 
         {
-            if ((*B)->get_alive())
-                check_colision(bullet, *B);
-            B++;
+            B = enemy_list->get_first();
+            while (B != nullptr)
+            {
+                if ((*B)->get_alive())
+                    check_colision(bullet, *B);
+                B++;
+            }
         }
+
         B = obstacle_list->get_first();
         while (B != nullptr)
         {
@@ -164,6 +201,8 @@ namespace Managers
     //Colisão barreto;
     void ColisionManager::elastic_colision(Entes::Entity* A, Entes::Entity* B)
     {
+        if (!A->get_alive() || !B->get_alive())
+            return;
         sf::Vector2f posA = A->get_position(), posB = B->get_position(), sizeA = A->get_size(), sizeB = B->get_size();
         sf::Vector2f d = posB - posA;
         if (d.x <= A->get_size().x/2 + B->get_size().x/2 || d.y <= A->get_size().y/2 + B->get_size().y/2)
@@ -188,6 +227,33 @@ namespace Managers
             B->set_vel(vf2 + vx2);
             B->move();
         } 
+    }
+    void ColisionManager::attack_and_bullets(sf::Vector2f attack_size, sf::Vector2f attack_position, sf::Vector2f player_vel, Entes::Entity* B)
+    {
+        //std::cout<<"Aqui chega"<<std::endl;
+        sf::Vector2f posB = B->get_position(), sizeB = B->get_size();
+        sf::Vector2f d = posB - attack_position;
+        if (d.x <= attack_size.x/2 + B->get_size().x/2 || d.y <= attack_size.y/2 + B->get_size().y/2)
+        {
+            //Cria os eixos de colisão:
+            sf::Vector2f y_axis = sf::Vector2f(attack_position.x - B->get_position().x, attack_position.y - B->get_position().y);
+            sf::Vector2f x_axis = sf::Vector2f(y_axis.y, -y_axis.x);
+            //Normaliza os eixos:
+            y_axis = y_axis / sqrt(y_axis.x * y_axis.x + y_axis.y * y_axis.y);
+            x_axis = x_axis / sqrt(x_axis.x * x_axis.x + x_axis.y * x_axis.y);
+            //Projeta as velocidades nos novos eixos:
+            sf::Vector2f vy1 = y_axis * (player_vel.x * y_axis.x + player_vel.y * y_axis.y); 
+            sf::Vector2f vy2 = y_axis * (B->get_vel().x * y_axis.x + B->get_vel().y * y_axis.y);
+ 
+            sf::Vector2f vx2 = y_axis * (B->get_vel().x * x_axis.x + B->get_vel().y * x_axis.y);
+        
+            sf::Vector2f vf1 = (((vy1) + (vy2 * B->get_mass())) * (float) (1+CR) /(1 + B->get_mass())) + vy1 * (float) (-CR);
+            sf::Vector2f vf2 = (((vy1) + (vy2 * B->get_mass())) * (float) (1+CR) /(1 + B->get_mass())) + vy2 * (float) (-CR);
+
+            B->set_vel(vf2 + vx2);
+            B->move();
+            //std::cout<<"Eita3"<<std::endl;
+        }     
     }
 }
 

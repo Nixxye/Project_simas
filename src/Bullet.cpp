@@ -9,7 +9,7 @@ namespace Entes
     body(10),
     friendly(false)
     {
-        damage = 1;
+        damage = 0.1;
         body.setPosition(pos);
         //vel = velocity;
     }
@@ -22,6 +22,7 @@ namespace Entes
         if (alive)
         {
             move();
+            //std::cout<<"Moveu"<<std::endl;
             lifetime--;
             if (lifetime <= 0)
                 alive = false;
@@ -59,19 +60,22 @@ namespace Entes
         {
             //Player:
         case 0:
+            //Isso vai para o gerenciador de colisões:
             colision_manager->elastic_colision(this, other);
-            if (other->get_damage() > 0)
+            //std::cout<<"Here"<<std::endl;
+            if (other->get_damage() > 0 && !friendly)
             {
                 friendly = true;
                 body.setFillColor(sf::Color::Magenta);
             }
-            if (!friendly)
-                other->inflict_damage(damage);
+            //if (!friendly)
+                //other->inflict_damage(damage);
             break;
             //Other Bullet:
         case 3:
-            if (!friendly)
+            if (friendly)
             {
+                colision_manager->elastic_colision(this, other);
                 alive = false;
                 other->inflict_damage(damage);
             }

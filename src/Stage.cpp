@@ -193,7 +193,7 @@ namespace Stages
                 file >> n_bullets;
                 std::getline(file, line);
                 std::getline(file, line);
-                std::cout<<"n_bullets "<<n_bullets<<std::endl;
+                //std::cout<<"n_bullets "<<n_bullets<<std::endl;
                 for (int j = 0; j < n_bullets; j++)
                 {
                     file >> id >> posX >> posY >> velX >> velY >> lifetime;
@@ -333,7 +333,7 @@ namespace Stages
                 file >> n_bullets;
                 std::getline(file, line);
                 std::getline(file, line);
-                std::cout<<"n_bullets "<<n_bullets<<std::endl;
+                //std::cout<<"n_bullets "<<n_bullets<<std::endl;
                 for (int j = 0; j < n_bullets; j++)
                 {
                     file >> id >> posX >> posY >> velX >> velY >> lifetime;
@@ -382,7 +382,7 @@ namespace Stages
     {
         Entes::Characters::Boss* pBoss = static_cast<Entes::Characters::Boss*>(boss);
         Entes::Entity* bullet = NULL;
-        std::cout<<"N de balas "<<pBoss->get_n_bullets()<<std::endl;
+        //std::cout<<"N de balas "<<pBoss->get_n_bullets()<<std::endl;
         bullet = new Entes::Bullet(pos, vel, lifetime);
         bullet->set_colision_manager(&colision_manager);
 

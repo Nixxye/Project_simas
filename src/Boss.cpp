@@ -55,7 +55,7 @@ namespace Entes
 
         void Boss::attack()
         {
-            std::cout<<"O boss tá lá"<<std::endl;
+            //std::cout<<"O boss tá lá"<<std::endl;
             Lists::List<Entes::Entity>::Iterator<Entes::Entity> aux = bullets.get_first();
             
             float vx = 0.f, vy = 0.f;
@@ -65,7 +65,8 @@ namespace Entes
                 (*aux)->set_alive(true);
                 //std::cout<<"Aqui"<<std::endl;
                 (static_cast<Entes::Bullet*>(*aux))->set_friendly(false);
-                //Mudar a cor de novo;                
+                //Fazer uma função de trocar textura:
+                (static_cast<Entes::Bullet*>(*aux))->set_fill_color(sf::Color::White);              
                 //std::cout<<"Aquiiii"<<std::endl;
                 vx = ((rand() % 50) - 25) / 10.f;
                 vy = ((rand() % 50) - 40) / 10.f;
@@ -75,7 +76,7 @@ namespace Entes
                 aux++;        
             } 
             bullets.set_position(body.getPosition());
-            std::cout<<"Saiu do ataque"<<std::endl;
+            //std::cout<<"Saiu do ataque"<<std::endl;
         }
         void Boss::collide(Entity* other, std::string direction)
         {
@@ -85,12 +86,14 @@ namespace Entes
                 Entes::Bullet* bullet = static_cast<Entes::Bullet*>(other);
             switch (index)
             {
+                /*
             case 4:
                 if(bullet->get_friendly())
                 {
                     life -= bullet->get_damage();
                 }
                 break;
+ */
             case 11:
                 if (direction == "Right" || direction == "Left")
                 {

@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "../entities/Player.h"
 #include "../entities/Enemy.h"
+#include "../entities/Boss.h"
 #include "../entities/Obstacle.h"
 #include "../lists/EntityList.h"
 
@@ -32,6 +33,7 @@ namespace Managers
         void collide_bullets(Entes::Entity* Bullet);
         void check_colision(Entes::Entity* A, Entes::Entity* B);
         void elastic_colision(Entes::Entity* A, Entes::Entity* B);
+        void attack_and_bullets(sf::Vector2f attack_size, sf::Vector2f attack_position, sf::Vector2f player_vel, Entes::Entity* B);
 
     };
 }

@@ -30,5 +30,6 @@ namespace Entes
             void set_friendly(bool f){friendly = f;}
             float get_lifetime() { return lifetime; }
             const bool get_friendly() const { return friendly; }
+            void set_fill_color (sf::Color c) { body.setFillColor(c); }
     };  
 }

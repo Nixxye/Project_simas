@@ -43,7 +43,7 @@ namespace Entes
             if (!alive)
             {
                 //DAR UM JEITO DE FAZER UM GAME OVER DECENTE:
-                std::cout<<"Faleceu"<<std::endl;
+                //std::cout<<"Faleceu"<<std::endl;
                 //exit(1);
             }
             move();
@@ -224,7 +224,7 @@ namespace Entes
             {
                 attack_delay = ATTACK_DELAY;
                 std::string direction = " ";
-                std::cout<<"Attacking"<<std::endl;
+                //std::cout<<"Attacking"<<std::endl;
                 is_attacking = true;
 
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
