@@ -24,9 +24,9 @@ namespace Stages
         pSObserver->set_stage(this);
         setObservers();
 
-        body.setSize(sf::Vector2f(16000.f, 4780.f));
-        texture = pGM->load_textures("../assets/stage1.png");
-        body.setTexture(texture);
+        body.setSize(sf::Vector2f(1600.f, 1200.f));
+        body.setOrigin(sf::Vector2f(0.f, 215.f));
+
 
     }
 

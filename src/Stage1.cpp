@@ -5,7 +5,8 @@ namespace Stages
     Stage1::Stage1():
     Stage(SAVE_STAGE_1, FILE_STAGE_1, SAVE_BASE_1, 1)
     {
-
+        texture = pGM->load_textures("../assets/stage1.png");
+        body.setTexture(texture);
     }
 
     Stage1::~Stage1()

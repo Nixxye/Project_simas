@@ -91,10 +91,10 @@ namespace Managers
 
         if (((position1.x+position2.x)/2)< WIDTH / 2)
         {
-            cam.setCenter(WIDTH/2,(position1.y+position2.y)/2);
+            cam.setCenter(WIDTH/2,(position1.y+position2.y)/2-215.f);
         }
         else
-            cam.setCenter((position1.x+position2.x)/2,(position1.y+position2.y)/2);
+            cam.setCenter((position1.x+position2.x)/2,(position1.y+position2.y)/2-215.f);
         window->setView(cam);
     }
     void GraphicsManager::reset_camera()
