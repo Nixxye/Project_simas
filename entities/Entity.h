@@ -27,6 +27,7 @@ namespace Entes
             bool grounded;
             bool alive;
             float mass;
+            bool slowed;
             Managers::ColisionManager* colision_manager;
 
         public:
@@ -43,6 +44,7 @@ namespace Entes
             virtual void set_alive(bool a){alive = a;}
             void set_vel(sf::Vector2f v){vel = v;}
             void set_colision_manager(Managers::ColisionManager* cm) { colision_manager = cm; }
+            virtual void set_slowed(bool s) {slowed = s;}
 
             sf::Vector2f get_vel(){return vel;}
             int get_speed(){return speed;}

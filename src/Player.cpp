@@ -54,19 +54,31 @@ namespace Entes
         {
             if (direction == 'R') //Right
             {
-                vel.x += 2*SPEED;
+                if (slowed)
+                    vel.x += SPEED / 20.f;
+                else 
+                    vel.x += 2*SPEED;
             }
             else if (direction == 'L') //Left
             {
-                vel.x -= 2*SPEED;
+                if (slowed)
+                    vel.x -= SPEED / 20.f;
+                else 
+                    vel.x -= 2*SPEED;
             }
             else if (vel.x > 0)                               
             {
-                vel.x -= SPEED / 2;
+                if (slowed)
+                    vel.x = 0;
+                else 
+                    vel.x -= SPEED / 2;
             }
             else if (vel.x < 0)
             {
-                vel.x += SPEED / 2;
+                if (slowed)
+                    vel.x = 0;
+                else 
+                    vel.x += SPEED / 2;
             }
 
             if (vel.x <= SPEED/2 && vel.x >= -SPEED/2)
@@ -76,7 +88,12 @@ namespace Entes
             if (!grounded)
             {
                 if (direction == '0')
-                    vel.y += G;
+                {
+                    if (slowed)
+                        vel.y += G / 3;
+                    else 
+                        vel.y += G;
+                }
             }
             else if (direction == 'U') //Up
             {
@@ -91,6 +108,7 @@ namespace Entes
                 player_position = body.getPosition();
                 speed = (int) sqrt(vel.x*vel.x + vel.y*vel.y);   
             }
+            slowed = false;
             //std::cout<<vel.y<<std::endl;
         }
 
@@ -102,37 +120,33 @@ namespace Entes
             switch (index)
             {
             case 1:
-                if (dmg)
+                if (direction == "Above")
                 {
                     life -= dmg;
-                    if (direction == "Above")
-                    {
-                        life -= dmg;
-                        vel.y = 40 * SPEED;
-                        other->set_vel(sf::Vector2f(other->get_vel().x, -5 * SPEED));
-                    }
-                    else if (direction == "Below")
-                    {
-                        grounded = true;
-                        move('U');
-                        vel = sf::Vector2f(vel.x, -vel.y);
-                        other->set_vel(sf::Vector2f(other->get_vel().x, 5 * SPEED));
-                    }
-                    else if (direction == "Left")
-                    {
-                        life -= dmg;
-                        vel = sf::Vector2f(-vel.x, vel.y);
-                        other->set_vel(sf::Vector2f(-5 * SPEED, other->get_vel().y));
-                    }
-                    else if (direction == "Right")
-                    {
-                        life -= dmg;
-                        vel = sf::Vector2f(-vel.x, vel.y);
-                        other->set_vel(sf::Vector2f(5 * SPEED, other->get_vel().y));
-                    }
-                    std::cout<<"Player: "<<life<<std::endl;
-                    move();
+                    vel.y = 40 * SPEED;
+                    other->set_vel(sf::Vector2f(other->get_vel().x, -5 * SPEED));
                 }
+                else if (direction == "Below")
+                {
+                    grounded = true;
+                    move('U');
+                    vel = sf::Vector2f(vel.x, -vel.y);
+                    other->set_vel(sf::Vector2f(other->get_vel().x, 5 * SPEED));
+                }
+                else if (direction == "Left")
+                {
+                    life -= dmg;
+                    vel = sf::Vector2f(-vel.x, vel.y);
+                    other->set_vel(sf::Vector2f(-5 * SPEED, other->get_vel().y));
+                }
+                else if (direction == "Right")
+                {
+                    life -= dmg;
+                    vel = sf::Vector2f(-vel.x, vel.y);
+                    other->set_vel(sf::Vector2f(5 * SPEED, other->get_vel().y));
+                }
+                std::cout<<"Player: "<<life<<std::endl;
+                move();
                 break;
             case 11:
                 if (direction == "Below")
@@ -152,6 +166,47 @@ namespace Entes
                 {
                     vel = sf::Vector2f(-CR*vel.x, vel.y);
                 }
+                break;
+            case 12:
+
+                if (direction == "Below")
+                {
+                    vel = sf::Vector2f(vel.x, 0.f);
+                }
+                else if (direction == "Above")
+                {
+                    vel = sf::Vector2f(vel.x, 0.f);
+                }
+                else if (direction == "Left")
+                {
+                    vel = sf::Vector2f(-CR*vel.x, vel.y);  
+ 
+                }
+                else if (direction == "Right")
+                {
+                    vel = sf::Vector2f(-CR*vel.x, vel.y);
+                }
+                break;
+            case 13:
+                life -= dmg;
+                if (direction == "Below")
+                {
+                    vel = sf::Vector2f(vel.x, -5.f);
+                }
+                else if (direction == "Above")
+                {
+                    vel = sf::Vector2f(vel.x, 5.f);
+                }
+                else if (direction == "Left")
+                {
+                    vel = sf::Vector2f(5.f, vel.y);  
+ 
+                }
+                else if (direction == "Right")
+                {
+                    vel = sf::Vector2f(-5.f, vel.y);
+                }
+                move();
                 break;
             }
             
@@ -227,6 +282,10 @@ namespace Entes
                 is_attacking = false;
             }
             damage = 0;
+        }
+        void Player::set_slowed(bool s)
+        {
+            slowed = s;
         }
     }
 }

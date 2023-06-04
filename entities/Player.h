@@ -11,6 +11,7 @@
 //Implementar se tiver tempo, um recoil;
 #define RECOIL 5
 #define DMG 3
+#define SLOW_TIME 100
 
 namespace Entes
 {
@@ -37,6 +38,8 @@ namespace Entes
             sf::Vector2f get_attack_position() { return attack_body.getPosition(); }
             sf::Vector2f get_attack_size() { return attack_body.getSize(); }
             Observers::Observer* get_observer() { return pPObserver; }
+
+            void set_slowed(bool s);
         };
     }
 }

@@ -232,17 +232,17 @@ namespace Stages
         std::getline(file2, line);
         for (int i = 0; i < n; i++)
         {
+            //std::cout<<"Aqui "<<stage_info<<std::endl;
             int id;
             float posX, posY, sizeX, sizeY;
 
-            file2 >> posX >> posY >> sizeX >> sizeY;
+            file2 >> id >> posX >> posY >> sizeX >> sizeY;
             //cout << id << posX << posY << velX << velY << endl;
             std::getline(file2, line);
             //Static cast;
             //Mudar dps o id:
-            aux = new Entes::Obstacles::Obstacle(11, sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY));
-            add_obstacle(aux);
-            //cout<<"LOADED"<<endl;
+            add_obstacle(create_obstacle(id, sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY)));
+            //std::cout<<"LOADED"<<std::endl;
         }
         file2.close();
     }
@@ -388,6 +388,25 @@ namespace Stages
 
         pBoss->add_bullet(static_cast<Entes::Entity*>(bullet));
         return static_cast<Entes::Entity*>(bullet);
+    }
+    Entes::Entity* Stage::create_obstacle(int id, sf::Vector2f pos, sf::Vector2f size)
+    {
+        Entes::Entity* aux = NULL;
+        switch (id)
+        {
+        case 11:
+            aux = static_cast<Entes::Entity*>(new Entes::Obstacles::Platform(pos, size));
+            break;
+        case 12:
+            aux = static_cast<Entes::Entity*>(new Entes::Obstacles::Slow(pos, size));
+            break;
+        case 13:
+            aux = static_cast<Entes::Entity*>(new Entes::Obstacles::Spike(pos, size));
+        default:
+            break;
+        }
+        aux->set_colision_manager(&colision_manager);
+        return aux;
     }
 }
  
