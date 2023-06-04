@@ -29,18 +29,18 @@ namespace Observers
             pSM->set_CurrentState(0);
             graphics_manager->reset_camera();
         }    
-        else
+        /*else
         {
             //std::cout<<key_code<<std::endl;
             for (std::list <Observers::Observer*> :: iterator it = player_observers.begin(); it != player_observers.end(); it++)
             {
                 (*it)->notify(key_code);
             }    
-        }           
+        } */          
     }
     void StageObserver :: add_player_observer(Observers::Observer* p_o)
     {
-        player_observers.push_back(p_o);
+       // player_observers.push_back(p_o);
     }
 
 }
