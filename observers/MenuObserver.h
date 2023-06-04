@@ -5,7 +5,7 @@
 
 namespace Menus
 {
-    class Menu;
+    class MainMenu;
 }
 
 namespace Observers
@@ -13,11 +13,11 @@ namespace Observers
     class MenuObserver: public Observer
     {
     private:
-        Menus::Menu* pMenu;
+        Menus::MainMenu* pMenu;
     public:
         MenuObserver();
         ~MenuObserver();
         void notify(sf::Keyboard::Key key_code);
-        void set_menu(Menus::Menu *pM) { pMenu = pM; }
+        void set_menu(Menus::MainMenu *pM) { pMenu = pM; }
     };
 }

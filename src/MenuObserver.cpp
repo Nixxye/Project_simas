@@ -1,5 +1,5 @@
 #include "../observers/MenuObserver.h"
-#include "../menus/Menu.h"
+#include "../menus/MainMenu.h"
 
 namespace Observers
 {

@@ -22,7 +22,6 @@ namespace Menus
         Ranking(std::string ranking = "");
         ~Ranking();
         void select();
-        void move_horizontally(int i);
         void draw();
         void load();
     };

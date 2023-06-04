@@ -39,7 +39,6 @@ namespace Menus
 
         void draw_name ();
 
-        void move_horizontally(int i);
 
         void select ();
 

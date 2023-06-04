@@ -63,10 +63,6 @@ namespace Menus
         }
     }
 
-    void Ranking::move_horizontally(int i)
-    {
-
-    }
     void Ranking::draw()
     {
         //printf ("\nDraw Ranking");

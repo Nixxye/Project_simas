@@ -27,7 +27,6 @@ namespace Menus
             virtual void draw();
             void move_up();
             void move_down();
-            virtual void move_horizontally(int i = 0) = 0;
             virtual void select() = 0;
             void execute();
     };    

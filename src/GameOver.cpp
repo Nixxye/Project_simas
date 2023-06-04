@@ -82,10 +82,6 @@ namespace Menus
         }
     }
 
-    void GameOver  :: move_horizontally (int i)
-    {
-
-    }
 
     void GameOver  :: select ()
     {
