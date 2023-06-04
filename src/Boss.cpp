@@ -31,7 +31,7 @@ namespace Entes
         {
 
         }
-        void Boss::run()
+        void Boss::execute()
         {
             attack_delay--;
             if (attack_delay < 0)

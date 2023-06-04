@@ -14,7 +14,7 @@ namespace Entes
         {
             
         }
-        void Obstacle::run(){}    
+        void Obstacle::execute(){}    
     }    
 }
 

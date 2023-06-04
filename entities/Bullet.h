@@ -12,7 +12,7 @@ namespace Entes
             public:
                 Bullet(float vx = 0.f, float vy = 0.f, float time = 100.f);
                 ~Bullet();
-                void run();
+                void execute();
                 void move();
                 void collide(Entity* other){};
         };  

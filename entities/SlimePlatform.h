@@ -14,7 +14,7 @@ namespace Entes
                 SlimePlatform();
                 ~SlimePlatform();
                 void collide(Entity* other, std::string  direction = ""){};
-                void run(){}
+                void execute(){}
             
         };    
     }    

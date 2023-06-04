@@ -9,7 +9,7 @@ namespace Stages
     public:
         Stage1();
         ~Stage1();
-        void run();
+        void execute();
         void create_enemies();
         void create_obstacles();
     };

@@ -13,7 +13,7 @@ namespace Lists
         EntityList();
         ~EntityList();
 
-        void run();
+        void execute();
         void draw();
         void add(Entes::Entity* ent);
 

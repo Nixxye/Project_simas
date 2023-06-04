@@ -30,7 +30,7 @@ namespace Entes
                 delete pPObserver;
             pPObserver = nullptr;
         }
-        void Player::run()
+        void Player::execute()
         { 
             if (lives < 0)
                 alive = false;

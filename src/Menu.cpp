@@ -53,9 +53,9 @@ namespace Menus
             buttons[selected_index]->change_color();
         }
     }
-    void Menu :: run()
+    void Menu :: execute()
     {
-        pEventsManager->run();
+        pEventsManager->execute();
         draw();
     }
 }

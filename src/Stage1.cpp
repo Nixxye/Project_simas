@@ -12,14 +12,14 @@ namespace Stages
     Stage1::~Stage1()
     {
     }
-    void Stage1::run()
+    void Stage1::execute()
     {
         //Arrumar o código com o gerenciador de eventos e gráfico:
         //Feio, horrível, pavoroso, tira daqui!
         //events_manager->run();
-        players.run();
-        enemies.run();
-        obstacles.run();
+        players.execute();
+        enemies.execute();
+        obstacles.execute();
 
         colision_manager.colide();
         draw();

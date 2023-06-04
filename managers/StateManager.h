@@ -23,7 +23,7 @@ namespace Managers
             int get_CurrentStateID();
             void add_state(States::State* pState);
 
-            void run();
+            void execute();
             void reset_current_state();
     };
 }

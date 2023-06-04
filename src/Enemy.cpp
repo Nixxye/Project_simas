@@ -17,7 +17,7 @@ namespace Entes
         Enemy::~Enemy()
         {
         }
-        void Enemy::run()
+        void Enemy::execute()
         {
             move();
         }

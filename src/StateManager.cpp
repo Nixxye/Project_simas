@@ -51,7 +51,7 @@ namespace Managers
       //std::cout<<"OIII"<<std::endl;
        vector_states[pState->get_id()] = pState;
     }
-    void StateManager::run()
+    void StateManager::execute()
     {
         //Inutil?
         //std::cout<<"Rodando "<<currentState<<std::endl;
@@ -60,7 +60,7 @@ namespace Managers
             std::cout<<"Q bonito heim"<<std::endl;
             exit(1);
         }
-        vector_states[currentStateID]->run();
+        vector_states[currentStateID]->execute();
     }
 
     void Managers::StateManager::reset_current_state()

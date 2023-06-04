@@ -9,21 +9,21 @@ main_menu(),
 game_over(),
 ranking()
 {
-    run();
+    execute();
 }
 
 Game::~Game()
 {
 }
 
-void Game::run()
+void Game::execute()
 {
     while (pGM->window_open())
     {
         pGM->clean();
         
-        pEM->run();
-        pSM->get_CurrentState()->run();
+        pEM->execute();
+        pSM->get_CurrentState()->execute();
         //main_menu.run();
         //stage1.run();
         

@@ -28,6 +28,6 @@ namespace Menus
             void move_down();
             virtual void move_horizontally(int i = 0) = 0;
             virtual void select() = 0;
-            void run();
+            void execute();
     };    
 }

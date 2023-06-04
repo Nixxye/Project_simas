@@ -54,7 +54,7 @@ namespace Stages
     public:
         Stage(std::string savefile = "", std::string infofile = "", std::string savebase = "", int id = -1);
         virtual ~Stage();
-        virtual void run() = 0;
+        virtual void execute() = 0;
         virtual void create_enemies();
         virtual void create_obstacles();
         void draw();

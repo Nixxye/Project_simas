@@ -23,7 +23,7 @@ namespace Entes
         public:
             Boss();
             ~Boss();
-            void run();
+            void execute();
             void move();
             void attack();
             void draw();

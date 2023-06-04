@@ -13,12 +13,12 @@ namespace Lists
 
     }
 
-    void EntityList::run()
+    void EntityList::execute()
     {
         Lists::List<Entes::Entity>::Iterator<Entes::Entity> aux = list.get_first();
         while(aux != nullptr)
         {
-            (*aux)->run();
+            (*aux)->execute();
             aux++;        
         }
     }

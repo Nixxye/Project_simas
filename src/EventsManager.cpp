@@ -55,7 +55,7 @@ namespace Managers
         list_observers.remove(pObserver);
     }
   
-    void EventsManager :: run()
+    void EventsManager :: execute()
     {
         sf::Event event;
         for (it_keys = list_keys.begin(); it_keys != list_keys.end();it_keys++)
