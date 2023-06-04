@@ -22,7 +22,7 @@ namespace Entes
         {
             bullets.clear();
         }
-        void Boss::run()
+        void Boss::execute()
         {
             if (alive && life < 0)
                 alive = false;

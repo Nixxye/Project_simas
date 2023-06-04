@@ -17,7 +17,7 @@ namespace Menus
         body.setFillColor(sf::Color::White);
 
         text.setFont(*pGM->get_font());
-        text.setFillColor(sf::Color::Black);
+        text.setFillColor(sf::Color::Blue);
         text.setCharacterSize(60);
 
         body.setPosition(position);
@@ -43,5 +43,10 @@ namespace Menus
     void Button::set_name(std::string name)
     {
         text.setString(name);
+    }
+    void Button :: set_position(sf::Vector2f position)
+    {
+        body.setPosition(position);
+        text.setPosition(position);
     }
 }

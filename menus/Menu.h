@@ -19,16 +19,16 @@ namespace Menus
             const int MAX_BUTTONS;
             std::vector<Button*> buttons;
             int selected_index;
-            Observers::MenuObserver* pMenuObserver;
             Managers::EventsManager* pEventsManager;
+            Text title;
         public:
-            Menu(int n_buttons = 0, int id = -1);
+            Menu(int n_buttons = 0, int id = -1, std:: string t = "0");
             ~Menu();
             virtual void draw();
             void move_up();
             void move_down();
-            virtual void move_horizontally() = 0;
+            virtual void move_horizontally(int i = 0) = 0;
             virtual void select() = 0;
-            void run();
+            void execute();
     };    
 }

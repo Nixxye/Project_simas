@@ -1,5 +1,6 @@
 #include "../managers/GraphicsManager.h"
 
+
 namespace Managers
  {
 
@@ -57,6 +58,7 @@ namespace Managers
     void GraphicsManager:: draw (sf::Text* text)
     {
         window->draw(*text);
+
     }
     sf::Texture* GraphicsManager:: load_textures (std::string path)
     {
@@ -75,15 +77,28 @@ namespace Managers
     //Se sobrar tempo, arrumar as interações da câmera com os cantos da fase.
     void GraphicsManager:: center (sf::Vector2f position1)
     {
-        cam.setCenter (position1); 
+        if (position1.x < WIDTH / 2)
+        {
+            cam.setCenter(WIDTH/2,position1.y);
+        }
+        else
+            cam.setCenter (position1); 
         window->setView(cam);
+
+        
 
     }
     void GraphicsManager:: center(sf::Vector2f position1, sf::Vector2f position2 )
     {
 
         //printf("\nP1: %f e %f P2: %f e %f",position1.x, position1.y,position2.x,position2.y);
-        cam.setCenter((position1.x+position2.x)/2,(position1.y+position2.y)/2);
+
+        if (((position1.x+position2.x)/2)< WIDTH / 2)
+        {
+            cam.setCenter(WIDTH/2,(position1.y+position2.y)/2-215.f);
+        }
+        else
+            cam.setCenter((position1.x+position2.x)/2,(position1.y+position2.y)/2-215.f);
         window->setView(cam);
     }
     void GraphicsManager::reset_camera()

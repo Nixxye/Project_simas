@@ -22,6 +22,7 @@
 #include "../states/State.h"
 #include "../observers/StageObserver.h"
 #include "../stages/Stage.h"
+#include "../managers/StateManager.h"
 
 #include <fstream>
 #include <string>
@@ -68,9 +69,10 @@ namespace Stages
     public:
         Stage(std::string savefile = "", std::string infofile = "", std::string savebase = "", int id = -1);
         virtual ~Stage();
+        virtual void execute() = 0;
+        virtual void create_enemies();
+        virtual void create_obstacles();
         void draw();
-
-        virtual void run () = 0;
 
         void add_enemy(Entes::Entity* enemy);
         void add_obstacle(Entes::Entity* obstacle);

@@ -14,7 +14,7 @@ namespace Entes
         Enemy::~Enemy()
         {
         }
-        void Enemy::run()
+        void Enemy::execute()
         {
             move();
             if (alive && life < 0)

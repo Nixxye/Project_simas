@@ -34,7 +34,7 @@ namespace Entes
             Entity(int index = -1, sf::Vector2f velocity = sf::Vector2f(0.f, 0.f));
             virtual ~Entity();
             virtual void draw();
-            virtual void run() = 0;
+            virtual void execute() = 0;
             virtual void move(char direction = ' '){};
             //Função pode mudar.
             virtual void collide(Entity* other, std::string  direction = "") = 0;

@@ -6,23 +6,25 @@ pSM(Managers::StateManager::get_instance()),
 pEM(Managers::EventsManager::get_instance()),
 stage1(),
 stage2(),
-main_menu()
+main_menu(),
+game_over(),
+ranking()
 {
-    run();
+    execute();
 }
 
 Game::~Game()
 {
 }
 
-void Game::run()
+void Game::execute()
 {
     while (pGM->window_open())
     {
         pGM->clean();
         
-        pEM->run();
-        pSM->run();
+        pEM->execute();
+        pSM->get_CurrentState()->execute();
         //main_menu.run();
         //stage1.run();
         

@@ -5,13 +5,14 @@ namespace Stages
     Stage1::Stage1():
     Stage(SAVE_STAGE_1, FILE_STAGE_1, SAVE_BASE_1, 1)
     {
-        
+        texture = pGM->load_textures("../assets/stage1.png");
+        body.setTexture(texture);
     }
 
     Stage1::~Stage1()
     {
     }
-    void Stage1::run()
+    void Stage1::execute()
     {
         //std::cout<<"Testeee"<<std::endl;
 
@@ -26,7 +27,7 @@ namespace Stages
 
         */
         colision_manager.colide();
-        //std::cout<<"Colidiu"<<std::endl;
+        draw();
         //else horrível
         if (pSM->get_CurrentStateID() == id_state)
         {
@@ -50,10 +51,7 @@ namespace Stages
                 if ((*players.get_first())->get_alive() && (*it)->get_alive())
                     pGM->center((*it)->get_position(),(*players.get_first())->get_position());
                 else if (!(*players.get_first())->get_alive() && !(*it)->get_alive()) 
-                {
-                    pSM->set_CurrentState(0); // mudar para o gameover ou stage 2
-                    pGM->reset_camera();
-                }
+                    pSM->set_CurrentState(0); // mudar para o gameover
                 else if(!(*players.get_first())->get_alive())
                     pGM->center((*it)->get_position());
                 else 

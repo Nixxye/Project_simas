@@ -39,6 +39,6 @@ namespace Managers
             void remove_observer(Observers::Observer* pObserver);
             void add_observer (Observers::Observer* pObserver);
             void add_menu_observer (Observers::Observer* pObserver);
-            void run ();
+            void execute ();
     };
 }

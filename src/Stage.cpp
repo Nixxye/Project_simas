@@ -15,6 +15,8 @@ namespace Stages
     stage_info(infofile),
     save_base(savebase)
     {
+        
+        
         load();
         colision_manager.set_enemy_list(&enemies);
         colision_manager.set_player_list(&players);
@@ -26,6 +28,11 @@ namespace Stages
         pSObserver = new Observers::StageObserver(id);
         pSObserver->set_stage(this);
         setObservers();
+
+        body.setSize(sf::Vector2f(1600.f, 1200.f));
+        body.setOrigin(sf::Vector2f(0.f, 215.f));
+
+
     }
 
     Stage::~Stage()
@@ -37,6 +44,7 @@ namespace Stages
     void Stage::draw()
     {
         //N sei o q fazer aqui.
+        pGM->draw(&(this->body));
     }
     
     void Stage::add_enemy(Entes::Entity* enemy)

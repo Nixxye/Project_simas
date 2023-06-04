@@ -2,12 +2,13 @@
 
 namespace Menus
 {
-    Menu :: Menu(int n_buttons, int id):
+    Menu :: Menu(int n_buttons, int id, std:: string t):
     Ent(),
     State(id),
     MAX_BUTTONS(n_buttons),
     buttons(),
-    selected_index(0)
+    selected_index(0),
+    title(t)
     {
         pEventsManager = Managers::EventsManager::get_instance();
         for (int i = 0; i < MAX_BUTTONS; i++)
@@ -15,16 +16,12 @@ namespace Menus
             buttons.push_back(new Button(sf::Vector2f(WIDTH / 2, (i + 2) *(20 + SIZEY))));
         }
         buttons[0]->change_color();
-        pMenuObserver = new Observers::MenuObserver;
-        pMenuObserver->set_menu(this);
+
 
     }
     Menu :: ~Menu()
     {
-        if (pMenuObserver)
-            delete pMenuObserver;
-        
-        pMenuObserver = nullptr;
+
 
         for (int i = 0; i < MAX_BUTTONS; i++)
         {
@@ -57,9 +54,9 @@ namespace Menus
             buttons[selected_index]->change_color();
         }
     }
-    void Menu :: run()
+    void Menu :: execute()
     {
-        pEventsManager->run();
+        pEventsManager->execute();
         draw();
     }
 }

@@ -10,9 +10,8 @@ namespace States
     {
 
         protected:
-        //Fiz static agr:
-            static Managers :: StateManager* pSM;
-            int id_state;
+            Managers :: StateManager* pSM;
+            const int id_state;
 
         public:
             State(int id = -1);
@@ -23,11 +22,10 @@ namespace States
 
             int get_id() const;
 
-            virtual void run () = 0;
-            //Deixar virtual puro e colocar uma no menu para ver se funciona no windows;
-            virtual void reset() { return; }
             const bool get_active();
-            //Tbm tirei um ;
+
+            virtual void execute () = 0;
+            virtual void reset() {};
     };
 
 }

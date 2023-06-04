@@ -24,6 +24,8 @@ public:
 
     virtual void draw() = 0;
 
+    virtual void execute() = 0;
+
     void set_position(sf::Vector2f pos){body.setPosition(pos);}
 
     //int get_speed(){return speed;}
