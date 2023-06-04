@@ -21,6 +21,7 @@ namespace Stages
         obstacles.run();
 
         colision_manager.colide();
+        draw();
         //else horrível
         if (pSM->get_CurrentStateID() == id_state)
         {

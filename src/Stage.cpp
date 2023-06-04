@@ -12,6 +12,8 @@ namespace Stages
     stage_info(infofile),
     save_base(savebase)
     {
+        
+        
         load();
         colision_manager.set_enemy_list(&enemies);
         colision_manager.set_player_list(&players);
@@ -21,6 +23,10 @@ namespace Stages
         pSObserver = new Observers::StageObserver(id);
         pSObserver->set_stage(this);
         setObservers();
+
+        body.setSize(sf::Vector2f(16000.f, 4780.f));
+        texture = pGM->load_textures("../assets/stage1.png");
+        body.setTexture(texture);
 
     }
 

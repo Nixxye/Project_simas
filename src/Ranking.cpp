@@ -19,6 +19,7 @@ namespace Menus
         first.setPosition(sf::Vector2f(110.f, 160.f));
         second.setPosition(sf::Vector2f(110.f, 240.f));
         third.setPosition(sf::Vector2f(110.f, 320.f));
+        
         load();
         buttons[0]->set_name("Menu");
         buttons[0]->set_position(sf::Vector2f(400.f, 420.f));

@@ -11,7 +11,7 @@ namespace States
 
         protected:
             Managers :: StateManager* pSM;
-            int id_state;
+            const int id_state;
 
         public:
             //ID de erro é -1
