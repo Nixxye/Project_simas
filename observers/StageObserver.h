@@ -15,7 +15,6 @@ namespace Observers
     {
         private:
             Stages :: Stage* pStage;
-            std::list <Observers::Observer*> player_observers;
             int state_id;
             Managers::GraphicsManager* graphics_manager;
         public:
@@ -23,11 +22,8 @@ namespace Observers
 
             ~StageObserver();
 
-            void set_stage (Stages :: Stage* pS);
-
             void notify(sf::Keyboard::Key key_code);
 
-            void add_player_observer(Observers::Observer* p_o);
 
     };
 

@@ -7,7 +7,7 @@ namespace Entes
         Platform:: Platform(sf::Vector2f pos, sf::Vector2f size):
         Obstacle(11, pos, size)
         {
-            texture = pGM->load_textures("../assets/obstacle.png");
+            texture = pGM->load_textures("../assets/plataform.png");
             body.setTexture(texture);
         }
         Platform:: ~Platform()

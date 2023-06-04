@@ -7,7 +7,7 @@ namespace Observers
     PlayerObserver::PlayerObserver(int i):
     Observer()
     {
-        //pEM->add_observer(this);
+        pEM->add_observer(this);
         if (i == 1)
         {
             PlayerKeys [sf::Keyboard::A] = 'L';
@@ -44,6 +44,8 @@ namespace Observers
         std::map <sf::Keyboard::Key,char> :: iterator it = PlayerKeys.find(key_code);
         if (it == PlayerKeys.end())
             return; 
+        if (pSM->get_CurrentStateID() != 1 && pSM->get_CurrentStateID() != 2)
+            return;
         if (it->second == 'A')
             pPlayer->attack();
         pPlayer->move(it->second);

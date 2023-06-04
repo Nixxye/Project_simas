@@ -11,6 +11,8 @@ namespace Entes
     {
         damage = 0.1;
         body.setPosition(pos);
+        texture = pGM->load_textures("../assets/bullet.png");
+        body.setTexture(texture);
         //vel = velocity;
     }
     Bullet::~Bullet()

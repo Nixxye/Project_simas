@@ -26,10 +26,8 @@ namespace Stages
         events_manager = Managers::EventsManager::get_instance();
 
         pSObserver = new Observers::StageObserver(id);
-        pSObserver->set_stage(this);
-        setObservers();
 
-        body.setSize(sf::Vector2f(1600.f, 1200.f));
+        body.setSize(sf::Vector2f(1600000.f, 120000.f));
         body.setOrigin(sf::Vector2f(0.f, 215.f));
 
 
@@ -357,15 +355,6 @@ namespace Stages
         file.close();
     }
 
-    void Stage::setObservers()
-    {
-        Lists::List<Entes::Entity>::Iterator<Entes::Entity> aux = players.get_first();
-        while(aux != nullptr)
-        {
-            pSObserver->add_player_observer((*aux)->get_observer());
-            aux++; 
-        }
-    }
 
     Entes::Entity* Stage::create_enemy(int id, sf::Vector2f pos, sf::Vector2f vel, sf::Vector2f size)
     {
@@ -438,7 +427,7 @@ namespace Stages
                     pGM->center((*players.get_first())->get_position());
                 else
                 {
-                     pSM->set_CurrentState(0); // vai ser o gameover ou stage 2
+                     pSM->set_CurrentState(3); // vai ser o gameover ou stage 2
                      pGM->reset_camera();
                 }
                     
@@ -449,7 +438,7 @@ namespace Stages
                 if ((*players.get_first())->get_alive() && (*it)->get_alive())
                     pGM->center((*it)->get_position(),(*players.get_first())->get_position());
                 else if (!(*players.get_first())->get_alive() && !(*it)->get_alive()) 
-                    pSM->set_CurrentState(0); // mudar para o gameover
+                    pSM->set_CurrentState(3); // mudar para o gameover
                 else if(!(*players.get_first())->get_alive())
                     pGM->center((*it)->get_position());
                 else 

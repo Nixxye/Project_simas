@@ -85,6 +85,5 @@ namespace Stages
         Entes::Entity* create_bullet(int id, sf::Vector2f pos, sf::Vector2f vel, float lifetime, Entes::Entity* boss);
         Entes::Entity* create_obstacle(int id, sf::Vector2f pos, sf::Vector2f size);
 
-        void setObservers();
     };
 }

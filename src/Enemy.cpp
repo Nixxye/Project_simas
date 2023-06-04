@@ -7,7 +7,7 @@ namespace Entes
         Enemy::Enemy(int index, sf::Vector2f pos, sf::Vector2f velocity, sf::Vector2f size):
         Character(index, pos, velocity, size)
         {
-            texture = pGM->load_textures("../entities/enemy.png");
+            texture = pGM->load_textures("../assets/enemy2.png");;
             body.setTexture(texture);
         }
 
