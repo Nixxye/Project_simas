@@ -19,7 +19,9 @@ namespace Menus
         Text name;
         Observers::GameOverObserver*  pGOObserver;
         bool buttons_active;
+        bool name_active;
         bool final_name;
+
 
 
     public:
@@ -39,7 +41,8 @@ namespace Menus
 
         void draw_name ();
 
-
+        void active_name();
+        
         void select ();
 
         void save ();

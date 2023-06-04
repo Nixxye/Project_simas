@@ -58,6 +58,11 @@ namespace Observers
             pGO->set_final_name();
             pGO->select();
         }
+        if (key_code == sf::Keyboard::Tab)
+        {
+            pGO->active_name();
+        }
+        
         std::map <sf::Keyboard::Key,std::string> :: iterator it = keys.find(key_code);
         if (it == keys.end())
             return; 

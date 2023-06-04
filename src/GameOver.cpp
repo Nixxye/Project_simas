@@ -15,6 +15,7 @@ namespace Menus
         set_points(123);
         buttons_active = false;
         final_name = false;
+        name_active = false;
 
     }
     GameOver::~GameOver()
@@ -34,8 +35,11 @@ namespace Menus
     } 
     void GameOver::add_name(std::string c)
     {
-        name_string.append(c);
-        printf ("Oi\n");
+        if (name_active)
+        {
+            name_string.append(c);
+            printf ("Oi\n");
+        }
     } 
 
     void GameOver::set_final_name()
@@ -65,7 +69,13 @@ namespace Menus
         points_string = std::to_string(p);
     }
 
-
+    void GameOver :: active_name ()
+    {
+        if (!name_active)
+        {
+            name_active = true;
+        }
+    }
     void GameOver::draw_name()
     {
         name.draw();
