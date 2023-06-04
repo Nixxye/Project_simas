@@ -63,7 +63,10 @@ namespace Entes
             while(aux != nullptr)
             {
                 (*aux)->set_alive(true);
-
+                //std::cout<<"Aqui"<<std::endl;
+                (static_cast<Entes::Bullet*>(*aux))->set_friendly(false);
+                //Mudar a cor de novo;                
+                //std::cout<<"Aquiiii"<<std::endl;
                 vx = ((rand() % 50) - 25) / 10.f;
                 vy = ((rand() % 50) - 40) / 10.f;
                 (*aux)->set_position(body.getPosition());
@@ -72,12 +75,22 @@ namespace Entes
                 aux++;        
             } 
             bullets.set_position(body.getPosition());
+            std::cout<<"Saiu do ataque"<<std::endl;
         }
         void Boss::collide(Entity* other, std::string direction)
         {
             int index = other->get_id();
+            Entes::Bullet* bullet = nullptr;
+            if (index == 4)
+                Entes::Bullet* bullet = static_cast<Entes::Bullet*>(other);
             switch (index)
             {
+            case 4:
+                if(bullet->get_friendly())
+                {
+                    life -= bullet->get_damage();
+                }
+                break;
             case 11:
                 if (direction == "Right" || direction == "Left")
                 {

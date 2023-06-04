@@ -120,6 +120,7 @@ namespace Entes
             switch (index)
             {
             case 1:
+                //Tirar o dano daqui e colocar nas plataformas -> coesão e desacoplamento:
                 if (direction == "Above")
                 {
                     life -= dmg;
@@ -147,6 +148,9 @@ namespace Entes
                 }
                 std::cout<<"Player: "<<life<<std::endl;
                 move();
+                break;
+                //Bullet:
+            case 4:
                 break;
             case 11:
                 if (direction == "Below")

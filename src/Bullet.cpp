@@ -6,8 +6,10 @@ namespace Entes
     Bullet::Bullet(sf::Vector2f pos, sf::Vector2f velocity, float time):
     Entity(4, velocity),
     lifetime(time), 
-    body(10)
+    body(10),
+    friendly(false)
     {
+        damage = 1;
         body.setPosition(pos);
         //vel = velocity;
     }
@@ -52,13 +54,27 @@ namespace Entes
     void Bullet::collide(Entity* other, std::string direction)
     {
         int index = other->get_id();
+        lifetime -= 5;
         switch (index)
         {
             //Player:
         case 0:
             colision_manager->elastic_colision(this, other);
+            if (other->get_damage() > 0)
+            {
+                friendly = true;
+                body.setFillColor(sf::Color::Magenta);
+            }
+            if (!friendly)
+                other->inflict_damage(damage);
             break;
             //Other Bullet:
+        case 3:
+            if (!friendly)
+            {
+                alive = false;
+                other->inflict_damage(damage);
+            }
         case 11:
             if (direction == "Right" || direction == "Left")
             {

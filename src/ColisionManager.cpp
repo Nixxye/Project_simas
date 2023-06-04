@@ -127,6 +127,7 @@ namespace Managers
                 {
                     return_value++;
                     (*B)->collide(Attacker, direction);
+                    //Attacker->collide(*B, direction);
                 }  
             }
             B++;

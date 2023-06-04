@@ -12,6 +12,7 @@ namespace Entes
         private:
             float lifetime;
             sf::CircleShape body;
+            bool friendly;
         public:
             Bullet(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f velocity = sf::Vector2f(50.f, 50.f), float time = 100.f);
             ~Bullet();
@@ -26,6 +27,8 @@ namespace Entes
             void set_alive(bool a);
             sf::Vector2f get_size() {return sf::Vector2f(body.getRadius()*2, body.getRadius()*2); } 
             void set_position(sf::Vector2f pos) { body.setPosition(pos); }
+            void set_friendly(bool f){friendly = f;}
             float get_lifetime() { return lifetime; }
+            const bool get_friendly() const { return friendly; }
     };  
 }

@@ -38,13 +38,14 @@ namespace Entes
             virtual void move(char direction = ' '){};
             //Função pode mudar.
             virtual void collide(Entity* other, std::string  direction = "") = 0;
+            void inflict_damage(int dmg) { life -= dmg;}
 
             virtual void set_position(sf::Vector2f pos) = 0;
             void set_grounded(bool g){grounded = g;}
             virtual void set_alive(bool a){alive = a;}
             void set_vel(sf::Vector2f v){vel = v;}
             void set_colision_manager(Managers::ColisionManager* cm) { colision_manager = cm; }
-            virtual void set_slowed(bool s) {slowed = s;}
+            virtual void set_slowed(bool s) { slowed = s; }
 
             sf::Vector2f get_vel(){return vel;}
             int get_speed(){return speed;}
