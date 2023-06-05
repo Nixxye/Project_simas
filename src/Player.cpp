@@ -12,6 +12,7 @@ namespace Entes
         attack_delay(0)
         {
             attack_body.setOrigin(attack_body.getSize().x / 2, attack_body.getSize().y / 2);
+            attack_body.setFillColor(sf::Color::Red);
             life = 20;
             damage = 0;
             //lives = 3;
@@ -56,14 +57,14 @@ namespace Entes
             {
                 if (slowed)
                     vel.x += SPEED / 20.f;
-                else 
+                else if (vel.x <= VEL_MAX)
                     vel.x += 2*SPEED;
             }
             else if (direction == 'L') //Left
             {
                 if (slowed)
                     vel.x -= SPEED / 20.f;
-                else 
+                else if (vel.x >= -VEL_MAX)
                     vel.x -= 2*SPEED;
             }
             else if (vel.x > 0)                               

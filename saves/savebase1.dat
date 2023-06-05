@@ -2,17 +2,29 @@
 1
 
 0
-1146.79
+100.79
 925
 0
 0
 
 #enemies
-1
+2
 
 1
-2085.52
-810.63
-22
-3.4
+5300
+800
+3
+0
 
+1
+5200
+800
+-3
+0
+
+//Modo de usar:
+id (1 -> inimigo comum, 3-> chefe)
+posição em x
+posição em y
+velocidade em x
+velocidade em y

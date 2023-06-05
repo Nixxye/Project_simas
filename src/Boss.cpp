@@ -68,8 +68,8 @@ namespace Entes
                 //Fazer uma função de trocar textura:
                 (static_cast<Entes::Bullet*>(*aux))->set_fill_color(sf::Color::White);              
                 //std::cout<<"Aquiiii"<<std::endl;
-                vx = ((rand() % 50) - 25) / 10.f;
-                vy = ((rand() % 50) - 40) / 10.f;
+                vx = ((rand() % 50) - 25) / 30.f;
+                vy = ((rand() % 50) - 40) / 30.f;
                 (*aux)->set_position(body.getPosition());
                 (*aux)->set_vel(sf::Vector2f(vx, vy));
                 

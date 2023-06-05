@@ -5,7 +5,7 @@ namespace Menus
 {
     MainMenu::MainMenu():
     Menu(4, 0, "Game++"),
-    current_stage(0),
+    current_stage(1),
     current_player(0),
     stage1("Stage 1"),
     stage2("Stage 2"),

@@ -8,8 +8,9 @@ namespace Entes
         Obstacle(13, pos, size)
         {
             damage = 1;
-            texture = pGM->load_textures("../assets/obstacle1.png");
-            body.setTexture(texture);
+            body.setFillColor(sf::Color::Red);
+            //texture = pGM->load_textures("../assets/obstacle1.png");
+            //body.setTexture(texture);
         }
         Spike:: ~Spike()
         {

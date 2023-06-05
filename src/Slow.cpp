@@ -8,8 +8,9 @@ namespace Entes
         Obstacle(12, pos, size)
         {
             //Provisório:
-            texture = pGM->load_textures("../assets/obstacle.png");
-            body.setTexture(texture);
+                body.setFillColor(sf::Color::Green);
+            //texture = pGM->load_textures("../assets/obstacle.png");
+            //body.setTexture(texture);
         }
         Slow:: ~Slow()
         {
