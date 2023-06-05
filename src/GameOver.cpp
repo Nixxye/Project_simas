@@ -29,14 +29,16 @@ namespace Menus
     void GameOver::draw()
     {
         title.draw();
-        name.draw();
+        
         if (buttons_active && final_name)
         {
             buttons_draw();
+            name.draw();
             printf ("\n\n\nOIIIIII");
         }
         else
         {
+
             instructions.draw();
         }
     } 
@@ -83,11 +85,6 @@ namespace Menus
             name_active = true;
         }
     }
-    void GameOver::draw_name()
-    {
-        name.draw();
-
-    } 
 
     void GameOver :: buttons_draw ()
     {
@@ -125,6 +122,14 @@ namespace Menus
             }
         }
     }
+    void GameOver :: reset ()
+    {
+         buttons_active = false;
+         final_name = false;
+         name_active = false;
+         name.setName(" ");
+    }
+
 
     void GameOver :: save ()
     {

@@ -40,8 +40,6 @@ namespace Menus
 
         std::string get_name_string ();
 
-        void draw_name ();
-
         void active_name();
 
         void select ();
@@ -49,6 +47,8 @@ namespace Menus
         void save ();
 
         void buttons_draw();
+
+        void reset();
 
     };
 
