@@ -9,12 +9,12 @@ namespace Entes
         attack_body(sf::Vector2f(size.x * 2, size.y * 2)),
         is_attacking(false),
         Character(0, pos, velocity, size),
-        attack_delay(0)
+        attack_delay(0),
+        damage(0)
         {
             attack_body.setOrigin(attack_body.getSize().x / 2, attack_body.getSize().y / 2);
             attack_body.setFillColor(sf::Color::Red);
             life = 20;
-            damage = 0;
             //lives = 3;
             pPObserver = new Observers::PlayerObserver(index);
             //std::cout<<"Added player "<<index<<std::endl;
@@ -37,6 +37,19 @@ namespace Entes
                 delete pPObserver;
             pPObserver = nullptr;
         }
+        void Player::draw()
+        {
+            if (alive)
+            {
+                pGM->draw(&body);
+                if (is_attacking)
+                {
+                    pGM->draw(&attack_body);
+                    is_attacking = false;
+                }                    
+            }
+        }
+
         void Player::execute()
         { 
             if (life < 0)
@@ -117,14 +130,13 @@ namespace Entes
         {
             int index = other->get_id();
             //colisão bolas do barreto:
-            int dmg = other->get_damage();
+            //int dmg = other->get_damage(); -> quem dá dano são as plataformas;
             switch (index)
             {
             case 1:
                 //Tirar o dano daqui e colocar nas plataformas -> coesão e desacoplamento:
                 if (direction == "Above")
                 {
-                    life -= dmg;
                     vel.y = 40 * SPEED;
                     other->set_vel(sf::Vector2f(other->get_vel().x, -5 * SPEED));
                 }
@@ -132,19 +144,17 @@ namespace Entes
                 {
                     grounded = true;
                     move('U');
-                    vel = sf::Vector2f(vel.x, -vel.y);
+                    vel.y *= -1;
                     other->set_vel(sf::Vector2f(other->get_vel().x, 5 * SPEED));
                 }
                 else if (direction == "Left")
                 {
-                    life -= dmg;
-                    vel = sf::Vector2f(-vel.x, vel.y);
+                    vel = sf::Vector2f(10*SPEED, vel.y);
                     other->set_vel(sf::Vector2f(-5 * SPEED, other->get_vel().y));
                 }
                 else if (direction == "Right")
                 {
-                    life -= dmg;
-                    vel = sf::Vector2f(-vel.x, vel.y);
+                    vel = sf::Vector2f(-10*SPEED, vel.y);
                     other->set_vel(sf::Vector2f(5 * SPEED, other->get_vel().y));
                 }
                 std::cout<<"Player: "<<life<<std::endl;
@@ -193,7 +203,6 @@ namespace Entes
                 }
                 break;
             case 13:
-                life -= dmg;
                 if (direction == "Below")
                 {
                     vel = sf::Vector2f(vel.x, -5.f);
@@ -221,13 +230,17 @@ namespace Entes
         {
             //Pegar as teclas do player
             damage = DMG;
+            is_attacking = true;
             if (attack_delay <= 0)
             {
                 attack_delay = ATTACK_DELAY;
                 std::string direction = " ";
                 //std::cout<<"Attacking"<<std::endl;
                 is_attacking = true;
-
+                if (vel.x > 0)
+                    direction = "Right";
+                else if (vel.x < 0)
+                    direction = "Left";
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
                 {
                     direction = "Above";
@@ -242,14 +255,7 @@ namespace Entes
                 }
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
                 {
-                    direction = "Down";
-                }
-                else 
-                {
-                    if (vel.x >= 0)
-                        direction = "Right";
-                    else 
-                        direction = "Left";
+                    direction = "Below";
                 }
                 if (direction == "Above")
                 {
@@ -259,7 +265,7 @@ namespace Entes
                 {
                    attack_body.setPosition(sf::Vector2f(body.getPosition().x + body.getSize().x / 2 + attack_body.getSize().x / 2, body.getPosition().y)); 
                 }
-                if (direction == "Down")
+                if (direction == "Below")
                 {
                     attack_body.setPosition(sf::Vector2f(body.getPosition().x, body.getPosition().y + body.getSize().y / 2 + attack_body.getSize().y / 2));
                 }
@@ -267,26 +273,29 @@ namespace Entes
                 {
                    attack_body.setPosition(sf::Vector2f(body.getPosition().x - body.getSize().x / 2 - attack_body.getSize().x / 2, body.getPosition().y)); 
                 }
-                
+                std::cout<<"Attacking"<<std::endl;
                 pGM->draw(&attack_body);
-
-                if(colision_manager->collide_attack(this, direction))
-                {
-                    if(direction == "Left")
-                        vel = sf::Vector2f(RECOIL, vel.y);
-                    else if(direction == "Right")
-                        vel = sf::Vector2f(-RECOIL, vel.y);
-                    else if(direction == "Above")
-                        vel = sf::Vector2f(vel.x, -RECOIL);
-                    else if(direction == "Right")
-                        vel = sf::Vector2f(vel.x, RECOIL);
-                
-                }
+                colision_manager->collide_attack(static_cast<Player*>(this), direction);
 
                 //Por enquanto is_attacking é inútil:
-                is_attacking = false;
+                //is_attacking = false;
             }
             damage = 0;
+        }
+        void Player::collide_attack(Entity *other, std::string direction)
+        {
+            other->inflict_damage(damage);
+            std::cout<<"Player indo para "<<direction<<std::endl;
+            if(direction == "Left")
+                vel = sf::Vector2f(RECOIL, vel.y);
+            else if(direction == "Right")
+                vel = sf::Vector2f(-RECOIL, vel.y);
+            else if(direction == "Above")
+                vel = sf::Vector2f(vel.x, RECOIL);
+            else if(direction == "Below")
+            {
+                vel.y = - 10.f;
+            }
         }
         void Player::set_slowed(bool s)
         {

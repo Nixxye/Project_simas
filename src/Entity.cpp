@@ -12,13 +12,10 @@ namespace Entes
 {
     Entity::Entity(int index, sf::Vector2f velocity):
     Ent(),
-    damage(0),
     id(index),
     colision_manager(nullptr),
     vel(velocity),
-    life(1),
     grounded(false),
-    alive(true),
     //Arrumar a massa dps:
     mass(1),
     slowed(false)
@@ -35,11 +32,12 @@ namespace Entes
     {
 
     }
+    /*
     void Entity::draw()
     {
-        if (alive)
-            pGM->draw(&body);
+        //if (this->get_alive())
+            //pGM->draw(&body);
     }
-
+*/
 
 }

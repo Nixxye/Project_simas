@@ -66,6 +66,8 @@ namespace Stages
         
         Managers::ColisionManager colision_manager;
         Managers::EventsManager* events_manager;
+        
+        sf::RectangleShape body;
     public:
         Stage(std::string savefile = "", std::string infofile = "", std::string savebase = "", int id = -1);
         virtual ~Stage();

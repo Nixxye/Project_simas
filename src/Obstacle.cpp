@@ -19,7 +19,7 @@ namespace Entes
         void Obstacle::execute(){}    
         void Obstacle::draw()
         {
-            if (alive)
+            if(get_alive())
                 pGM->draw(&body);
         }
     }    

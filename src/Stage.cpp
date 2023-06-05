@@ -13,7 +13,8 @@ namespace Stages
     colision_manager(),
     save_file(savefile),
     stage_info(infofile),
-    save_base(savebase)
+    save_base(savebase),
+    body()
     {
         
         
@@ -408,13 +409,14 @@ namespace Stages
     void Stage::execute()
     {
                 //std::cout<<"Testeee"<<std::endl;
-
+        //pGM->clean();
+        draw();
         players.execute();
         enemies.execute();
         obstacles.execute();
         
         colision_manager.colide();
-        draw();
+        
         //else horrível
         if (pSM->get_CurrentStateID() == id_state)
         {
@@ -447,6 +449,7 @@ namespace Stages
         }
         else
             pGM->reset_camera();
+
         players.draw();
         enemies.draw();
         obstacles.draw();

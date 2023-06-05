@@ -29,7 +29,7 @@ namespace Managers
         void set_bullet_list(Lists::EntityList* list){ if (list) { bullet_list = list; }}
 
         void colide();
-        int collide_attack(Entes::Characters::Player* Attacker, std::string direction);
+        void collide_attack(Entes::Characters::Player* Attacker, std::string direction);
         void collide_bullets(Entes::Entity* Bullet);
         void check_colision(Entes::Entity* A, Entes::Entity* B);
         void elastic_colision(Entes::Entity* A, Entes::Entity* B);

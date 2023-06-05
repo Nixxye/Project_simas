@@ -64,30 +64,56 @@ namespace Entes
             //ifs e dano
             sf::Vector2f pos = other->get_position();
             sf::Vector2f s = other->get_size();
-            life -= other->get_damage();
 
             switch (index)
             {
                 //Attack -> arrumar o lance do id dps:
             case 0:
-                std::cout<<direction<<" "<<vel.x<<" "<<vel.y<<std::endl;
-                if (direction == "Right")
+                if(!static_cast<Entes::Characters::Player*>(other)->get_damage())
                 {
-                    vel.x = 100*SPEED;
-                    //std::cout<<direction<<std::endl;
+                    if (direction == "Right")
+                    {
+                        other->inflict_damage(damage);
+                        vel.x = -100*SPEED;
+                        //std::cout<<direction<<std::endl;
+                    }
+                    else if (direction == "Left")
+                    {
+                        other->inflict_damage(damage);
+                        vel.x = 100*SPEED;
+                    }
+                    else if (direction == "Above")
+                    {
+                        vel.y = 100*SPEED;
+                    }
+                    else if (direction == "Below")
+                    {
+                        other->inflict_damage(damage);
+                        vel.y = -40*SPEED;
+                    }                    
                 }
-                else if (direction == "Left")
+                else 
                 {
-                    vel.x = -100*SPEED;
+                    if (direction == "Right")
+                    {
+                        vel.x = -100*SPEED;
+                        //std::cout<<direction<<std::endl;
+                    }
+                    else if (direction == "Left")
+                    {
+                        vel.x = 100*SPEED;
+                    }
+                    else if (direction == "Above")
+                    {
+                        vel.y = 100*SPEED;
+                    }
+                    else if (direction == "Below")
+                    {
+                        vel.y = -40*SPEED;
+                    }  
                 }
-                else if (direction == "Above")
-                {
-                    vel.y = 100*SPEED;
-                }
-                else if (direction == "Below")
-                {
-                    vel.y = -40*SPEED;
-                }
+                    std::cout<<direction<<" "<<vel.x<<" "<<vel.y<<std::endl;
+
                 break;
                 //Plataformas
             case 11:
@@ -105,7 +131,6 @@ namespace Entes
                 }
                 //position += sf::Vector2f(speed*vel.x / 10, speed*vel.y / 10);          
                 break;
-                
             }
             move();
 
