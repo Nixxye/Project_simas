@@ -21,10 +21,12 @@ namespace Entes
             if (index == 1)
             {
                 texture = pGM->load_textures("../assets/player.png");
+                player_id = 1; 
             }
             else if (index == 2)
             {
                 texture = pGM->load_textures("../assets/player2.png");
+                player_id = 2; 
             }
             pPObserver->set_player(this);
 
@@ -48,6 +50,8 @@ namespace Entes
                 //exit(1);
             }
             move();
+
+
             attack_delay--;
         }
 
@@ -227,30 +231,59 @@ namespace Entes
                 std::string direction = " ";
                 //std::cout<<"Attacking"<<std::endl;
                 is_attacking = true;
-
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+                if (player_id == 1)
                 {
-                    direction = "Above";
-                }
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-                {
-                    direction = "Left";
-                }
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-                {
-                    direction = "Right";
-                }
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-                {
-                    direction = "Down";
-                }
-                else 
-                {
-                    if (vel.x >= 0)
-                        direction = "Right";
-                    else 
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+                    {
+                        direction = "Above";
+                    }
+                    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+                    {
                         direction = "Left";
+                    }
+                    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+                    {
+                        direction = "Right";
+                    }
+                    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+                    {
+                        direction = "Down";
+                    }
+                    else 
+                    {
+                        if (vel.x >= 0)
+                            direction = "Right";
+                        else 
+                            direction = "Left";
+                    }
                 }
+                else if (player_id == 2)
+                {
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+                    {
+                        direction = "Above";
+                    }
+                    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+                    {
+                        direction = "Left";
+                    }
+                    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+                    {
+                        direction = "Right";
+                    }
+                    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+                    {
+                        direction = "Down";
+                    }
+                    else 
+                    {
+                        if (vel.x >= 0)
+                            direction = "Right";
+                        else 
+                            direction = "Left";
+                    }
+                }
+
                 if (direction == "Above")
                 {
                     attack_body.setPosition(sf::Vector2f(body.getPosition().x, body.getPosition().y - body.getSize().y / 2 - attack_body.getSize().y / 2));
@@ -268,7 +301,7 @@ namespace Entes
                    attack_body.setPosition(sf::Vector2f(body.getPosition().x - body.getSize().x / 2 - attack_body.getSize().x / 2, body.getPosition().y)); 
                 }
                 
-                pGM->draw(&attack_body);
+                //pGM->draw(&attack_body);
 
                 if(colision_manager->collide_attack(this, direction))
                 {
@@ -282,7 +315,7 @@ namespace Entes
                         vel = sf::Vector2f(vel.x, RECOIL);
                 
                 }
-
+                pGM->draw(&attack_body);
                 //Por enquanto is_attacking é inútil:
                 is_attacking = false;
             }

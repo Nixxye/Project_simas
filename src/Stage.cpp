@@ -408,13 +408,13 @@ namespace Stages
     void Stage::execute()
     {
                 //std::cout<<"Testeee"<<std::endl;
-        draw();
+        //draw();// Nao sei pq nao desenha o ataque
         players.execute();
         enemies.execute();
         obstacles.execute();
-        
-        colision_manager.colide();
 
+        colision_manager.colide();
+        //draw();
         //else horrível
         if (pSM->get_CurrentStateID() == id_state)
         {

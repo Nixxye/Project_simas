@@ -24,6 +24,7 @@ namespace Entes
             sf::RectangleShape attack_body;
             bool is_attacking;
             int attack_delay;
+            int player_id;
             
         public:
             Player(int index = 1,sf::Vector2f pos = sf::Vector2f(10.f, 0.f), sf::Vector2f velocity = sf::Vector2f(0.f, 0.f), sf::Vector2f size = sf::Vector2f(50.f, 50.f));

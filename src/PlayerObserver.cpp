@@ -13,7 +13,7 @@ namespace Observers
             PlayerKeys [sf::Keyboard::A] = 'L';
             PlayerKeys [sf::Keyboard::D] = 'R';
             PlayerKeys [sf::Keyboard::W] = 'U'; 
-            PlayerKeys [sf::Keyboard::Space] = 'A'; 
+            PlayerKeys [sf::Keyboard::Space] = 'A';
         }
         if (i == 2)
         {
