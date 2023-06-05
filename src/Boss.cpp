@@ -49,7 +49,7 @@ namespace Entes
                 vel.y += G;
             //Voar voar, subir subir...
             vel.y -= (rand() % (int) (10*G)) / 10.f + G * 2 / 3;
-            body.setPosition(body.getPosition() + vel);
+            body.setPosition(body.getPosition() + vel*(float) speed);
             bullets.execute();
         }
 

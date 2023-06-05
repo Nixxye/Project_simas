@@ -8,8 +8,9 @@ namespace Entes
         Character(index, pos, velocity, size),
         damage(0)
         {
-            texture = pGM->load_textures("../assets/enemy2.png");;
-            body.setTexture(texture);
+            //Teste:
+            //texture = pGM->load_textures("../assets/enemy2.png");;
+            //body.setTexture(texture);
         }
 
         Enemy::~Enemy()

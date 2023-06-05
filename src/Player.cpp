@@ -68,28 +68,24 @@ namespace Entes
         {
             if (direction == 'R') //Right
             {
-                if (slowed)
-                    vel.x += SPEED / 20.f;
-                else if (vel.x <= VEL_MAX)
-                    vel.x += 2*SPEED;
+                if (vel.x <= VEL_MAX)
+                    vel.x += 2*SPEED / slowed;
             }
             else if (direction == 'L') //Left
             {
-                if (slowed)
-                    vel.x -= SPEED / 20.f;
-                else if (vel.x >= -VEL_MAX)
-                    vel.x -= 2*SPEED;
+                if (vel.x >= -VEL_MAX)
+                    vel.x -= 2*SPEED / slowed;
             }
             else if (vel.x > 0)                               
             {
-                if (slowed)
+                if (slowed > 1)
                     vel.x = 0;
                 else 
                     vel.x -= SPEED / 2;
             }
             else if (vel.x < 0)
             {
-                if (slowed)
+                if (slowed > 1)
                     vel.x = 0;
                 else 
                     vel.x += SPEED / 2;
@@ -103,7 +99,7 @@ namespace Entes
             {
                 if (direction == '0')
                 {
-                    if (slowed)
+                    if (slowed > 1)
                         vel.y += G / 3;
                     else 
                         vel.y += G;
@@ -122,7 +118,7 @@ namespace Entes
                 player_position = body.getPosition();
                 speed = (int) sqrt(vel.x*vel.x + vel.y*vel.y);   
             }
-            slowed = false;
+            slowed = 1;
             //std::cout<<vel.y<<std::endl;
         }
 
@@ -273,7 +269,7 @@ namespace Entes
                 {
                    attack_body.setPosition(sf::Vector2f(body.getPosition().x - body.getSize().x / 2 - attack_body.getSize().x / 2, body.getPosition().y)); 
                 }
-                std::cout<<"Attacking"<<std::endl;
+                //std::cout<<"Attacking"<<std::endl;
                 pGM->draw(&attack_body);
                 colision_manager->collide_attack(static_cast<Player*>(this), direction);
 
@@ -285,7 +281,7 @@ namespace Entes
         void Player::collide_attack(Entity *other, std::string direction)
         {
             other->inflict_damage(damage);
-            std::cout<<"Player indo para "<<direction<<std::endl;
+            //std::cout<<"Player indo para "<<direction<<std::endl;
             if(direction == "Left")
                 vel = sf::Vector2f(RECOIL, vel.y);
             else if(direction == "Right")
@@ -297,7 +293,7 @@ namespace Entes
                 vel.y = - 10.f;
             }
         }
-        void Player::set_slowed(bool s)
+        void Player::set_slowed(int s)
         {
             slowed = s;
         }

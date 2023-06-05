@@ -42,7 +42,7 @@ namespace Entes
             const int get_damage() const { return damage; }
             void draw();
 
-            void set_slowed(bool s);
+            void set_slowed(int s);
         };
     }
 }

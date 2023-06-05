@@ -98,14 +98,14 @@ namespace Managers
     void ColisionManager::collide_attack(Entes::Characters::Player* Attacker, std::string direction)
     {
         //int return_value = 0;
-        std::cout<<"No collide-attack"<<std::endl;
+        //std::cout<<"No collide-attack"<<std::endl;
         Lists::List<Entes::Entity>::Iterator<Entes::Entity> bullet;
         Lists::List<Entes::Entity>::Iterator<Entes::Entity> B = enemy_list->get_first();
         sf::Vector2f posA = Attacker->get_attack_position(), sizeA = Attacker->get_attack_size();
         sf::Vector2f d_bullet;
         sf::Vector2f posB, sizeB;
         std::string new_direction;
-        std::cout<<sizeA.x<<" "<<sizeA.y<<" "<<posA.x<<" "<<posA.y<<std::endl;
+        //std::cout<<sizeA.x<<" "<<sizeA.y<<" "<<posA.x<<" "<<posA.y<<std::endl;
         if (direction == "Above")
             new_direction = "Below";
         else if (direction == "Below")
@@ -142,7 +142,7 @@ namespace Managers
                         if ((fabs(d_bullet.x) < (sizeA.x + sizeB.x)/2.0) && (fabs(d_bullet.y) < (sizeA.y + sizeB.y)/2.0))
                         {
                             //return_value++;
-                            std::cout<<"Colidu"<<std::endl;
+                            //std::cout<<"Colidu"<<std::endl;
                             (*bullet)->collide(Attacker, direction);
                             Attacker->collide_attack(*bullet, direction);
                             if (!static_cast<Entes::Bullet*>(*bullet)->get_friendly())

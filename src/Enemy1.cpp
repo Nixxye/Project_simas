@@ -112,7 +112,7 @@ namespace Entes
                         vel.y = -40*SPEED;
                     }  
                 }
-                    std::cout<<direction<<" "<<vel.x<<" "<<vel.y<<std::endl;
+                    //std::cout<<direction<<" "<<vel.x<<" "<<vel.y<<std::endl;
 
                 break;
                 //Plataformas
