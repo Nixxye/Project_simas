@@ -54,9 +54,9 @@ namespace Menus
             }
             else
             {
-                States::State::pSM->set_CurrentState(1);
-                States::State::pSM->reset_current_state();
+                pSM->set_CurrentState(2);
             }
+            pSM->reset_current_state();
             break;
         case 2:
         {
@@ -75,8 +75,13 @@ namespace Menus
     void MainMenu::move_horizontally(int i)
     {
         if (i == 1)
-            current_stage = !current_stage;
-        if (i == 2)
+        {
+            if (current_stage == 1)
+                current_stage = 2;
+            else
+                current_stage = 1;
+        }
+        else if (i == 2)
             current_player = !current_player;
 
     }
@@ -87,7 +92,7 @@ namespace Menus
             player1.draw();
         else 
             player2.draw();
-        if (!current_stage)
+        if (current_stage == 1)
             stage1.draw();
         else 
             stage2.draw();

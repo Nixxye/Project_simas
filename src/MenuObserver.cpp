@@ -16,7 +16,7 @@ namespace Observers
     {
         if (!pMenu)
         {
-            std::cout<<"EITAAAAAAAAAAA"<<std::endl;
+            //std::cout<<"EITAAAAAAAAAAA"<<std::endl;
             return;
         }
         if (pSM->get_CurrentStateID() != 0)

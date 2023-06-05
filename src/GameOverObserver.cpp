@@ -45,7 +45,7 @@ namespace Observers
             return;
         if (!pGO)
         {
-            std::cout<<"EITAAAAAAAAAAA"<<std::endl;
+            //std::cout<<"EITAAAAAAAAAAA"<<std::endl;
             return;
         }
         if (key_code == sf::Keyboard::Up)

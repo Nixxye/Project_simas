@@ -5,7 +5,7 @@
 
 #define G 0.3
 #define SPEED 0.2
-#define VEL_MAX 4.0
+#define VEL_MAX 6.0
 
 class Ent
 {

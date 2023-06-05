@@ -34,7 +34,7 @@ namespace Menus
         {
             buttons_draw();
             name.draw();
-            printf ("\n\n\nOIIIIII");
+            //printf ("\n\n\nOIIIIII");
         }
         else
         {
