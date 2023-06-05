@@ -29,6 +29,7 @@ namespace Menus
 
         pMenuObserver = new Observers::MenuObserver;
         pMenuObserver->set_menu(this);
+
     }
     MainMenu::~MainMenu()
     {
@@ -87,6 +88,7 @@ namespace Menus
     }
     void MainMenu::draw()
     {
+        pGM->draw(&(this->body));
         title.draw();
         if (!current_player)
             player1.draw();

@@ -17,6 +17,10 @@ namespace Menus
         }
         buttons[0]->change_color();
 
+        body.setSize(sf::Vector2f(800.f, 600.f));
+        texture = pGM->load_textures("../assets/mainmenu.png");
+        body.setTexture(texture);
+
 
     }
     Menu :: ~Menu()

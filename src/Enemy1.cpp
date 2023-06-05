@@ -10,6 +10,8 @@ namespace Entes
         {
             damage = 2;
             life = 10;
+            texture = pGM->load_textures("../assets/enemy3.png");
+            body.setTexture(texture);
         }
         Enemy1:: ~Enemy1()
         {

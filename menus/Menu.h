@@ -21,6 +21,7 @@ namespace Menus
             int selected_index;
            // Managers::EventsManager* pEventsManager;
             Text title;
+            
         public:
             Menu(int n_buttons = 0, int id = -1, std:: string t = "0");
             ~Menu();

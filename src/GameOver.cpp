@@ -28,6 +28,8 @@ namespace Menus
 
     void GameOver::draw()
     {
+        pGM->draw(&(this->body));
+        
         title.draw();
         
         if (buttons_active && final_name)

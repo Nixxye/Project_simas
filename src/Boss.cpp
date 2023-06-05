@@ -14,6 +14,8 @@ namespace Entes
         attack_delay(0)
         {
             life = 30;
+            texture = pGM->load_textures("../assets/boss.png");
+            body.setTexture(texture);
             //Teste:
             //bullets.clear();
             //std::cout<<"N na inicial. "<<bullets.get_size()<<std::endl;

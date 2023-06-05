@@ -67,7 +67,7 @@ namespace Menus
     {
         //printf ("\nDraw Ranking");
 
-
+        pGM->draw(&(this->body));
 
         title.draw();
 
