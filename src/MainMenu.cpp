@@ -44,9 +44,13 @@ namespace Menus
         {
         case 0:
             if (current_stage == 1)
+            {
                 pSM->set_CurrentState(1);
+            }
             else
+            {
                 pSM->set_CurrentState(2);
+            }
             break;
         case 1:
             if (current_stage == 1)
@@ -78,9 +82,17 @@ namespace Menus
         if (i == 1)
         {
             if (current_stage == 1)
+            {
                 current_stage = 2;
+                texture = pGM->load_textures("../assets/stage2.png");
+                body.setTexture(texture);
+            }
             else
+            {
                 current_stage = 1;
+                texture = pGM->load_textures("../assets/stage1.png");
+                body.setTexture(texture);
+            }
         }
         else if (i == 2)
             current_player = !current_player;
