@@ -72,33 +72,19 @@ namespace Entes
 
         void Player::move(char direction)
         {
+            std::cout<<"PID"<<player_id<<std::endl;
             if (player_id == 1)
             {     
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
                 {
-                    //if (vel.x <= VEL_MAX)
-                        vel.x += 2*SPEED / slowed;
-                }
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) //Left
-                {
-                    //if (vel.x >= -VEL_MAX)
-                        vel.x -= 2*SPEED / slowed;
-                }
-            }
-            if (player_id == 2)
-            {
-            
-               if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))//Right
-                {
                     if (vel.x <= VEL_MAX)
                         vel.x += 2*SPEED / slowed;
                 }
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))//Left
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) //Left
                 {
                     if (vel.x >= -VEL_MAX)
                         vel.x -= 2*SPEED / slowed;
                 }
-            }
                 else if (vel.x > 0)                               
                 {
                     if (slowed)
@@ -113,30 +99,58 @@ namespace Entes
                     else 
                         vel.x += SPEED / 2;
                 }
-
-                if (vel.x <= SPEED/2 && vel.x >= -SPEED/2)
+            }
+            if (player_id == 2)
+            {
+            
+               if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))//Right
                 {
-                    vel.x = 0.0;
+                    if (vel.x <= VEL_MAX)
+                        vel.x += 2*SPEED / slowed;
                 }
-                if (!grounded)
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))//Left
                 {
-                    if (slowed > 1)
-                        vel.y += G / 3;
+                    if (vel.x >= -VEL_MAX)
+                        vel.x -= 2*SPEED / slowed;
+                }
+                else if (vel.x > 0)                               
+                {
+                    if (slowed)
+                        vel.x = 0;
                     else 
-                        vel.y += G;
+                        vel.x -= SPEED / 2;
                 }
-                else if ( (player_id == 1 && sf::Keyboard::isKeyPressed(sf::Keyboard::W)) ||
-                (player_id == 2 && sf::Keyboard::isKeyPressed(sf::Keyboard::Up) )) //Up
+                else if (vel.x < 0)
                 {
-                    vel.y -= 10.f;
-                    body.setPosition(body.getPosition() + sf::Vector2f(0.f, 0.5));
+                    if (slowed)
+                        vel.x = 0;
+                    else 
+                        vel.x += SPEED / 2;
                 }
-                //N sei pq a gravidade está mais rápida quando nos movemos; -> Gimmick
-                    //std::cout<<vel.x<<" "<<vel.y<<std::endl;
-                    body.setPosition(body.getPosition() + vel);
-                    player_position = body.getPosition();
-                    speed = (int) sqrt(vel.x*vel.x + vel.y*vel.y);   
-                slowed = 1;
+            }
+            if (vel.x <= SPEED/2 && vel.x >= -SPEED/2)
+            {
+                vel.x = 0.0;
+            }
+            if (!grounded)
+            {
+                if (slowed > 1)
+                    vel.y += G / 3;
+                else 
+                    vel.y += G;
+            }
+            else if ( (player_id == 1 && sf::Keyboard::isKeyPressed(sf::Keyboard::W)) ||
+            (player_id == 2 && sf::Keyboard::isKeyPressed(sf::Keyboard::Up) )) //Up
+            {
+                vel.y -= 10.f;
+                body.setPosition(body.getPosition() + sf::Vector2f(0.f, 0.5));
+            }
+            //N sei pq a gravidade está mais rápida quando nos movemos; -> Gimmick
+                //std::cout<<vel.x<<" "<<vel.y<<std::endl;
+                body.setPosition(body.getPosition() + vel);
+                player_position = body.getPosition();
+                speed = (int) sqrt(vel.x*vel.x + vel.y*vel.y);   
+            slowed = 1;
             //std::cout<<vel.y<<std::endl;
         }
 
@@ -273,7 +287,7 @@ namespace Entes
                     }
                     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
                     {
-                        direction = "Down";
+                        direction = "Below";
                     }
                     else 
                     {
@@ -299,7 +313,7 @@ namespace Entes
                     }
                     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
                     {
-                        direction = "Down";
+                        direction = "Below";
                     }
                     else 
                     {
