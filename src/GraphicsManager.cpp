@@ -68,7 +68,10 @@ namespace Managers
 
         sf::Texture* tex = new sf::Texture();
 
-        !tex->loadFromFile(path);
+        if (!tex->loadFromFile(path))
+        {
+            std::cout<<"Texture" <<std::endl;
+        }
         
         textures[path] = tex;
 

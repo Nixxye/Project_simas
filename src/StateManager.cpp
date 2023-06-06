@@ -19,30 +19,21 @@ namespace Managers
     currentState(0)
     {
         //tamanho 5 por enquanto.
-        vector_states.resize(6);
+        vector_states.resize(5);
     }
     StateManager::~StateManager()
     {
-
+        for (int i = 0; i < vector_states.size();i++)
+        {
+            delete vector_states[i];
+        }
 
     }
     void StateManager::set_CurrentState(int i)
     {
         currentState = i;
-        printf ("State:%d", currentState);
-        //pLastState = pCurrentState;
-        //pCurrentState = vector_states[i];
     }
-    //N funciona
-    States::State *StateManager::get_CurrentState()
-    {
-        if (!vector_states[currentState])
-        {
-            std::cout<<"Q feio heim"<<std::endl;
-            exit(1);
-        }
-        return vector_states[currentState];
-    }
+
     int StateManager::get_CurrentStateID()
     {
         return currentState;
@@ -54,8 +45,12 @@ namespace Managers
        vector_states[pState->get_id()] = pState;
     }
 
-    void Managers::StateManager::reset_current_state()
+    void StateManager::reset_current_state()
     {
         vector_states[currentState]->reset();
+    }
+    void StateManager::run()
+    {
+        vector_states[currentState]->execute();
     }
 }

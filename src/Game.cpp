@@ -24,7 +24,7 @@ void Game::execute()
         pGM->clean();
         
         pEM->execute();
-        pSM->get_CurrentState()->execute();
+        pSM->run();
         //main_menu.run();
         //stage1.run();
         

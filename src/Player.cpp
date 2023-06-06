@@ -15,6 +15,7 @@ namespace Entes
         {
             attack_body.setOrigin(attack_body.getSize().x / 2, attack_body.getSize().y / 2);
             attack_body.setFillColor(sf::Color::Red);
+            attack_body.setTexture(pGM->load_textures("../assets/teste1.png"));
             life = 20;
             //lives = 3;
             pPObserver = new Observers::PlayerObserver(index);
@@ -44,12 +45,13 @@ namespace Entes
         {
             if (alive)
             {
-                pGM->draw(&body);
+
                 if (is_attacking)
                 {
                     pGM->draw(&attack_body);
                     is_attacking = false;
-                }                    
+                }
+                pGM->draw(&body);                    
             }
         }
 
