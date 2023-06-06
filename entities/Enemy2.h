@@ -15,6 +15,7 @@ namespace Entes
             sf::Vector2f axis;
             float burst;
             sf::CircleShape explosion;
+            float power;
         public:
             Enemy2(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f velocity = sf::Vector2f(50.f, 50.f), sf::Vector2f size = sf::Vector2f(0.f, 0.f), Lists::EntityList* p = nullptr);
             ~Enemy2();
@@ -22,6 +23,7 @@ namespace Entes
             void move();
             void attack(sf::Vector2f target);
             void explode();
+            void set_power(int nuke) { power = nuke; }
         };    
     }
 }

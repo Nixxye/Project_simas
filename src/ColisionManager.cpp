@@ -249,13 +249,68 @@ namespace Managers
  
             sf::Vector2f vx2 = y_axis * (B->get_vel().x * x_axis.x + B->get_vel().y * x_axis.y);
         
-            sf::Vector2f vf1 = (((vy1) + (vy2 * B->get_mass())) * (float) (1+CR) /(1 + B->get_mass())) + vy1 * (float) (-CR);
-            sf::Vector2f vf2 = (((vy1) + (vy2 * B->get_mass())) * (float) (1+CR) /(1 + B->get_mass())) + vy2 * (float) (-CR);
+            //sf::Vector2f vf1 = (((vy1) + (vy2 * B->get_mass())) * (float) (1+CR) /(1 + B->get_mass())) + vy1 * (float) (-CR);
+            //sf::Vector2f vf2 = (((vy1) + (vy2 * B->get_mass())) * (float) (1+CR) /(1 + B->get_mass())) + vy2 * (float) (-CR);
+            sf::Vector2f vf1 = (((vy1)) * (float) (1+CR) /(1 + B->get_mass())) - vy1;
+            sf::Vector2f vf2 = ((vy1) * (float) (1+CR) /(1 + B->get_mass())) - vy2;
 
             B->set_vel(vf2 + vx2);
             B->move();
             //std::cout<<"Eita3"<<std::endl;
         }     
+    }
+    void ColisionManager::collide_explosion(sf::CircleShape* explosion, float power)
+    {
+        Lists::List<Entes::Entity>::Iterator<Entes::Entity> B = enemy_list->get_first();
+        while (B != nullptr)
+        {
+            if ((*B)->get_alive())
+            {
+                sf::Vector2f posB = (*B)->get_position();
+                sf::Vector2f sizeB = (*B)->get_size();
+                
+                sf::Vector2f d = posB - explosion->getPosition();
+                if ((fabs(d.x) < explosion->getRadius() + sizeB.x / 2.0) && (fabs(d.y) < explosion->getRadius() + sizeB.y / 2.0))
+                {
+                    //elastic_colision(explosion, *B, power);
+                }                
+            }
+            B++;
+        }
+        B = player_list->get_first();
+        while (B != nullptr)
+        {
+            if ((*B)->get_alive())
+            {
+                sf::Vector2f posB = (*B)->get_position();
+                sf::Vector2f sizeB = (*B)->get_size();
+                
+                sf::Vector2f d = posB - explosion->getPosition();
+                if ((fabs(d.x) <= explosion->getRadius() + sizeB.x) && (fabs(d.y) <= explosion->getRadius() + sizeB.y))
+                {
+                    elastic_colision(explosion, *B, power);
+                }                
+            }
+            B++;
+        }
+    }
+    void ColisionManager::elastic_colision(sf::CircleShape* A, Entes::Entity* B, float power)
+    {
+        if (!B->get_alive())
+            return;
+
+        sf::Vector2f posA = A->getPosition(), posB = B->get_position(), sizeA = sf::Vector2f(A->getRadius()*2, A->getRadius()*2), sizeB = B->get_size();
+        sf::Vector2f d = posB - posA;
+        if (d.x <= sizeA.x/2.f + B->get_size().x/2.f || d.y <= sizeA.y/2.f + B->get_size().y/2.f)
+        {
+            //Cria os eixos de colisão:
+            sf::Vector2f y_axis = posA - posB;
+
+            y_axis = y_axis / sqrt(y_axis.x * y_axis.x + y_axis.y * y_axis.y);
+
+             B->set_vel(y_axis*(-power));
+        } 
+        std::cout<<B->get_vel().x<<" "<<B->get_vel().y<<std::endl;
     }
 }
 

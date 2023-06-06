@@ -1,4 +1,5 @@
 #include "../entities/Enemy2.h"
+#include "../managers/ColisionManager.h"
 
 namespace Entes
 {
@@ -10,10 +11,13 @@ namespace Entes
         attacking(false),
         axis(1.f, 1.f),
         burst(1.f),
-        explosion(100.f),
-        sensor_radius(400.f)
+        sensor_radius(400.f),
+        explosion(sensor_radius),
+        power(40.f)
         {
-            explosion.setFillColor(sf::Color::Cyan);
+            body.setSize(sf::Vector2f(10.f, 10.f));
+            explosion.setFillColor(sf::Color::Black);
+            explosion.setOrigin(sf::Vector2f(sensor_radius, sensor_radius));
         }
         Enemy2:: ~Enemy2()
         {
@@ -43,7 +47,10 @@ namespace Entes
                     burst += 0.5;
                     vel = axis*burst;
                     body.setPosition(body.getPosition() + vel);  
-                }                
+                }  
+                //Teste:
+                //explosion.setPosition(body.getPosition()); 
+                //pGM->draw(&explosion);              
             }
 
         }
@@ -64,10 +71,11 @@ namespace Entes
         }  
         void Enemy2::explode()
         {
-            explosion.setPosition(body.getPosition());
-            alive = false;
+            explosion.setPosition(body.getPosition()); 
             pGM->draw(&explosion);
-            //collide explosion:
+
+            colision_manager->collide_explosion(&explosion, power);
+            alive = false;
         }
     }    
 }
