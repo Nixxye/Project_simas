@@ -13,6 +13,8 @@ namespace Entes
             float lifetime;
             sf::CircleShape body;
             bool friendly;
+            int damage;
+            bool alive;
         public:
             Bullet(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f velocity = sf::Vector2f(50.f, 50.f), float time = 100.f);
             ~Bullet();
@@ -31,5 +33,7 @@ namespace Entes
             float get_lifetime() { return lifetime; }
             const bool get_friendly() const { return friendly; }
             void set_fill_color (sf::Color c) { body.setFillColor(c); }
+            const int get_damage() const { return damage; }
+            const bool get_alive() const { return alive; }
     };  
 }

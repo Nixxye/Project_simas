@@ -8,7 +8,13 @@
 0
 
 #enemies
+3
+
 2
+650
+850
+0
+0
 
 1
 5300
@@ -21,6 +27,8 @@
 800
 -3
 0
+
+
 
 //Modo de usar:
 id (1 -> inimigo comum, 3-> chefe)

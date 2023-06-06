@@ -7,13 +7,13 @@ namespace Entes
     Entity(4, velocity),
     lifetime(time), 
     body(10),
-    friendly(false)
+    friendly(false),
+    damage(0.5),
+    alive(true)
     {
-        damage = 0.1;
         body.setPosition(pos);
         texture = pGM->load_textures("../assets/bullet.png");
         body.setTexture(texture);
-        //vel = velocity;
     }
     Bullet::~Bullet()
     {
@@ -65,7 +65,7 @@ namespace Entes
             //Isso vai para o gerenciador de colisões:
             colision_manager->elastic_colision(this, other);
             //std::cout<<"Here"<<std::endl;
-            if (other->get_damage() > 0 && !friendly)
+            if (static_cast<Entes::Characters::Player*>(other)->get_damage() > 0 && !friendly)
             {
                 friendly = true;
                 body.setFillColor(sf::Color::Magenta);
@@ -73,7 +73,7 @@ namespace Entes
             //if (!friendly)
                 //other->inflict_damage(damage);
             break;
-            //Other Bullet:
+            //Boss:
         case 3:
             if (friendly)
             {

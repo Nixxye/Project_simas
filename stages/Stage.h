@@ -9,10 +9,9 @@
 #include "../entities/Player.h"
 #include "../entities/Enemy1.h"
 #include "../entities/Enemy2.h"
-#include "../entities/Enemy3.h"
 #include "../entities/Boss.h"
 #include "../entities/Platform.h"
-#include "../entities/Slow.h"
+#include "../entities/Slime.h"
 #include "../entities/Spike.h"
 #include "../lists/EntityList.h"
 #include "../managers/ColisionManager.h"
@@ -66,6 +65,8 @@ namespace Stages
         
         Managers::ColisionManager colision_manager;
         Managers::EventsManager* events_manager;
+        
+        sf::RectangleShape body;
     public:
         Stage(std::string savefile = "", std::string infofile = "", std::string savebase = "", int id = -1);
         virtual ~Stage();

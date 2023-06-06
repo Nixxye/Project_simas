@@ -51,7 +51,7 @@ namespace Entes
                 vel.y += G;
             //Voar voar, subir subir...
             vel.y -= (rand() % (int) (10*G)) / 10.f + G * 2 / 3;
-            body.setPosition(body.getPosition() + vel);
+            body.setPosition(body.getPosition() + vel*(float) speed);
             bullets.execute();
         }
 
@@ -64,7 +64,7 @@ namespace Entes
 
             while(aux != nullptr)
             {
-                (*aux)->set_alive(true);
+                static_cast<Entes::Bullet*>(*aux)->set_alive(true);
                 //std::cout<<"Aqui"<<std::endl;
                 (static_cast<Entes::Bullet*>(*aux))->set_friendly(false);
                 //Fazer uma função de trocar textura:
@@ -83,19 +83,11 @@ namespace Entes
         void Boss::collide(Entity* other, std::string direction)
         {
             int index = other->get_id();
-            Entes::Bullet* bullet = nullptr;
-            if (index == 4)
-                Entes::Bullet* bullet = static_cast<Entes::Bullet*>(other);
             switch (index)
             {
-                /*
-            case 4:
-                if(bullet->get_friendly())
-                {
-                    life -= bullet->get_damage();
-                }
+            case 1:
+                other->inflict_damage(damage);
                 break;
- */
             case 11:
                 if (direction == "Right" || direction == "Left")
                 {

@@ -13,7 +13,8 @@ namespace Stages
     colision_manager(),
     save_file(savefile),
     stage_info(infofile),
-    save_base(savebase)
+    save_base(savebase),
+    body()
     {
         
         
@@ -359,13 +360,16 @@ namespace Stages
     Entes::Entity* Stage::create_enemy(int id, sf::Vector2f pos, sf::Vector2f vel, sf::Vector2f size)
     {
         Entes::Entity* aux = NULL;
+        std::cout<<"Index: "<<id<<std::endl;
         switch (id)
         {
         case 1:
             aux = new Entes::Characters::Enemy1(pos, vel, size);
             break;
         case 2:
-            aux = new Entes::Characters::Enemy2(pos, vel, size);
+            aux = new Entes::Characters::Enemy2(pos, vel, size, &players);
+            std::cout<<"Cianoooo"<<std::endl;
+            break;
         case 3:
             aux = new Entes::Characters::Boss(pos, vel, size);
         default:
@@ -395,7 +399,7 @@ namespace Stages
             aux = static_cast<Entes::Entity*>(new Entes::Obstacles::Platform(pos, size));
             break;
         case 12:
-            aux = static_cast<Entes::Entity*>(new Entes::Obstacles::Slow(pos, size));
+            aux = static_cast<Entes::Entity*>(new Entes::Obstacles::Slime(pos, size));
             break;
         case 13:
             aux = static_cast<Entes::Entity*>(new Entes::Obstacles::Spike(pos, size));
@@ -409,12 +413,15 @@ namespace Stages
     {
                 //std::cout<<"Testeee"<<std::endl;
         //draw();// Nao sei pq nao desenha o ataque
+        //pGM->clean();
+        draw();
         players.execute();
         enemies.execute();
         obstacles.execute();
 
         colision_manager.colide();
         //draw();
+        
         //else horrível
         if (pSM->get_CurrentStateID() == id_state)
         {
@@ -447,6 +454,7 @@ namespace Stages
         }
         else
             pGM->reset_camera();
+
         players.draw();
         enemies.draw();
         obstacles.draw();

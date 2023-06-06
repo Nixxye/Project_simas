@@ -51,6 +51,7 @@ namespace Lists
             aux++;        
         }    
     }
+    /*
     void EntityList::set_alive(bool a)
     {
         Lists::List<Entes::Entity>::Iterator<Entes::Entity> aux = list.get_first();
@@ -59,7 +60,8 @@ namespace Lists
             (*aux)->set_alive(a);
             aux++;       
         }    
-    }    
+    } 
+    */   
 }
 
 
