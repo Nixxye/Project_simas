@@ -42,13 +42,13 @@ namespace Observers
     void PlayerObserver :: notify (sf::Keyboard::Key key_code)
     {
         std::map <sf::Keyboard::Key,char> :: iterator it = PlayerKeys.find(key_code);
-        if (it == PlayerKeys.end())
+       /* if (it == PlayerKeys.end())
             return; 
         if (pSM->get_CurrentStateID() != 1 && pSM->get_CurrentStateID() != 2)
             return;
         if (it->second == 'A')
             pPlayer->attack();
-        pPlayer->move(it->second);
+       pPlayer->move(it->second);*/
     }
 
 } 

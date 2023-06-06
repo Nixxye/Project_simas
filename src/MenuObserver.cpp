@@ -6,7 +6,7 @@ namespace Observers
     MenuObserver::MenuObserver():
     Observer()
     {
-        pEM->add_menu_observer(this);
+        pEM->add_observer(this);
     }
     MenuObserver::~MenuObserver()
     {

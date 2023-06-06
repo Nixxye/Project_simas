@@ -6,7 +6,7 @@ namespace Observers
     GameOverObserver::GameOverObserver():
     Observer()
     {
-        pEM->add_menu_observer(this);
+        pEM->add_observer(this);
 
         keys [sf::Keyboard::A] = "a";
         keys [sf::Keyboard::B] = "b";
