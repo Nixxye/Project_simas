@@ -13,7 +13,11 @@ namespace Entes
         Platform:: ~Platform()
         {
             
-        }    
+        } 
+        void Platform::collide(Entity* other, std::string  direction)
+        {
+
+        }   
     }    
 }
 

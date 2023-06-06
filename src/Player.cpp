@@ -10,7 +10,7 @@ namespace Entes
         is_attacking(false),
         Character(0, pos, velocity, size),
         attack_delay(0),
-        win(false)
+        win(false),
         damage(0)
         {
             attack_body.setOrigin(attack_body.getSize().x / 2, attack_body.getSize().y / 2);
@@ -76,12 +76,12 @@ namespace Entes
             {     
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
                 {
-                    if (vel.x <= VEL_MAX)
+                    //if (vel.x <= VEL_MAX)
                         vel.x += 2*SPEED / slowed;
                 }
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) //Left
                 {
-                    if (vel.x >= -VEL_MAX)
+                    //if (vel.x >= -VEL_MAX)
                         vel.x -= 2*SPEED / slowed;
                 }
             }
