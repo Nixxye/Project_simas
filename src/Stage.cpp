@@ -405,7 +405,7 @@ namespace Stages
         aux->set_colision_manager(&colision_manager);
         return aux;
     }
-    void Stage::execute()
+    /*void Stage::execute()
     {
                 //std::cout<<"Testeee"<<std::endl;
         //draw();// Nao sei pq nao desenha o ataque
@@ -450,6 +450,6 @@ namespace Stages
         players.draw();
         enemies.draw();
         obstacles.draw();
-    }
+    }*/
 }
  

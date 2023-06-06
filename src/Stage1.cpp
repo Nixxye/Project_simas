@@ -12,22 +12,17 @@ namespace Stages
     Stage1::~Stage1()
     {
     }
-    /*
     void Stage1::execute()
     {
-        //std::cout<<"Testeee"<<std::endl;
-
+    
+                //std::cout<<"Testeee"<<std::endl;
+        //draw();// Nao sei pq nao desenha o ataque
         players.execute();
         enemies.execute();
         obstacles.execute();
-        /*
-        std::cout<<"Ui"<<std::endl;
-        std::cout<<players.get_size()<<std::endl;
-        std::cout<<enemies.get_size()<<std::endl;
-        std::cout<<obstacles.get_size()<<std::endl;
 
         colision_manager.colide();
-        draw();
+        //draw();
         //else horrível
         if (pSM->get_CurrentStateID() == id_state)
         {
@@ -40,7 +35,7 @@ namespace Stages
                     pGM->center((*players.get_first())->get_position());
                 else
                 {
-                     pSM->set_CurrentState(0); // vai ser o gameover ou stage 2
+                     pSM->set_CurrentState(3); // vai ser o gameover ou stage 2
                      pGM->reset_camera();
                 }
                     
@@ -51,7 +46,7 @@ namespace Stages
                 if ((*players.get_first())->get_alive() && (*it)->get_alive())
                     pGM->center((*it)->get_position(),(*players.get_first())->get_position());
                 else if (!(*players.get_first())->get_alive() && !(*it)->get_alive()) 
-                    pSM->set_CurrentState(0); // mudar para o gameover
+                    pSM->set_CurrentState(3); // mudar para o gameover
                 else if(!(*players.get_first())->get_alive())
                     pGM->center((*it)->get_position());
                 else 
@@ -64,5 +59,4 @@ namespace Stages
         enemies.draw();
         obstacles.draw();
     }
-    */
 }

@@ -9,7 +9,8 @@ namespace Entes
         attack_body(sf::Vector2f(size.x * 2, size.y * 2)),
         is_attacking(false),
         Character(0, pos, velocity, size),
-        attack_delay(0)
+        attack_delay(0),
+        win(false)
         {
             attack_body.setOrigin(attack_body.getSize().x / 2, attack_body.getSize().y / 2);
             attack_body.setFillColor(sf::Color::Red);
