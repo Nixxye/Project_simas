@@ -104,6 +104,7 @@ namespace Entes
         {
             if (player_id == 1)
             {     
+                
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
                 {
                     if (vel.x <= VEL_MAX)
@@ -116,14 +117,14 @@ namespace Entes
                 }
                 else if (vel.x > 0)                               
                 {
-                    if (slowed)
+                    if (slowed > 1)
                         vel.x = 0;
                     else 
                         vel.x -= SPEED / 2;
                 }
                 else if (vel.x < 0)
                 {
-                    if (slowed)
+                    if (slowed > 1)
                         vel.x = 0;
                     else 
                         vel.x += SPEED / 2;
@@ -144,14 +145,14 @@ namespace Entes
                 }
                 else if (vel.x > 0)                               
                 {
-                    if (slowed)
+                    if (slowed > 1)
                         vel.x = 0;
                     else 
                         vel.x -= SPEED / 2;
                 }
                 else if (vel.x < 0)
                 {
-                    if (slowed)
+                    if (slowed > 1)
                         vel.x = 0;
                     else 
                         vel.x += SPEED / 2;
@@ -186,12 +187,10 @@ namespace Entes
         void Player::collide(Entity *other, std::string direction)
         {
             int index = other->get_id();
-            //colisão bolas do barreto:
-            //int dmg = other->get_damage(); -> quem dá dano são as plataformas;
+            std::cout<<index<<std::endl;
             switch (index)
             {
             case 1:
-                //Tirar o dano daqui e colocar nas plataformas -> coesão e desacoplamento:
                 if (direction == "Above")
                 {
                     vel.y = 40 * SPEED;
@@ -214,12 +213,9 @@ namespace Entes
                     vel = sf::Vector2f(-10*SPEED, vel.y);
                     other->set_vel(sf::Vector2f(5 * SPEED, other->get_vel().y));
                 }
-                std::cout<<"Player: "<<life<<std::endl;
                 move();
                 break;
                 //Bullet:
-            case 4:
-                break;
             case 11:
                 if (direction == "Below")
                 {

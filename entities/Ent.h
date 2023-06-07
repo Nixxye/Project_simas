@@ -4,8 +4,8 @@
 #include "../managers/GraphicsManager.h"
 
 #define G 0.3
-#define SPEED 0.2
-#define VEL_MAX 6.0
+#define SPEED 0.08
+#define VEL_MAX 20.0
 
 class Ent
 {
