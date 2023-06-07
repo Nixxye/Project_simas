@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../states/State.h"
+#include <stdexcept>   
 #include <vector>
 
 namespace Managers

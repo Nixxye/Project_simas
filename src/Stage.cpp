@@ -26,7 +26,6 @@ namespace Stages
 
         events_manager = Managers::EventsManager::get_instance();
 
-        pSObserver = new Observers::StageObserver(id);
 
         body.setSize(sf::Vector2f(1600000.f, 120000.f));
         body.setOrigin(sf::Vector2f(0.f, 215.f));
@@ -37,8 +36,6 @@ namespace Stages
     Stage::~Stage()
     {
         save();
-        if (pSObserver)
-            delete pSObserver;
     }    
     void Stage::draw()
     {

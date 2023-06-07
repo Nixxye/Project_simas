@@ -2,6 +2,7 @@
 
 #include "../managers/EventsManager.h"
 #include "../managers/StateManager.h"
+#include "../managers/GraphicsManager.h"
 
 #include <SFML/Graphics.hpp>
 
@@ -11,7 +12,9 @@ namespace Observers
     {
         protected:
             Managers::EventsManager* pEM;
-            Managers::StateManager*  pSM;           
+            Managers::StateManager*  pSM;
+            Managers::GraphicsManager*  pGM;
+
 
         public:
             Observer();

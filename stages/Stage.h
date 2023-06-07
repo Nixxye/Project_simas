@@ -19,7 +19,6 @@
 #include "../managers/EventsManager.h"
 #include "../managers/StateManager.h"
 #include "../states/State.h"
-#include "../observers/StageObserver.h"
 #include "../stages/Stage.h"
 #include "../managers/StateManager.h"
 
@@ -52,7 +51,6 @@ namespace Stages
     class Stage: public Ent, public States::State
     {
     protected:
-        Observers::StageObserver* pSObserver;
 
         Lists::EntityList obstacles;
         Lists::EntityList enemies;

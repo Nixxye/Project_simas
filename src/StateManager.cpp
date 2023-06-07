@@ -41,8 +41,14 @@ namespace Managers
     //Tirar
     void StateManager:: add_state(States::State* pState)
     {
-      //std::cout<<"OIII"<<std::endl;
-       vector_states[pState->get_id()] = pState;
+        try 
+        {
+            vector_states.at(pState->get_id()) = pState;
+        }
+        catch (const std::out_of_range& oor) 
+        {
+            std::cerr << "Out of Range error: " << oor.what() << '\n';
+        }
     }
 
     void StateManager::reset_current_state()

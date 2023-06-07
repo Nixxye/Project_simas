@@ -19,7 +19,15 @@ namespace Observers
             //std::cout<<"EITAAAAAAAAAAA"<<std::endl;
             return;
         }
-        if (pSM->get_CurrentStateID() != 0)
+        if (pSM->get_CurrentStateID() == 1 || pSM->get_CurrentStateID() == 2)
+        {
+            if (key_code == sf::Keyboard::Escape)
+            {
+                pSM->set_CurrentState(0);
+                pGM->reset_camera();
+            }
+        }
+        else if (pSM->get_CurrentStateID() != 0)
             return;
         //std::cout<<"Teste"<<std::endl;
         if (key_code == sf::Keyboard::Up)
