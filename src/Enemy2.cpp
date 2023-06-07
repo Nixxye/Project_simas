@@ -42,13 +42,11 @@ namespace Entes
         }  
         void Enemy2::move()
         {
-            std::cout<<"Entrou na move"<<std::endl;
             if (!players)
             {
                 std::cout<<"No players"<<std::endl;
                 return;
             }
-            std::cout<<"Passou do primeiro if"<<std::endl;
             if (alive)
             {
                 std::cout<<"Vivo"<<std::endl;
@@ -74,12 +72,8 @@ namespace Entes
                     burst += 0.5;
                     vel = axis*burst;
                     body.setPosition(body.getPosition() + vel);  
-                }  
-                //Teste:
-                //explosion.setPosition(body.getPosition()); 
-                //pGM->draw(&explosion);              
+                }              
             }
-            std::cout<<"N vivo"<<std::endl;
         }
         void Enemy2::attack(sf::Vector2f target)
         {
