@@ -22,7 +22,7 @@ namespace Observers
 
             ~StageObserver();
 
-            void notify(sf::Keyboard::Key key_code);
+            void update(sf::Keyboard::Key key_code);
 
 
     };

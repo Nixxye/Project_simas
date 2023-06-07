@@ -9,14 +9,14 @@ namespace Observers
     state_id(st_id),
     graphics_manager(Managers::GraphicsManager::get_instance())
     {
-        pEM->add_observer(this);
+        pEM->attach(this);
     }
     StageObserver :: ~StageObserver ()
     {
         pStage == nullptr;
     }
 
-    void StageObserver :: notify (sf::Keyboard::Key key_code)
+    void StageObserver :: update (sf::Keyboard::Key key_code)
     {
         //std::cout<<"Entrou "<<pSM->get_CurrentStateID()<<" "<< state_id<<std::endl;
         if (pSM->get_CurrentStateID() != state_id)

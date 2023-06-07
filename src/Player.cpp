@@ -18,7 +18,7 @@ namespace Entes
             attack_body.setTexture(pGM->load_textures("../assets/teste1.png"));
             life = 20;
             //lives = 3;
-            pPObserver = new Observers::PlayerObserver(index);
+            //pPObserver = new Observers::PlayerObserver(index);
             //std::cout<<"Added player "<<index<<std::endl;
             if (index == 1)
             {
@@ -30,16 +30,14 @@ namespace Entes
                 texture = pGM->load_textures("../assets/player2.png");
                 player_id = 2; 
             }
-            pPObserver->set_player(this);
+            //pPObserver->set_player(this);
 
             body.setTexture(texture);
         }
 
         Player::~Player()
         {
-            if(pPObserver)
-                delete pPObserver;
-            pPObserver = nullptr;
+
         }
         void Player::draw()
         {

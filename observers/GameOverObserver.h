@@ -18,7 +18,7 @@ namespace Observers
     public:
         GameOverObserver();
         ~GameOverObserver();
-        void notify(sf::Keyboard::Key key_code);
+        void update(sf::Keyboard::Key key_code);
         void set_menu(Menus::GameOver *p) { pGO = p; }
     };
 }

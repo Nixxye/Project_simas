@@ -17,7 +17,7 @@ namespace Observers
             Observer();
 
             virtual ~Observer();
-            virtual void notify(sf::Keyboard::Key key_code) = 0;
+            virtual void update(sf::Keyboard::Key key_code) = 0;
 
     };
 }

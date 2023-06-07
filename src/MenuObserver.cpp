@@ -6,13 +6,13 @@ namespace Observers
     MenuObserver::MenuObserver():
     Observer()
     {
-        pEM->add_observer(this);
+        pEM->attach(this);
     }
     MenuObserver::~MenuObserver()
     {
         pMenu = nullptr;
     }
-    void MenuObserver::notify(sf::Keyboard::Key key_code)
+    void MenuObserver::update(sf::Keyboard::Key key_code)
     {
         if (!pMenu)
         {

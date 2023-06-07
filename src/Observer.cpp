@@ -11,6 +11,6 @@ namespace Observers
 
     Observer::~Observer() 
     {
-        pEM->remove_observer(this);
+        pEM->detach(this);
     }
 } 
