@@ -21,6 +21,7 @@ namespace Entes
         }
         Enemy2::Enemy2(bool alv, int lf, sf::Vector2f pos, sf::Vector2f velocity, float dmg, sf::Vector2f size, Lists::EntityList* p, float sr, bool atck, sf::Vector2f axs, float brst, float pw):
         Enemy(2, pos, velocity, size),
+        players(p),
         attacking (atck),
         sensor_radius(sr),
         axis(axs),
@@ -32,7 +33,6 @@ namespace Entes
             life = lf;
             alive = alv;
             
-            body.setSize(sf::Vector2f(20.f, 20.f));
             explosion.setFillColor(sf::Color::Black);
             explosion.setOrigin(sf::Vector2f(sensor_radius, sensor_radius));   
         }
@@ -42,11 +42,20 @@ namespace Entes
         }  
         void Enemy2::move()
         {
+            std::cout<<"Entrou na move"<<std::endl;
+            if (!players)
+            {
+                std::cout<<"No players"<<std::endl;
+                return;
+            }
+            std::cout<<"Passou do primeiro if"<<std::endl;
             if (alive)
             {
+                std::cout<<"Vivo"<<std::endl;
                 if (!attacking)
                 {
                     sf::Vector2f d;
+                    std::cout<<"Aqui"<<std::endl;
                     Lists::List<Entes::Entity>::Iterator<Entes::Entity> aux = players->get_first();
                     while(aux != nullptr)
                     {
@@ -61,6 +70,7 @@ namespace Entes
                 }
                 else 
                 {
+                    
                     burst += 0.5;
                     vel = axis*burst;
                     body.setPosition(body.getPosition() + vel);  
@@ -69,7 +79,7 @@ namespace Entes
                 //explosion.setPosition(body.getPosition()); 
                 //pGM->draw(&explosion);              
             }
-
+            std::cout<<"N vivo"<<std::endl;
         }
         void Enemy2::attack(sf::Vector2f target)
         {

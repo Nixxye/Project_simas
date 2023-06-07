@@ -20,7 +20,6 @@ namespace Stages
         players.execute();
         enemies.execute();
         obstacles.execute();
-
         colision_manager.colide();
         //draw();
         //else horrível
@@ -109,7 +108,7 @@ namespace Stages
             exit(1);
         }
         enemies_file >> n;
-       
+        //std::cout<<"N de inimigos "<<n;
         for (int i = 0; i < n; i++)
         {
             create_enemy(enemies_file);
@@ -158,9 +157,9 @@ namespace Stages
     void Stage1::reset()
     {
          //Vai sair:
-        if (players.get_size() > 0)
+        if (loaded)
             players.clear();
-        if (enemies.get_size() > 0)
+        if (loaded)
             enemies.clear();
 
         int n, vx, vy, py, px, alive, damage, sizex, sizey, life;
@@ -197,7 +196,7 @@ namespace Stages
             create_enemy(enemies_file);
         }  
         //std::cout<<"Número de inimigos: "<<enemies.get_size()<<std::endl;      
-        if (obstacles.get_size() <= 0)
+        if (!loaded)
         {
                 //VAI SAIR:
             std::ifstream file2("../saves/stage1.dat");

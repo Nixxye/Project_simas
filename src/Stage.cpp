@@ -45,6 +45,7 @@ namespace Stages
     {
         if (enemy)
         {
+            enemy->set_colision_manager(&colision_manager);
             enemies.add(enemy);
         }
     }
@@ -396,6 +397,7 @@ namespace Stages
         default:
             break;
         }
+        //tirar o set colision_manager depois - > já está no add_enemy;
         aux->set_colision_manager(&colision_manager);
         add_enemy(static_cast<Entes::Entity*>(aux));
         return static_cast<Entes::Entity*>(aux);
