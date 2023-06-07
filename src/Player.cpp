@@ -31,6 +31,38 @@ namespace Entes
             pPObserver->set_player(this);
 
             body.setTexture(texture);
+
+            std::cout<<body.getPosition().x<<" "<<body.getPosition().y<<std::endl;
+        }
+        Player::Player(int index, bool alv, int lf, sf::Vector2f pos, sf::Vector2f velocity, sf::Vector2f size):
+        attack_body(body.getSize() * 2.f),
+        is_attacking(false),
+        Character(0, pos, velocity, size),
+        attack_delay(0),
+        win(false),
+        damage(0),
+        player_id(index)
+        {
+            alive = alv;
+            life = lf;
+
+            attack_body.setOrigin(attack_body.getSize().x / 2, attack_body.getSize().y / 2);
+            attack_body.setFillColor(sf::Color::Red);
+
+            pPObserver = new Observers::PlayerObserver(index);
+            //std::cout<<"Added player "<<index<<std::endl;
+            if (player_id == 1)
+            {
+                texture = pGM->load_textures("../assets/player.png");
+            }
+            else if (player_id == 2)
+            {
+                texture = pGM->load_textures("../assets/player2.png");
+            }
+            pPObserver->set_player(this);
+
+            body.setTexture(texture);
+            std::cout<<body.getPosition().x<<" "<<body.getPosition().y<<std::endl;
         }
 
         Player::~Player()
@@ -377,7 +409,7 @@ namespace Entes
                 file<<1<<std::endl;
             else
                 file<<0<<std::endl;
-            file<<damage<<std::endl
+            file<<life<<std::endl
             <<body.getPosition().x<<std::endl<<body.getPosition().y<<std::endl
             <<vel.x<<std::endl<<vel.y<<std::endl
             <<body.getSize().x<<std::endl<<body.getSize().y<<std::endl<<std::endl;

@@ -15,6 +15,16 @@ namespace Entes
         texture = pGM->load_textures("../assets/bullet.png");
         body.setTexture(texture);
     }
+    Bullet::Bullet(bool alv, sf::Vector2f pos, sf::Vector2f velocity, float dmg, float radius, float lftm, bool frndl):
+    Entity(4, velocity),
+    lifetime(lftm),
+    body(radius),
+    damage(dmg),
+    friendly(frndl),
+    alive(alv)
+    {
+        body.setPosition(pos);
+    }
     Bullet::~Bullet()
     {
 
@@ -111,7 +121,7 @@ namespace Entes
         <<body.getPosition().x<<std::endl<<body.getPosition().y<<std::endl
         <<vel.x<<std::endl<<vel.y<<std::endl
         <<body.getRadius()<<std::endl
-        <<lifetime<<std::endl<<damage<<std::endl;  
+        <<lifetime<<std::endl;  
         if (friendly)
             file<<1<<std::endl<<std::endl;
         else

@@ -2,6 +2,7 @@
 
 #include "../entities/Entity.h"
 #include <SFML/Graphics.hpp>
+#include <fstream>
 
 #define TIME 200
 
@@ -10,14 +11,16 @@ namespace Entes
     class Bullet: public Entity
     {
         private:
-            float lifetime;
+            int lifetime;
             sf::CircleShape body;
             bool friendly;
             int damage;
             bool alive;
         public:
             Bullet(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f velocity = sf::Vector2f(50.f, 50.f), float time = 100.f);
+            Bullet(bool alv, sf::Vector2f pos, sf::Vector2f velocity, float dmg, float radius, float lftm, bool frndl);
             ~Bullet();
+            
             void execute();
             void move();
             //N sei se precisa;

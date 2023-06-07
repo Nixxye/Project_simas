@@ -65,6 +65,8 @@ namespace Stages
         
         Managers::ColisionManager colision_manager;
         Managers::EventsManager* events_manager;
+
+        bool loaded;
         
         sf::RectangleShape body;
     public:
@@ -80,8 +82,9 @@ namespace Stages
 
         virtual void save();
         virtual void load();
-        void reset();
+        virtual void reset();
 
+        Entes::Entity* create_enemy(std::ifstream& file);
         Entes::Entity* create_enemy(int id, sf::Vector2f pos, sf::Vector2f vel, sf::Vector2f size);
         Entes::Entity* create_bullet(int id, sf::Vector2f pos, sf::Vector2f vel, float lifetime, Entes::Entity* boss);
         Entes::Entity* create_obstacle(int id, sf::Vector2f pos, sf::Vector2f size);

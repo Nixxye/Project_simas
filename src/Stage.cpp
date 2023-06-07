@@ -14,15 +14,12 @@ namespace Stages
     save_file(savefile),
     stage_info(infofile),
     save_base(savebase),
-    body()
+    body(),
+    loaded(false)
     {
-        
-        
-        //load();
         colision_manager.set_enemy_list(&enemies);
         colision_manager.set_player_list(&players);
         colision_manager.set_obstacle_list(&obstacles);     
-        //colision_manager.set_bullet_list(&bullets);
 
         events_manager = Managers::EventsManager::get_instance();
 
@@ -285,10 +282,10 @@ namespace Stages
         getline(file, line);
         for (int i = 0; i < n; i++)
         {
-            int id;
+            int index;
             float posX, posY, velX, velY;
 
-            file >> id >> posX >> posY >> velX >> velY;
+            file >> index >> posX >> posY >> velX >> velY;
             //cout << id << posX << posY << velX << velY << endl;
             getline(file, line);
             //Static cast;
@@ -310,16 +307,16 @@ namespace Stages
         std::getline(file, line);
         for (int i = 0; i < n; i++)
         {
-            int id;
+            int index;
             float posX, posY, velX, velY;
 
-            file >> id >> posX >> posY >> velX >> velY;
+            file >> index >> posX >> posY >> velX >> velY;
             //cout << id << posX << posY << velX << velY << endl;
             std::getline(file, line);
             //Static cast;
-            aux = create_enemy(id, sf::Vector2f(posX, posY), sf::Vector2f(velX, velY), sf::Vector2f(50.f, 50.f));
+            aux = create_enemy(index, sf::Vector2f(posX, posY), sf::Vector2f(velX, velY), sf::Vector2f(50.f, 50.f));
             add_enemy(aux);
-            if (id == 3)
+            if (index == 3)
             {
                 getline(file, line);
                 getline(file, line);
@@ -339,9 +336,9 @@ namespace Stages
                 //std::cout<<"n_bullets "<<n_bullets<<std::endl;
                 for (int j = 0; j < n_bullets; j++)
                 {
-                    file >> id >> posX >> posY >> velX >> velY >> lifetime;
+                    file >> index >> posX >> posY >> velX >> velY >> lifetime;
                     std::getline(file, line);
-                    bullet = create_bullet(id, sf::Vector2f(posX, posY), sf::Vector2f(velX, velY), lifetime, aux);
+                    bullet = create_bullet(index, sf::Vector2f(posX, posY), sf::Vector2f(velX, velY), lifetime, aux);
                     //add_bullet(bullet);
                     //std::cout<<"LOADED"<<std::endl;
                 }
@@ -353,6 +350,56 @@ namespace Stages
     }
 
 
+    Entes::Entity* Stage::create_enemy(std::ifstream& file)
+    {
+        Entes::Entity* aux = NULL;
+        Entes::Entity* bullet = NULL;
+        int index, alive, life;
+        std::string line;
+        float px, py, vx, vy, damage, sx, sy;
+        file >> index >> alive >> life >> damage >> px >> py >> vx >> vy;
+        std::cout<<"--"<<index<<"--"<<std::endl;
+        //FAZER STATIC CAST AQUI:
+        switch (index)
+        {
+        case 1:
+            int mc;
+            file >> sx >> sy >> mc;
+            aux = new Entes::Characters::Enemy1((bool) alive, life, sf::Vector2f(px, py), sf::Vector2f(vx, vy), damage, sf::Vector2f(sx, sy), mc);
+            break;
+        case 2:
+            float sensor_radius, axis_x, axis_y, burst, power;
+            int attacking;
+            file >> sx >> sy >> sensor_radius >> attacking >> axis_x >> axis_y >> burst >> power;
+            aux = new Entes::Characters::Enemy2((bool) alive, life, sf::Vector2f(px, py), sf::Vector2f(vx, vy), damage, sf::Vector2f(sx, sy), &players, sensor_radius, (bool) attacking, sf::Vector2f(axis_x, axis_y), burst, power);
+            break;
+        case 3:
+            int attack_delay;
+            file >> sx >> sy >> attack_delay;
+            //std::cout<<px<<" "<<py<<" "<<vx<<" "<<vy<<" "<<sx<<" "<<sy;
+            aux = new Entes::Characters::Boss((bool) alive, life, sf::Vector2f(px, py), sf::Vector2f(vx, vy), damage, sf::Vector2f(sx, sy), attack_delay);
+            int n; 
+            file >> n;
+            int r, lifetime, friendly;
+            for (int i = 0; i < n; i++)
+            {
+                std::cout<<"Creating bullet"<<std::endl;
+                std::getline(file, line);
+                std::getline(file, line);
+                file >> index >> alive >> damage >> px >> py >> vx >> vy >> r >> lifetime >> friendly;
+                //ler nova linha:
+                bullet = new Entes::Bullet((bool) alive, sf::Vector2f(px, py), sf::Vector2f(vx, vy), damage, r, lifetime, (bool) friendly);
+                static_cast<Entes::Characters::Boss*>(aux)->add_bullet(bullet);
+                bullet->set_colision_manager(&colision_manager);
+            }     
+            break;       
+        default:
+            break;
+        }
+        aux->set_colision_manager(&colision_manager);
+        add_enemy(static_cast<Entes::Entity*>(aux));
+        return static_cast<Entes::Entity*>(aux);
+    }
     Entes::Entity* Stage::create_enemy(int id, sf::Vector2f pos, sf::Vector2f vel, sf::Vector2f size)
     {
         Entes::Entity* aux = NULL;
@@ -373,7 +420,6 @@ namespace Stages
         aux->set_colision_manager(&colision_manager);
         return static_cast<Entes::Entity*>(aux);
     }
-
     Entes::Entity* Stage::create_bullet(int id, sf::Vector2f pos, sf::Vector2f vel, float lifetime, Entes::Entity* boss)
     {
         Entes::Characters::Boss* pBoss = static_cast<Entes::Characters::Boss*>(boss);

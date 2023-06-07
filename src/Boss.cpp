@@ -20,6 +20,15 @@ namespace Entes
             //bullets.clear();
             //std::cout<<"N na inicial. "<<bullets.get_size()<<std::endl;
         }
+        Boss::Boss(bool alv, int lf, sf::Vector2f pos, sf::Vector2f velocity, float dmg, sf::Vector2f size, int attck_delay):
+        Enemy(3, pos, velocity, size),
+        bullets(), 
+        attack_delay(attck_delay)
+        {
+            alive = alv;
+            life = life;
+            damage = dmg;
+        }
         Boss::~Boss()
         {
             bullets.clear();
@@ -105,8 +114,10 @@ namespace Entes
         }
         void Boss::draw()  
         {
+            
             if (alive)
             {
+                //std::cout<<"Desenhando corpitcho "<< body.getSize().x << " " << body.getSize().y<<std::endl;
                 pGM->draw(&body);
             }
             bullets.draw();
@@ -135,13 +146,12 @@ namespace Entes
                 file<<1<<std::endl;
             else
                 file<<0<<std::endl;
-            file<<damage<<std::endl
+            file<<life<<std::endl<<damage<<std::endl
             <<body.getPosition().x<<std::endl<<body.getPosition().y<<std::endl
             <<vel.x<<std::endl<<vel.y<<std::endl
             <<body.getSize().x<<std::endl<<body.getSize().y<<std::endl
             <<attack_delay<<std::endl<<bullets.get_size()<<std::endl<<std::endl;
 
-            //chamar save da lista de bullets:
             bullets.save(file);
         }
     }

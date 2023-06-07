@@ -19,6 +19,23 @@ namespace Entes
             explosion.setFillColor(sf::Color::Black);
             explosion.setOrigin(sf::Vector2f(sensor_radius, sensor_radius));
         }
+        Enemy2::Enemy2(bool alv, int lf, sf::Vector2f pos, sf::Vector2f velocity, float dmg, sf::Vector2f size, Lists::EntityList* p, float sr, bool atck, sf::Vector2f axs, float brst, float pw):
+        Enemy(2, pos, velocity, size),
+        attacking (atck),
+        sensor_radius(sr),
+        axis(axs),
+        power(pw),
+        explosion(sensor_radius),
+        burst(brst)
+        {
+            damage = dmg;
+            life = lf;
+            alive = alv;
+            
+            body.setSize(sf::Vector2f(20.f, 20.f));
+            explosion.setFillColor(sf::Color::Black);
+            explosion.setOrigin(sf::Vector2f(sensor_radius, sensor_radius));   
+        }
         Enemy2:: ~Enemy2()
         {
             
@@ -89,7 +106,7 @@ namespace Entes
                 file<<1<<std::endl;
             else
                 file<<0<<std::endl;
-            file<<damage<<std::endl
+            file<<life<<std::endl<<damage<<std::endl
             <<body.getPosition().x<<std::endl<<body.getPosition().y<<std::endl
             <<vel.x<<std::endl<<vel.y<<std::endl
             <<body.getSize().x<<std::endl<<body.getSize().y<<std::endl

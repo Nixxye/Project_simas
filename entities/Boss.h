@@ -17,6 +17,7 @@ namespace Entes
             int attack_delay;
         public:
             Boss(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f velocity = sf::Vector2f(50.f, 50.f), sf::Vector2f size = sf::Vector2f(0.f, 0.f));
+            Boss(bool alv, int lf, sf::Vector2f pos, sf::Vector2f velocity, float dmg, sf::Vector2f size, int attck_delay);
             ~Boss();
 
             void execute();

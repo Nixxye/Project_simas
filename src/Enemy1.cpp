@@ -13,6 +13,18 @@ namespace Entes
             texture = pGM->load_textures("../assets/enemy3.png");
             body.setTexture(texture);
         }
+
+        Enemy1:: Enemy1(bool alv, int lf, sf::Vector2f pos, sf::Vector2f velocity, float dmg, sf::Vector2f size, float mc):
+        Enemy(1, pos, velocity, size),
+        motion_counter(mc)
+        {
+            damage = dmg;
+            life = lf;
+            texture = pGM->load_textures("../assets/enemy3.png");
+            body.setTexture(texture);
+            alive = alv;
+        }
+
         Enemy1:: ~Enemy1()
         {
             
@@ -21,6 +33,7 @@ namespace Entes
         {
             if (speed > 0)
             {
+                //ARRUMAR ISSO:
                 /*
                 if (grounded)
                 {
@@ -150,7 +163,7 @@ namespace Entes
                 file<<1<<std::endl;
             else
                 file<<0<<std::endl;
-            file<<damage<<std::endl
+            file<<life<<std::endl<<damage<<std::endl
             <<body.getPosition().x<<std::endl<<body.getPosition().y<<std::endl
             <<vel.x<<std::endl<<vel.y<<std::endl
             <<body.getSize().x<<std::endl<<body.getSize().y<<std::endl  

@@ -27,9 +27,11 @@ namespace Entes
             int player_id;
             bool win;
             
-            int damage;            
+            int damage;  
+            //Salvar attack_delay          
         public:
             Player(int index = 1,sf::Vector2f pos = sf::Vector2f(10.f, 0.f), sf::Vector2f velocity = sf::Vector2f(0.f, 0.f), sf::Vector2f size = sf::Vector2f(50.f, 50.f));
+            Player(int index, bool alv, int lf, sf::Vector2f pos, sf::Vector2f velocity, sf::Vector2f size);
             ~Player();
 
             void execute();
