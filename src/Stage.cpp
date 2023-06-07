@@ -18,7 +18,7 @@ namespace Stages
     {
         
         
-        load();
+        //load();
         colision_manager.set_enemy_list(&enemies);
         colision_manager.set_player_list(&players);
         colision_manager.set_obstacle_list(&obstacles);     
@@ -30,8 +30,6 @@ namespace Stages
 
         body.setSize(sf::Vector2f(1600000.f, 120000.f));
         body.setOrigin(sf::Vector2f(0.f, 215.f));
-
-
     }
 
     Stage::~Stage()
@@ -83,7 +81,6 @@ namespace Stages
             std::cout<<"ERROR 1"<<std::endl;
             exit(1);
         }
-
         file <<"#players"<<std::endl;
         file <<players.get_size() << std::endl;
 
@@ -93,7 +90,6 @@ namespace Stages
             file << (*it)->get_id() <<std::endl<< (*it)->get_position().x << std::endl <<(*it)->get_position().y << std::endl<<(*it)->get_vel().x << std::endl<<(*it)->get_vel().y <<std::endl;
         }
         file << std::endl;
-
         file <<"#enemies"<<std::endl;
 
         file << enemies.get_size() << std::endl;
@@ -360,7 +356,7 @@ namespace Stages
     Entes::Entity* Stage::create_enemy(int id, sf::Vector2f pos, sf::Vector2f vel, sf::Vector2f size)
     {
         Entes::Entity* aux = NULL;
-        std::cout<<"Index: "<<id<<std::endl;
+        //std::cout<<"Index: "<<id<<std::endl;
         switch (id)
         {
         case 1:
@@ -368,7 +364,6 @@ namespace Stages
             break;
         case 2:
             aux = new Entes::Characters::Enemy2(pos, vel, size, &players);
-            std::cout<<"Cianoooo"<<std::endl;
             break;
         case 3:
             aux = new Entes::Characters::Boss(pos, vel, size);

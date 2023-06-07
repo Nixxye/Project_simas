@@ -18,6 +18,7 @@ namespace Lists
         void add(Entes::Entity* ent);
 
         void clear();
+        void save(std::ofstream& file);
 
         void set_position(sf::Vector2f pos);
         //void set_alive(bool a);

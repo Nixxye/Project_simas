@@ -95,4 +95,26 @@ namespace Entes
         }
         move();
     }
+    void Bullet::save(std::ofstream& file)
+    {
+        if (!file.is_open())
+        {
+            std::cout<<"Error: Cannot open enemy file!"<<std::endl;
+            return;
+        }
+        file<<id<<std::endl;
+        if (alive)
+            file<<1<<std::endl;
+        else
+            file<<0<<std::endl;
+        file<<damage<<std::endl
+        <<body.getPosition().x<<std::endl<<body.getPosition().y<<std::endl
+        <<vel.x<<std::endl<<vel.y<<std::endl
+        <<body.getRadius()<<std::endl
+        <<lifetime<<std::endl<<damage<<std::endl;  
+        if (friendly)
+            file<<1<<std::endl<<std::endl;
+        else
+            file<<0<<std::endl<<std::endl; 
+    }
 }

@@ -16,7 +16,7 @@ namespace Entes
             ~Enemy1();
             void collide(Entity* other, std::string direction = "");
             void move();
-        
+            void save(std::ofstream& file);
         };   
     } 
 }

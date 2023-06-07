@@ -29,7 +29,7 @@ namespace Managers
     void StateManager::set_CurrentState(int i)
     {
         currentState = i;
-        printf ("State:%d", currentState);
+        //printf ("State:%d", currentState);
         //pLastState = pCurrentState;
         //pCurrentState = vector_states[i];
     }

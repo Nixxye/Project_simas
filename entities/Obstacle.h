@@ -15,6 +15,8 @@ namespace Entes
                 void execute();
                 void draw();
                 virtual void collide(Entes::Entity* other, std::string  direction = "") = 0;
+                //Vai ser virtual pura;
+                virtual void save(std::ofstream& file) {}
                 sf::Vector2f get_position() { return body.getPosition(); }
                 sf::Vector2f get_size() { return body.getSize();} 
                 void set_position(sf::Vector2f pos) { body.setPosition(pos); }

@@ -123,5 +123,26 @@ namespace Entes
                     colision_manager->elastic_colision(*i, *j);
                 }
         }
+        void Boss::save(std::ofstream& file)
+        {
+            if (!file.is_open())
+            {
+                std::cout<<"Error: Cannot open enemy file!"<<std::endl;
+                return;
+            }
+            file<<id<<std::endl;
+            if (alive)
+                file<<1<<std::endl;
+            else
+                file<<0<<std::endl;
+            file<<damage<<std::endl
+            <<body.getPosition().x<<std::endl<<body.getPosition().y<<std::endl
+            <<vel.x<<std::endl<<vel.y<<std::endl
+            <<body.getSize().x<<std::endl<<body.getSize().y<<std::endl
+            <<attack_delay<<std::endl<<bullets.get_size()<<std::endl<<std::endl;
+
+            //chamar save da lista de bullets:
+            bullets.save(file);
+        }
     }
 }

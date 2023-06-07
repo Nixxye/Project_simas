@@ -10,5 +10,7 @@ namespace Stages
         Stage1();
         ~Stage1();
         void execute();
+        void save();
+        void load();
     };
 }

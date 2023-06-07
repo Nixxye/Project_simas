@@ -20,6 +20,7 @@ namespace Entes
             virtual void move();
             virtual void collide(Entity* other, std::string  direction = "") = 0;
             const int get_damage() const { return damage; }
+            virtual void save(std::ofstream& file) = 0;
         };
     }    
 }

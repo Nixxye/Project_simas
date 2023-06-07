@@ -11,6 +11,7 @@ namespace Stages
 
     Stage1::~Stage1()
     {
+        save();
     }
     void Stage1::execute()
     {
@@ -58,5 +59,19 @@ namespace Stages
         players.draw();
         enemies.draw();
         obstacles.draw();
+    }
+    void Stage1::save()
+    {
+        std::ofstream players_file("../saves/stage1/players.dat");
+        players_file<<players.get_size()<<std::endl<<std::endl;
+        for (Lists::List<Entes::Entity>::Iterator<Entes::Entity> it = players.get_first(); it != nullptr; it++)
+        {
+            (*it)->save(players_file); 
+        }
+        players_file.close(); 
+    }
+    void Stage1::load()
+    {
+        //std::ifstream players()
     }
 }

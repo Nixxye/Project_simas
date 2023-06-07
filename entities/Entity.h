@@ -3,6 +3,8 @@
 #include "Ent.h"
 #include "../observers/Observer.h"
 
+#include <fstream>
+
 namespace Managers
 {
     class ColisionManager;
@@ -35,6 +37,7 @@ namespace Entes
             virtual ~Entity();
             virtual void draw() = 0;
             virtual void execute() = 0;
+            virtual void save(std::ofstream& file) = 0;
             virtual void move(char direction = ' '){};
             //Função pode mudar.
             virtual void collide(Entity* other, std::string  direction = "") = 0;

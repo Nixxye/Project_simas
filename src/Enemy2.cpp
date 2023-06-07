@@ -77,6 +77,29 @@ namespace Entes
             colision_manager->collide_explosion(&explosion, power);
             alive = false;
         }
+        void Enemy2::save(std::ofstream& file)
+        {
+            if (!file.is_open())
+            {
+                std::cout<<"Error: Cannot open enemy file!"<<std::endl;
+                return;
+            }
+            file<<id<<std::endl;
+            if (alive)
+                file<<1<<std::endl;
+            else
+                file<<0<<std::endl;
+            file<<damage<<std::endl
+            <<body.getPosition().x<<std::endl<<body.getPosition().y<<std::endl
+            <<vel.x<<std::endl<<vel.y<<std::endl
+            <<body.getSize().x<<std::endl<<body.getSize().y<<std::endl
+            <<sensor_radius<<std::endl;
+            if (attacking)
+                file<<1<<std::endl;
+            else
+                file<<0<<std::endl;
+            file<<axis.x<<std::endl<<axis.y<<std::endl<<burst<<std::endl<<power<<std::endl<<std::endl;
+        }  
     }    
 }
 

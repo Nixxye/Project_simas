@@ -24,6 +24,7 @@ namespace Entes
             void attack(sf::Vector2f target);
             void explode();
             void set_power(int nuke) { power = nuke; }
+            void save(std::ofstream& file);
         };    
     }
 }

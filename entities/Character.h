@@ -15,6 +15,8 @@ namespace Entes
                 Character(int index = -1, sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f velocity = sf::Vector2f(50.f, 50.f), sf::Vector2f size = sf::Vector2f(0.f, 0.f));
                 virtual ~Character();
                 virtual void execute() = 0;
+                //vai ser virtual pura no final:
+                virtual void save(std::ofstream& file) {}
                 virtual void collide(Entity* other, std::string direction = "") = 0;
                 void draw();
                 sf::Vector2f get_position() { return body.getPosition(); }

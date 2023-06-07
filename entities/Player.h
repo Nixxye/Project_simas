@@ -31,6 +31,7 @@ namespace Entes
         public:
             Player(int index = 1,sf::Vector2f pos = sf::Vector2f(10.f, 0.f), sf::Vector2f velocity = sf::Vector2f(0.f, 0.f), sf::Vector2f size = sf::Vector2f(50.f, 50.f));
             ~Player();
+
             void execute();
             void move(char direction = '0');
             void collide(Entity *other, std::string  direction = "");
@@ -43,7 +44,9 @@ namespace Entes
             sf::Vector2f get_attack_size() { return attack_body.getSize(); }
             Observers::Observer* get_observer() { return pPObserver; }
             const int get_damage() const { return damage; }
+
             void draw();
+            void save(std::ofstream& file);
 
             void set_slowed(int s);
         };

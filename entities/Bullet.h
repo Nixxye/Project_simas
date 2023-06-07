@@ -35,5 +35,6 @@ namespace Entes
             void set_fill_color (sf::Color c) { body.setFillColor(c); }
             const int get_damage() const { return damage; }
             const bool get_alive() const { return alive; }
+            void save(std::ofstream& file);
     };  
 }

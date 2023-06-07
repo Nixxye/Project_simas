@@ -78,8 +78,8 @@ namespace Stages
         void add_player(Entes::Entity* player);
         void add_bullet(Entes::Entity* bullet);
 
-        void save();
-        void load();
+        virtual void save();
+        virtual void load();
         void reset();
 
         Entes::Entity* create_enemy(int id, sf::Vector2f pos, sf::Vector2f vel, sf::Vector2f size);

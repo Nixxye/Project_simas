@@ -61,7 +61,16 @@ namespace Lists
             aux++;       
         }    
     } 
-    */   
+    */ 
+    void EntityList::save(std::ofstream& file)
+    {
+        Lists::List<Entes::Entity>::Iterator<Entes::Entity> aux = list.get_first();
+        while(aux != nullptr)
+        {
+            (*aux)->save(file);
+            aux++;        
+        }      
+    }
 }
 
 
