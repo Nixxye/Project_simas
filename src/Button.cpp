@@ -14,14 +14,18 @@ namespace Menus
         body.setOrigin(SIZEX / 2, SIZEY / 2);
         text.setOrigin(SIZEX / 2 - 50, SIZEY / 2 - 25);
 
-        body.setFillColor(sf::Color::White);
+        body.setFillColor(sf::Color(240,230,140));
+        body.setOutlineThickness(6);
+        body.setOutlineColor(sf::Color::Black);
 
         text.setFont(*pGM->get_font());
-        text.setFillColor(sf::Color::Blue);
-        text.setCharacterSize(60);
+        text.setFillColor(sf::Color(65, 130, 190));
+        text.setCharacterSize(50);
 
         body.setPosition(position);
         text.setPosition(position);
+        text.setOutlineThickness(3.f);
+        text.setOutlineColor(sf::Color:: Black);
     }
     Button::~Button()
     {
@@ -35,10 +39,10 @@ namespace Menus
     }
     void Button::change_color()
     {
-        if (body.getFillColor() == sf::Color::White)
-            body.setFillColor(sf::Color::Red);
+        if (body.getFillColor() == sf::Color(240,230,140))
+            body.setFillColor(sf::Color(205,92,92));
         else
-            body.setFillColor(sf::Color::White);
+            body.setFillColor(sf::Color(240,230,140));
     }
     void Button::set_name(std::string name)
     {

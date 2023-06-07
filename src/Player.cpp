@@ -14,7 +14,7 @@ namespace Entes
         damage(0)
         {
             attack_body.setOrigin(attack_body.getSize().x / 2, attack_body.getSize().y / 2);
-            attack_body.setFillColor(sf::Color::Red);
+            //attack_body.setFillColor(sf::Color::Red);
             attack_body.setTexture(pGM->load_textures("../assets/teste1.png"));
             life = 20;
             //lives = 3;

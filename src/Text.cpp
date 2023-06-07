@@ -11,7 +11,9 @@ namespace Menus
         text.setCharacterSize(30);
         text.setOrigin(15.f,15.f);
         text.setPosition(sf::Vector2f(100.f, 25.f));
-        text.setFillColor(sf::Color:: Magenta );
+        text.setFillColor(sf::Color:: White);
+        text.setOutlineThickness(5.f);
+        text.setOutlineColor(sf::Color:: Black);
     }
     Text::~Text()
     {
@@ -37,6 +39,6 @@ namespace Menus
     void Text :: set_color (int c)
     {
         if (c == 0)
-            text.setFillColor(sf::Color::Yellow);
+            text.setFillColor(sf::Color(255,165,0));
     }
 }
