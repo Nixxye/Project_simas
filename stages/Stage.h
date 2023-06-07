@@ -87,7 +87,7 @@ namespace Stages
         Entes::Entity* create_enemy(std::ifstream& file);
         Entes::Entity* create_enemy(int id, sf::Vector2f pos, sf::Vector2f vel, sf::Vector2f size);
         Entes::Entity* create_bullet(int id, sf::Vector2f pos, sf::Vector2f vel, float lifetime, Entes::Entity* boss);
-        Entes::Entity* create_obstacle(int id, sf::Vector2f pos, sf::Vector2f size);
-
+        //Entes::Entity* create_obstacle(int id, sf::Vector2f pos, sf::Vector2f size);
+        void create_scenario(std::string file);
     };
 }

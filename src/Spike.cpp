@@ -4,9 +4,9 @@ namespace Entes
 {
     namespace Obstacles
     {
-        Spike:: Spike(sf::Vector2f pos, sf::Vector2f size):
-        Obstacle(13, pos, size),
-        damage(1)
+        Spike:: Spike(sf::Vector2f pos, int dmg):
+        Obstacle(13, pos),
+        damage(dmg)
         {
             body.setFillColor(sf::Color::Red);
             //texture = pGM->load_textures("../assets/obstacle1.png");

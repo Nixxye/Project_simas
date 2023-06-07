@@ -11,7 +11,8 @@ namespace Entes
             private:
                 int damage;
             public:
-                Spike(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f size = sf::Vector2f(0.f, 0.f));
+                Spike(sf::Vector2f pos, int dmg = 1);
+                //criar construtora padrão:
                 ~Spike();
                 void collide(Entity* other, std::string  direction = "");
                 void execute(){}

@@ -242,7 +242,7 @@ namespace Stages
             std::getline(file2, line);
             //Static cast;
             //Mudar dps o id:
-            add_obstacle(create_obstacle(id, sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY)));
+            //add_obstacle(create_obstacle(id, sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY)));
             //std::cout<<"LOADED"<<std::endl;
         }
         file2.close();
@@ -433,25 +433,70 @@ namespace Stages
         pBoss->add_bullet(static_cast<Entes::Entity*>(bullet));
         return static_cast<Entes::Entity*>(bullet);
     }
+    void Stage::create_scenario(std::string file)
+    {
+        std::ifstream input(file);
+
+        if (!input)
+        {
+            std::cout<<"Missing scenario file"<<std::endl;
+            exit(1);
+        }
+
+        std::string line;
+        Entes::Entity* aux = nullptr;
+        int j = 0;
+        for (int i = 0; std::getline(input, line); i++)
+        {
+            j = 0;
+            for (char character : line)  
+            {
+                switch (character)
+                {
+                //Plataforma:
+                case '0':
+                    aux = new Entes::Obstacles::Platform(sf::Vector2f(j * 50.f, i * 50.f));
+                    add_obstacle(aux);
+                    break;
+                case '1':
+                    aux = new Entes::Obstacles::Slime(sf::Vector2f(j * 50.f, i * 50.f));
+                    add_obstacle(aux);
+                    break;
+                case '2':
+                    aux = new Entes::Obstacles::Spike(sf::Vector2f(j * 50.f, i * 50.f));
+                    add_obstacle(aux);
+                case '5':
+                    aux = new Entes::Obstacles::Platform(sf::Vector2f(j * 50.f, i * 50.f), true);
+                    add_obstacle(aux);
+                    break;                    
+                default:
+                    break;
+                }
+                j++;
+            }    
+        }
+    }
+    /*
     Entes::Entity* Stage::create_obstacle(int id, sf::Vector2f pos, sf::Vector2f size)
     {
         Entes::Entity* aux = NULL;
         switch (id)
         {
         case 11:
-            aux = static_cast<Entes::Entity*>(new Entes::Obstacles::Platform(pos, size));
+            aux = static_cast<Entes::Entity*>(new Entes::Obstacles::Platform(pos));
             break;
         case 12:
-            aux = static_cast<Entes::Entity*>(new Entes::Obstacles::Slime(pos, size));
+            aux = static_cast<Entes::Entity*>(new Entes::Obstacles::Slime(pos));
             break;
         case 13:
-            aux = static_cast<Entes::Entity*>(new Entes::Obstacles::Spike(pos, size));
+            aux = static_cast<Entes::Entity*>(new Entes::Obstacles::Spike(pos));
         default:
             break;
         }
         aux->set_colision_manager(&colision_manager);
         return aux;
     }
+    */
     /*void Stage::execute()
     {
                 //std::cout<<"Testeee"<<std::endl;

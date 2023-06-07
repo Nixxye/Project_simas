@@ -10,7 +10,7 @@ namespace Entes
             protected:
                 sf::RectangleShape body;
             public:
-                Obstacle(int index = -1, sf::Vector2f pos = sf::Vector2f(100.f, 600.f), sf::Vector2f size = sf::Vector2f(1000.f, 100.f));
+                Obstacle(int index = -1, sf::Vector2f pos = sf::Vector2f(100.f, 600.f));
                 ~Obstacle();
                 void execute();
                 void draw();

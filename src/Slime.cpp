@@ -6,12 +6,13 @@ namespace Entes
 {
     namespace Obstacles
     {
-        Slime:: Slime(sf::Vector2f pos, sf::Vector2f size):
-        Obstacle(12, pos, size),
-        slow_level(60)
+        Slime:: Slime(sf::Vector2f pos, int sl):
+        Obstacle(12, pos),
+        slow_level(sl)
         {
             //Provisório:
-                body.setFillColor(sf::Color::Green);
+            body.setFillColor(sf::Color::Green);
+            //Slow level padrão é 60
             //texture = pGM->load_textures("../assets/obstacle.png");
             //body.setTexture(texture);
         }

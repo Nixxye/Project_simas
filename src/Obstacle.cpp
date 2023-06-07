@@ -4,9 +4,9 @@ namespace Entes
 {
     namespace Obstacles
     {
-        Obstacle::Obstacle(int index, sf::Vector2f pos, sf::Vector2f size):
+        Obstacle::Obstacle(int index, sf::Vector2f pos):
         Entes::Entity(index, sf::Vector2f(0.f, 0.f)),
-        body(size)
+        body(sf::Vector2f(50.f, 50.f))
         {
             body.setOrigin(body.getSize()/2.f);
             body.setPosition(pos);

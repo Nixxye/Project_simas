@@ -7,7 +7,7 @@ namespace Stages
     {
         texture = pGM->load_textures("../assets/stage2.png");
         body.setTexture(texture);  
-        //load();   
+        create_scenario(SCENARIO_FILE2);
     }
 
     Stage2::~Stage2()
@@ -123,6 +123,7 @@ namespace Stages
         }  
         //std::cout<<"Número de inimigos: "<<enemies.get_size()<<std::endl;
         //VAI SAIR:
+        /*
         std::ifstream file2("../saves/stage2.dat");
 
         if (!file2)
@@ -159,7 +160,7 @@ namespace Stages
             //std::cout<<"Obstacle added"<<std::endl;
         }
         file2.close();
-
+        */
         loaded = true;
     }
     void Stage2::reset()
@@ -203,7 +204,8 @@ namespace Stages
             getline(enemies_file, line);
             create_enemy(enemies_file);
         }  
-        //std::cout<<"Número de inimigos: "<<enemies.get_size()<<std::endl;      
+        //std::cout<<"Número de inimigos: "<<enemies.get_size()<<std::endl; 
+        /*     
         if (obstacles.get_size() <= 0)
         {
                 //VAI SAIR:
@@ -246,5 +248,7 @@ namespace Stages
 
             loaded = true;
         }
+        */
     }
+
 }

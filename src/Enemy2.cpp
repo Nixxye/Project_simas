@@ -49,7 +49,6 @@ namespace Entes
             }
             if (alive)
             {
-                std::cout<<"Vivo"<<std::endl;
                 if (!attacking)
                 {
                     sf::Vector2f d;
@@ -84,7 +83,6 @@ namespace Entes
         }
         void Enemy2::collide(Entity* other, std::string direction)
         {
-            std::cout<<"Colidiu"<<std::endl;
             int index = other->get_id();
             
             other->inflict_damage(damage);
