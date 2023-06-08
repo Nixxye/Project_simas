@@ -59,6 +59,26 @@ namespace Stages
                 else 
                     pGM->center((*players.get_first())->get_position());
             }
+            Lists::List<Entes::Entity>::Iterator<Entes::Entity> it_enemies;
+            bool anyEnemyAlive = false;
+
+                for (it_enemies = enemies.get_first(); it_enemies != nullptr; it_enemies++)
+                {
+                    if ((*it_enemies)->get_alive())
+                    {
+                        anyEnemyAlive = true;
+                        break;
+                    }
+                }
+
+                if (!anyEnemyAlive)
+                {
+                    pSM->set_CurrentState(3);
+                    pGM->reset_camera();
+                    //printf("GameOver\n"); // gameover
+                }
+
+
         }
         else
             pGM->reset_camera();

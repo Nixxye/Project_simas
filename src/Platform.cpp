@@ -16,7 +16,7 @@ namespace Entes
         } 
         void Platform::collide(Entity* other, std::string  direction)
         {
-
+           // printf("\nplataforma");
         }   
     }    
 }
