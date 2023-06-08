@@ -1,4 +1,5 @@
 #include "../entities/Platform.h"
+#include "../entities/Player.h"
 
 namespace Entes
 {
@@ -7,6 +8,7 @@ namespace Entes
         Platform:: Platform(sf::Vector2f pos, bool check):
         Obstacle(11, pos)
         {
+            checkpoint=check;
             texture = pGM->load_textures("../assets/plataform.png");
             body.setTexture(texture);
         }
@@ -16,7 +18,18 @@ namespace Entes
         } 
         void Platform::collide(Entity* other, std::string  direction)
         {
-           // printf("\nplataforma");
+            if (checkpoint)
+            {
+                Entes::Characters:: Player* player = dynamic_cast<Entes::Characters::Player*>(other);
+                if (player != nullptr)
+                {
+                    player->set_win(true);
+                }
+                else
+                {
+                    //printf("Plataforma normal\n");
+                }
+            }
         }   
     }    
 }
