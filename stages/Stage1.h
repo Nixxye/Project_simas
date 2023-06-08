@@ -2,7 +2,7 @@
 
 #include "../stages/Stage.h"
 
-#define PLAYER_FILE1 "../saves/stage1/players.dat"
+//#define PLAYER_FILE1 "../saves/stage1/players.dat"
 #define ENEMY_FILE1 "../saves/stage1/enemies.dat"
 #define PLAYER_RESET_FILE1 "../saves/stage1/reset_players.dat"
 #define ENEMY_RESET_FILE1 "../saves/stage1/reset_enemies.dat"
@@ -13,6 +13,7 @@ namespace Stages
     class Stage1: public Stage
     {
     public:
+        Stage1(int n_players);
         Stage1();
         ~Stage1();
         

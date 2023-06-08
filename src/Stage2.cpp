@@ -9,6 +9,13 @@ namespace Stages
         body.setTexture(texture);  
         create_scenario(SCENARIO_FILE2);
     }
+    Stage2::Stage2(int n_players):
+    Stage(SAVE_STAGE_2, FILE_STAGE_2, SAVE_BASE_2, 5)
+    {
+        texture = pGM->load_textures("../assets/stage2.png");
+        body.setTexture(texture);  
+        create_scenario(SCENARIO_FILE2);
+    }
 
     Stage2::~Stage2()
     {
@@ -119,8 +126,14 @@ namespace Stages
         int n, alive, damage, life;
         float vx, vy, px, py, sizex, sizey;
         std::string line;
+        std::ifstream players_file;
 
-        std::ifstream players_file(PLAYER_FILE2);
+        if (id_state == 2)
+            players_file.open(PLAYER_FILE1);
+        if (id_state == 5)
+            players_file.open(PLAYER_FILE2);
+
+
         if (!players_file)
         {
             std::cout<<"Cannot open players_file"<<std::endl;

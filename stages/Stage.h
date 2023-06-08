@@ -46,6 +46,10 @@
 #define FILE_STAGE_2 "../saves/stage2.dat"
 #define SAVE_BASE_2 "../saves/savebase2.dat"
 
+
+#define PLAYER_FILE1 "../saves/stage1/players.dat"
+#define PLAYER_FILE2 "../saves/stage2/players.dat"
+
 namespace Stages
 {
     class Stage: public Ent, public States::State
