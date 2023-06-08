@@ -12,7 +12,8 @@ namespace Stages
 
     Stage1::~Stage1()
     {
-        save();
+        if (loaded)
+            save();
     }
     void Stage1::execute()
     {

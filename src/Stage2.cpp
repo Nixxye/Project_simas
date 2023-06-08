@@ -12,12 +12,15 @@ namespace Stages
 
     Stage2::~Stage2()
     {
-        save();
+        if (loaded)
+            save();
     }
     void Stage2::execute()
     {
         if (!loaded)
+        {
             load();
+        }
         //std::cout<<"Testeee"<<std::endl;
         //draw();// Nao sei pq nao desenha o ataque
         players.execute();
