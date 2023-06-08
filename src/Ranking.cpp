@@ -8,7 +8,8 @@ namespace Menus
     first("1 name - points"),
     second("2 name - points"),
     third("3 name - points"),
-    ranking_file(ranking)
+    ranking_file(ranking),
+    rank()
     {   
 
         title.setSize(70);
@@ -37,6 +38,7 @@ namespace Menus
             delete pRObserver;
         
         pRObserver = nullptr;
+        save();
     }
     void Ranking::select()
     {
@@ -85,49 +87,64 @@ namespace Menus
 
 
     } 
-    void Ranking :: load ()
+    void Ranking::add_newRanking(int points, std::string name)
     {
-        /*std::ifstream file ();
-        std::string line;
+        rank.insert(std::make_pair(points, name));
+        
+        std::map<int, std::string>::iterator it = rank.begin();
+        for (int i = 0; i < 3 && it != rank.end(); i++, it++)
+        {
+            if (i == 0)
+                first.setName(it->second + " - " + std::to_string(it->first));
+            else if (i == 1)
+                second.setName(it->second + " - " + std::to_string(it->first));
+            else
+                third.setName(it->second + " - " + std::to_string(it->first));
+        }
 
+    }
+    void Ranking::save()
+    {
+        std::ofstream file(RANKING);
         if (!file)
         {
-            std::cout <<"ERROR: 454"<<std::endl;
-            exit(2);
-        }
-
-        std::getline(file, line);
-
-        if (line != "#first")
+            std::cout<<"Cannot open ranking file"<<std::endl;
+            exit(1);
+        }     
+        
+        std::map<int, std::string>::iterator it = rank.begin();
+        for (int i = 0; i < 3; i++, it++)
         {
-            std::cout << "ERROR 6465 "<< std::endl;
-            file.close();
-            exit(3);
+            file << it->second << std::endl << it->first <<std::endl << std::endl;
         }
-
-        std::getline(file, line);
-        std::getline(file, line);
-
-        if (line != "#second")
+        file.close(); 
+    }
+    void Ranking :: load ()
+    {
+        std::ifstream file(RANKING);
+        if (!file)
         {
-            std::cout << "ERROR 64115 "<< std::endl;
-            file.close();
-            exit(3);
-        }
-        std::getline(file, line);
-        std::getline(file, line);
-
-        if (line != "#third")
+            std::cout<<"Cannot open ranking file"<<std::endl;
+            exit(1);
+        }     
+        int points;
+        std::string name;
+        for (int i = 0; i < 3; i++)
         {
-            std::cout << "ERROR 6444515 "<< std::endl;
-            file.close();
-            exit(3);
+            file>>name>>points;
+            rank.insert(std::make_pair(points, name));
         }
+        file.close(); 
 
-
- 
-
-        file.close();*/
-
+        std::map<int, std::string>::iterator it = rank.begin();
+        for (int i = 0; i < 3 && it != rank.end(); i++, it++)
+        {
+            if (i == 0)
+                first.setName(it->second + " - " + std::to_string(it->first));
+            else if (i == 1)
+                second.setName(it->second + " - " + std::to_string(it->first));
+            else
+                third.setName(it->second + " - " + std::to_string(it->first));
+        }
     }
 }

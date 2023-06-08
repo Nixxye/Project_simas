@@ -7,8 +7,8 @@ pEM(Managers::EventsManager::get_instance()),
 stage1(),
 stage2(),
 main_menu(),
-game_over(),
-ranking()
+ranking(),
+game_over(&ranking)
 {
     execute();
 }

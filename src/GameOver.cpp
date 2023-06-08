@@ -3,16 +3,18 @@
 
 namespace Menus
 {
-    GameOver::GameOver():
+    GameOver::GameOver(Ranking* rnk):
     Menu(2, 3,"Game Over"),
-    instructions("Aperte Tab e escreva seu nome")
+    instructions("Aperte Tab e escreva seu nome"),
+    ranking(rnk),
+    points_string(" - points:")
     {   
         instructions.setSize(20);
         instructions.setPosition(sf::Vector2f(100.f, 180.f));
         title.setSize(65);
         title.setPosition(sf::Vector2f(120.f, 80.f));
         title.set_color(0);
-        name_string = "Name:";
+        name_string = "";
         pGOObserver = new Observers::GameOverObserver;
         pGOObserver->set_menu(this);
         set_points(123);
@@ -49,7 +51,7 @@ namespace Menus
         if (name_active)
         {
             name_string.append(c);
-            printf ("Oi\n");
+            //printf ("Oi\n");
         }
     } 
 
@@ -57,17 +59,16 @@ namespace Menus
     {
         if (final_name)
             return;
-        if (name_string == "Name:")
+        if (name_string.size() == 0)
             return;
-        name_string.append (" - points:");
-        name_string.append (points_string);
+        //name_string.append (" - points:");
+        //name_string.append (points_string);
     
-        name.setName(name_string);
+        name.setName(name_string + points_string);
+        ranking->add_newRanking(Entes::Hud::get_points(), name_string);
         name.setPosition(sf::Vector2f(60.f, 450.f));
         buttons_active = false;
         final_name = true;
-
-
     } 
 
     std::string GameOver :: get_name_string ()
@@ -77,7 +78,7 @@ namespace Menus
 
     void  GameOver :: set_points (int p)
     {
-        points_string = std::to_string(p);
+        points_string.append(std::to_string(p));
     }
 
     void GameOver :: active_name ()
@@ -135,6 +136,6 @@ namespace Menus
 
     void GameOver :: save ()
     {
-         
+       
     }
 }

@@ -3,10 +3,14 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <string>
+#include <fstream>
 
 #include "../menus/Menu.h"
 #include "../observers/GameOverObserver.h"
+#include "../menus/Ranking.h"
+#include "../entities/Hud.h"
 
+//game over altera o ranking;
 
 namespace Menus 
 {
@@ -23,10 +27,9 @@ namespace Menus
         bool name_active;
         bool final_name;
 
-
-
+        Ranking* ranking;
     public:
-        GameOver();
+        GameOver(Ranking* rnk);
 
         ~GameOver();
 

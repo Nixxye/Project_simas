@@ -20,7 +20,6 @@ namespace Managers
     EventsManager :: EventsManager ()
     {
         pGM = GraphicsManager::get_instance();
-
     }
     EventsManager :: ~EventsManager ()
     {
