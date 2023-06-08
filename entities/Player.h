@@ -38,6 +38,8 @@ namespace Entes
             void collide(Entity *other, std::string  direction = "");
             void collide_attack(Entity *other, std::string direction = "");
             void attack();
+            void set_win (bool b){win = b;}
+            bool get_win() {return win;}
 
             //void set_colision_manager(Managers::ColisionManager* cm) { colision_manager = cm; }
 

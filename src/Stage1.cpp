@@ -28,10 +28,17 @@ namespace Stages
         if (pSM->get_CurrentStateID() == id_state)
         {
             Lists::List<Entes::Entity>::Iterator<Entes::Entity> it = players.get_first();
+            Entes::Characters:: Player* player1 = dynamic_cast<Entes::Characters::Player*>(*it);
             it++;
+           // Entes::Characters:: Player* player2 = dynamic_cast<Entes::Characters::Player*>(*it);
             //std::cout<<players.get_size()<<std::endl;
             if (players.get_size()==1)
             {
+                if(player1->get_win())
+                {
+                    player1->set_win(false);
+                    pSM->set_CurrentState(2);
+                }
                 if ((*players.get_first())->get_alive())
                     pGM->center((*players.get_first())->get_position());
                 else
@@ -44,7 +51,13 @@ namespace Stages
             }
             else 
             {
-                //printf ("%d",players.get_size());
+                Entes::Characters:: Player* player2 = dynamic_cast<Entes::Characters::Player*>(*it);
+                if (player1->get_win() || player2->get_win())
+                {
+                    player1->set_win(false);
+                    player2->set_win(false);
+                    pSM->set_CurrentState(2);
+                }
                 if ((*players.get_first())->get_alive() && (*it)->get_alive())
                     pGM->center((*it)->get_position(),(*players.get_first())->get_position());
                 else if (!(*players.get_first())->get_alive() && !(*it)->get_alive()) 
