@@ -8,7 +8,7 @@ namespace Entes
         Platform:: Platform(sf::Vector2f pos, bool check):
         Obstacle(11, pos)
         {
-            checkpoint=true;
+            checkpoint=false; 
             texture = pGM->load_textures("../assets/plataform.png");
             body.setTexture(texture);
         }
@@ -24,12 +24,12 @@ namespace Entes
                 if (player != nullptr)
                 {
                     player->set_win(true);
-                    printf("Plataforma Player\n");
+                    //printf("Plataforma Player\n");
                 }
-                else
+                /*else
                 {
                     //printf("Plataforma normal\n");
-                }
+                }*/
             }
         }   
     }    
