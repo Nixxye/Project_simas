@@ -148,9 +148,9 @@ namespace Managers
                             if (!static_cast<Entes::Bullet*>(*bullet)->get_friendly())
                             {
                                 if (direction == "Below")
-                                    attack_and_bullets(sizeA, Attacker->get_position(), sf::Vector2f(Attacker->get_vel().x, -5.f), *bullet);
-                                else if (direction == "Above")
                                     attack_and_bullets(sizeA, Attacker->get_position(), sf::Vector2f(Attacker->get_vel().x, 5.f), *bullet);
+                                else if (direction == "Above")
+                                    attack_and_bullets(sizeA, Attacker->get_position(), sf::Vector2f(Attacker->get_vel().x, -5.f), *bullet);
                                 else if (direction == "Right")
                                     attack_and_bullets(sizeA, Attacker->get_position(), sf::Vector2f(-5.f, Attacker->get_vel().x), *bullet);
                                 else if (direction == "Left")

@@ -187,7 +187,7 @@ namespace Entes
         void Player::collide(Entity *other, std::string direction)
         {
             int index = other->get_id();
-            std::cout<<index<<std::endl;
+            //std::cout<<index<<std::endl;
             switch (index)
             {
             case 1:

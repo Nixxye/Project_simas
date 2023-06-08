@@ -11,7 +11,7 @@ namespace Entes
             body.setFillColor(sf::Color::Red);
             //texture = pGM->load_textures("../assets/obstacle1.png");
             //body.setTexture(texture);
-            std::cout<<"Espinho de id: "<<id<<"e dano "<<damage<<std::endl;
+            //std::cout<<"Espinho de id: "<<id<<"e dano "<<damage<<std::endl;
         }
         Spike:: ~Spike()
         {

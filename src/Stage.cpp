@@ -102,7 +102,7 @@ namespace Stages
             int r, lifetime, friendly;
             for (int i = 0; i < n; i++)
             {
-                std::cout<<"Creating bullet"<<std::endl;
+                //std::cout<<"Creating bullet"<<std::endl;
                 std::getline(file, line);
                 std::getline(file, line);
                 file >> index >> alive >> damage >> px >> py >> vx >> vy >> r >> lifetime >> friendly;

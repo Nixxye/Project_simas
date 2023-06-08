@@ -169,9 +169,9 @@ namespace Stages
     void Stage2::reset()
     {
         //Vai sair:
-        if (players.get_size() > 0)
+        if (loaded)
             players.clear();
-        if (enemies.get_size() > 0)
+        if (loaded)
             enemies.clear();
 
         int n, vx, vy, py, px, alive, damage, sizex, sizey, life;
@@ -191,7 +191,9 @@ namespace Stages
             players_file >> alive >> life >> px >> py >> vx >> vy >> sizex >> sizey;
             Entes::Characters::Player* player = new Entes::Characters::Player(i+1, (bool) alive, life, sf::Vector2f(px, py), sf::Vector2f(vx, vy), sf::Vector2f(sizex, sizey));
             add_player(player); 
+            std::cout<<"Added Player"<<std::endl;
         }
+        std::cout<<"Saiu do loop"<<std::endl;
 
         std::ifstream enemies_file(ENEMY_RESET_FILE2);
         if (!enemies_file)
@@ -252,6 +254,7 @@ namespace Stages
             loaded = true;
         }
         */
+       loaded = true;
     }
 
 }
