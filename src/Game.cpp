@@ -23,8 +23,8 @@ void Game::execute()
     {
         pGM->clean();
         
-        pEM->execute();
-        pSM->get_CurrentState()->execute();
+        pEM->run();
+        pSM->run();
         //main_menu.run();
         //stage1.run();
         

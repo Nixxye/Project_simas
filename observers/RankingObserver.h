@@ -17,7 +17,7 @@ namespace Observers
     public:
         RankingObserver();
         ~RankingObserver();
-        void notify(sf::Keyboard::Key key_code);
-        void set_menu(Menus::Ranking *p) { pRanking = p; }
+        void update(sf::Keyboard::Key key_code);
+        void set_menu(Menus::Ranking *p) { printf ("Observer\n");pRanking = p; }
     };
 }

@@ -84,13 +84,13 @@ namespace Menus
             if (current_stage == 1)
             {
                 current_stage = 2;
-                texture = pGM->load_textures("../assets/stage2.png");
+                texture = pGM->load_textures("../assets/menu2.png");
                 body.setTexture(texture);
             }
             else
             {
                 current_stage = 1;
-                texture = pGM->load_textures("../assets/stage1.png");
+                texture = pGM->load_textures("../assets/menu1.png");
                 body.setTexture(texture);
             }
         }

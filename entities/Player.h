@@ -5,7 +5,7 @@
 #include <string>
 
 #include "../entities/Character.h"
-#include "../observers/PlayerObserver.h"
+
 
 #define ATTACK_DELAY 30
 //Implementar se tiver tempo, um recoil;
@@ -20,7 +20,6 @@ namespace Entes
         class Player : public Character
         {
         private:
-            Observers::PlayerObserver *pPObserver;
             sf::RectangleShape attack_body;
             bool is_attacking;
             int attack_delay;
@@ -44,7 +43,6 @@ namespace Entes
 
             sf::Vector2f get_attack_position() { return attack_body.getPosition(); }
             sf::Vector2f get_attack_size() { return attack_body.getSize(); }
-            Observers::Observer* get_observer() { return pPObserver; }
             const int get_damage() const { return damage; }
 
             void draw();

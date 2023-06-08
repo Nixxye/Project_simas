@@ -9,7 +9,7 @@
 
 //incluído para testes:
 #include <iostream>
-#include <list>
+#include "Subject.h"
 
 namespace Observers 
 {
@@ -18,22 +18,15 @@ namespace Observers
 
 namespace Managers
 {
-    class EventsManager
+    class EventsManager : public Subject
     {
         private:
             GraphicsManager* pGM;
-            StateManager* pSM;
-            std::list <Observers::Observer*> list_observers;
-            std::list <Observers::Observer*> :: iterator it;
-            
             static EventsManager* instance;
             EventsManager();
         public:
             ~EventsManager();
-            
             static EventsManager* get_instance();
-            void remove_observer(Observers::Observer* pObserver);
-            void add_observer (Observers::Observer* pObserver);
-            void execute ();
+            void run();
     };
 }

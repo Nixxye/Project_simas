@@ -7,10 +7,11 @@ namespace Observers
     {
         this->pEM = Managers::EventsManager::get_instance();
         this->pSM = Managers::StateManager::get_instance();
+        this->pGM = Managers::GraphicsManager::get_instance();
     }
 
     Observer::~Observer() 
     {
-        pEM->remove_observer(this);
+        pEM->detach(this);
     }
 } 

@@ -19,11 +19,14 @@ namespace Managers
     currentState(0)
     {
         //tamanho 5 por enquanto.
-        vector_states.resize(6);
+        vector_states.resize(5);
     }
     StateManager::~StateManager()
     {
-
+        for (int i = 0; i < vector_states.size();i++)
+        {
+            delete vector_states[i];
+        }
 
     }
     void StateManager::set_CurrentState(int i)
@@ -43,19 +46,30 @@ namespace Managers
         }
         return vector_states[currentState];
     }
+
     int StateManager::get_CurrentStateID()
     {
         return currentState;
     }
-    //Tirar
+
     void StateManager:: add_state(States::State* pState)
     {
-      //std::cout<<"OIII"<<std::endl;
-       vector_states[pState->get_id()] = pState;
+        try 
+        {
+            vector_states.at(pState->get_id()) = pState;
+        }
+        catch (const std::out_of_range& oor) 
+        {
+            std::cerr << "Out of Range error: " << oor.what() << '\n';
+        }
     }
 
-    void Managers::StateManager::reset_current_state()
+    void StateManager::reset_current_state()
     {
         vector_states[currentState]->reset();
+    }
+    void StateManager::run()
+    {
+        vector_states[currentState]->execute();
     }
 }

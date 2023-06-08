@@ -6,7 +6,7 @@ namespace Observers
     GameOverObserver::GameOverObserver():
     Observer()
     {
-        pEM->add_observer(this);
+        pEM->attach(this);
 
         keys [sf::Keyboard::A] = "a";
         keys [sf::Keyboard::B] = "b";
@@ -39,7 +39,7 @@ namespace Observers
     {
         pGO = nullptr;
     }
-    void GameOverObserver::notify(sf::Keyboard::Key key_code)
+    void GameOverObserver::update(sf::Keyboard::Key key_code)
     {
         if (pSM->get_CurrentStateID() != 3)
             return;

@@ -6,20 +6,28 @@ namespace Observers
     MenuObserver::MenuObserver():
     Observer()
     {
-        pEM->add_observer(this);
+        pEM->attach(this);
     }
     MenuObserver::~MenuObserver()
     {
         pMenu = nullptr;
     }
-    void MenuObserver::notify(sf::Keyboard::Key key_code)
+    void MenuObserver::update(sf::Keyboard::Key key_code)
     {
         if (!pMenu)
         {
             //std::cout<<"EITAAAAAAAAAAA"<<std::endl;
             return;
         }
-        if (pSM->get_CurrentStateID() != 0)
+        if (pSM->get_CurrentStateID() == 1 || pSM->get_CurrentStateID() == 2)
+        {
+            if (key_code == sf::Keyboard::Escape)
+            {
+                pSM->set_CurrentState(0);
+                pGM->reset_camera();
+            }
+        }
+        else if (pSM->get_CurrentStateID() != 0)
             return;
         //std::cout<<"Teste"<<std::endl;
         if (key_code == sf::Keyboard::Up)

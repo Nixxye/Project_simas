@@ -15,10 +15,11 @@ namespace Entes
         player_id(index)
         {
             attack_body.setOrigin(attack_body.getSize().x / 2, attack_body.getSize().y / 2);
-            attack_body.setFillColor(sf::Color::Red);
+            //attack_body.setFillColor(sf::Color::Red);
+            attack_body.setTexture(pGM->load_textures("../assets/teste1.png"));
             life = 20;
             //lives = 3;
-            pPObserver = new Observers::PlayerObserver(index);
+            //pPObserver = new Observers::PlayerObserver(index);
             //std::cout<<"Added player "<<index<<std::endl;
             if (player_id == 1)
             {
@@ -28,7 +29,7 @@ namespace Entes
             {
                 texture = pGM->load_textures("../assets/player2.png");
             }
-            pPObserver->set_player(this);
+            //pPObserver->set_player(this);
 
             body.setTexture(texture);
 
@@ -59,7 +60,7 @@ namespace Entes
             {
                 texture = pGM->load_textures("../assets/player2.png");
             }
-            pPObserver->set_player(this);
+            //pPObserver->set_player(this);
 
             body.setTexture(texture);
             std::cout<<body.getPosition().x<<" "<<body.getPosition().y<<std::endl;
@@ -67,21 +68,20 @@ namespace Entes
 
         Player::~Player()
         {
-            if(pPObserver)
-                delete pPObserver;
-            pPObserver = nullptr;
+
         }
         void Player::draw()
         {
             if (alive)
             {
-                pGM->draw(&body);
+
                 if (is_attacking)
                 {
                     pGM->draw(&attack_body);
                     is_attacking = false;
-                }                
-            }
+                } 
+                pGM->draw(&body);
+            }         
         }
 
         void Player::execute()

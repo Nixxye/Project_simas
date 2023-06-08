@@ -17,43 +17,23 @@ namespace Managers
         return instance;
     }
 
-    EventsManager :: EventsManager ()
+    EventsManager :: EventsManager ():
+    Subject()
     {
         pGM = GraphicsManager::get_instance();
     }
     EventsManager :: ~EventsManager ()
     {
-        for (it = list_observers.begin(); it != list_observers.end(); it++)
-        {
-            delete(*it);
-        }
-        list_observers.clear();
 
     }
-    void  EventsManager :: add_observer(Observers::Observer* pObserver)
-    {
-        list_observers.push_back(pObserver);
-    }
-
-    void  EventsManager :: remove_observer(Observers::Observer* pObserver)
-    {
-        list_observers.remove(pObserver);
-    }
-  
-    void EventsManager :: execute()
+    void EventsManager :: run ()
     {
         sf::Event event;
-
         while (pGM->get_window()->pollEvent(event))
         {
             if (event.type == sf::Event::KeyPressed)
-            {
-                for (it = list_observers.begin(); it != list_observers.end(); it++)
-                {
-                    (*it)->notify((event.key.code));
-                } 
-            }
-            if (event.type == sf::Event::Closed)
+                notify((event.key.code));
+            else if (event.type == sf::Event::Closed)
                 pGM->close_window();
         }
     }

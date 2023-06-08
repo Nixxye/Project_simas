@@ -6,7 +6,7 @@ namespace Observers
     RankingObserver::RankingObserver():
     Observer()
     {
-        pEM->add_observer(this);
+        pEM->attach(this);
 
 
     }
@@ -14,7 +14,7 @@ namespace Observers
     {
         pRanking = nullptr;
     }
-    void RankingObserver::notify(sf::Keyboard::Key key_code)
+    void RankingObserver::update(sf::Keyboard::Key key_code)
     {
         //std::cout<<"EITAAAAAAAAAAA Ranking"<<std::endl;
         if (!pRanking)
