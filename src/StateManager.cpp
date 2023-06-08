@@ -70,6 +70,7 @@ namespace Managers
     {
         vector_states[currentState]->reset();
     }
+
     void StateManager::run()
     {
         vector_states[currentState]->execute();

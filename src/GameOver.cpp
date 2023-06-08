@@ -38,7 +38,6 @@ namespace Menus
         {
             buttons_draw();
             name.draw();
-            //printf ("\n\n\nOIIIIII");
         }
         else
         {
@@ -85,7 +84,9 @@ namespace Menus
     {
         if (!name_active)
         {
+            reset();
             name_active = true;
+
         }
     }
 
@@ -105,6 +106,7 @@ namespace Menus
         if (!buttons_active)
         {
             buttons_active = true;
+           // reset();
             return;
         }
         
@@ -131,6 +133,8 @@ namespace Menus
          final_name = false;
          name_active = false;
          name.setName(" ");
+         name_string = "";
+         printf ("\n aaaa\n nome");
     }
 
 

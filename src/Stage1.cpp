@@ -36,7 +36,8 @@ namespace Stages
                     pGM->center((*players.get_first())->get_position());
                 else
                 {
-                     pSM->set_CurrentState(3); // vai ser o gameover ou stage 2
+                     pSM->set_CurrentState(3);
+                     pSM->reset_current_state(); // vai ser o gameover ou stage 2
                      pGM->reset_camera();
                 }
                     
