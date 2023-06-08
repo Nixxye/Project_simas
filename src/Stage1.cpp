@@ -45,6 +45,7 @@ namespace Stages
                 {
                     player1->set_win(false);
                     pSM->set_CurrentState(2);
+                    pSM->reset_current_state();
                     //pGM->reset_camera();
                 }
                 if ((*players.get_first())->get_alive())
@@ -65,6 +66,7 @@ namespace Stages
                     player1->set_win(false);
                     player2->set_win(false);
                     pSM->set_CurrentState(5);
+                    pSM->reset_current_state();
 
                 }
                 if ((*players.get_first())->get_alive() && (*it)->get_alive())
