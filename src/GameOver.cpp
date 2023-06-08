@@ -84,9 +84,7 @@ namespace Menus
     {
         if (!name_active)
         {
-            reset();
             name_active = true;
-
         }
     }
 
