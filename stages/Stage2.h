@@ -4,7 +4,8 @@
 
 //#define PLAYER_FILE2 "../saves/stage2/players.dat"
 #define ENEMY_FILE2 "../saves/stage2/enemies.dat"
-#define PLAYER_RESET_FILE2 "../saves/stage2/reset_players.dat"
+#define PLAYER_RESET_FILE21 "../saves/stage2/reset_players1.dat"
+#define PLAYER_RESET_FILE22 "../saves/stage2/reset_players2.dat"
 #define ENEMY_RESET_FILE2 "../saves/stage2/reset_enemies.dat"
 #define SCENARIO_FILE2 "../saves/stage2/scenario.dat"
 

@@ -59,7 +59,12 @@ namespace Stages
                 //printf ("%d",players.get_size());
                 if ((*players.get_first())->get_alive() && (*it)->get_alive())
                     pGM->center((*it)->get_position(),(*players.get_first())->get_position());
-                else if (!(*players.get_first())->get_alive() && !(*it)->get_alive())
+                else 
+                {
+                    pSM->set_CurrentState(3);
+                    pGM->reset_camera();
+                }
+                /*else if (!(*players.get_first())->get_alive() && !(*it)->get_alive())
                 { 
                     pSM->set_CurrentState(3);
                     pGM->reset_camera();
@@ -67,7 +72,7 @@ namespace Stages
                 else if(!(*players.get_first())->get_alive())
                     pGM->center((*it)->get_position());
                 else 
-                    pGM->center((*players.get_first())->get_position());
+                    pGM->center((*players.get_first())->get_position());*/
             }
             Lists::List<Entes::Entity>::Iterator<Entes::Entity> it_enemies;
             bool anyEnemyAlive = false;
@@ -83,8 +88,8 @@ namespace Stages
 
                 if (!anyEnemyAlive)
                 {
-                    //pSM->set_CurrentState(3);
-                    //pGM->reset_camera();
+                    pSM->set_CurrentState(3);
+                    pGM->reset_camera();
                     //printf("GameOver\n"); // gameover
                 }
 
@@ -103,7 +108,7 @@ namespace Stages
 
         if (id_state == 2)
             players_file.open(PLAYER_FILE21);
-        if (id_state == 5)
+        else if (id_state == 5)
             players_file.open(PLAYER_FILE22);
 
 
@@ -220,7 +225,15 @@ namespace Stages
         int n, vx, vy, py, px, alive, damage, sizex, sizey, life;
         std::string line;
 
-        std::ifstream players_file(PLAYER_RESET_FILE2);
+        std::ifstream players_file;
+
+        if (id_state == 2)
+             players_file.open(PLAYER_RESET_FILE21);
+        else if (id_state == 5)
+            players_file.open(PLAYER_RESET_FILE22);
+        printf("aaaaaaaaaaaaaa\n\n\n\nreset");
+
+
         if (!players_file)
         {
             std::cout<<"Cannot open players_reset_file"<<std::endl;

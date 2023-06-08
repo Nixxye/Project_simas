@@ -56,7 +56,7 @@ namespace Menus
                 if (current_player == 0)
                     pSM->set_CurrentState(2);
                 else
-                    pSM->set_CurrentState(7);
+                    pSM->set_CurrentState(5);
             }
             break;
         case 1:

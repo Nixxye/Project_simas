@@ -64,16 +64,23 @@ namespace Stages
                 {
                     player1->set_win(false);
                     player2->set_win(false);
-                    pSM->set_CurrentState(2);
+                    pSM->set_CurrentState(5);
+
                 }
                 if ((*players.get_first())->get_alive() && (*it)->get_alive())
                     pGM->center((*it)->get_position(),(*players.get_first())->get_position());
+                else
+                 {
+                    pSM->set_CurrentState(3);
+                    pGM->reset_camera();
+                 }   
+                /*
                 else if (!(*players.get_first())->get_alive() && !(*it)->get_alive()) 
                     pSM->set_CurrentState(3); // mudar para o gameover
                 else if(!(*players.get_first())->get_alive())
                     pGM->center((*it)->get_position());
                 else 
-                    pGM->center((*players.get_first())->get_position());
+                    pGM->center((*players.get_first())->get_position());*/
             }
         }
         else{}
@@ -88,7 +95,7 @@ namespace Stages
 
         if (id_state == 1)
             players_file.open(PLAYER_FILE11);
-        if (id_state == 6)
+        else if (id_state == 6)
             players_file.open(PLAYER_FILE12);
 
         if (!players_file)
@@ -202,7 +209,13 @@ namespace Stages
         int n, vx, vy, py, px, alive, damage, sizex, sizey, life;
         std::string line;
 
-        std::ifstream players_file(PLAYER_RESET_FILE1);
+        std::ifstream players_file;
+
+        if (id_state == 1)
+             players_file.open(PLAYER_RESET_FILE11);
+        if (id_state == 6)
+            players_file.open(PLAYER_RESET_FILE12);
+        
         if (!players_file)
         {
             std::cout<<"Cannot open players_reset_file"<<std::endl;
