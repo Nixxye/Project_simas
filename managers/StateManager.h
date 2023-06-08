@@ -3,7 +3,15 @@
 #include "../states/State.h"
 #include <stdexcept>   
 #include <vector>
-
+/*States:
+0: Menu principal;
+1: Fase 1 com 1 player;
+2: Fase 2 com 1 player;
+3: GameOver;
+4: Ranking;
+5: Fase 2 com 2 players;
+6: Fase 1 com 2 players;
+*/
 namespace Managers
 {
     class StateManager
