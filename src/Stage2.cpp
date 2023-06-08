@@ -77,14 +77,14 @@ namespace Stages
                 if (!anyEnemyAlive)
                 {
                     //pSM->set_CurrentState(3);
-                    pGM->reset_camera();
+                    //pGM->reset_camera();
                     //printf("GameOver\n"); // gameover
                 }
 
 
         }
-        else
-            pGM->reset_camera();
+        else{}
+           // pGM->reset_camera();
         players.draw();
         enemies.draw();
         //std::cout<<(*enemies.get_first())->get_size().x<<" "<<(*enemies.get_first())->get_size().y<<std::endl;

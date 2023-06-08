@@ -38,7 +38,7 @@ namespace Stages
                 {
                     player1->set_win(false);
                     pSM->set_CurrentState(2);
-                    pGM->reset_camera();
+                    //pGM->reset_camera();
                 }
                 if ((*players.get_first())->get_alive())
                     pGM->center((*players.get_first())->get_position());
@@ -69,8 +69,8 @@ namespace Stages
                     pGM->center((*players.get_first())->get_position());
             }
         }
-        else
-            pGM->reset_camera();
+        else{}
+            //pGM->reset_camera();
         players.draw();
         enemies.draw();
         obstacles.draw();

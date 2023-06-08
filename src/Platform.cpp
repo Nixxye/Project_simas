@@ -8,7 +8,7 @@ namespace Entes
         Platform:: Platform(sf::Vector2f pos, bool check):
         Obstacle(11, pos)
         {
-            checkpoint=false; 
+            checkpoint=true; 
             texture = pGM->load_textures("../assets/plataform.png");
             body.setTexture(texture);
         }
