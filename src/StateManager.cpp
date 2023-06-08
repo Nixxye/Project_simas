@@ -38,7 +38,7 @@ namespace Managers
     {
         return currentState;
     }
-    //Tirar
+
     void StateManager:: add_state(States::State* pState)
     {
         try 
