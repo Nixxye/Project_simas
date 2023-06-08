@@ -50,7 +50,7 @@ namespace Entes
             attack_body.setOrigin(attack_body.getSize().x / 2, attack_body.getSize().y / 2);
             attack_body.setFillColor(sf::Color::Red);
 
-            pPObserver = new Observers::PlayerObserver(index);
+            //pPObserver = new Observers::PlayerObserver(index);
             //std::cout<<"Added player "<<index<<std::endl;
             if (player_id == 1)
             {

@@ -30,8 +30,8 @@ namespace Stages
 
     Stage::~Stage()
     {
-        if (pSObserver)
-            delete pSObserver;
+        //if (pSObserver)
+            //delete pSObserver;
     }    
     void Stage::draw()
     {
