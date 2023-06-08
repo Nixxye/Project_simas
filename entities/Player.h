@@ -44,6 +44,8 @@ namespace Entes
             sf::Vector2f get_attack_position() { return attack_body.getPosition(); }
             sf::Vector2f get_attack_size() { return attack_body.getSize(); }
             const int get_damage() const { return damage; }
+            void set_win (bool b) { win = b;}
+            bool get_win () {return win;}
 
             void draw();
             void save(std::ofstream& file);

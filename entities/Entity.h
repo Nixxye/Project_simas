@@ -60,8 +60,6 @@ namespace Entes
             //virtual const int get_damage() const {return 0;}
             const float get_mass() const {return mass;}
 
-            virtual Observers::Observer* get_observer() {return nullptr;}     
-
             //virtual void save(std::string filename) = 0;
     };
 }
