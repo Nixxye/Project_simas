@@ -33,7 +33,10 @@ namespace Managers
                 while (B != nullptr)
                 {
                     if ((*B)->get_alive())
+                    {
                         check_colision(*A, *B);
+                    }
+                        
                     B++;
                 }
             }
@@ -59,7 +62,7 @@ namespace Managers
     {
         sf::Vector2f posA = A->get_position(), posB = B->get_position(), sizeA = A->get_size(), sizeB = B->get_size();
         sf::Vector2f d = posB - posA;
-        if ((fabs(d.x) < (sizeA.x + sizeB.x)/2.0) && (fabs(d.y) < (sizeA.y + sizeB.y)/2.0))
+        if ((fabs(d.x) <= (sizeA.x + sizeB.x)/2.0) && (fabs(d.y) <= (sizeA.y + sizeB.y)/2.0))
         {
             if (fabs(d.x) - fabs(sizeA.x + sizeB.x)/2.0 < fabs(d.y) - fabs(sizeA.y + sizeB.y)/2.0)
             {

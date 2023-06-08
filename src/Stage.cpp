@@ -153,18 +153,19 @@ namespace Stages
                 {
                 //Plataforma:
                 case '0':
-                    aux = new Entes::Obstacles::Platform(sf::Vector2f(j * 50.f, i * 50.f));
+                    aux = new Entes::Obstacles::Platform(sf::Vector2f(j * OBSTACLE_SIZE, i * OBSTACLE_SIZE));
                     add_obstacle(aux);
                     break;
                 case '1':
-                    aux = new Entes::Obstacles::Slime(sf::Vector2f(j * 50.f, i * 50.f));
+                    aux = new Entes::Obstacles::Slime(sf::Vector2f(j * OBSTACLE_SIZE, i * OBSTACLE_SIZE));
                     add_obstacle(aux);
                     break;
                 case '2':
-                    aux = new Entes::Obstacles::Spike(sf::Vector2f(j * 50.f, i * 50.f));
+                    aux = new Entes::Obstacles::Spike(sf::Vector2f(j * OBSTACLE_SIZE, i * OBSTACLE_SIZE));
                     add_obstacle(aux);
+                    std::cout<<"S: "<<this<<std::endl;
                 case '5':
-                    aux = new Entes::Obstacles::Platform(sf::Vector2f(j * 50.f, i * 50.f), true);
+                    aux = new Entes::Obstacles::Platform(sf::Vector2f(j * OBSTACLE_SIZE, i * OBSTACLE_SIZE), true);
                     add_obstacle(aux);
                     break;                    
                 default:

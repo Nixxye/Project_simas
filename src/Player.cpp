@@ -158,7 +158,7 @@ namespace Entes
                         vel.x += SPEED / 2;
                 }
             }
-            if (vel.x <= SPEED/2 && vel.x >= -SPEED/2)
+            if (vel.x <= SPEED/30 && vel.x >= -SPEED/30)
             {
                 vel.x = 0.0;
             }
