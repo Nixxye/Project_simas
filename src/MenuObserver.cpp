@@ -19,7 +19,8 @@ namespace Observers
             //std::cout<<"EITAAAAAAAAAAA"<<std::endl;
             return;
         }
-        if (pSM->get_CurrentStateID() == 1 || pSM->get_CurrentStateID() == 2)
+        if (pSM->get_CurrentStateID() == 1 || pSM->get_CurrentStateID() == 2 ||
+        pSM->get_CurrentStateID() == 5 || pSM->get_CurrentStateID() == 6)
         {
             if (key_code == sf::Keyboard::Escape)
             {

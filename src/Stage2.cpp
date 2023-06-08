@@ -99,7 +99,14 @@ namespace Stages
     }
     void Stage2::save()
     {
-        std::ofstream players_file(PLAYER_FILE2);
+        std::ofstream players_file;
+
+        if (id_state == 2)
+            players_file.open(PLAYER_FILE21);
+        if (id_state == 5)
+            players_file.open(PLAYER_FILE22);
+
+
         if (!players_file)
         {
             std::cout<<"Cannot players file"<<std::endl;
@@ -129,9 +136,9 @@ namespace Stages
         std::ifstream players_file;
 
         if (id_state == 2)
-            players_file.open(PLAYER_FILE1);
+            players_file.open(PLAYER_FILE21);
         if (id_state == 5)
-            players_file.open(PLAYER_FILE2);
+            players_file.open(PLAYER_FILE22);
 
 
         if (!players_file)

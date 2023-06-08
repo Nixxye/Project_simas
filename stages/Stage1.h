@@ -7,6 +7,8 @@
 #define PLAYER_RESET_FILE1 "../saves/stage1/reset_players.dat"
 #define ENEMY_RESET_FILE1 "../saves/stage1/reset_enemies.dat"
 #define SCENARIO_FILE1 "../saves/stage1/scenario.dat"
+#define PLAYER_FILE11 "../saves/stage1/players1.dat"
+#define PLAYER_FILE12 "../saves/stage1/players2.dat"
 
 namespace Stages
 {

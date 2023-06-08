@@ -8,6 +8,9 @@
 #define ENEMY_RESET_FILE2 "../saves/stage2/reset_enemies.dat"
 #define SCENARIO_FILE2 "../saves/stage2/scenario.dat"
 
+#define PLAYER_FILE21 "../saves/stage2/players1.dat"
+#define PLAYER_FILE22 "../saves/stage2/players2.dat"
+
 namespace Stages
 {
     class Stage2: public Stage
