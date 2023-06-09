@@ -9,6 +9,13 @@ namespace Stages
         body.setTexture(texture);  
         create_scenario(SCENARIO_FILE2);
     }
+    Stage2::Stage2(int n_players):
+    Stage(SAVE_STAGE_2, FILE_STAGE_2, SAVE_BASE_2, 5)
+    {
+        texture = pGM->load_textures("../assets/stage2.png");
+        body.setTexture(texture);  
+        create_scenario(SCENARIO_FILE2);
+    }
 
     Stage2::~Stage2()
     {
@@ -52,16 +59,44 @@ namespace Stages
                 //printf ("%d",players.get_size());
                 if ((*players.get_first())->get_alive() && (*it)->get_alive())
                     pGM->center((*it)->get_position(),(*players.get_first())->get_position());
-                else if (!(*players.get_first())->get_alive() && !(*it)->get_alive()) 
-                    pSM->set_CurrentState(3); // mudar para o gameover
+                else 
+                {
+                    pSM->set_CurrentState(3);
+                    pGM->reset_camera();
+                }
+                /*else if (!(*players.get_first())->get_alive() && !(*it)->get_alive())
+                { 
+                    pSM->set_CurrentState(3);
+                    pGM->reset_camera();
+                } 
                 else if(!(*players.get_first())->get_alive())
                     pGM->center((*it)->get_position());
                 else 
-                    pGM->center((*players.get_first())->get_position());
+                    pGM->center((*players.get_first())->get_position());*/
             }
+            Lists::List<Entes::Entity>::Iterator<Entes::Entity> it_enemies;
+            bool anyEnemyAlive = false;
+
+                for (it_enemies = enemies.get_first(); it_enemies != nullptr; it_enemies++)
+                {
+                    if ((*it_enemies)->get_alive())
+                    {
+                        anyEnemyAlive = true;
+                        break;
+                    }
+                }
+
+                if (!anyEnemyAlive)
+                {
+                    pSM->set_CurrentState(3);
+                    pGM->reset_camera();
+                    //printf("GameOver\n"); // gameover
+                }
+
+
         }
-        else
-            pGM->reset_camera();
+        else{}
+           // pGM->reset_camera();
         players.draw();
         enemies.draw();
         //std::cout<<(*enemies.get_first())->get_size().x<<" "<<(*enemies.get_first())->get_size().y<<std::endl;
@@ -69,7 +104,20 @@ namespace Stages
     }
     void Stage2::save()
     {
-        std::ofstream players_file(PLAYER_FILE2);
+        std::ofstream players_file;
+        std::ofstream enemies_file;
+        if (id_state == 2)
+        {
+            players_file.open(PLAYER_FILE21);
+            enemies_file.open(ENEMY_FILE21);
+        }
+        else if (id_state == 5)
+        {
+            players_file.open(PLAYER_FILE22);
+            enemies_file.open(ENEMY_FILE22);
+        }
+
+
         if (!players_file)
         {
             std::cout<<"Cannot players file"<<std::endl;
@@ -80,7 +128,7 @@ namespace Stages
         players.save(players_file);
         players_file.close();   
 
-        std::ofstream enemies_file(ENEMY_FILE2);
+        
         if (!enemies_file)
         {
             std::cout<<"Cannot players file"<<std::endl;
@@ -96,11 +144,23 @@ namespace Stages
         int n, alive, damage, life;
         float vx, vy, px, py, sizex, sizey;
         std::string line;
+        std::ifstream players_file;
+        std::ifstream enemies_file;
+        if (id_state == 2)
+        {
+            players_file.open(PLAYER_FILE21);
+            enemies_file.open(ENEMY_FILE21);
+        }
+        if (id_state == 5)
+        {
+            players_file.open(PLAYER_FILE22);
+            enemies_file.open(ENEMY_FILE22);
+        }
 
-        std::ifstream players_file(PLAYER_FILE2);
+
         if (!players_file)
         {
-            std::cout<<"Cannot open players_file"<<std::endl;
+            std::cout<<"Cannot open players_file Stage2"<<std::endl;
             exit(1);
         }
         players_file >> n;
@@ -112,10 +172,10 @@ namespace Stages
             add_player(player); 
         }
 
-        std::ifstream enemies_file(ENEMY_FILE2);
+        
         if (!enemies_file)
         {
-            std::cout<<"Cannot open enemies_file"<<std::endl;
+            std::cout<<"Cannot open enemies_file Stage2 load"<<std::endl;
             exit(1);
         }
         enemies_file >> n;
@@ -177,7 +237,21 @@ namespace Stages
         int n, vx, vy, py, px, alive, damage, sizex, sizey, life;
         std::string line;
 
-        std::ifstream players_file(PLAYER_RESET_FILE2);
+        std::ifstream players_file;
+        std::ifstream enemies_file;
+        if (id_state == 2)
+        {
+             players_file.open(PLAYER_RESET_FILE21);
+             enemies_file.open(ENEMY_RESET_FILE21);
+        }
+        else if (id_state == 5)
+        {
+            players_file.open(PLAYER_RESET_FILE22);
+            enemies_file.open(ENEMY_RESET_FILE22);
+        }
+        printf("aaaaaaaaaaaaaa\n\n\n\nreset");
+
+
         if (!players_file)
         {
             std::cout<<"Cannot open players_reset_file"<<std::endl;
@@ -195,7 +269,7 @@ namespace Stages
         }
         std::cout<<"Saiu do loop"<<std::endl;
 
-        std::ifstream enemies_file(ENEMY_RESET_FILE2);
+
         if (!enemies_file)
         {
             std::cout<<"Cannot open enemies_reset_file"<<std::endl;

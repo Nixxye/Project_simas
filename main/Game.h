@@ -17,8 +17,10 @@ private:
     Managers::GraphicsManager*  pGM;
     Managers::StateManager* pSM;
     Managers::EventsManager* pEM;
-    Stages::Stage1 stage1;  
-    Stages::Stage2 stage2;  
+    Stages::Stage1 stage1;
+    Stages::Stage1 stage1_2p;    
+    Stages::Stage2 stage2;
+    Stages::Stage2 stage2_2p;    
     Menus::MainMenu main_menu;
     Menus :: GameOver game_over;
     Menus :: Ranking ranking;

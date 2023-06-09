@@ -19,7 +19,7 @@ namespace Managers
     currentState(0)
     {
         //tamanho 5 por enquanto.
-        vector_states.resize(5);
+        vector_states.resize(8);
     }
     StateManager::~StateManager()
     {

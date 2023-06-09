@@ -25,7 +25,10 @@ namespace Menus
     }
     GameOver::~GameOver()
     {
-        save();
+        if (pGOObserver)
+            delete pGOObserver;
+        
+        pGOObserver = nullptr;
     }
 
     void GameOver::draw()

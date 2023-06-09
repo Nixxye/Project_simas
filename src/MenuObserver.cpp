@@ -19,15 +19,17 @@ namespace Observers
             //std::cout<<"EITAAAAAAAAAAA"<<std::endl;
             return;
         }
-        if (pSM->get_CurrentStateID() == 1 || pSM->get_CurrentStateID() == 2)
+        if (pSM->get_CurrentStateID() == 1 || pSM->get_CurrentStateID() == 2 ||
+        pSM->get_CurrentStateID() == 5 || pSM->get_CurrentStateID() == 6)
         {
             if (key_code == sf::Keyboard::Escape)
             {
                 pSM->set_CurrentState(0);
                 pGM->reset_camera();
+                return;
             }
         }
-        else if (pSM->get_CurrentStateID() != 0)
+        if (pSM->get_CurrentStateID() != 0)
             return;
         //std::cout<<"Teste"<<std::endl;
         if (key_code == sf::Keyboard::Up)
@@ -38,8 +40,7 @@ namespace Observers
             pMenu->select();
         if (key_code == sf::Keyboard::Right ||key_code == sf::Keyboard::Left)
             pMenu->move_horizontally(1);
-        if (key_code == sf::Keyboard::Num1 ||key_code == sf::Keyboard::Num2 ||
-        key_code == sf::Keyboard::Numpad1  ||key_code == sf::Keyboard::Numpad2 )
+        if (key_code == sf::Keyboard::LControl||key_code == sf::Keyboard::RControl)
             pMenu->move_horizontally(2);
         
     }

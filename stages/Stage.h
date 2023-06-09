@@ -46,6 +46,9 @@
 #define FILE_STAGE_2 "../saves/stage2.dat"
 #define SAVE_BASE_2 "../saves/savebase2.dat"
 
+
+
+
 namespace Stages
 {
     class Stage: public Ent, public States::State
@@ -60,6 +63,8 @@ namespace Stages
         std::string save_file;
         std::string stage_info;
         std::string save_base;
+
+
         
         Managers::ColisionManager colision_manager;
         Managers::EventsManager* events_manager;
@@ -86,5 +91,7 @@ namespace Stages
         //Provavelmente vai sair tbm:
         Entes::Entity* create_bullet(int id, sf::Vector2f pos, sf::Vector2f vel, float lifetime, Entes::Entity* boss);
         void create_scenario(std::string file);
+        //void set_nplayers(int n);
+
     };
 }

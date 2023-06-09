@@ -15,8 +15,9 @@ namespace Entes
         explosion(sensor_radius),
         power(40.f)
         {
-            body.setSize(sf::Vector2f(10.f, 10.f));
-            explosion.setFillColor(sf::Color::Black);
+            body.setSize(sf::Vector2f(100.f, 100.f));
+            body.setFillColor(sf::Color::Yellow);
+            explosion.setFillColor(sf::Color::Green);
             explosion.setOrigin(sf::Vector2f(sensor_radius, sensor_radius));
         }
         Enemy2::Enemy2(bool alv, int lf, sf::Vector2f pos, sf::Vector2f velocity, float dmg, sf::Vector2f size, Lists::EntityList* p, float sr, bool atck, sf::Vector2f axs, float brst, float pw):
@@ -33,7 +34,7 @@ namespace Entes
             life = lf;
             alive = alv;
             
-            explosion.setFillColor(sf::Color::Black);
+            explosion.setFillColor(sf::Color::Green);
             explosion.setOrigin(sf::Vector2f(sensor_radius, sensor_radius));   
         }
         Enemy2:: ~Enemy2()

@@ -45,21 +45,34 @@ namespace Menus
         case 0:
             if (current_stage == 1)
             {
-                pSM->set_CurrentState(1);
+                if (current_player == 0)
+                    pSM->set_CurrentState(1);
+                else
+                    pSM->set_CurrentState(6);
+
             }
             else
             {
-                pSM->set_CurrentState(2);
+                if (current_player == 0)
+                    pSM->set_CurrentState(2);
+                else
+                    pSM->set_CurrentState(5);
             }
             break;
         case 1:
             if (current_stage == 1)
             {
-                pSM->set_CurrentState(1);
+                if (current_player == 0)
+                    pSM->set_CurrentState(1);
+                else
+                    pSM->set_CurrentState(6);
             }
             else
             {
-                pSM->set_CurrentState(2);
+                if (current_player == 0)
+                    pSM->set_CurrentState(2);
+                else
+                    pSM->set_CurrentState(5);
             }
             pSM->reset_current_state();
             break;

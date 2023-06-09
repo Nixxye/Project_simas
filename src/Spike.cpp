@@ -20,7 +20,7 @@ namespace Entes
         void Spike::collide(Entity* other, std::string direction)
         {
             other->inflict_damage(damage);
-            std::cout<<"Tome "<<id<<std::endl;
+            //std::cout<<"Tome "<<id<<std::endl;
         }
     }    
 }
