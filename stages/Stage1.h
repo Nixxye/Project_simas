@@ -3,10 +3,17 @@
 #include "../stages/Stage.h"
 
 //#define PLAYER_FILE1 "../saves/stage1/players.dat"
-#define ENEMY_FILE1 "../saves/stage1/enemies.dat"
+#define ENEMY_FILE11 "../saves/stage1/enemies_1player.dat"
+#define ENEMY_FILE12 "../saves/stage1/enemies_2players.dat"
+
 #define PLAYER_RESET_FILE11 "../saves/stage1/reset_players1.dat"
 #define PLAYER_RESET_FILE12 "../saves/stage1/reset_players2.dat"
-#define ENEMY_RESET_FILE1 "../saves/stage1/reset_enemies.dat"
+
+
+#define ENEMY_RESET_FILE11 "../saves/stage1/reset_enemies_1player.dat"
+#define ENEMY_RESET_FILE12 "../saves/stage1/reset_enemies_2players.dat"
+
+
 #define SCENARIO_FILE1 "../saves/stage1/scenario.dat"
 #define PLAYER_FILE11 "../saves/stage1/players1.dat"
 #define PLAYER_FILE12 "../saves/stage1/players2.dat"

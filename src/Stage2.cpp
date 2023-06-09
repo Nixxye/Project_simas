@@ -105,11 +105,17 @@ namespace Stages
     void Stage2::save()
     {
         std::ofstream players_file;
-
+        std::ofstream enemies_file;
         if (id_state == 2)
+        {
             players_file.open(PLAYER_FILE21);
+            enemies_file.open(ENEMY_FILE21);
+        }
         else if (id_state == 5)
+        {
             players_file.open(PLAYER_FILE22);
+            enemies_file.open(ENEMY_FILE22);
+        }
 
 
         if (!players_file)
@@ -122,7 +128,7 @@ namespace Stages
         players.save(players_file);
         players_file.close();   
 
-        std::ofstream enemies_file(ENEMY_FILE2);
+        
         if (!enemies_file)
         {
             std::cout<<"Cannot players file"<<std::endl;
@@ -139,16 +145,22 @@ namespace Stages
         float vx, vy, px, py, sizex, sizey;
         std::string line;
         std::ifstream players_file;
-
+        std::ifstream enemies_file;
         if (id_state == 2)
+        {
             players_file.open(PLAYER_FILE21);
+            enemies_file.open(ENEMY_FILE21);
+        }
         if (id_state == 5)
+        {
             players_file.open(PLAYER_FILE22);
+            enemies_file.open(ENEMY_FILE22);
+        }
 
 
         if (!players_file)
         {
-            std::cout<<"Cannot open players_file"<<std::endl;
+            std::cout<<"Cannot open players_file Stage2"<<std::endl;
             exit(1);
         }
         players_file >> n;
@@ -160,7 +172,7 @@ namespace Stages
             add_player(player); 
         }
 
-        std::ifstream enemies_file(ENEMY_FILE2);
+        
         if (!enemies_file)
         {
             std::cout<<"Cannot open enemies_file"<<std::endl;
@@ -226,11 +238,17 @@ namespace Stages
         std::string line;
 
         std::ifstream players_file;
-
+        std::ifstream enemies_file;
         if (id_state == 2)
+        {
              players_file.open(PLAYER_RESET_FILE21);
+             enemies_file.open(ENEMY_RESET_FILE21);
+        }
         else if (id_state == 5)
+        {
             players_file.open(PLAYER_RESET_FILE22);
+            enemies_file.open(ENEMY_RESET_FILE22);
+        }
         printf("aaaaaaaaaaaaaa\n\n\n\nreset");
 
 
@@ -249,7 +267,7 @@ namespace Stages
             add_player(player); 
         }
 
-        std::ifstream enemies_file(ENEMY_RESET_FILE2);
+
         if (!enemies_file)
         {
             std::cout<<"Cannot open enemies_reset_file"<<std::endl;
