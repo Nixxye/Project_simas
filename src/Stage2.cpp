@@ -184,46 +184,7 @@ namespace Stages
         {
             create_enemy(enemies_file);
         }  
-        //std::cout<<"Número de inimigos: "<<enemies.get_size()<<std::endl;
-        //VAI SAIR:
-        /*
-        std::ifstream file2("../saves/stage2.dat");
-
-        if (!file2)
-        {
-            std::cout <<"ERROR: 4"<<std::endl;
-            exit(2);
-        }
-
-        std::getline(file2, line);
-
-        if (line != "#obstacles")
-        {
-            std::cout << "ERROR 6 "<< std::endl;
-            file2.close();
-            exit(3);
-        }
-        file2 >> n;
-
-        std::getline(file2, line);
-        std::getline(file2, line);
-        for (int i = 0; i < n; i++)
-        {
-            //std::cout<<"Aqui "<<stage_info<<std::endl;
-            int id;
-            float posX, posY, sizeX, sizeY;
-
-            file2 >> id >> posX >> posY >> sizeX >> sizeY;
-            //cout << id << posX << posY << velX << velY << endl;
-            std::getline(file2, line);
-            //Static cast;
-            //Mudar dps o id:
-            add_obstacle(create_obstacle(id, sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY)));
-            //std::cout<<"LOADED"<<std::endl;
-            //std::cout<<"Obstacle added"<<std::endl;
-        }
-        file2.close();
-        */
+        
         loaded = true;
     }
     void Stage2::reset()
@@ -283,51 +244,7 @@ namespace Stages
             getline(enemies_file, line);
             create_enemy(enemies_file);
         }  
-        //std::cout<<"Número de inimigos: "<<enemies.get_size()<<std::endl; 
-        /*     
-        if (obstacles.get_size() <= 0)
-        {
-                //VAI SAIR:
-            std::ifstream file2("../saves/stage2.dat");
 
-            if (!file2)
-            {
-                std::cout <<"ERROR: 4"<<std::endl;
-                exit(2);
-            }
-
-            std::getline(file2, line);
-
-            if (line != "#obstacles")
-            {
-                std::cout << "ERROR 6 "<< std::endl;
-                file2.close();
-                exit(3);
-            }
-            file2 >> n;
-
-            std::getline(file2, line);
-            std::getline(file2, line);
-            for (int i = 0; i < n; i++)
-            {
-                //std::cout<<"Aqui "<<stage_info<<std::endl;
-                int id;
-                float posX, posY, sizeX, sizeY;
-
-                file2 >> id >> posX >> posY >> sizeX >> sizeY;
-                //cout << id << posX << posY << velX << velY << endl;
-                std::getline(file2, line);
-                //Static cast;
-                //Mudar dps o id:
-                add_obstacle(create_obstacle(id, sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY)));
-                //std::cout<<"LOADED"<<std::endl;
-                //std::cout<<"Obstacle added"<<std::endl;
-            }
-            file2.close();
-
-            loaded = true;
-        }
-        */
        loaded = true;
     }
 
