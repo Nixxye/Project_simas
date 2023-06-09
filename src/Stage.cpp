@@ -157,12 +157,35 @@ namespace Stages
                     add_obstacle(aux);
                     break;
                 case '1':
-                    aux = new Entes::Obstacles::Slime(sf::Vector2f(j * 50.f, i * 50.f));
+                {
+                    int n_rand = rand() % 3;
+
+                    if (n_rand == 0)
+                        aux = new Entes::Obstacles::Slime(sf::Vector2f(j * 50.f, i * 50.f));
+                    else if (n_rand == 1)
+                        aux = new Entes::Obstacles::Spike(sf::Vector2f(j * 50.f, i * 50.f));
+                    else
+                        aux = new Entes::Obstacles::Platform(sf::Vector2f(j * 50.f, i * 50.f));
+
                     add_obstacle(aux);
                     break;
+                }
                 case '2':
-                    aux = new Entes::Obstacles::Spike(sf::Vector2f(j * 50.f, i * 50.f));
-                    add_obstacle(aux);
+                {
+                    int n_rand = rand() % 3;
+
+                    if (n_rand == 0)
+                    {
+                        aux = new Entes::Obstacles::Platform(sf::Vector2f(j * 50.f, i * 50.f));
+                        add_obstacle(aux);
+                    }
+                    else if (n_rand == 1)
+                    {
+                        aux = new Entes::Obstacles::Spike(sf::Vector2f(j * 50.f, i * 50.f));
+                        add_obstacle(aux);
+                    }
+                    break;
+                }
                 case '5':
                     aux = new Entes::Obstacles::Platform(sf::Vector2f(j * 50.f, i * 50.f), true);
                     add_obstacle(aux);
