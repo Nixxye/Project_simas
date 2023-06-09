@@ -163,7 +163,7 @@ namespace Stages
        
         if (!enemies_file)
         {
-            std::cout<<"Cannot open enemies_file"<<std::endl;
+            std::cout<<"Cannot open enemies_file Stage 1 load"<<std::endl;
             exit(1);
         }
         enemies_file >> n;
