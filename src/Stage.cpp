@@ -1,5 +1,6 @@
 #include "../stages/Stage.h"
 
+
 //PODE APAGAR TUDO RELACIONADO À LISTA DE BALAS AQUI:
 
 namespace Stages
@@ -144,6 +145,7 @@ namespace Stages
         std::string line;
         Entes::Entity* aux = nullptr;
         int j = 0;
+        std::srand(std::time(NULL)); //aleatorio
         for (int i = 0; std::getline(input, line); i++)
         {
             j = 0;
@@ -170,13 +172,12 @@ namespace Stages
                 }
                 case '4': //aleatorio
                 {
-                    int n_rand = rand() % 3;
-
+                    int n_rand = rand() % 4;
                     if (n_rand == 0)
                         aux = new Entes::Obstacles::Slime(sf::Vector2f(j * 50.f, i * 50.f));
                     else if (n_rand == 1)
                         aux = new Entes::Obstacles::Spike(sf::Vector2f(j * 50.f, i * 50.f));
-                    else
+                    else if (n_rand == 2)
                         aux = new Entes::Obstacles::Platform(sf::Vector2f(j * 50.f, i * 50.f));
 
                     add_obstacle(aux);
