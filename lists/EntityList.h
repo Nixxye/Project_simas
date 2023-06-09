@@ -24,6 +24,7 @@ namespace Lists
         //void set_alive(bool a);
 
         const int get_size() const { return list.get_size();}
+        const int get_nkilled();
         Lists::List<Entes::Entity>::Iterator<Entes::Entity> get_first(){ return list.get_first();}
     };    
 }

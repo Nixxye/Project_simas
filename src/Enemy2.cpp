@@ -53,7 +53,7 @@ namespace Entes
                 if (!attacking)
                 {
                     sf::Vector2f d;
-                    std::cout<<"Aqui"<<std::endl;
+                    //std::cout<<"Aqui"<<std::endl;
                     Lists::List<Entes::Entity>::Iterator<Entes::Entity> aux = players->get_first();
                     while(aux != nullptr)
                     {

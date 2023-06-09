@@ -11,13 +11,13 @@ namespace Entes
         {
             body.setOrigin(body.getSize()/2.f);
             body.setPosition(pos);
+            grounded = true;
             
         }
         Obstacle::~Obstacle()
         {
             
-        }
-        void Obstacle::execute(){}    
+        }   
         void Obstacle::draw()
         {
             if(get_alive())

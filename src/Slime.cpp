@@ -32,6 +32,19 @@ namespace Entes
                 
                 //Teste:
         }
+        void Slime::execute()
+        {
+            move();
+        }
+        void Slime::move()
+        {
+            vel.y += G;
+            if (grounded)
+            {
+                vel.y -=G;
+            }
+            body.setPosition(body.getPosition() + vel);
+        }
     }    
 }
 

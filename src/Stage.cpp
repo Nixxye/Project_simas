@@ -1,6 +1,5 @@
 #include "../stages/Stage.h"
 
-
 //PODE APAGAR TUDO RELACIONADO À LISTA DE BALAS AQUI:
 
 namespace Stages
@@ -38,6 +37,7 @@ namespace Stages
     {
         //N sei o q fazer aqui.
         pGM->draw(&(this->body));
+        hud.draw();
     }
     
     void Stage::add_enemy(Entes::Entity* enemy)
@@ -146,7 +146,7 @@ namespace Stages
         Entes::Entity* aux = nullptr;
         int j = 0;
         std::srand(std::time(NULL)); //aleatorio
-        int n_rand = rand() % 4;
+        int n_rand = 0;
         for (int i = 0; std::getline(input, line); i++)
         {
             j = 0;
@@ -167,15 +167,12 @@ namespace Stages
                     aux = new Entes::Obstacles::Spike(sf::Vector2f(j * OBSTACLE_SIZE, i * OBSTACLE_SIZE));
                     add_obstacle(aux);
                     break;
-                //aleatorio
+                //aleatorio espinho
                 case '4':
-                    if (n_rand == 0)
-                        aux = new Entes::Obstacles::Slime(sf::Vector2f(j * 50.f, i * 50.f));
-                    else if (n_rand == 1)
-                        aux = new Entes::Obstacles::Spike(sf::Vector2f(j * 50.f, i * 50.f));
-                    else if (n_rand == 2)
-                        aux = new Entes::Obstacles::Platform(sf::Vector2f(j * 50.f, i * 50.f));
-
+                    n_rand = rand() % 3;
+                    aux = new Entes::Obstacles::Spike(sf::Vector2f(j * 50.f, i * 50.f));
+                    if (n_rand != 0)
+                        aux->set_alive(false);
                     add_obstacle(aux);
                     break;
                 case '5':

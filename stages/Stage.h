@@ -5,6 +5,7 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "../entities/Hud.h"
 #include "../entities/Entity.h"
 #include "../entities/Player.h"
 #include "../entities/Enemy1.h"
@@ -64,7 +65,7 @@ namespace Stages
         std::string stage_info;
         std::string save_base;
 
-
+        Entes::Hud hud;
         
         Managers::ColisionManager colision_manager;
         Managers::EventsManager* events_manager;

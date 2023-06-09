@@ -42,7 +42,20 @@ namespace Entes
                     //printf("Plataforma normal\n");
                 }*/
             }
+        }
+        void Platform::execute()
+        {
+            move();
         }   
+        void Platform::move()
+        {
+            vel.y += G;
+            if (grounded)
+            {
+                vel.y -=G;
+            }
+            body.setPosition(body.getPosition() + vel);
+        }
     }    
 }
 

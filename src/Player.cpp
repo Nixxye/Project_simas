@@ -256,7 +256,7 @@ namespace Entes
                 }
                 break;
             case 13:
-                std::cout<<"Espinho"<<std::endl;
+                //std::cout<<"Espinho"<<std::endl;
                 if (direction == "Below")
                 {
                     vel = sf::Vector2f(vel.x, -5.f);

@@ -51,17 +51,18 @@ namespace Lists
             aux++;        
         }    
     }
-    /*
-    void EntityList::set_alive(bool a)
+    const int EntityList::get_nkilled()
     {
+        int n = 0;
         Lists::List<Entes::Entity>::Iterator<Entes::Entity> aux = list.get_first();
         while(aux != nullptr)
         {
-            (*aux)->set_alive(a);
-            aux++;       
-        }    
-    } 
-    */ 
+            if (!((*aux)->get_alive()))
+                n++;
+            aux++;        
+        }  
+        return n;
+    }
     void EntityList::save(std::ofstream& file)
     {
         Lists::List<Entes::Entity>::Iterator<Entes::Entity> aux = list.get_first();

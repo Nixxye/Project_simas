@@ -17,7 +17,7 @@ namespace Menus
         name_string = "";
         pGOObserver = new Observers::GameOverObserver;
         pGOObserver->set_menu(this);
-        set_points(123);
+        //set_points(123);
         buttons_active = false;
         final_name = false;
         name_active = false;
@@ -65,9 +65,10 @@ namespace Menus
             return;
         //name_string.append (" - points:");
         //name_string.append (points_string);
-    
-        name.setName(name_string + points_string);
+        points_string = std::to_string(Entes::Hud::get_points());
+        name.setName(name_string + " - " + points_string);
         ranking->add_newRanking(Entes::Hud::get_points(), name_string);
+
         name.setPosition(sf::Vector2f(60.f, 450.f));
         buttons_active = false;
         final_name = true;
@@ -135,7 +136,7 @@ namespace Menus
          name_active = false;
          name.setName(" ");
          name_string = "";
-         printf ("\n aaaa\n nome");
+         //printf ("\n aaaa\n nome");
     }
 
 

@@ -16,7 +16,8 @@ namespace Entes
                 Platform(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), bool check = false);
                 ~Platform();
                 void collide(Entity* other, std::string  direction = "");
-                void execute(){}
+                void execute();
+                void move();
             
         };    
     }    

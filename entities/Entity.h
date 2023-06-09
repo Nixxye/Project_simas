@@ -49,6 +49,7 @@ namespace Entes
             void set_vel(sf::Vector2f v){vel = v;}
             void set_colision_manager(Managers::ColisionManager* cm) { colision_manager = cm; }
             virtual void set_slowed(int s) { slowed = s; }
+            virtual void set_alive(bool a) = 0;
 
             sf::Vector2f get_vel(){return vel;}
             int get_speed(){return speed;}

@@ -16,7 +16,8 @@ namespace Entes
                 //criar construtora padrão:
                 ~Spike();
                 void collide(Entity* other, std::string  direction = "");
-                void execute(){}
+                void execute();
+                void move();
                 const int get_damage() const { return damage; }
         };    
     }    

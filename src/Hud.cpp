@@ -2,19 +2,15 @@
 
 namespace Entes
 {
-    Hud* Hud::instance = nullptr; 
-    Hud::Hud()
+    int Hud::points(0);    
+    Hud::Hud():
+    kills(0),
+    life()
     {
 
     }
     Hud::~Hud()
     {
         
-    }
-    Hud* Hud::get_instance()
-    {
-        if(!instance)
-            instance = new Hud();
-        return instance;
     }
 }

@@ -14,7 +14,8 @@ namespace Entes
                 Slime(sf::Vector2f pos, int sl = 4);
                 ~Slime();
                 void collide(Entity* other, std::string  direction = "");
-                void execute(){}
+                void execute();
+                void move();
                 void set_slow_level(int s) { slow_level = s; }           
         };    
     }    
