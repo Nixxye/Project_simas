@@ -146,6 +146,7 @@ namespace Stages
         Entes::Entity* aux = nullptr;
         int j = 0;
         std::srand(std::time(NULL)); //aleatorio
+        int n_rand = rand() % 4;
         for (int i = 0; std::getline(input, line); i++)
         {
             j = 0;
@@ -166,9 +167,8 @@ namespace Stages
                     aux = new Entes::Obstacles::Spike(sf::Vector2f(j * OBSTACLE_SIZE, i * OBSTACLE_SIZE));
                     add_obstacle(aux);
                     break;
-                }
-                case '4': //aleatorio
-                    int n_rand = rand() % 4;
+                //aleatorio
+                case '4':
                     if (n_rand == 0)
                         aux = new Entes::Obstacles::Slime(sf::Vector2f(j * 50.f, i * 50.f));
                     else if (n_rand == 1)
@@ -184,8 +184,9 @@ namespace Stages
                     break;                    
                 default:
                     break;
+                }    
                 j++;
-            }    
+            }
         }
     }
 }
