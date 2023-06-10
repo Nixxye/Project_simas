@@ -159,19 +159,24 @@ namespace Entes
             {
                 vel.x = 0.0;
             }
-            if (!grounded)
+            if (slowed > 1)
+                vel.y += GRAVITY / 3;
+            else 
+                vel.y += GRAVITY;
+            if (grounded)
             {
                 if (slowed > 1)
-                    vel.y += GRAVITY / 3;
+                    vel.y -= GRAVITY / 3;
                 else 
-                    vel.y += GRAVITY;
+                    vel.y -= GRAVITY;
+                if ( (player_id == 1 && sf::Keyboard::isKeyPressed(sf::Keyboard::W)) ||
+                (player_id == 2 && sf::Keyboard::isKeyPressed(sf::Keyboard::Up) )) //Up
+                {
+                    vel.y -= 10.f;
+                    body.setPosition(body.getPosition() + sf::Vector2f(0.f, 0.5));
+                }
             }
-            else if ( (player_id == 1 && sf::Keyboard::isKeyPressed(sf::Keyboard::W)) ||
-            (player_id == 2 && sf::Keyboard::isKeyPressed(sf::Keyboard::Up) )) //Up
-            {
-                vel.y -= 10.f;
-                body.setPosition(body.getPosition() + sf::Vector2f(0.f, 0.5));
-            }
+
             //N sei pq a gravidade está mais rápida quando nos movemos; -> Gimmick
                 //std::cout<<vel.x<<" "<<vel.y<<std::endl;
                 body.setPosition(body.getPosition() + vel);
@@ -184,7 +189,6 @@ namespace Entes
         void Player::collide(Entity *other, std::string direction)
         {
             int index = other->get_id();
-            //std::cout<<index<<std::endl;
             switch (index)
             {
             case 1:

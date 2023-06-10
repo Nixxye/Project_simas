@@ -56,8 +56,9 @@ namespace Entes
         }
         void Boss::move()
         {
-            if (!grounded)
-                vel.y += GRAVITY;
+            vel.y += GRAVITY;
+            if (grounded)
+                vel.y -= GRAVITY;
             //Voar voar, subir subir...
             vel.y -= (rand() % (int) (10*GRAVITY)) / 10.f + GRAVITY * 2 / 3;
             body.setPosition(body.getPosition() + vel*(float) speed);

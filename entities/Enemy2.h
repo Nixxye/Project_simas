@@ -16,6 +16,7 @@ namespace Entes
             float burst;
             sf::CircleShape explosion;
             float power;
+            bool exploding;
         public:
             Enemy2(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f velocity = sf::Vector2f(50.f, 50.f), sf::Vector2f size = sf::Vector2f(0.f, 0.f), Lists::EntityList* p = nullptr);
             Enemy2(bool alv, int lf, sf::Vector2f pos, sf::Vector2f velocity, float dmg, sf::Vector2f size, Lists::EntityList* p, float sr, bool atck, sf::Vector2f axs, float brst, float pw);
@@ -26,6 +27,7 @@ namespace Entes
             void explode();
             void set_power(int nuke) { power = nuke; }
             void save(std::ofstream& file);
+            void draw();
         };    
     }
 }

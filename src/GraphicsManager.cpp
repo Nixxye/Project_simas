@@ -70,7 +70,8 @@ namespace Managers
 
         if (!tex->loadFromFile(path))
         {
-            std::cout<<"Texture" <<std::endl;
+            //Tratar erro:
+            //std::cout<<"Texture" <<std::endl;
         }
         
         textures[path] = tex;

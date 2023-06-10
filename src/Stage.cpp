@@ -75,32 +75,30 @@ namespace Stages
         int index, alive, life;
         std::string line;
         float px, py, vx, vy, damage, sx, sy;
-        int rnd;
         file >> index >> alive >> life >> damage >> px >> py >> vx >> vy;
 
         std::srand(std::time(NULL)); //aleatorio
         if (alive != 0 && alive != 1)
-            rnd = rand() % alive;
-        std::cout<<"--"<<index<<"--"<<std::endl;
+            alive = rand() % alive;
         //FAZER STATIC CAST AQUI:
         switch (index)
         {
         case 1:
             int mc;
             file >> sx >> sy >> mc;
-            aux = new Entes::Characters::Enemy1(!((bool) rnd), life, sf::Vector2f(px, py), sf::Vector2f(vx, vy), damage, sf::Vector2f(sx, sy), mc);
+            aux = new Entes::Characters::Enemy1(((bool) alive), life, sf::Vector2f(px, py), sf::Vector2f(vx, vy), damage, sf::Vector2f(sx, sy), mc);
             break;
         case 2:
             float sensor_radius, axis_x, axis_y, burst, power;
             int attacking;
             file >> sx >> sy >> sensor_radius >> attacking >> axis_x >> axis_y >> burst >> power;
-            aux = new Entes::Characters::Enemy2(!((bool) rnd), life, sf::Vector2f(px, py), sf::Vector2f(vx, vy), damage, sf::Vector2f(sx, sy), &players, sensor_radius, (bool) attacking, sf::Vector2f(axis_x, axis_y), burst, power);
+            aux = new Entes::Characters::Enemy2(((bool) alive), life, sf::Vector2f(px, py), sf::Vector2f(vx, vy), damage, sf::Vector2f(sx, sy), &players, sensor_radius, (bool) attacking, sf::Vector2f(axis_x, axis_y), burst, power);
             break;
         case 3:
             int attack_delay;
             file >> sx >> sy >> attack_delay;
             //std::cout<<px<<" "<<py<<" "<<vx<<" "<<vy<<" "<<sx<<" "<<sy;
-            aux = new Entes::Characters::Boss(!((bool) rnd), life, sf::Vector2f(px, py), sf::Vector2f(vx, vy), damage, sf::Vector2f(sx, sy), attack_delay);
+            aux = new Entes::Characters::Boss(((bool) alive), life, sf::Vector2f(px, py), sf::Vector2f(vx, vy), damage, sf::Vector2f(sx, sy), attack_delay);
             int n; 
             file >> n;
             int r, lifetime, friendly;

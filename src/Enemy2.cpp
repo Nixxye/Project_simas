@@ -17,7 +17,7 @@ namespace Entes
         {
             body.setSize(sf::Vector2f(100.f, 100.f));
             body.setFillColor(sf::Color::Yellow);
-            explosion.setFillColor(sf::Color::Green);
+            explosion.setFillColor(sf::Color::Black);
             explosion.setOrigin(sf::Vector2f(sensor_radius, sensor_radius));
         }
         Enemy2::Enemy2(bool alv, int lf, sf::Vector2f pos, sf::Vector2f velocity, float dmg, sf::Vector2f size, Lists::EntityList* p, float sr, bool atck, sf::Vector2f axs, float brst, float pw):
@@ -28,19 +28,32 @@ namespace Entes
         axis(axs),
         power(pw),
         explosion(sensor_radius),
-        burst(brst)
+        burst(brst),
+        exploding(false)
         {
             damage = dmg;
             life = lf;
             alive = alv;
             
-            explosion.setFillColor(sf::Color::Green);
+            explosion.setFillColor(sf::Color::Black);
             explosion.setOrigin(sf::Vector2f(sensor_radius, sensor_radius));   
         }
         Enemy2:: ~Enemy2()
         {
             
         }  
+        void Enemy2::draw()
+        {
+            if (alive)
+            {
+                pGM->draw(&body);
+            }
+            if (exploding)
+            {
+                pGM->draw(&explosion);
+                exploding = false;
+            }
+        }
         void Enemy2::move()
         {
             if (!players)
@@ -61,7 +74,7 @@ namespace Entes
                         if (fabs(d.x) < sensor_radius && fabs(d.y) < sensor_radius)
                         {
                             attack((*aux)->get_position());
-                            std::cout<<"Target adquired"<<std::endl;
+                            //std::cout<<"Target adquired"<<std::endl;
                         }
                         aux++;        
                     }  
@@ -74,6 +87,9 @@ namespace Entes
                     body.setPosition(body.getPosition() + vel);  
                 }              
             }
+            vel.y += GRAVITY;
+            //Flying force:
+            vel.y -= GRAVITY;
         }
         void Enemy2::attack(sf::Vector2f target)
         {
@@ -92,7 +108,7 @@ namespace Entes
         void Enemy2::explode()
         {
             explosion.setPosition(body.getPosition()); 
-            pGM->draw(&explosion);
+            exploding = true;
 
             colision_manager->collide_explosion(&explosion, power);
             alive = false;

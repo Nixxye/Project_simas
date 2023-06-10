@@ -211,7 +211,6 @@ namespace Stages
             players_file.open(PLAYER_RESET_FILE22);
             enemies_file.open(ENEMY_RESET_FILE22);
         }
-        printf("aaaaaaaaaaaaaa\n\n\n\nreset");
 
 
         if (!players_file)
@@ -221,15 +220,12 @@ namespace Stages
         }
         players_file >> n;
 
-        std::cout<<"No reset do stage2"<<std::endl;
         for (int i = 0; i < n; i++)
         {
             players_file >> alive >> life >> px >> py >> vx >> vy >> sizex >> sizey;
             Entes::Characters::Player* player = new Entes::Characters::Player(i+1, (bool) alive, life, sf::Vector2f(px, py), sf::Vector2f(vx, vy), sf::Vector2f(sizex, sizey));
             add_player(player); 
-            std::cout<<"Added Player"<<std::endl;
         }
-        std::cout<<"Saiu do loop"<<std::endl;
 
 
         if (!enemies_file)
