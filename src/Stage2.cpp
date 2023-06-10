@@ -8,6 +8,10 @@ namespace Stages
         texture = pGM->load_textures("../assets/stage2.png");
         body.setTexture(texture);  
         create_scenario(SCENARIO_FILE2);
+
+        body.setSize(sf::Vector2f(1980.f, 1140.f));
+        body.setOrigin(sf::Vector2f(0.f, 215.f));
+        body.setPosition(sf::Vector2f(20.f, 0.f));
     }
     Stage2::Stage2(int n_players):
     Stage(SAVE_STAGE_2, FILE_STAGE_2, SAVE_BASE_2, 5)
@@ -15,6 +19,10 @@ namespace Stages
         texture = pGM->load_textures("../assets/stage2.png");
         body.setTexture(texture);  
         create_scenario(SCENARIO_FILE2);
+
+        body.setSize(sf::Vector2f(1980.f, 1140.f));
+        body.setOrigin(sf::Vector2f(0.f, 215.f));
+        body.setPosition(sf::Vector2f(20.f, 0.f));
     }
 
     Stage2::~Stage2()

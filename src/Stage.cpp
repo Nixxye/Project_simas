@@ -25,9 +25,6 @@ namespace Stages
         events_manager = Managers::EventsManager::get_instance();
 
 
-        body.setSize(sf::Vector2f(4750.f, 1000.f));
-        body.setOrigin(sf::Vector2f(0.f, 215.f));
-        body.setPosition(sf::Vector2f(20.f, 100.f));
     }
 
     Stage::~Stage()

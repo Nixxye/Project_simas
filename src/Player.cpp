@@ -15,8 +15,9 @@ namespace Entes
         player_id(index)
         {
             attack_body.setOrigin(attack_body.getSize().x / 2, attack_body.getSize().y / 2);
-            //attack_body.setFillColor(sf::Color::Red);
-            attack_body.setTexture(pGM->load_textures("../assets/teste1.png"));
+            attack_body.setFillColor(sf::Color(180,35,35));
+            attack_body.setOutlineThickness(2);
+            attack_body.setOutlineColor(sf::Color(135,0,0));
             life = 20;
             //lives = 3;
             //pPObserver = new Observers::PlayerObserver(index);
@@ -48,7 +49,10 @@ namespace Entes
             life = lf;
 
             attack_body.setOrigin(attack_body.getSize().x / 2, attack_body.getSize().y / 2);
-            attack_body.setFillColor(sf::Color::Red);
+           // attack_body.setTexture(pGM->load_textures("../assets/teste1.png"));
+            attack_body.setFillColor(sf::Color(180,35,35));
+            attack_body.setOutlineThickness(2);
+            attack_body.setOutlineColor(sf::Color(135,0,0));
 
             //pPObserver = new Observers::PlayerObserver(index);
             //std::cout<<"Added player "<<index<<std::endl;

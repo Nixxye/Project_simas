@@ -5,7 +5,11 @@ namespace Stages
     Stage1::Stage1():
     Stage(SAVE_STAGE_1, FILE_STAGE_1, SAVE_BASE_1, 1)
     {
+        
         texture = pGM->load_textures("../assets/stage1.png");
+        body.setSize(sf::Vector2f(4750.f, 1000.f));
+        body.setOrigin(sf::Vector2f(0.f, 215.f));
+        body.setPosition(sf::Vector2f(20.f, 100.f));
         body.setTexture(texture);
         create_scenario(SCENARIO_FILE1);
     }
@@ -13,6 +17,10 @@ namespace Stages
     Stage(SAVE_STAGE_1, FILE_STAGE_1, SAVE_BASE_1, 6)
     {
         texture = pGM->load_textures("../assets/stage1.png");
+
+        body.setSize(sf::Vector2f(4750.f, 1000.f));
+        body.setOrigin(sf::Vector2f(0.f, 215.f));
+        body.setPosition(sf::Vector2f(20.f, 100.f));
         body.setTexture(texture);
         create_scenario(SCENARIO_FILE1);
     }

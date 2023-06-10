@@ -13,6 +13,8 @@ namespace Entes
     {
         body.setPosition(pos);
         texture = pGM->load_textures("../assets/bullet.png");
+        body.setOutlineThickness(3);
+        body.setOutlineColor(sf:: Color (160,82,45));
         body.setTexture(texture);
     }
     Bullet::Bullet(bool alv, sf::Vector2f pos, sf::Vector2f velocity, float dmg, float radius, float lftm, bool frndl):
@@ -24,6 +26,10 @@ namespace Entes
     alive(alv)
     {
         body.setPosition(pos);
+        texture = pGM->load_textures("../assets/bullet.png");
+        body.setOutlineThickness(3);
+        body.setOutlineColor(sf:: Color (160,82,45));
+        body.setTexture(texture);
     }
     Bullet::~Bullet()
     {

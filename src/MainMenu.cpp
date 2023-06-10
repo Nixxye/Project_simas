@@ -30,6 +30,10 @@ namespace Menus
         pMenuObserver = new Observers::MenuObserver;
         pMenuObserver->set_menu(this);
 
+        texture = pGM->load_textures("../assets/menu1.png");
+        body.setTexture(texture);
+        
+
     }
     MainMenu::~MainMenu()
     {
