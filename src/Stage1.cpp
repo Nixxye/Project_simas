@@ -30,7 +30,7 @@ namespace Stages
         enemies.execute();
         obstacles.execute();
         colision_manager.colide();
-        //draw();
+        draw();
         //else horrível
         if (pSM->get_CurrentStateID() == id_state)
         {

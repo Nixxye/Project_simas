@@ -10,13 +10,14 @@ namespace Entes
         {
             checkpoint=check; 
             if (check)
-                body.setFillColor(sf::Color::Cyan);
+            {
+                texture = pGM->load_textures("../assets/final.png");
+            }
             else
             {
                 texture = pGM->load_textures("../assets/plataform.png");
-                body.setTexture(texture);
             }
-            //checkpoint=false; 
+           body.setTexture(texture);
         }
         Platform:: ~Platform()
         {

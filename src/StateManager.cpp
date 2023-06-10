@@ -37,8 +37,8 @@ namespace Managers
         //pCurrentState = vector_states[i];
     }
     //N funciona
-    /*
-    States::State *StateManager::get_CurrentState()
+    
+    /*States::State *StateManager::get_CurrentState()
     {
         if (!vector_states[currentState])
         {
@@ -46,8 +46,8 @@ namespace Managers
             exit(1);
         }
         return vector_states[currentState];
-    }
-    */
+    }*/
+    
 
     int StateManager::get_CurrentStateID()
     {

@@ -11,6 +11,8 @@ namespace Entes
         {
             body.setOrigin(body.getSize()/2.f);
             body.setPosition(pos);
+            body.setOutlineThickness(1);
+            body.setOutlineColor(sf::Color::Black);
             
         }
         Obstacle::~Obstacle()

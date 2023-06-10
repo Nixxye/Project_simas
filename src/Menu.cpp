@@ -18,7 +18,7 @@ namespace Menus
         buttons[0]->change_color();
 
         body.setSize(sf::Vector2f(800.f, 600.f));
-        texture = pGM->load_textures("../assets/menu1.png");
+        texture = pGM->load_textures("../assets/menu_base.png");
         body.setTexture(texture);
 
 

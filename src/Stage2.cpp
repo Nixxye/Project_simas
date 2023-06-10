@@ -29,7 +29,7 @@ namespace Stages
             load();
         }
         //std::cout<<"Testeee"<<std::endl;
-        //draw();// Nao sei pq nao desenha o ataque
+        draw();// Nao sei pq nao desenha o ataque
         players.execute();
         enemies.execute();
         obstacles.execute();
@@ -88,6 +88,7 @@ namespace Stages
 
                 if (!anyEnemyAlive)
                 {
+                    
                     pSM->set_CurrentState(3);
                     pGM->reset_camera();
                     //printf("GameOver\n"); // gameover

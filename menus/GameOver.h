@@ -53,6 +53,8 @@ namespace Menus
 
         void reset();
 
+        //void  set_instructions ();
+
     };
 
 }

@@ -4,13 +4,13 @@
 namespace Menus
 {
     GameOver::GameOver(Ranking* rnk):
-    Menu(2, 3,"Game Over"),
-    instructions("Aperte Tab e escreva seu nome"),
+    Menu(2, 3,"Game Over "),
+    instructions("Press Tab and write your name"),
     ranking(rnk),
     points_string(" - points:")
     {   
         instructions.setSize(20);
-        instructions.setPosition(sf::Vector2f(100.f, 180.f));
+        instructions.setPosition(sf::Vector2f(105.f, 180.f));
         title.setSize(65);
         title.setPosition(sf::Vector2f(120.f, 80.f));
         title.set_color(0);
@@ -68,7 +68,7 @@ namespace Menus
     
         name.setName(name_string + points_string);
         ranking->add_newRanking(Entes::Hud::get_points(), name_string);
-        name.setPosition(sf::Vector2f(60.f, 450.f));
+        name.setPosition(sf::Vector2f(105.f, 450.f));
         buttons_active = false;
         final_name = true;
     } 
@@ -137,6 +137,10 @@ namespace Menus
          name_string = "";
          printf ("\n aaaa\n nome");
     }
+    /*void GameOver :: set_instructions ()
+    {
+
+    }*/
 
 
     void GameOver :: save ()
