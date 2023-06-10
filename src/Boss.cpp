@@ -57,9 +57,9 @@ namespace Entes
         void Boss::move()
         {
             if (!grounded)
-                vel.y += G;
+                vel.y += GRAVITY;
             //Voar voar, subir subir...
-            vel.y -= (rand() % (int) (10*G)) / 10.f + G * 2 / 3;
+            vel.y -= (rand() % (int) (10*GRAVITY)) / 10.f + GRAVITY * 2 / 3;
             body.setPosition(body.getPosition() + vel*(float) speed);
             bullets.execute();
         }

@@ -55,7 +55,7 @@ namespace Entes
         if (alive)
         {
             if (!grounded)
-                vel.y += G;
+                vel.y += GRAVITY;
             if (speed > 0.f)
                 body.setPosition(body.getPosition() + sf::Vector2f(vel.x * speed, vel.y * speed));    
         }

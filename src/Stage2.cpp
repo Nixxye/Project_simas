@@ -7,14 +7,12 @@ namespace Stages
     {
         texture = pGM->load_textures("../assets/stage2.png");
         body.setTexture(texture);  
-        create_scenario(SCENARIO_FILE2);
     }
     Stage2::Stage2(int n_players):
     Stage(SAVE_STAGE_2, FILE_STAGE_2, SAVE_BASE_2, 5)
     {
         texture = pGM->load_textures("../assets/stage2.png");
         body.setTexture(texture);  
-        create_scenario(SCENARIO_FILE2);
     }
 
     Stage2::~Stage2()
@@ -141,6 +139,8 @@ namespace Stages
     }
     void Stage2::load()
     { 
+        load_scenario(SAVE_SCENARIO2);
+
         int n, alive, damage, life;
         float vx, vy, px, py, sizex, sizey;
         std::string line;
@@ -195,6 +195,7 @@ namespace Stages
         if (loaded)
             enemies.clear();
 
+        create_scenario(SCENARIO_FILE2, SAVE_SCENARIO2);
         int n, vx, vy, py, px, alive, damage, sizex, sizey, life;
         std::string line;
 

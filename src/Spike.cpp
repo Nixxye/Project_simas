@@ -9,7 +9,7 @@ namespace Entes
         damage(dmg)
         {
             //body.setFillColor(sf::Color::Red);
-            texture = pGM->load_textures("../assets/obstacle1.png");
+            texture = pGM->load_textures("../assets/spike.png");
             body.setTexture(texture);
             //std::cout<<"Espinho de id: "<<id<<"e dano "<<damage<<std::endl;
         }
@@ -28,10 +28,10 @@ namespace Entes
         }
         void Spike::move()
         {
-            vel.y += G;
+            vel.y += GRAVITY;
             if (grounded)
             {
-                vel.y -=G;
+                vel.y -=GRAVITY;
             }
             body.setPosition(body.getPosition() + vel);   
         }

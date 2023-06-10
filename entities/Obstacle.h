@@ -2,7 +2,7 @@
 #include "Entity.h"
 
 //vai ser 50.0
-#define OBSTACLE_SIZE 50.0
+#define OBSTACLE_SIZE 75.0
 
 namespace Entes
 {

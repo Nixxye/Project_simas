@@ -15,6 +15,8 @@
 
 
 #define SCENARIO_FILE1 "../saves/stage1/scenario.dat"
+#define SAVE_SCENARIO1 "../saves/stage1/seed.dat"
+
 #define PLAYER_FILE11 "../saves/stage1/players1.dat"
 #define PLAYER_FILE12 "../saves/stage1/players2.dat"
 

@@ -13,7 +13,8 @@ namespace Entes
                 body.setFillColor(sf::Color::Cyan);
             else
             {
-                texture = pGM->load_textures("../assets/plataform.png");
+                //texture = pGM->load_textures("../assets/plataform.png");
+                texture = pGM->load_textures("../assets/obstacle3.png");
                 body.setTexture(texture);
             }
             //checkpoint=false; 
@@ -31,6 +32,13 @@ namespace Entes
                 {
                     return;
                 }*/
+                /*
+                if (other->get_id() == 0)
+                {
+                    Entes::Characters::Player* player = static_cast<Entes::Characters::Player*>(other);
+                    player->set_win(true);
+                }
+                */
                 Entes::Characters:: Player* player = dynamic_cast<Entes::Characters::Player*>(other);
                 if (player != nullptr)
                 {
@@ -49,10 +57,10 @@ namespace Entes
         }   
         void Platform::move()
         {
-            vel.y += G;
+            vel.y += GRAVITY;
             if (grounded)
             {
-                vel.y -=G;
+                vel.y -= GRAVITY;
             }
             body.setPosition(body.getPosition() + vel);
         }

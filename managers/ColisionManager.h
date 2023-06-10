@@ -8,7 +8,7 @@
 #include "../lists/EntityList.h"
 
 //Coeficiente de restituição 
-#define CR 0.65
+#define CR 0.30
 
 namespace Managers
 {

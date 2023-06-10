@@ -65,7 +65,7 @@ namespace Entes
                     vel.y -= 5.f;
                 }
                 else
-                    vel.y += G;      
+                    vel.y += GRAVITY;      
                 if (motion_counter > 0)
                     vel.x += SPEED / 4;
                 else 

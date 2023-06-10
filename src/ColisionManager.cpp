@@ -174,6 +174,8 @@ namespace Managers
         Lists::List<Entes::Entity> aux;
         Lists::List<Entes::Entity>::Iterator<Entes::Entity> B = player_list->get_first();
         
+        if (!bullet->get_alive())
+            return;
         if (!(static_cast<Entes::Bullet*>(bullet)->get_friendly()))
         {
             while(B != nullptr)

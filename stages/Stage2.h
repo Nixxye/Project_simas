@@ -13,6 +13,7 @@
 #define ENEMY_RESET_FILE22 "../saves/stage2/reset_enemies_2players.dat"
 
 #define SCENARIO_FILE2 "../saves/stage2/scenario.dat"
+#define SAVE_SCENARIO2 "../saves/stage2/seed.dat"
 
 #define PLAYER_FILE21 "../saves/stage2/players1.dat"
 #define PLAYER_FILE22 "../saves/stage2/players2.dat"

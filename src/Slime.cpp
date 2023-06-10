@@ -38,10 +38,10 @@ namespace Entes
         }
         void Slime::move()
         {
-            vel.y += G;
+            vel.y += GRAVITY;
             if (grounded)
             {
-                vel.y -=G;
+                vel.y -=GRAVITY;
             }
             body.setPosition(body.getPosition() + vel);
         }

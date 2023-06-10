@@ -91,7 +91,8 @@ namespace Stages
         Entes::Entity* create_enemy(std::ifstream& file);
         //Provavelmente vai sair tbm:
         Entes::Entity* create_bullet(int id, sf::Vector2f pos, sf::Vector2f vel, float lifetime, Entes::Entity* boss);
-        void create_scenario(std::string file);
+        void create_scenario(std::string file, std::string save);
+        void load_scenario(std::string save_scenario_file);
         //void set_nplayers(int n);
 
     };

@@ -136,26 +136,23 @@ namespace Entes
                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))//Right
                 {
                     if (vel.x <= VEL_MAX)
-                        vel.x += 2*SPEED / slowed;
+                        vel.x += 5*SPEED / slowed;
                 }
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))//Left
                 {
                     if (vel.x >= -VEL_MAX)
-                        vel.x -= 2*SPEED / slowed;
+                        vel.x -= 5*SPEED / slowed;
                 }
-                else if (vel.x > 0)                               
+                else if (slowed > 1)
+                    vel.x = 0;
+                //Frear:
+                if (vel.x > 0)                               
                 {
-                    if (slowed > 1)
-                        vel.x = 0;
-                    else 
-                        vel.x -= SPEED / 2;
+                    vel.x -= 4*SPEED;
                 }
                 else if (vel.x < 0)
                 {
-                    if (slowed > 1)
-                        vel.x = 0;
-                    else 
-                        vel.x += SPEED / 2;
+                    vel.x += 4*SPEED;
                 }
             }
             if (vel.x <= SPEED/30 && vel.x >= -SPEED/30)
@@ -165,9 +162,9 @@ namespace Entes
             if (!grounded)
             {
                 if (slowed > 1)
-                    vel.y += G / 3;
+                    vel.y += GRAVITY / 3;
                 else 
-                    vel.y += G;
+                    vel.y += GRAVITY;
             }
             else if ( (player_id == 1 && sf::Keyboard::isKeyPressed(sf::Keyboard::W)) ||
             (player_id == 2 && sf::Keyboard::isKeyPressed(sf::Keyboard::Up) )) //Up

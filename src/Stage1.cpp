@@ -5,16 +5,17 @@ namespace Stages
     Stage1::Stage1():
     Stage(SAVE_STAGE_1, FILE_STAGE_1, SAVE_BASE_1, 1)
     {
+                //Tamanho da primeira fase:
+        body.setSize(sf::Vector2f(9800.f, 700.f));
+        body.setOrigin(sf::Vector2f(0.f, -200.f));
         texture = pGM->load_textures("../assets/stage1.png");
         body.setTexture(texture);
-        create_scenario(SCENARIO_FILE1);
     }
     Stage1::Stage1(int n_players):
     Stage(SAVE_STAGE_1, FILE_STAGE_1, SAVE_BASE_1, 6)
     {
-        texture = pGM->load_textures("../assets/stage1.png");
+        texture = pGM->load_textures("../assets/stage1.jpeg");
         body.setTexture(texture);
-        create_scenario(SCENARIO_FILE1);
     }
     
     Stage1::~Stage1()
@@ -65,6 +66,7 @@ namespace Stages
                 Entes::Characters:: Player* player2 = dynamic_cast<Entes::Characters::Player*>(*it);
                 if (player1->get_win() || player2->get_win())
                 {
+                    //Talvez n sirva pra nada;
                     player1->set_win(false);
                     player2->set_win(false);
                     pSM->set_CurrentState(5);
@@ -124,6 +126,8 @@ namespace Stages
     }
     void Stage1::load()
     {
+        load_scenario(SAVE_SCENARIO1);
+
         int n, alive, damage, life;
         float vx, vy, px, py, sizex, sizey;
         std::string line;
@@ -173,6 +177,7 @@ namespace Stages
     }
     void Stage1::reset()
     {
+        create_scenario(SCENARIO_FILE1, SAVE_SCENARIO1);
          //Vai sair:
         if (loaded)
             players.clear();
