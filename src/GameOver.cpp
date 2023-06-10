@@ -34,7 +34,11 @@ namespace Menus
     void GameOver::draw()
     {
         pGM->draw(&(this->body));
-        
+        //Mt feio:
+        if (Entes::Hud::get_win())
+        {
+            change_name("The End");
+        }   
         title.draw();
         
         if (buttons_active && final_name)
@@ -96,6 +100,7 @@ namespace Menus
     {
         buttons[0]->set_name("Menu");
         buttons[1]->set_name("Quit");
+        
         for (int i = 0; i < 2; i++)
         {
             buttons[i]->draw();

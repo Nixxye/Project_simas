@@ -11,6 +11,7 @@
 4: Ranking;
 5: Fase 2 com 2 players;
 6: Fase 1 com 2 players;
+7: End;
 */
 namespace Managers
 {

@@ -31,5 +31,6 @@ namespace Menus
             void move_down();
             virtual void select() = 0;
             void execute();
+            void change_name(std::string nm);
     };    
 }

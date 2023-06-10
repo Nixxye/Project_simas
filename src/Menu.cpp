@@ -20,13 +20,9 @@ namespace Menus
         body.setSize(sf::Vector2f(800.f, 600.f));
         texture = pGM->load_textures("../assets/menu1.png");
         body.setTexture(texture);
-
-
     }
     Menu :: ~Menu()
     {
-
-
         for (int i = 0; i < MAX_BUTTONS; i++)
         {
             delete buttons[i];
@@ -62,5 +58,9 @@ namespace Menus
     {
         //pEventsManager->execute(); //nao entendi pq??
         draw();
+    }
+    void Menu::change_name(std::string nm)
+    {
+        title.setName(nm);
     }
 }

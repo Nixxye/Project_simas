@@ -14,13 +14,16 @@ namespace Entes
         std::vector<int> life;
         //Tempo de jogo;
         int kills;
+        static bool win;
     public:
         Hud();
         ~Hud();
-        static const int get_points() { return points; /*Points dps*/}
+        static const int get_points() { return points; }
         static void add_points(int pts) { points += pts; }
         //função para mudar a vida;
         void draw() {}
         void execute() {}
+        static const bool get_win() { return win; }
+        static void set_win(bool w) { win = w; }
     };
 }

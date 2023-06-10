@@ -46,8 +46,11 @@ namespace Stages
                     pGM->center((*players.get_first())->get_position());
                 else
                 {
-                     pSM->set_CurrentState(3); // vai ser o gameover ou stage 2
-                     pGM->reset_camera();
+                    std::cout<<"Matou "<<enemies.get_nkilled()<<std::endl;
+                    hud.add_points((int) (*players.get_first())->get_position().x + enemies.get_nkilled() * 1000);
+                    pSM->set_CurrentState(3); // vai ser o gameover ou stage 2
+                    pGM->reset_camera();
+                    std::cout<<"Seu ruim"<<std::endl;
                 }
                 //std::cout<<(*players.get_first())->get_position().x<<" "<<(*players.get_first())->get_position().y<<std::endl;
                     
@@ -59,6 +62,8 @@ namespace Stages
                     pGM->center((*it)->get_position(),(*players.get_first())->get_position());
                 else 
                 {
+                    std::cout<<"Matou "<<enemies.get_nkilled()<<std::endl;
+                    hud.add_points((int) (*players.get_first())->get_position().x + enemies.get_nkilled() * 1000);
                     pSM->set_CurrentState(3);
                     pGM->reset_camera();
                 }
@@ -86,9 +91,12 @@ namespace Stages
 
                 if (!anyEnemyAlive)
                 {
+                    std::cout<<"Matou "<<enemies.get_nkilled()<<std::endl;
+                    hud.add_points((int) (*players.get_first())->get_position().x + enemies.get_nkilled() * 1000 + 3000);
+                    Entes::Hud::set_win(true);
+                    std::cout<<"Bacana"<<std::endl;
                     pSM->set_CurrentState(3);
                     pGM->reset_camera();
-                    //printf("GameOver\n"); // gameover
                 }
 
 
