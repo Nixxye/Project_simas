@@ -6,7 +6,7 @@ namespace Observers
     RankingObserver::RankingObserver():
     Observer()
     {
-        pEM->attach(this);
+        //pEM->attach(this);
 
 
     }

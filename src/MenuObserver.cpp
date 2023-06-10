@@ -6,7 +6,7 @@ namespace Observers
     MenuObserver::MenuObserver():
     Observer()
     {
-        pEM->attach(this);
+        //pEM->attach(this);
     }
     MenuObserver::~MenuObserver()
     {
@@ -32,15 +32,15 @@ namespace Observers
         if (pSM->get_CurrentStateID() != 0)
             return;
         //std::cout<<"Teste"<<std::endl;
-        if (key_code == sf::Keyboard::Up)
+        else if (key_code == sf::Keyboard::Up)
             pMenu->move_up();
-        if (key_code == sf::Keyboard::Down)
+        else if (key_code == sf::Keyboard::Down)
             pMenu->move_down();
-        if (key_code == sf::Keyboard::Enter)
+        else if (key_code == sf::Keyboard::Enter)
             pMenu->select();
-        if (key_code == sf::Keyboard::Right ||key_code == sf::Keyboard::Left)
+        else if (key_code == sf::Keyboard::Right ||key_code == sf::Keyboard::Left)
             pMenu->move_horizontally(1);
-        if (key_code == sf::Keyboard::LControl||key_code == sf::Keyboard::RControl)
+        else if (key_code == sf::Keyboard::LControl||key_code == sf::Keyboard::RControl)
             pMenu->move_horizontally(2);
         
     }
