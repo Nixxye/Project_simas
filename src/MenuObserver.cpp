@@ -6,11 +6,12 @@ namespace Observers
     MenuObserver::MenuObserver():
     Observer()
     {
-        //pEM->attach(this);
+        pEM->attach(this);
     }
     MenuObserver::~MenuObserver()
     {
         pMenu = nullptr;
+        pEM->detach(this);
     }
     void MenuObserver::update(sf::Keyboard::Key key_code)
     {

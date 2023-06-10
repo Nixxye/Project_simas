@@ -6,13 +6,14 @@ namespace Observers
     RankingObserver::RankingObserver():
     Observer()
     {
-        //pEM->attach(this);
+        pEM->attach(this);
 
 
     }
     RankingObserver::~RankingObserver()
     {
         pRanking = nullptr;
+        pEM->detach(this);
     }
     void RankingObserver::update(sf::Keyboard::Key key_code)
     {
