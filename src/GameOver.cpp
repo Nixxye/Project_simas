@@ -135,7 +135,8 @@ namespace Menus
          name_active = false;
          name.setName(" ");
          name_string = "";
-         printf ("\n aaaa\n nome");
+         title.setName ("Game Over");
+         //printf ("\n aaaa\n nome");
     }
     /*void GameOver :: set_instructions ()
     {
