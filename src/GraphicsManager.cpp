@@ -127,4 +127,8 @@ namespace Managers
     {
         return font;
     }
+    sf::Vector2f GraphicsManager::get_cameraPosition()
+    {
+        return cam.getCenter();
+    }
 }

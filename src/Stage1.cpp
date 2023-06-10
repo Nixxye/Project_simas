@@ -27,12 +27,16 @@ namespace Stages
     {
         if (!loaded)
             load();
+
         players.execute();
         enemies.execute();
         obstacles.execute();
+        hud.execute();
+
         colision_manager.colide();
+
         draw();
-        //else horrível
+
         if (pSM->get_CurrentStateID() == id_state)
         {
             Lists::List<Entes::Entity>::Iterator<Entes::Entity> it = players.get_first();
@@ -88,6 +92,7 @@ namespace Stages
         players.draw();
         enemies.draw();
         obstacles.draw();
+        hud.draw();
     }
     void Stage1::save()
     {

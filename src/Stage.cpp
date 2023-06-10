@@ -15,15 +15,14 @@ namespace Stages
     stage_info(infofile),
     save_base(savebase),
     body(),
-    loaded(false)
+    loaded(false),
+    hud(&players)
     {
         colision_manager.set_enemy_list(&enemies);
         colision_manager.set_player_list(&players);
         colision_manager.set_obstacle_list(&obstacles);     
 
         events_manager = Managers::EventsManager::get_instance();
-
-
     }
 
     Stage::~Stage()

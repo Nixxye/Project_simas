@@ -37,6 +37,7 @@ namespace Managers
         void center(sf::Vector2f position1, sf::Vector2f position2 );
         void reset_camera();
         sf::RenderWindow* get_window() const;
+        sf::Vector2f get_cameraPosition();
         void close_window ();
         bool window_open();
         sf::Font* get_font() const;

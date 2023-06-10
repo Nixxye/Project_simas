@@ -25,6 +25,7 @@ namespace Entes
                 sf::Vector2f get_size() {return body.getSize();} 
                 void set_position(sf::Vector2f pos) { body.setPosition(pos); }
                 const bool get_alive() const { return alive; }
+                const int get_life() const { return life; }
         };
     }
 }

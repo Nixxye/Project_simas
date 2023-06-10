@@ -86,7 +86,7 @@ namespace Entes
 
         void Player::execute()
         { 
-            if (life < 0)
+            if (life <= 0)
                 alive = false;
             if (!alive)
             {
