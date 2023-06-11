@@ -38,10 +38,11 @@ namespace Entes
             virtual void draw() = 0;
             virtual void execute() = 0;
             virtual void save(std::ofstream& file) = 0;
-            virtual void move(char direction = ' '){};
+            //move é virtual para colocar a gravidade:
+            virtual void move(char direction = ' '){ std::cout<<"Não se move"<<std::endl;};
             //Função pode mudar.
             virtual void collide(Entity* other, std::string  direction = "") = 0;
-            virtual void inflict_damage(int dmg) { }
+            virtual void inflict_damage(int dmg) { std::cout<<"Não é inimigo e nem player"<<std::endl; }
 
             virtual void set_position(sf::Vector2f pos) = 0;
             void set_grounded(bool g){grounded = g;}

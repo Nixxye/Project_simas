@@ -63,6 +63,7 @@ namespace Managers
         catch (const std::out_of_range& oor) 
         {
             std::cerr << "Out of Range error: " << oor.what() << '\n';
+            //colocar exit();
         }
     }
 

@@ -40,7 +40,7 @@ namespace Menus
         void set_final_name ();
 
         void set_points (int p);
-
+        //Colocar const:
         std::string get_name_string ();
 
         void active_name();

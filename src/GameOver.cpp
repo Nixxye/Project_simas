@@ -139,6 +139,7 @@ namespace Menus
          buttons_active = false;
          final_name = false;
          name_active = false;
+         title.setName("Game Over");
          name.setName(" ");
          name_string = "";
          //printf ("\n aaaa\n nome");
