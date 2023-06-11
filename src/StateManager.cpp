@@ -29,7 +29,7 @@ namespace Managers
         }
 
     }
-    void StateManager::set_CurrentState(int i)
+    void StateManager::set_CurrentState( int i) //COLOCAR CONST!!
     {
         currentState = i;
         //printf ("State:%d", currentState);
