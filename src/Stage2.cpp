@@ -98,7 +98,7 @@ namespace Stages
                 {
                     
                     pSM->set_CurrentState(3);
-                    pSM->reset_current_state(); //resetar o gameover
+                    //pSM->reset_current_state(); //resetar o gameover
                     pGM->reset_camera();
                     //printf("GameOver\n"); // gameover
                 }
