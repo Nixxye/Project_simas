@@ -21,7 +21,6 @@ namespace Entes
             ~Boss();
 
             void execute();
-            //move vai ser virtual para colocar a gravidade:
             void move();
             void attack();
             void draw();

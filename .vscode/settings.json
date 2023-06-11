@@ -71,7 +71,8 @@
     "charconv": "cpp",
     "format": "cpp",
     "span": "cpp",
-    "stdfloat": "cpp"
+    "stdfloat": "cpp",
+    "*.inc": "cpp"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",

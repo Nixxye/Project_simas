@@ -15,7 +15,7 @@ protected:
     static Managers::GraphicsManager* pGM;
     sf :: Texture* texture;
 public:
-    Ent(sf::Vector2f size = sf::Vector2f(50.f, 50.f), sf::Vector2f pos = sf::Vector2f(0.f, 0.f));
+    Ent();
     virtual ~Ent();
 
     virtual void draw() = 0;

@@ -25,10 +25,8 @@ void Game::execute()
     {
         pGM->clean();
         
-        pEM->run();
-        pSM->run();
-        //main_menu.run();
-        //stage1.run();
+        pEM->execute();
+        pSM->execute();
         
         pGM->show();
     }  

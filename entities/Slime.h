@@ -16,7 +16,6 @@ namespace Entes
                 void collide(Entity* other, std::string  direction = "");
                 void execute();
                 void move();
-                void set_slow_level(int s) { slow_level = s; }           
         };    
     }    
 }

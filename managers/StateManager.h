@@ -21,8 +21,8 @@ namespace Managers
             int currentState;
             std::vector<States::State*> vector_states;
             static StateManager* instance;
+            StateManager ();            
         public:
-            StateManager ();
             ~StateManager ();
 
             static StateManager* get_instance();
@@ -30,6 +30,6 @@ namespace Managers
             int get_CurrentStateID();
             void add_state(States::State* pState);
             void reset_current_state();
-            void run();
+            void execute();
     };
 }

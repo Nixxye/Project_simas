@@ -26,7 +26,7 @@ namespace Managers
     {
 
     }
-    void EventsManager :: run ()
+    void EventsManager :: execute ()
     {
         sf::Event event;
         while (pGM->get_window()->pollEvent(event))

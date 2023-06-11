@@ -3,13 +3,13 @@
 namespace Stages
 {
     Stage2::Stage2():
-    Stage(SAVE_STAGE_2, FILE_STAGE_2, SAVE_BASE_2, 2)
+    Stage(2)
     {
         texture = pGM->load_textures("../assets/stage2.png");
         body.setTexture(texture);  
     }
     Stage2::Stage2(int n_players):
-    Stage(SAVE_STAGE_2, FILE_STAGE_2, SAVE_BASE_2, 5)
+    Stage(5)
     {
         texture = pGM->load_textures("../assets/stage2.png");
         body.setTexture(texture);  
@@ -31,6 +31,7 @@ namespace Stages
         players.execute();
         enemies.execute();
         obstacles.execute();
+        hud.execute();
 
         colision_manager.colide();
         //draw();

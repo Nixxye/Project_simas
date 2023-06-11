@@ -25,7 +25,7 @@ namespace Entes
             void move();
             void attack(sf::Vector2f target);
             void explode();
-            void set_power(int nuke) { power = nuke; }
+            void set_power(int pw) { power = pw; }
             void save(std::ofstream& file);
             void draw();
         };    

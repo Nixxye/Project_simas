@@ -63,33 +63,35 @@ namespace Entes
             }
             if (alive)
             {
-                if (!attacking)
+                if (speed)
                 {
-                    sf::Vector2f d;
-                    //std::cout<<"Aqui"<<std::endl;
-                    Lists::List<Entes::Entity>::Iterator<Entes::Entity> aux = players->get_first();
-                    while(aux != nullptr)
+                    if (!attacking)
                     {
-                        d = body.getPosition() - (*aux)->get_position();
-                        if (fabs(d.x) < sensor_radius && fabs(d.y) < sensor_radius)
+                        sf::Vector2f d;
+                        Lists::List<Entes::Entity>::Iterator<Entes::Entity> aux = players->get_first();
+                        while(aux != nullptr)
                         {
-                            attack((*aux)->get_position());
-                            //std::cout<<"Target adquired"<<std::endl;
-                        }
-                        aux++;        
-                    }  
+                            d = body.getPosition() - (*aux)->get_position();
+                            if (fabs(d.x) < sensor_radius && fabs(d.y) < sensor_radius)
+                            {
+                                attack((*aux)->get_position());
+                            }
+                            aux++;        
+                        }  
+                    }
+                    else 
+                    {
+                        
+                        burst += 0.5;
+                        vel = axis*burst;
+                        body.setPosition(body.getPosition() + vel * speed / 8.f);  
+                    }              
                 }
-                else 
-                {
-                    
-                    burst += 0.5;
-                    vel = axis*burst;
-                    body.setPosition(body.getPosition() + vel);  
-                }              
-            }
-            vel.y += GRAVITY;
-            //Flying force:
-            vel.y -= GRAVITY;
+                vel.y += GRAVITY;
+                //Flying force:
+                vel.y -= GRAVITY;                    
+                }
+
         }
         void Enemy2::attack(sf::Vector2f target)
         {

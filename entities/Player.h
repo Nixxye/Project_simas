@@ -40,7 +40,7 @@ namespace Entes
             void collide_attack(Entity *other, std::string direction = "");
             void attack();
             void set_win (bool b){win = b;}
-            bool get_win() {return win;}
+            const bool get_win() const {return win;}
 
             //void set_colision_manager(Managers::ColisionManager* cm) { colision_manager = cm; }
 

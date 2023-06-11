@@ -16,12 +16,11 @@ namespace Menus
         Text first;
         Text second;
         Text third;
-        std::string ranking_file;
         Observers::RankingObserver*  pRObserver;
         bool buttons_active;
         std::multimap<int, std::string, std::greater<int>> rank;
     public:
-        Ranking(std::string ranking = "");
+        Ranking();
         ~Ranking();
         void select();
         void draw();

@@ -3,12 +3,11 @@
 
 namespace Menus
 {
-    Ranking::Ranking(std::string ranking):
+    Ranking::Ranking():
     Menu(2, 4, "Ranking"),
     first("1 name - points"),
     second("2 name - points"),
     third("3 name - points"),
-    ranking_file(ranking),
     rank()
     {   
 
@@ -67,7 +66,6 @@ namespace Menus
 
     void Ranking::draw()
     {
-        //printf ("\nDraw Ranking");
 
         pGM->draw(&(this->body));
 

@@ -4,16 +4,12 @@
 
 namespace Stages
 {
-    Stage::Stage(std::string savefile, std::string infofile, std::string savebase, int id):
+    Stage::Stage(int id):
     States::State(id),
     obstacles(),
     enemies(),
     players(),
-    bullets(),
     colision_manager(),
-    save_file(savefile),
-    stage_info(infofile),
-    save_base(savebase),
     body(),
     loaded(false),
     hud(&players)
@@ -60,13 +56,6 @@ namespace Stages
             player->set_colision_manager(&colision_manager);
         }
     }
-    void Stage::add_bullet(Entes::Entity* bullet)
-    {
-        if (bullet)
-        {
-            bullets.add(bullet);
-        }
-    }
     Entes::Entity* Stage::create_enemy(std::ifstream& file)
     {
         Entes::Entity* aux = NULL;
@@ -103,7 +92,6 @@ namespace Stages
             int r, lifetime, friendly;
             for (int i = 0; i < n; i++)
             {
-                //std::cout<<"Creating bullet"<<std::endl;
                 std::getline(file, line);
                 std::getline(file, line);
                 file >> index >> alive >> damage >> px >> py >> vx >> vy >> r >> lifetime >> friendly;
@@ -120,17 +108,6 @@ namespace Stages
         aux->set_colision_manager(&colision_manager);
         add_enemy(static_cast<Entes::Entity*>(aux));
         return static_cast<Entes::Entity*>(aux);
-    }
-    Entes::Entity* Stage::create_bullet(int id, sf::Vector2f pos, sf::Vector2f vel, float lifetime, Entes::Entity* boss)
-    {
-        Entes::Characters::Boss* pBoss = static_cast<Entes::Characters::Boss*>(boss);
-        Entes::Entity* bullet = NULL;
-        //std::cout<<"N de balas "<<pBoss->get_n_bullets()<<std::endl;
-        bullet = new Entes::Bullet(pos, vel, lifetime);
-        bullet->set_colision_manager(&colision_manager);
-
-        pBoss->add_bullet(static_cast<Entes::Entity*>(bullet));
-        return static_cast<Entes::Entity*>(bullet);
     }
     void Stage::create_scenario(std::string file, std::string save)
     {

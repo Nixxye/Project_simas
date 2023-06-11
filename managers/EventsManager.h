@@ -27,6 +27,6 @@ namespace Managers
         public:
             ~EventsManager();
             static EventsManager* get_instance();
-            void run();
+            void execute();
     };
 }

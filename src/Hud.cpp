@@ -52,19 +52,17 @@ namespace Entes
     void Hud::update_life()
     {
         Lists::List<Entes::Entity>::Iterator<Entes::Entity> it = players->get_first();
-        for (int i = 0; it != nullptr && i < 2; i++)
+        for (int i = 0; it != nullptr && i < 2; i++, it++)
         {
-            //std::cout<<"Vida players"<<life[0]<<std::endl;
             life[i] = static_cast<Entes::Characters::Character*>(*it)->get_life();
         }
     }
-    //fazer privado dps:
     void Hud::draw_bars()
     {
         life_bars[0].setSize(sf::Vector2f(15.f * life[0], 15.f));
         life_bars[0].setPosition(position[0] + pGM->get_cameraPosition());
-        life_bars[1].setSize(sf::Vector2f(15.f * life[0], 15.f));
-        life_bars[1].setPosition(position[1] + pGM->get_cameraPosition() - sf::Vector2f(life[0] * 15.f ,0.f));
+        life_bars[1].setSize(sf::Vector2f(15.f * life[1], 15.f));
+        life_bars[1].setPosition(position[1] + pGM->get_cameraPosition() - sf::Vector2f(life[1] * 15.f ,0.f));
 
         pGM->draw(&life_bars[0]);
         pGM->draw(&life_bars[1]);

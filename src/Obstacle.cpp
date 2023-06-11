@@ -23,6 +23,15 @@ namespace Entes
             if(get_alive())
                 pGM->draw(&body);
         }
+        void Obstacle::move()
+        {
+            vel.y += GRAVITY;
+            if (grounded)
+            {
+                vel.y -= GRAVITY;
+            }
+            body.setPosition(body.getPosition() + vel);   
+        }
     }    
 }
 

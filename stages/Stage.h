@@ -59,7 +59,6 @@ namespace Stages
         Lists::EntityList obstacles;
         Lists::EntityList enemies;
         Lists::EntityList players;
-        Lists::EntityList bullets;
 
         std::string save_file;
         std::string stage_info;
@@ -74,7 +73,7 @@ namespace Stages
         
         sf::RectangleShape body;
     public:
-        Stage(std::string savefile = "", std::string infofile = "", std::string savebase = "", int id = -1);
+        Stage(int id = -1);
         virtual ~Stage();
         void virtual execute() = 0;
         void draw();
@@ -82,18 +81,13 @@ namespace Stages
         void add_enemy(Entes::Entity* enemy);
         void add_obstacle(Entes::Entity* obstacle);
         void add_player(Entes::Entity* player);
-        void add_bullet(Entes::Entity* bullet);
 
         virtual void save() = 0;
         virtual void load() = 0;
         virtual void reset() = 0;
 
         Entes::Entity* create_enemy(std::ifstream& file);
-        //Provavelmente vai sair tbm:
-        Entes::Entity* create_bullet(int id, sf::Vector2f pos, sf::Vector2f vel, float lifetime, Entes::Entity* boss);
         void create_scenario(std::string file, std::string save);
         void load_scenario(std::string save_scenario_file);
-        //void set_nplayers(int n);
-
     };
 }

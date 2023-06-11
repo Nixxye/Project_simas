@@ -33,33 +33,6 @@ namespace Entes
         {
             if (speed > 0)
             {
-                //ARRUMAR ISSO:
-                /*
-                if (grounded)
-                {
-                    vel.y -= 5.f;
-                }
-                if (motion_counter > 0)
-                {
-                    vel.x += SPEED;
-                    motion_counter--;
-                    if (motion_counter == 0)
-                    {
-                        motion_counter = -TIME;
-                        vel.x = 0;
-                    } 
-                }
-                else if (motion_counter < 0)
-                {
-                    vel.x -= SPEED;
-                    motion_counter++;
-                    if (motion_counter == 0)
-                    {
-                        motion_counter = TIME;
-                        vel.x = 0;
-                    }
-                }  
-                */
                 if (grounded)
                 {
                     vel.y -= 5.f;
@@ -76,13 +49,11 @@ namespace Entes
         void Enemy1::collide(Entity* other, std::string direction)
         {
             int index = other->get_id();
-            //ifs e dano
             sf::Vector2f pos = other->get_position();
             sf::Vector2f s = other->get_size();
 
             switch (index)
             {
-                //Attack -> arrumar o lance do id dps:
             case 0:
                 if(!static_cast<Entes::Characters::Player*>(other)->get_damage())
                 {
@@ -90,7 +61,6 @@ namespace Entes
                     {
                         other->inflict_damage(damage);
                         vel.x = -100*SPEED;
-                        //std::cout<<direction<<std::endl;
                     }
                     else if (direction == "Left")
                     {
@@ -112,7 +82,6 @@ namespace Entes
                     if (direction == "Right")
                     {
                         vel.x = -100*SPEED;
-                        //std::cout<<direction<<std::endl;
                     }
                     else if (direction == "Left")
                     {
@@ -127,7 +96,6 @@ namespace Entes
                         vel.y = -40*SPEED;
                     }  
                 }
-                    //std::cout<<direction<<" "<<vel.x<<" "<<vel.y<<std::endl;
 
                 break;
                 //Plataformas
@@ -136,20 +104,16 @@ namespace Entes
                 {
                     vel.x = -SPEED;
                     motion_counter = -TIME;
-                    //std::cout<<direction<<std::endl;
                 }
                 else if (direction == "Left")
                 {
                     //Arrumar:
                     vel.x = SPEED;
                     motion_counter = TIME;
-                }
-                //position += sf::Vector2f(speed*vel.x / 10, speed*vel.y / 10);          
+                }       
                 break;
             }
             move();
-
-
         }
         void Enemy1::save(std::ofstream& file)
         {

@@ -38,15 +38,14 @@ namespace Entes
             virtual void draw() = 0;
             virtual void execute() = 0;
             virtual void save(std::ofstream& file) = 0;
-            //move é virtual para colocar a gravidade:
-            virtual void move(char direction = ' '){ std::cout<<"Não se move"<<std::endl;};
-            //Função pode mudar.
+            virtual void move(char direction = ' '){ vel.y += GRAVITY;};
+
             virtual void collide(Entity* other, std::string  direction = "") = 0;
-            virtual void inflict_damage(int dmg) { std::cout<<"Não é inimigo e nem player"<<std::endl; }
+            virtual void inflict_damage(int dmg) = 0;
 
             virtual void set_position(sf::Vector2f pos) = 0;
             void set_grounded(bool g){grounded = g;}
-            //virtual void set_alive(bool a){alive = a;}
+
             void set_vel(sf::Vector2f v){vel = v;}
             void set_colision_manager(Managers::ColisionManager* cm) { colision_manager = cm; }
             virtual void set_slowed(int s) { slowed = s; }
@@ -57,13 +56,9 @@ namespace Entes
             virtual sf::Vector2f get_position()= 0;
             virtual sf::Vector2f get_size()= 0;
             const int get_id() const {return id;}
-            //P/ gerenciador de colisões:
+
             virtual const bool get_alive() const { return true; }
-            //virtual const int get_damage() const {return 0;}
+
             const float get_mass() const {return mass;}
-
-            virtual Observers::Observer* get_observer() {return nullptr;}     
-
-            //virtual void save(std::string filename) = 0;
     };
 }

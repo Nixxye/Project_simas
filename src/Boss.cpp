@@ -13,7 +13,7 @@ namespace Entes
         bullets(),
         attack_delay(0)
         {
-            life = 30;
+            life = 50;
             texture = pGM->load_textures("../assets/boss.png");
             body.setTexture(texture);
             //Teste:

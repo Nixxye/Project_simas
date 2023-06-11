@@ -3,7 +3,7 @@
 namespace Stages
 {
     Stage1::Stage1():
-    Stage(SAVE_STAGE_1, FILE_STAGE_1, SAVE_BASE_1, 1)
+    Stage(1)
     {
                 //Tamanho da primeira fase:
         body.setSize(sf::Vector2f(9800.f, 700.f));
@@ -12,7 +12,7 @@ namespace Stages
         body.setTexture(texture);
     }
     Stage1::Stage1(int n_players):
-    Stage(SAVE_STAGE_1, FILE_STAGE_1, SAVE_BASE_1, 6)
+    Stage(6)
     {
         texture = pGM->load_textures("../assets/stage1.jpeg");
         body.setTexture(texture);
