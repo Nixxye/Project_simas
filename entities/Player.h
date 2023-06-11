@@ -25,6 +25,7 @@ namespace Entes
             int attack_delay;
             int player_id;
             bool win;
+            bool right;
             
             int damage;  
             //Salvar attack_delay          

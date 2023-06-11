@@ -13,8 +13,8 @@ namespace Entes
             //Provisório:
             body.setFillColor(sf::Color::Green);
             //Slow level padrão é 60
-            //texture = pGM->load_textures("../assets/obstacle.png");
-            //body.setTexture(texture);
+            texture = pGM->load_textures("../assets/slime.png");
+            body.setTexture(texture);
         }
         Slime:: ~Slime()
         {

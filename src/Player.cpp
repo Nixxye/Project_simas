@@ -12,7 +12,8 @@ namespace Entes
         attack_delay(0),
         win(false),
         damage(0),
-        player_id(index)
+        player_id(index),
+        right(true)
         {
             attack_body.setOrigin(attack_body.getSize().x / 2, attack_body.getSize().y / 2);
             //attack_body.setFillColor(sf::Color::Red);
@@ -54,7 +55,9 @@ namespace Entes
             //std::cout<<"Added player "<<index<<std::endl;
             if (player_id == 1)
             {
-                texture = pGM->load_textures("../assets/player.png");
+                pGM->load_textures("../assets/player-left.png");
+                texture = pGM->load_textures("../assets/player-right.png");
+
             }
             else if (player_id == 2)
             {
@@ -109,11 +112,23 @@ namespace Entes
                 {
                     if (vel.x <= VEL_MAX)
                         vel.x += 2*SPEED / slowed;
+                    if (!right)
+                    {
+                        body.setTexture(pGM->load_textures("../assets/player-right.png"));
+                        right = true;
+                    }
+                        
                 }
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) //Left
                 {
                     if (vel.x >= -VEL_MAX)
                         vel.x -= 2*SPEED / slowed;
+                    if (right)
+                    {
+                        body.setTexture(pGM->load_textures("../assets/player-left.png"));
+                        right = false;
+                    }
+                        
                 }
                 else if (vel.x > 0)                               
                 {
