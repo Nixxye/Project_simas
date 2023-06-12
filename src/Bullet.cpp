@@ -91,7 +91,6 @@ namespace Entes
                 colision_manager->elastic_colision(this, other);
                 alive = false;
                 other->inflict_damage(damage);
-                std::cout<<"Machucou "<<damage<<std::endl;
             }
         case 11:
             if (direction == "Right" || direction == "Left")

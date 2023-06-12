@@ -69,6 +69,7 @@ namespace Stages
         Managers::ColisionManager colision_manager;
         Managers::EventsManager* events_manager;
 
+        int not_born;
         bool loaded;
         
         sf::RectangleShape body;

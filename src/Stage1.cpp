@@ -59,8 +59,8 @@ namespace Stages
                     pGM->center((*players.get_first())->get_position());
                 else
                 {
-                    std::cout<<"Matou "<<enemies.get_nkilled()<<std::endl;
-                    hud.add_points((int) (*players.get_first())->get_position().x + enemies.get_nkilled() * 1000);
+                    std::cout<<"Matou "<<enemies.get_nkilled() - not_born<<std::endl;
+                    hud.add_points((int) (*players.get_first())->get_position().x + (enemies.get_nkilled() - not_born)* 1000);
                     pSM->set_CurrentState(3);
                     pSM->reset_current_state(); // vai ser o gameover ou stage 2
                     pGM->reset_camera();
@@ -88,7 +88,7 @@ namespace Stages
                     pGM->center((*it)->get_position(),(*players.get_first())->get_position());
                 else
                 {
-                    hud.add_points((int) (*players.get_first())->get_position().x + enemies.get_nkilled() * 1000);
+                    hud.add_points((int) (*players.get_first())->get_position().x + (enemies.get_nkilled() - not_born) * 1000);
                     pSM->set_CurrentState(3);
                     pGM->reset_camera();
                 } 
@@ -186,6 +186,7 @@ namespace Stages
             create_enemy(enemies_file);
         }  
         loaded = true;
+        not_born = enemies.get_nkilled();
     }
     void Stage1::reset()
     {
@@ -240,6 +241,9 @@ namespace Stages
             getline(enemies_file, line);
             create_enemy(enemies_file);
         }  
-            loaded = true;
+
+        loaded = true;
+        not_born = enemies.get_nkilled();
+        std::cout<<"N vivo"<<not_born<<std::endl;
     }        
 }

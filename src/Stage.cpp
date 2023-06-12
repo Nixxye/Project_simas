@@ -12,7 +12,8 @@ namespace Stages
     colision_manager(),
     body(),
     loaded(false),
-    hud(&players)
+    hud(&players),
+    not_born(0)
     {
         colision_manager.set_enemy_list(&enemies);
         colision_manager.set_player_list(&players);
