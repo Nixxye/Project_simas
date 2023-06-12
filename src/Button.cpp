@@ -1,7 +1,6 @@
 #include "../menus/Button.h"
 
 #include <iostream>
-//Para testes;
 
 namespace Menus
 {
@@ -35,7 +34,6 @@ namespace Menus
     {
         pGM->draw(&body);
         pGM->draw(&text);
-        //std::cout<<"Printando"<<std::endl;
     }
     void Button::change_color()
     {

@@ -10,9 +10,6 @@ namespace Entes
         Obstacle(12, pos),
         slow_level(sl)
         {
-            //Provisório:
-            //body.setFillColor(sf::Color::Green);
-            //Slow level padrão é 60
             texture = pGM->load_textures("../assets/slime.png");
             body.setTexture(texture);
         }
@@ -22,15 +19,7 @@ namespace Entes
         }   
         void Slime::collide(Entity* other, std::string  direction) 
         {
-            //std::cout<<"Slowed"<<std::endl;
             other->set_slowed(slow_level);
-            if (direction == "Above")
-            {
-                //other->set_grounded(true);
-                //other->move('U');
-            }
-                
-                //Teste:
         }
         void Slime::execute()
         {

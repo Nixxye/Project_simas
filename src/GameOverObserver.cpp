@@ -14,7 +14,7 @@ namespace Observers
         keys [sf::Keyboard::D] = "d";
         keys [sf::Keyboard::E] = "e";
         keys [sf::Keyboard::F] = "f";
-        //keys [sf::Keyboard::G] = 'g';
+        keys [sf::Keyboard::G] = 'g';
         keys [sf::Keyboard::H] = "h";
         keys [sf::Keyboard::I] = "i";
         keys [sf::Keyboard::J] = "j";
@@ -45,7 +45,6 @@ namespace Observers
             return;
         if (!pGO)
         {
-            //std::cout<<"EITAAAAAAAAAAA"<<std::endl;
             return;
         }
         if (key_code == sf::Keyboard::Up)

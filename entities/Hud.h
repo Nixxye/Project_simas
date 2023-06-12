@@ -6,7 +6,6 @@
 #include "../menus/Text.h"
 
 #include <vector>
-//Hud com threads:
 
 namespace Entes
 {

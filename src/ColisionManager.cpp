@@ -105,7 +105,6 @@ namespace Managers
         sf::Vector2f d_bullet;
         sf::Vector2f posB, sizeB;
         std::string new_direction;
-        //std::cout<<sizeA.x<<" "<<sizeA.y<<" "<<posA.x<<" "<<posA.y<<std::endl;
         if (direction == "Above")
             new_direction = "Below";
         else if (direction == "Below")
@@ -125,12 +124,8 @@ namespace Managers
                 sf::Vector2f d = posB - posA;
                 if ((fabs(d.x) < (sizeA.x + sizeB.x)/2.0) && (fabs(d.y) < (sizeA.y + sizeB.y)/2.0))
                 {
-                    //return_value++;
                     (*B)->collide(Attacker, new_direction);
                     Attacker->collide_attack(*B, direction);
-                    //Chefão:
-
-                    //Attacker->collide(*B, direction);
                 }  
                 if ((*B)->get_id() == 3)
                 {
@@ -140,8 +135,6 @@ namespace Managers
                         d_bullet = posA - (*bullet)->get_position();
                         if ((fabs(d_bullet.x) < (sizeA.x + sizeB.x)/2.0) && (fabs(d_bullet.y) < (sizeA.y + sizeB.y)/2.0))
                         {
-                            //return_value++;
-                            //std::cout<<"Colidu"<<std::endl;
                             (*bullet)->collide(Attacker, direction);
                             Attacker->collide_attack(*bullet, direction);
 
@@ -156,7 +149,6 @@ namespace Managers
                                 else if (direction == "Left")
                                     attack_and_bullets(sizeA, posA, Attacker, *bullet, sf::Vector2f( -5.f, Attacker->get_vel().x));
                             }
-                                //attack_and_bullets(sizeA, Attacker->get_position(), Attacker->get_vel(), *bullet);
                         }
                         bullet++;
                     }

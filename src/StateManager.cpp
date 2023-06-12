@@ -1,5 +1,4 @@
 #include "../managers/StateManager.h"
-//para testes
 #include <iostream>
 
 namespace Managers
@@ -18,7 +17,6 @@ namespace Managers
     StateManager::StateManager():
     currentState(0)
     {
-        //tamanho 5 por enquanto.
         vector_states.resize(8);
     }
     StateManager::~StateManager()
@@ -32,22 +30,8 @@ namespace Managers
     void StateManager::set_CurrentState(int i)
     {
         currentState = i;
-        //printf ("State:%d", currentState);
-        //pLastState = pCurrentState;
-        //pCurrentState = vector_states[i];
+
     }
-    //N funciona
-    /*
-    States::State *StateManager::get_CurrentState()
-    {
-        if (!vector_states[currentState])
-        {
-            std::cout<<"Q feio heim"<<std::endl;
-            exit(1);
-        }
-        return vector_states[currentState];
-    }
-    */
 
     int StateManager::get_CurrentStateID()
     {
@@ -63,7 +47,6 @@ namespace Managers
         catch (const std::out_of_range& oor) 
         {
             std::cerr << "Out of Range error: " << oor.what() << '\n';
-            //colocar exit();
         }
     }
 

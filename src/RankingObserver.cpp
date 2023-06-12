@@ -16,10 +16,8 @@ namespace Observers
     }
     void RankingObserver::update(sf::Keyboard::Key key_code)
     {
-        //std::cout<<"EITAAAAAAAAAAA Ranking"<<std::endl;
         if (!pRanking)
         {
-            //std::cout<<"EITAAAAAAAAAAA"<<std::endl;
             return;
         }
         if (pSM->get_CurrentStateID() != 4)

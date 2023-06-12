@@ -15,19 +15,13 @@ namespace Entes
     class Entity : public Ent
     {
         protected:
-            //era const
             const int id;
             static int count;
 
-            //sf::RectangleShape body;
-            //Era int:
             static float speed;
-            //sf::Vector2f position;
             sf::Vector2f vel;
             static sf::Vector2f player_position;
-            //int life;
             bool grounded;
-            //bool alive;
             float mass;
             int slowed;
             Managers::ColisionManager* colision_manager;

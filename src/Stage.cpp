@@ -1,7 +1,5 @@
 #include "../stages/Stage.h"
 
-//PODE APAGAR TUDO RELACIONADO À LISTA DE BALAS AQUI:
-
 namespace Stages
 {
     Stage::Stage(int id):
@@ -24,12 +22,10 @@ namespace Stages
 
     Stage::~Stage()
     {
-        //if (pSObserver)
-            //delete pSObserver;
+
     }    
     void Stage::draw()
     {
-        //N sei o q fazer aqui.
         pGM->draw(&(this->body));
         hud.draw();
     }
@@ -69,24 +65,22 @@ namespace Stages
         std::srand(std::time(NULL)); //aleatorio
         if (alive != 0 && alive != 1)
             alive = rand() % alive;
-        //FAZER STATIC CAST AQUI:
         switch (index)
         {
         case 1:
             int mc;
             file >> sx >> sy >> mc;
-            aux = new Entes::Characters::Enemy1(((bool) alive), life, sf::Vector2f(px, py), sf::Vector2f(vx, vy), damage, sf::Vector2f(sx, sy), mc);
+            aux = new Entes::Characters::Alarm(((bool) alive), life, sf::Vector2f(px, py), sf::Vector2f(vx, vy), damage, sf::Vector2f(sx, sy), mc);
             break;
         case 2:
             float sensor_radius, axis_x, axis_y, burst, power;
             int attacking;
             file >> sx >> sy >> sensor_radius >> attacking >> axis_x >> axis_y >> burst >> power;
-            aux = new Entes::Characters::Enemy2(((bool) alive), life, sf::Vector2f(px, py), sf::Vector2f(vx, vy), damage, sf::Vector2f(sx, sy), &players, sensor_radius, (bool) attacking, sf::Vector2f(axis_x, axis_y), burst, power);
+            aux = new Entes::Characters::Bomb(((bool) alive), life, sf::Vector2f(px, py), sf::Vector2f(vx, vy), damage, sf::Vector2f(sx, sy), &players, sensor_radius, (bool) attacking, sf::Vector2f(axis_x, axis_y), burst, power);
             break;
         case 3:
             int attack_delay;
             file >> sx >> sy >> attack_delay;
-            //std::cout<<px<<" "<<py<<" "<<vx<<" "<<vy<<" "<<sx<<" "<<sy;
             aux = new Entes::Characters::Boss(((bool) alive), life, sf::Vector2f(px, py), sf::Vector2f(vx, vy), damage, sf::Vector2f(sx, sy), attack_delay);
             int n; 
             file >> n;
@@ -96,7 +90,6 @@ namespace Stages
                 std::getline(file, line);
                 std::getline(file, line);
                 file >> index >> alive >> damage >> px >> py >> vx >> vy >> r >> lifetime >> friendly;
-                //ler nova linha:
                 bullet = new Entes::Bullet((bool) alive, sf::Vector2f(px, py), sf::Vector2f(vx, vy), damage, r, lifetime, (bool) friendly);
                 static_cast<Entes::Characters::Boss*>(aux)->add_bullet(bullet);
                 bullet->set_colision_manager(&colision_manager);
@@ -105,7 +98,6 @@ namespace Stages
         default:
             break;
         }
-        //tirar o set colision_manager depois - > já está no add_enemy;
         aux->set_colision_manager(&colision_manager);
         add_enemy(static_cast<Entes::Entity*>(aux));
         return static_cast<Entes::Entity*>(aux);

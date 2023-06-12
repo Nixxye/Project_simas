@@ -27,9 +27,6 @@ namespace Entes
         position[0] = sf::Vector2f(-350.f, -230.f);
         position[1] = sf::Vector2f(350.f, -230.f);
         position[2] = sf::Vector2f(-320.f, -270.f);
-
-        //life_bars[1].setOrigin(sf::Vector2f(15.f * 20, 0.f));
-        //life_bars[1].setPosition(sf::Vector2f(100.f, 100.f));
     }
     Hud::~Hud()
     {
@@ -39,7 +36,6 @@ namespace Entes
     {
         clock += (*players->get_first())->get_speed();
         update_life();
-        //draw();
     }
     void Hud::draw()
     {

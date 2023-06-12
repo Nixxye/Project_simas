@@ -23,13 +23,11 @@ namespace Entes
             
             void execute();
             void move();
-            //N sei se precisa;
             void draw();
             void collide(Entity* other, std::string direction = "");
             void call_colision();
             sf::Vector2f get_position() { return body.getPosition(); }
             void inflict_damage(int dmg) { lifetime -= dmg; }
-            //Mudar isso dps;
             void set_alive(bool a);
             sf::Vector2f get_size() {return sf::Vector2f(body.getRadius()*2, body.getRadius()*2); } 
             void set_position(sf::Vector2f pos) { body.setPosition(pos); }

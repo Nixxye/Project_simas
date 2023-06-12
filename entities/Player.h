@@ -8,7 +8,6 @@
 
 
 #define ATTACK_DELAY 30
-//Implementar se tiver tempo, um recoil;
 #define RECOIL 5
 #define DMG 3
 #define SLOW_TIME 100
@@ -28,7 +27,6 @@ namespace Entes
             bool right;
             std::string attack_direction;
             int damage;  
-            //Salvar attack_delay          
         public:
             Player(int index = 1,sf::Vector2f pos = sf::Vector2f(10.f, 0.f), sf::Vector2f velocity = sf::Vector2f(0.f, 0.f), sf::Vector2f size = sf::Vector2f(50.f, 50.f));
             Player(int index, bool alv, int lf, sf::Vector2f pos, sf::Vector2f velocity, sf::Vector2f size);
@@ -41,8 +39,6 @@ namespace Entes
             void attack();
             void set_win (bool b){win = b;}
             const bool get_win() const {return win;}
-
-            //void set_colision_manager(Managers::ColisionManager* cm) { colision_manager = cm; }
 
             sf::Vector2f get_attack_position() { return attack_body.getPosition(); }
             sf::Vector2f get_attack_size() { return attack_body.getSize(); }

@@ -3,11 +3,6 @@
 #include "../managers/GraphicsManager.h"
 #include "../managers/StateManager.h"
 
-//#include "../entities/Player.h"
-
-//#include "../menu/Menu.h"
-
-//incluído para testes:
 #include <iostream>
 #include "Subject.h"
 

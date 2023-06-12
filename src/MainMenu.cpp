@@ -20,8 +20,7 @@ namespace Menus
         
         player1.setPosition(sf::Vector2f(100.f, 125.f));
         player2.setPosition(sf::Vector2f(100.f, 125.f));
-        //player1.setPosition(sf::Vector2f(WIDTH / 2, (2) *(20 + SIZEY)));
-        //player2.setPosition(sf::Vector2f(WIDTH / 2, (2) *(20 + SIZEY)));
+
         buttons[0]->set_name("Continue");
         buttons[1]->set_name("New Game");
         buttons[2]->set_name("Ranking");
@@ -80,8 +79,6 @@ namespace Menus
         {
             
             States::State::pSM->set_CurrentState(4);
-            //printf ("Oi menu\n");
-            //States::State::pSM->reset_current_state();
         }
             break;
         case 3:
@@ -125,7 +122,6 @@ namespace Menus
             stage2.draw();
         for (int i = 0; i < MAX_BUTTONS; i++)
         {
-            //arrumar a função de draw do graphics_manager
             buttons[i]->draw();
         }
     } 

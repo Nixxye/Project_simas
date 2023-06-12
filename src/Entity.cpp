@@ -16,28 +16,14 @@ namespace Entes
     colision_manager(nullptr),
     vel(velocity),
     grounded(false),
-    //Arrumar a massa dps:
     mass(1),
     slowed(1)
     {
-        //body.setPosition(pos);
-        /*
-        body.setFillColor(sf::Color::White);
-        
-        body.setOrigin(body.getSize()/2.f);
-        */
+
     }
 
     Entity::~Entity()
     {
 
     }
-    /*
-    void Entity::draw()
-    {
-        //if (this->get_alive())
-            //pGM->draw(&body);
-    }
-*/
-
 }

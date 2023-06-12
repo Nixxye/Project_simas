@@ -4,7 +4,6 @@
 #include "../lists/EntityList.h"
 #include "../entities/Bullet.h"
 
-//TODO: Fazer a função move de enemy ser virtual e enemy 1 receber a função atual;
 namespace Entes
 {
     namespace Characters
@@ -12,7 +11,6 @@ namespace Entes
         class Boss: public Enemy
         {
         private:
-            //Podemos fazer balas com propridedades diferentes se der tempo:
             Lists::EntityList bullets;
             int attack_delay;
         public:

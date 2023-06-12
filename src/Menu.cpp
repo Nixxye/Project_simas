@@ -10,7 +10,6 @@ namespace Menus
     selected_index(0),
     title(t)
     {
-        //pEventsManager = Managers::EventsManager::get_instance();
         for (int i = 0; i < MAX_BUTTONS; i++)
         {
             buttons.push_back(new Button(sf::Vector2f(WIDTH / 2, (i + 2) *(20 + SIZEY))));
@@ -32,7 +31,6 @@ namespace Menus
     {
         for (int i = 0; i < MAX_BUTTONS; i++)
         {
-            //arrumar a função de draw do graphics_manager
             buttons[i]->draw();
         }
     } 
@@ -56,7 +54,6 @@ namespace Menus
     }
     void Menu :: execute()
     {
-        //pEventsManager->execute(); //nao entendi pq??
         draw();
     }
     void Menu::change_name(std::string nm)

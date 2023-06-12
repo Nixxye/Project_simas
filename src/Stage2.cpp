@@ -39,13 +39,10 @@ namespace Stages
         hud.execute();
         draw();
         colision_manager.colide();
-        //draw();
-        //else horrível
         if (pSM->get_CurrentStateID() == id_state)
         {
             Lists::List<Entes::Entity>::Iterator<Entes::Entity> it = players.get_first();
             it++;
-            //std::cout<<players.get_size()<<std::endl;
             if (players.get_size()==1)
             {
                 if ((*players.get_first())->get_alive())
@@ -54,16 +51,13 @@ namespace Stages
                 {
                     std::cout<<"Matou "<<enemies.get_nkilled() - not_born<<std::endl;
                     hud.add_points((int) (*players.get_first())->get_position().x + (enemies.get_nkilled() - not_born) * 1000);
-                    pSM->set_CurrentState(3); // vai ser o gameover ou stage 2
+                    pSM->set_CurrentState(3); 
                     pGM->reset_camera();
                     std::cout<<"Seu ruim"<<std::endl;
                 }
-                //std::cout<<(*players.get_first())->get_position().x<<" "<<(*players.get_first())->get_position().y<<std::endl;
-                    
             }
             else 
             {
-                //printf ("%d",players.get_size());
                 if ((*players.get_first())->get_alive() && (*it)->get_alive())
                     pGM->center((*it)->get_position(),(*players.get_first())->get_position());
                 else 
@@ -73,15 +67,6 @@ namespace Stages
                     pSM->set_CurrentState(3);
                     pGM->reset_camera();
                 }
-                /*else if (!(*players.get_first())->get_alive() && !(*it)->get_alive())
-                { 
-                    pSM->set_CurrentState(3);
-                    pGM->reset_camera();
-                } 
-                else if(!(*players.get_first())->get_alive())
-                    pGM->center((*it)->get_position());
-                else 
-                    pGM->center((*players.get_first())->get_position());*/
             }
             Lists::List<Entes::Entity>::Iterator<Entes::Entity> it_enemies;
             anyEnemyAlive = false;
@@ -105,10 +90,8 @@ namespace Stages
             }
  
         }
-           // pGM->reset_camera();
         players.draw();
         enemies.draw();
-        //std::cout<<(*enemies.get_first())->get_size().x<<" "<<(*enemies.get_first())->get_size().y<<std::endl;
         obstacles.draw();
         hud.draw();
     }
@@ -131,7 +114,6 @@ namespace Stages
         if (!players_file)
         {
             std::cout<<"Cannot players file"<<std::endl;
-            //exit
             return;
         }
         players_file<<players.get_size()<<std::endl<<std::endl;
@@ -142,7 +124,6 @@ namespace Stages
         if (!enemies_file)
         {
             std::cout<<"Cannot players file"<<std::endl;
-            //exit
             return;
         }
         enemies_file<<enemies.get_size()<<std::endl<<std::endl;
@@ -202,7 +183,6 @@ namespace Stages
     }
     void Stage2::reset()
     {
-        //Vai sair:
         if (loaded)
             players.clear();
         if (loaded)

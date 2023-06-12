@@ -1,11 +1,11 @@
-#include "../entities/Enemy2.h"
+#include "../entities/Bomb.h"
 #include "../managers/ColisionManager.h"
 
 namespace Entes
 {
     namespace Characters
     {
-        Enemy2:: Enemy2(sf::Vector2f pos, sf::Vector2f velocity, sf::Vector2f size, Lists::EntityList* p):
+        Bomb:: Bomb(sf::Vector2f pos, sf::Vector2f velocity, sf::Vector2f size, Lists::EntityList* p):
         Enemy(2, pos, velocity, size),
         players(p),
         attacking(false),
@@ -20,7 +20,7 @@ namespace Entes
             explosion.setFillColor(sf::Color::Black);
             explosion.setOrigin(sf::Vector2f(sensor_radius, sensor_radius));
         }
-        Enemy2::Enemy2(bool alv, int lf, sf::Vector2f pos, sf::Vector2f velocity, float dmg, sf::Vector2f size, Lists::EntityList* p, float sr, bool atck, sf::Vector2f axs, float brst, float pw):
+        Bomb::Bomb(bool alv, int lf, sf::Vector2f pos, sf::Vector2f velocity, float dmg, sf::Vector2f size, Lists::EntityList* p, float sr, bool atck, sf::Vector2f axs, float brst, float pw):
         Enemy(2, pos, velocity, size),
         players(p),
         attacking (atck),
@@ -43,11 +43,11 @@ namespace Entes
                 texture = pGM->load_textures("../assets/bomb0.png");
             body.setTexture(texture);  
         }
-        Enemy2:: ~Enemy2()
+        Bomb:: ~Bomb()
         {
             
         }  
-        void Enemy2::draw()
+        void Bomb::draw()
         {
             if (alive)
             {
@@ -59,7 +59,7 @@ namespace Entes
                 exploding = false;
             }
         }
-        void Enemy2::move()
+        void Bomb::move()
         {
             if (!players)
             {
@@ -98,7 +98,7 @@ namespace Entes
                 }
 
         }
-        void Enemy2::attack(sf::Vector2f target)
+        void Bomb::attack(sf::Vector2f target)
         {
             //Cria o eixo "mira"
             axis = target - body.getPosition();
@@ -107,14 +107,14 @@ namespace Entes
             texture = pGM->load_textures("../assets/bomb1.png"); 
             body.setTexture(texture);
         }
-        void Enemy2::collide(Entity* other, std::string direction)
+        void Bomb::collide(Entity* other, std::string direction)
         {
             int index = other->get_id();
             
             other->inflict_damage(damage);
             explode();            
         }  
-        void Enemy2::explode()
+        void Bomb::explode()
         {
             explosion.setPosition(body.getPosition()); 
             exploding = true;
@@ -122,7 +122,7 @@ namespace Entes
             colision_manager->collide_explosion(&explosion, power);
             alive = false;
         }
-        void Enemy2::save(std::ofstream& file)
+        void Bomb::save(std::ofstream& file)
         {
             if (!file.is_open())
             {

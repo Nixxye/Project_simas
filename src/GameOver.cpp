@@ -17,7 +17,6 @@ namespace Menus
         name_string = "";
         pGOObserver = new Observers::GameOverObserver;
         pGOObserver->set_menu(this);
-        //set_points(123);
         buttons_active = false;
         final_name = false;
         name_active = false;
@@ -34,7 +33,6 @@ namespace Menus
     void GameOver::draw()
     {
         pGM->draw(&(this->body));
-        //Mt feio:
         if (Entes::Hud::get_win())
         {
             change_name("The End");
@@ -57,7 +55,6 @@ namespace Menus
         if (name_active)
         {
             name_string.append(c);
-            //printf ("Oi\n");
         }
     } 
 
@@ -67,8 +64,6 @@ namespace Menus
             return;
         if (name_string.size() == 0)
             return;
-        //name_string.append (" - points:");
-        //name_string.append (points_string);
         points_string = std::to_string(Entes::Hud::get_points());
         name.setName(name_string + " - " + points_string);
         ranking->add_newRanking(Entes::Hud::get_points(), name_string);
@@ -113,7 +108,6 @@ namespace Menus
         if (!buttons_active)
         {
             buttons_active = true;
-           // reset();
             return;
         }
         
@@ -142,7 +136,6 @@ namespace Menus
          title.setName("Game Over");
          name.setName(" ");
          name_string = "";
-         //printf ("\n aaaa\n nome");
     }
 
 

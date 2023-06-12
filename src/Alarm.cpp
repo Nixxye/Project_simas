@@ -1,10 +1,10 @@
-#include "../entities/Enemy1.h"
+#include "../entities/Alarm.h"
 
 namespace Entes
 {
     namespace Characters
     {
-        Enemy1:: Enemy1(sf::Vector2f pos, sf::Vector2f velocity, sf::Vector2f size):
+        Alarm:: Alarm(sf::Vector2f pos, sf::Vector2f velocity, sf::Vector2f size):
         Enemy(1, pos, velocity, size),
         motion_counter(TIME_MOTION)
         {
@@ -14,7 +14,7 @@ namespace Entes
             body.setTexture(texture);
         }
 
-        Enemy1:: Enemy1(bool alv, int lf, sf::Vector2f pos, sf::Vector2f velocity, float dmg, sf::Vector2f size, float mc):
+        Alarm:: Alarm(bool alv, int lf, sf::Vector2f pos, sf::Vector2f velocity, float dmg, sf::Vector2f size, float mc):
         Enemy(1, pos, velocity, size),
         motion_counter(mc)
         {
@@ -25,11 +25,11 @@ namespace Entes
             alive = alv;
         }
 
-        Enemy1:: ~Enemy1()
+        Alarm:: ~Alarm()
         {
             
         }  
-        void Enemy1::move()
+        void Alarm::move()
         {
             if (speed > 0)
             {
@@ -46,7 +46,7 @@ namespace Entes
                 body.setPosition(body.getPosition() + sf::Vector2f(speed*vel.x / 10, speed*vel.y / 10));
             }
         }
-        void Enemy1::collide(Entity* other, std::string direction)
+        void Alarm::collide(Entity* other, std::string direction)
         {
             int index = other->get_id();
             sf::Vector2f pos = other->get_position();
@@ -115,7 +115,7 @@ namespace Entes
             }
             move();
         }
-        void Enemy1::save(std::ofstream& file)
+        void Alarm::save(std::ofstream& file)
         {
             if (!file.is_open())
             {

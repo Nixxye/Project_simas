@@ -21,7 +21,6 @@ namespace Lists
         void save(std::ofstream& file);
 
         void set_position(sf::Vector2f pos);
-        //void set_alive(bool a);
 
         const int get_size() const { return list.get_size();}
         const int get_nkilled();

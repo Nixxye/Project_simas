@@ -15,11 +15,10 @@ namespace Observers
             Managers::StateManager*  pSM;
             Managers::GraphicsManager*  pGM;
 
-
         public:
             Observer();
-
             virtual ~Observer();
+            
             virtual void update(sf::Keyboard::Key key_code) = 0;
 
     };

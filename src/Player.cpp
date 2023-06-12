@@ -16,12 +16,8 @@ namespace Entes
         right(true)
         {
             attack_body.setOrigin(attack_body.getSize().x / 2, attack_body.getSize().y / 2);
-            //attack_body.setFillColor(sf::Color::Red);
             attack_body.setTexture(pGM->load_textures("../assets/teste1.png"));
             life = 20;
-            //lives = 3;
-            //pPObserver = new Observers::PlayerObserver(index);
-            //std::cout<<"Added player "<<index<<std::endl;
             if (player_id == 1)
             {
                 texture = pGM->load_textures("../assets/player.png");
@@ -30,7 +26,6 @@ namespace Entes
             {
                 texture = pGM->load_textures("../assets/player2.png");
             }
-            //pPObserver->set_player(this);
 
             body.setTexture(texture);
 
@@ -50,10 +45,6 @@ namespace Entes
             life = lf;
 
             attack_body.setOrigin(attack_body.getSize().x / 2, attack_body.getSize().y / 2);
-            //attack_body.setFillColor(sf::Color::Red);
-
-            //pPObserver = new Observers::PlayerObserver(index);
-            //std::cout<<"Added player "<<index<<std::endl;
             if (player_id == 1)
             {
                 pGM->load_textures("../assets/player-left.png");
@@ -64,7 +55,6 @@ namespace Entes
             {
                 texture = pGM->load_textures("../assets/player2.png");
             }
-            //pPObserver->set_player(this);
 
             body.setTexture(texture);
             std::cout<<body.getPosition().x<<" "<<body.getPosition().y<<std::endl;
@@ -113,12 +103,6 @@ namespace Entes
         { 
             if (life <= 0)
                 alive = false;
-            if (!alive)
-            {
-                //DAR UM JEITO DE FAZER UM GAME OVER DECENTE:
-                //std::cout<<"Faleceu"<<std::endl;
-                //exit(1);
-            }
             move();
             attack();
 
@@ -213,14 +197,10 @@ namespace Entes
                     body.setPosition(body.getPosition() + sf::Vector2f(0.f, 0.5));
                 }
             }
-
-            //N sei pq a gravidade está mais rápida quando nos movemos; -> Gimmick
-                //std::cout<<vel.x<<" "<<vel.y<<std::endl;
                 body.setPosition(body.getPosition() + vel);
                 player_position = body.getPosition();
                 speed = (int) sqrt(vel.x*vel.x + vel.y*vel.y);   
             slowed = 1;
-            //std::cout<<vel.y<<std::endl;
         }
 
         void Player::collide(Entity *other, std::string direction)
@@ -294,7 +274,6 @@ namespace Entes
                 }
                 break;
             case 13:
-                //std::cout<<"Espinho"<<std::endl;
                 if (direction == "Below")
                 {
                     vel = sf::Vector2f(vel.x, -5.f);
@@ -333,7 +312,6 @@ namespace Entes
             {
                 attack_delay = ATTACK_DELAY;
                 std::string direction = " ";
-                //std::cout<<"Attacking"<<std::endl;
                 is_attacking = true;
                 if (player_id == 1)
                 {
@@ -414,19 +392,15 @@ namespace Entes
                 {
                    attack_body.setPosition(sf::Vector2f(body.getPosition().x - body.getSize().x / 2 - attack_body.getSize().x / 2, body.getPosition().y)); 
                 }
-                //std::cout<<"Attacking"<<std::endl;
                 pGM->draw(&attack_body);
                 colision_manager->collide_attack(static_cast<Player*>(this), direction);
 
-                //Por enquanto is_attacking é inútil:
-                //is_attacking = false;
             }
             damage = 0;
         }
         void Player::collide_attack(Entity *other, std::string direction)
         {
             other->inflict_damage(damage);
-            //std::cout<<"Player indo para "<<direction<<std::endl;
             if(direction == "Left")
                 vel = sf::Vector2f(RECOIL, vel.y);
             else if(direction == "Right")
@@ -449,7 +423,6 @@ namespace Entes
                 std::cout<<"Error: Cannot open player file!"<<std::endl;
                 return;
             }
-            //file<<id<<std::endl<<player_id<<std::endl;
             if (alive)
                 file<<1<<std::endl;
             else

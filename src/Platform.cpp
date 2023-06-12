@@ -13,11 +13,9 @@ namespace Entes
                 body.setFillColor(sf::Color::Cyan);
             else
             {
-                //texture = pGM->load_textures("../assets/plataform.png");
                 texture = pGM->load_textures("../assets/obstacle3.png");
                 body.setTexture(texture);
             }
-            //checkpoint=false; 
         }
         Platform:: ~Platform()
         {

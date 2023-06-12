@@ -16,7 +16,6 @@ namespace Observers
     {
         if (!pMenu)
         {
-            //std::cout<<"EITAAAAAAAAAAA"<<std::endl;
             return;
         }
         if (pSM->get_CurrentStateID() == 1 || pSM->get_CurrentStateID() == 2 ||
@@ -31,7 +30,6 @@ namespace Observers
         }
         if (pSM->get_CurrentStateID() != 0)
             return;
-        //std::cout<<"Teste"<<std::endl;
         if (key_code == sf::Keyboard::Up)
             pMenu->move_up();
         if (key_code == sf::Keyboard::Down)

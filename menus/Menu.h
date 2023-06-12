@@ -20,7 +20,6 @@ namespace Menus
             std::vector<Button*> buttons;
             int selected_index;
             sf::RectangleShape body;
-           // Managers::EventsManager* pEventsManager;
             Text title;
             
         public:

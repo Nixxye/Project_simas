@@ -15,9 +15,6 @@ namespace Entes
         {
             texture = pGM->load_textures("../assets/boss.png");
             body.setTexture(texture);
-            //Teste:
-            //bullets.clear();
-            //std::cout<<"N na inicial. "<<bullets.get_size()<<std::endl;
         }
         Boss::Boss(bool alv, int lf, sf::Vector2f pos, sf::Vector2f velocity, float dmg, sf::Vector2f size, int attck_delay):
         Enemy(3, pos, velocity, size),
@@ -46,7 +43,6 @@ namespace Entes
             }
             
             //Verifica as colisões das bolinhas:
-            //collide_bullets();
             Lists::List<Entes::Entity>::Iterator<Entes::Entity> aux = bullets.get_first();
             while (aux != nullptr)
             {
@@ -60,7 +56,6 @@ namespace Entes
             vel.y += GRAVITY;
             if (grounded)
                 vel.y -= GRAVITY;
-            //Voar voar, subir subir...
             vel.y -= (rand() % (int) (10*GRAVITY)) / 10.f + GRAVITY * 2 / 3;
             body.setPosition(body.getPosition() + vel*(float) speed);
             bullets.execute();
@@ -68,7 +63,6 @@ namespace Entes
 
         void Boss::attack()
         {
-            //std::cout<<"O boss tá lá"<<std::endl;
             Lists::List<Entes::Entity>::Iterator<Entes::Entity> aux = bullets.get_first();
             std::cout<<life<<std::endl;
             float vx = 0.f, vy = 0.f;
@@ -76,11 +70,8 @@ namespace Entes
             while(aux != nullptr)
             {
                 static_cast<Entes::Bullet*>(*aux)->set_alive(true);
-                //std::cout<<"Aqui"<<std::endl;
                 (static_cast<Entes::Bullet*>(*aux))->set_friendly(false);
-                //Fazer uma função de trocar textura:
                 (static_cast<Entes::Bullet*>(*aux))->set_fill_color(sf::Color::White);              
-                //std::cout<<"Aquiiii"<<std::endl;
                 vx = ((rand() % 50) - 25) / 30.f;
                 vy = ((rand() % 50) - 40) / 30.f;
                 (*aux)->set_position(body.getPosition());
@@ -89,7 +80,6 @@ namespace Entes
                 aux++;        
             } 
             bullets.set_position(body.getPosition());
-            //std::cout<<"Saiu do ataque"<<std::endl;
         }
         void Boss::collide(Entity* other, std::string direction)
         {

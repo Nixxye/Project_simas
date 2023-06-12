@@ -8,7 +8,7 @@ namespace Stages
     {
         //Tamanho da primeira fase:
         body.setSize(sf::Vector2f(9800.f, 700.f));
-        body.setOrigin(sf::Vector2f(0.f, -200.f));
+        body.setOrigin(sf::Vector2f(0.f, -300.f));
         texture = pGM->load_textures("../assets/stage1.png");
         body.setTexture(texture);
     }
@@ -44,8 +44,6 @@ namespace Stages
             Lists::List<Entes::Entity>::Iterator<Entes::Entity> it = players.get_first();
             Entes::Characters:: Player* player1 = dynamic_cast<Entes::Characters::Player*>(*it);
             it++;
-           // Entes::Characters:: Player* player2 = dynamic_cast<Entes::Characters::Player*>(*it);
-            //std::cout<<players.get_size()<<std::endl;
             if (players.get_size()==1)
             {
                 if(player1->get_win())
@@ -53,7 +51,6 @@ namespace Stages
                     player1->set_win(false);
                     pSM->set_CurrentState(2);
                     pSM->reset_current_state();
-                    //pGM->reset_camera();
                 }
                 if ((*players.get_first())->get_alive())
                     pGM->center((*players.get_first())->get_position());
@@ -62,7 +59,7 @@ namespace Stages
                     std::cout<<"Matou "<<enemies.get_nkilled() - not_born<<std::endl;
                     hud.add_points((int) (*players.get_first())->get_position().x + (enemies.get_nkilled() - not_born)* 1000);
                     pSM->set_CurrentState(3);
-                    pSM->reset_current_state(); // vai ser o gameover ou stage 2
+                    pSM->reset_current_state();
                     pGM->reset_camera();
                 }
                     
@@ -180,7 +177,6 @@ namespace Stages
             exit(1);
         }
         enemies_file >> n;
-        //std::cout<<"N de inimigos "<<n;
         for (int i = 0; i < n; i++)
         {
             create_enemy(enemies_file);
@@ -191,7 +187,6 @@ namespace Stages
     void Stage1::reset()
     {
         create_scenario(SCENARIO_FILE1, SAVE_SCENARIO1);
-         //Vai sair:
         if (loaded)
             players.clear();
         if (loaded)

@@ -34,7 +34,6 @@ namespace Entes
         if (alive)
         {
             move();
-            //std::cout<<"Moveu"<<std::endl;
             lifetime--;
             if (lifetime <= 0)
                 alive = false;
@@ -73,9 +72,7 @@ namespace Entes
         {
             //Player:
         case 0:
-            //Isso vai para o gerenciador de colisões:
             colision_manager->elastic_colision(this, other);
-            //std::cout<<"Here"<<std::endl;
             if (static_cast<Entes::Characters::Player*>(other)->get_damage() > 0 && !friendly)
             {
                 friendly = true;
