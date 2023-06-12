@@ -6,6 +6,8 @@ namespace Stages
     Stage(2),
     anyEnemyAlive(true)
     {
+        body.setSize(sf::Vector2f(1700.f, 700.f));
+        body.setOrigin(sf::Vector2f(0.f, -200.f));
         texture = pGM->load_textures("../assets/stage2.png");
         body.setTexture(texture);  
     }
@@ -13,6 +15,8 @@ namespace Stages
     Stage(5),
     anyEnemyAlive(true)
     {
+        body.setSize(sf::Vector2f(1700.f, 700.f));
+        body.setOrigin(sf::Vector2f(0.f, -200.f));
         texture = pGM->load_textures("../assets/stage2.png");
         body.setTexture(texture);  
     }
@@ -28,13 +32,12 @@ namespace Stages
         {
             load();
         }
-        //std::cout<<"Testeee"<<std::endl;
-        //draw();// Nao sei pq nao desenha o ataque
+
         players.execute();
         enemies.execute();
         obstacles.execute();
         hud.execute();
-
+        draw();
         colision_manager.colide();
         //draw();
         //else horrível
