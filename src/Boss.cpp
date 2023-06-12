@@ -8,14 +8,6 @@ namespace Entes
 {
     namespace Characters
     {
-        Boss::Boss(sf::Vector2f pos, sf::Vector2f velocity, sf::Vector2f size):
-        Enemy(3, pos, velocity, size),
-        bullets(),
-        attack_delay(0)
-        {
-            texture = pGM->load_textures("../assets/boss.png");
-            body.setTexture(texture);
-        }
         Boss::Boss(bool alv, int lf, sf::Vector2f pos, sf::Vector2f velocity, float dmg, sf::Vector2f size, int attck_delay):
         Enemy(3, pos, velocity, size),
         bullets(), 
@@ -64,7 +56,6 @@ namespace Entes
         void Boss::attack()
         {
             Lists::List<Entes::Entity>::Iterator<Entes::Entity> aux = bullets.get_first();
-            std::cout<<life<<std::endl;
             float vx = 0.f, vy = 0.f;
 
             while(aux != nullptr)

@@ -4,16 +4,6 @@ namespace Entes
 {
     namespace Characters
     {
-        Alarm:: Alarm(sf::Vector2f pos, sf::Vector2f velocity, sf::Vector2f size):
-        Enemy(1, pos, velocity, size),
-        motion_counter(TIME_MOTION)
-        {
-            damage = 2;
-            life = 10;
-            texture = pGM->load_textures("../assets/enemy1.png");
-            body.setTexture(texture);
-        }
-
         Alarm:: Alarm(bool alv, int lf, sf::Vector2f pos, sf::Vector2f velocity, float dmg, sf::Vector2f size, float mc):
         Enemy(1, pos, velocity, size),
         motion_counter(mc)

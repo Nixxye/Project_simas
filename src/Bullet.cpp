@@ -3,18 +3,6 @@
 
 namespace Entes
 {
-    Bullet::Bullet(sf::Vector2f pos, sf::Vector2f velocity, float time):
-    Entity(4, velocity),
-    lifetime(time), 
-    body(10),
-    friendly(false),
-    damage(1),
-    alive(true)
-    {
-        body.setPosition(pos);
-        texture = pGM->load_textures("../assets/bullet.png");
-        body.setTexture(texture);
-    }
     Bullet::Bullet(bool alv, sf::Vector2f pos, sf::Vector2f velocity, float dmg, float radius, float lftm, bool frndl):
     Entity(4, velocity),
     lifetime(lftm),

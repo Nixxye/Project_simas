@@ -29,7 +29,6 @@ namespace Entes
 
             body.setTexture(texture);
 
-            std::cout<<body.getPosition().x<<" "<<body.getPosition().y<<std::endl;
         }
         Player::Player(int index, bool alv, int lf, sf::Vector2f pos, sf::Vector2f velocity, sf::Vector2f size):
         attack_body(body.getSize() * 2.f),
@@ -53,11 +52,11 @@ namespace Entes
             }
             else if (player_id == 2)
             {
-                texture = pGM->load_textures("../assets/player2.png");
+                pGM->load_textures("../assets/player-left.png");
+                texture = pGM->load_textures("../assets/player-right.png");
             }
 
             body.setTexture(texture);
-            std::cout<<body.getPosition().x<<" "<<body.getPosition().y<<std::endl;
 
             texture = pGM->load_textures("../assets/attack.png");
             attack_body.setTexture(texture);
@@ -158,11 +157,21 @@ namespace Entes
                 {
                     if (vel.x <= VEL_MAX)
                         vel.x += 5*SPEED / slowed;
+                    if (!right)
+                    {
+                        body.setTexture(pGM->load_textures("../assets/player-right.png"));
+                        right = true;
+                    }
                 }
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))//Left
                 {
                     if (vel.x >= -VEL_MAX)
                         vel.x -= 5*SPEED / slowed;
+                    if (right)
+                    {
+                        body.setTexture(pGM->load_textures("../assets/player-left.png"));
+                        right = false;
+                    }
                 }
                 else if (slowed > 1)
                     vel.x = 0;
@@ -354,25 +363,35 @@ namespace Entes
                     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
                     {
                         direction = "Above";
+                        attack_direction = "Above";
                     }
                     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
                     {
                         direction = "Left";
+                        attack_direction = "Left";
                     }
                     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
                     {
                         direction = "Right";
+                        attack_direction = "Right";
                     }
                     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
                     {
                         direction = "Below";
+                        attack_direction = "Below";
                     }
                     else 
                     {
                         if (vel.x >= 0)
+                        {
                             direction = "Right";
+                            attack_direction = "Right";
+                        }
                         else 
+                        {
                             direction = "Left";
+                            attack_direction = "Left";
+                        }
                     }
                 }
 

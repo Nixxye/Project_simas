@@ -49,11 +49,9 @@ namespace Stages
                     pGM->center((*players.get_first())->get_position());
                 else
                 {
-                    std::cout<<"Matou "<<enemies.get_nkilled() - not_born<<std::endl;
                     hud.add_points((int) (*players.get_first())->get_position().x + (enemies.get_nkilled() - not_born) * 1000);
                     pSM->set_CurrentState(3); 
                     pGM->reset_camera();
-                    std::cout<<"Seu ruim"<<std::endl;
                 }
             }
             else 

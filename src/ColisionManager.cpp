@@ -299,7 +299,6 @@ namespace Managers
 
              B->set_vel(y_axis*(-power));
         } 
-        std::cout<<B->get_vel().x<<" "<<B->get_vel().y<<std::endl;
     }
 }
 

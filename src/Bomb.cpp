@@ -5,21 +5,6 @@ namespace Entes
 {
     namespace Characters
     {
-        Bomb:: Bomb(sf::Vector2f pos, sf::Vector2f velocity, sf::Vector2f size, Lists::EntityList* p):
-        Enemy(2, pos, velocity, size),
-        players(p),
-        attacking(false),
-        axis(1.f, 1.f),
-        burst(1.f),
-        sensor_radius(400.f),
-        explosion(sensor_radius),
-        power(40.f)
-        {
-            body.setSize(sf::Vector2f(100.f, 100.f));
-            body.setFillColor(sf::Color::Yellow);
-            explosion.setFillColor(sf::Color::Black);
-            explosion.setOrigin(sf::Vector2f(sensor_radius, sensor_radius));
-        }
         Bomb::Bomb(bool alv, int lf, sf::Vector2f pos, sf::Vector2f velocity, float dmg, sf::Vector2f size, Lists::EntityList* p, float sr, bool atck, sf::Vector2f axs, float brst, float pw):
         Enemy(2, pos, velocity, size),
         players(p),

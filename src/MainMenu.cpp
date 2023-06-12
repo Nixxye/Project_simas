@@ -4,7 +4,7 @@
 namespace Menus
 {
     MainMenu::MainMenu():
-    Menu(4, 0, "Game++"),
+    Menu(4, 0, "TimeAdventure++"),
     current_stage(1),
     current_player(0),
     stage1("Stage 1"),
@@ -13,7 +13,7 @@ namespace Menus
     player2 ("2 Players")
     {   
         title.setSize(50);
-        title.setPosition(sf::Vector2f(250.f, 25.f));
+        title.setPosition(sf::Vector2f(50.f, 25.f));
         title.set_color(0);
         stage1.setPosition(sf::Vector2f(100.f, 80.f));
         stage2.setPosition(sf::Vector2f(100.f, 80.f));
