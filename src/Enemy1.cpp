@@ -10,7 +10,7 @@ namespace Entes
         {
             damage = 2;
             life = 10;
-            texture = pGM->load_textures("../assets/enemy3.png");
+            texture = pGM->load_textures("../assets/enemy1.png");
             body.setTexture(texture);
         }
 
@@ -20,7 +20,7 @@ namespace Entes
         {
             damage = dmg;
             life = lf;
-            texture = pGM->load_textures("../assets/enemy3.png");
+            texture = pGM->load_textures("../assets/enemy1.png");
             body.setTexture(texture);
             alive = alv;
         }

@@ -24,6 +24,8 @@ namespace Entes
         bullets(), 
         attack_delay(attck_delay)
         {
+            texture = pGM->load_textures("../assets/boss.png");
+            body.setTexture(texture);
             alive = alv;
             life = lf;
             damage = dmg;

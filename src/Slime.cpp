@@ -11,7 +11,7 @@ namespace Entes
         slow_level(sl)
         {
             //Provisório:
-            body.setFillColor(sf::Color::Green);
+            //body.setFillColor(sf::Color::Green);
             //Slow level padrão é 60
             texture = pGM->load_textures("../assets/slime.png");
             body.setTexture(texture);

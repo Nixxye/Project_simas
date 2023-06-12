@@ -36,7 +36,12 @@ namespace Entes
             alive = alv;
             
             explosion.setFillColor(sf::Color::Black);
-            explosion.setOrigin(sf::Vector2f(sensor_radius, sensor_radius));   
+            explosion.setOrigin(sf::Vector2f(sensor_radius, sensor_radius)); 
+            if (attacking)
+                texture = pGM->load_textures("../assets/bomb1.png"); 
+            else 
+                texture = pGM->load_textures("../assets/bomb0.png");
+            body.setTexture(texture);  
         }
         Enemy2:: ~Enemy2()
         {
@@ -99,6 +104,8 @@ namespace Entes
             axis = target - body.getPosition();
             axis = axis / sqrt(axis.x * axis.x + axis.y * axis.y);
             attacking = true;
+            texture = pGM->load_textures("../assets/bomb1.png"); 
+            body.setTexture(texture);
         }
         void Enemy2::collide(Entity* other, std::string direction)
         {
