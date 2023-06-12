@@ -244,6 +244,5 @@ namespace Stages
 
         loaded = true;
         not_born = enemies.get_nkilled();
-        std::cout<<"N vivo"<<not_born<<std::endl;
     }        
 }

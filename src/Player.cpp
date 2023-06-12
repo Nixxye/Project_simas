@@ -43,13 +43,14 @@ namespace Entes
         attack_delay(0),
         win(false),
         damage(0),
-        player_id(index)
+        player_id(index),
+        attack_direction("Above")
         {
             alive = alv;
             life = lf;
 
             attack_body.setOrigin(attack_body.getSize().x / 2, attack_body.getSize().y / 2);
-            attack_body.setFillColor(sf::Color::Red);
+            //attack_body.setFillColor(sf::Color::Red);
 
             //pPObserver = new Observers::PlayerObserver(index);
             //std::cout<<"Added player "<<index<<std::endl;
@@ -67,6 +68,9 @@ namespace Entes
 
             body.setTexture(texture);
             std::cout<<body.getPosition().x<<" "<<body.getPosition().y<<std::endl;
+
+            texture = pGM->load_textures("../assets/attack.png");
+            attack_body.setTexture(texture);
         }
 
         Player::~Player()
@@ -77,10 +81,28 @@ namespace Entes
         {
             if (alive)
             {
-
                 if (is_attacking)
                 {
-                    pGM->draw(&attack_body);
+                    if (attack_direction == "Right")
+                    {
+                        attack_body.rotate(90);
+                        pGM->draw(&attack_body);
+                        attack_body.rotate(-90);
+                    }
+                    else if (attack_direction == "Left")
+                    {
+                        attack_body.rotate(-90);
+                        pGM->draw(&attack_body);
+                        attack_body.rotate(90);                        
+                    }
+                    else if (attack_direction == "Below")
+                    {
+                        attack_body.rotate(180);
+                        pGM->draw(&attack_body);
+                        attack_body.rotate(180);                         
+                    }
+                    else 
+                        pGM->draw(&attack_body);
                     is_attacking = false;
                 } 
                 pGM->draw(&body);
@@ -318,25 +340,35 @@ namespace Entes
                     if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
                     {
                         direction = "Above";
+                        attack_direction = "Above";
                     }
                     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
                     {
                         direction = "Left";
+                        attack_direction = "Left";
                     }
                     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
                     {
                         direction = "Right";
+                        attack_direction = "Right";
                     }
                     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
                     {
                         direction = "Below";
+                        attack_direction = "Below";
                     }
                     else 
                     {
                         if (vel.x >= 0)
+                        {
                             direction = "Right";
+                            attack_direction = "Right";
+                        }
                         else 
+                        {
                             direction = "Left";
+                            attack_direction = "Left";
+                        }          
                     }
                 }
                 else if (player_id == 2)

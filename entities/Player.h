@@ -26,7 +26,7 @@ namespace Entes
             int player_id;
             bool win;
             bool right;
-            
+            std::string attack_direction;
             int damage;  
             //Salvar attack_delay          
         public:
