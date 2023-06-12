@@ -144,16 +144,17 @@ namespace Managers
                             //std::cout<<"Colidu"<<std::endl;
                             (*bullet)->collide(Attacker, direction);
                             Attacker->collide_attack(*bullet, direction);
-                            if (!static_cast<Entes::Bullet*>(*bullet)->get_friendly())
+
+                            if ((static_cast<Entes::Bullet*>(*bullet)->get_friendly()))
                             {
-                                if (direction == "Below")
-                                    attack_and_bullets(sizeA, Attacker->get_position(), sf::Vector2f(Attacker->get_vel().x, 5.f), *bullet);
-                                else if (direction == "Above")
-                                    attack_and_bullets(sizeA, Attacker->get_position(), sf::Vector2f(Attacker->get_vel().x, -5.f), *bullet);
+                                if (direction == "Above")
+                                    attack_and_bullets(sizeA, posA, Attacker, *bullet, sf::Vector2f(Attacker->get_vel().x, -5.f));
+                                else if (direction == "Below")
+                                    attack_and_bullets(sizeA, posA, Attacker, *bullet, sf::Vector2f(Attacker->get_vel().x, 5.f));
                                 else if (direction == "Right")
-                                    attack_and_bullets(sizeA, Attacker->get_position(), sf::Vector2f(-5.f, Attacker->get_vel().x), *bullet);
+                                    attack_and_bullets(sizeA, posA, Attacker, *bullet, sf::Vector2f( 5.f, Attacker->get_vel().x));
                                 else if (direction == "Left")
-                                    attack_and_bullets(sizeA, Attacker->get_position(), sf::Vector2f(5.f, Attacker->get_vel().x), *bullet);
+                                    attack_and_bullets(sizeA, posA, Attacker, *bullet, sf::Vector2f( -5.f, Attacker->get_vel().x));
                             }
                                 //attack_and_bullets(sizeA, Attacker->get_position(), Attacker->get_vel(), *bullet);
                         }
@@ -230,26 +231,26 @@ namespace Managers
             B->move();
         } 
     }
-    void ColisionManager::attack_and_bullets(sf::Vector2f attack_size, sf::Vector2f attack_position, sf::Vector2f player_vel, Entes::Entity* B)
+    void ColisionManager::attack_and_bullets(sf::Vector2f attack_size, sf::Vector2f attack_position, Entes::Entity* player, Entes::Entity* B, sf::Vector2f vel)
     {
         sf::Vector2f posB = B->get_position(), sizeB = B->get_size();
         sf::Vector2f d = posB - attack_position;
         if (d.x <= attack_size.x/2 + B->get_size().x/2 || d.y <= attack_size.y/2 + B->get_size().y/2)
         {
             //Cria os eixos de colisão:
-            sf::Vector2f y_axis = sf::Vector2f(attack_position.x - B->get_position().x, attack_position.y - B->get_position().y);
+            sf::Vector2f y_axis = sf::Vector2f((player->get_position().x + attack_position.x) / 2 - B->get_position().x, (player->get_position().y + attack_position.y) / 2 - B->get_position().y);
             sf::Vector2f x_axis = sf::Vector2f(y_axis.y, -y_axis.x);
             //Normaliza os eixos:
             y_axis = y_axis / sqrt(y_axis.x * y_axis.x + y_axis.y * y_axis.y);
             x_axis = x_axis / sqrt(x_axis.x * x_axis.x + x_axis.y * x_axis.y);
             //Projeta as velocidades nos novos eixos:
-            sf::Vector2f vy1 = y_axis * (player_vel.x * y_axis.x + player_vel.y * y_axis.y); 
+            sf::Vector2f vy1 = y_axis * (vel.x * y_axis.x + vel.y * y_axis.y); 
             sf::Vector2f vy2 = y_axis * (B->get_vel().x * y_axis.x + B->get_vel().y * y_axis.y);
  
             sf::Vector2f vx2 = y_axis * (B->get_vel().x * x_axis.x + B->get_vel().y * x_axis.y);
         
-            sf::Vector2f vf1 = (((vy1)) * (float) (1+CR) /(1 + B->get_mass())) - vy1;
-            sf::Vector2f vf2 = ((vy1) * (float) (1+CR) /(1 + B->get_mass())) - vy2;
+            sf::Vector2f vf1 = (((vy1)) * (float) (3+CR) /(3 + B->get_mass())) - vy1;
+            sf::Vector2f vf2 = ((vy1) * (float) (3+CR) /(3 + B->get_mass())) - vy2;
 
             B->set_vel(vf2 + vx2);
             B->move();

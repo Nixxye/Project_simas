@@ -34,7 +34,7 @@ namespace Managers
 
         void elastic_colision(Entes::Entity* A, Entes::Entity* B);
         void elastic_colision(sf::CircleShape* A, Entes::Entity* B, float cr);
-        void attack_and_bullets(sf::Vector2f attack_size, sf::Vector2f attack_position, sf::Vector2f player_vel, Entes::Entity* B);
+        void attack_and_bullets(sf::Vector2f attack_size, sf::Vector2f attack_position, Entes::Entity* player, Entes::Entity* B, sf::Vector2f vel);
         
         void collide_explosion(sf::CircleShape* explosion, float power);
     };

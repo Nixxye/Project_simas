@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <fstream>
 
-#define TIME 200
+#define LIFETIME 1000
 
 namespace Entes
 {

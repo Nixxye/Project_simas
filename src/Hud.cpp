@@ -39,7 +39,7 @@ namespace Entes
     {
         clock += (*players->get_first())->get_speed();
         update_life();
-        draw();
+        //draw();
     }
     void Hud::draw()
     {

@@ -2,7 +2,8 @@
 
 #include "../stages/Stage.h"
 
-//#define PLAYER_FILE1 "../saves/stage1/players.dat"
+#define TIMETOFINISH 1000
+
 #define ENEMY_FILE11 "../saves/stage1/enemies_1player.dat"
 #define ENEMY_FILE12 "../saves/stage1/enemies_2players.dat"
 
@@ -24,6 +25,8 @@ namespace Stages
 {
     class Stage1: public Stage
     {
+    private:
+        int finish;
     public:
         Stage1(int n_players);
         Stage1();

@@ -13,7 +13,6 @@ namespace Entes
         bullets(),
         attack_delay(0)
         {
-            life = 50;
             texture = pGM->load_textures("../assets/boss.png");
             body.setTexture(texture);
             //Teste:
@@ -26,7 +25,7 @@ namespace Entes
         attack_delay(attck_delay)
         {
             alive = alv;
-            life = life;
+            life = lf;
             damage = dmg;
         }
         Boss::~Boss()
@@ -69,7 +68,7 @@ namespace Entes
         {
             //std::cout<<"O boss tá lá"<<std::endl;
             Lists::List<Entes::Entity>::Iterator<Entes::Entity> aux = bullets.get_first();
-            
+            std::cout<<life<<std::endl;
             float vx = 0.f, vy = 0.f;
 
             while(aux != nullptr)
@@ -118,7 +117,6 @@ namespace Entes
             
             if (alive)
             {
-                //std::cout<<"Desenhando corpitcho "<< body.getSize().x << " " << body.getSize().y<<std::endl;
                 pGM->draw(&body);
             }
             bullets.draw();

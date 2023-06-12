@@ -3,18 +3,20 @@
 namespace Stages
 {
     Stage1::Stage1():
-    Stage(1)
+    Stage(1),
+    finish(0)
     {
-                //Tamanho da primeira fase:
+        //Tamanho da primeira fase:
         body.setSize(sf::Vector2f(9800.f, 700.f));
         body.setOrigin(sf::Vector2f(0.f, -200.f));
         texture = pGM->load_textures("../assets/stage1.png");
         body.setTexture(texture);
     }
     Stage1::Stage1(int n_players):
-    Stage(6)
+    Stage(6),
+    finish(TIMETOFINISH)
     {
-        texture = pGM->load_textures("../assets/stage1.jpeg");
+        texture = pGM->load_textures("../assets/stage1.png");
         body.setTexture(texture);
     }
     
@@ -70,12 +72,17 @@ namespace Stages
                 Entes::Characters:: Player* player2 = dynamic_cast<Entes::Characters::Player*>(*it);
                 if (player1->get_win() || player2->get_win())
                 {
-                    //Talvez n sirva pra nada;
-                    player1->set_win(false);
-                    player2->set_win(false);
+                    if (finish == 400)
+                    {
+                        player1->set_win(false);
+                        player2->set_win(false);
+                    }
+                    finish--;
+                }
+                if (finish < 0)
+                {
                     pSM->set_CurrentState(5);
                     pSM->reset_current_state();
-
                 }
                 if ((*players.get_first())->get_alive() && (*it)->get_alive())
                     pGM->center((*it)->get_position(),(*players.get_first())->get_position());
@@ -84,11 +91,11 @@ namespace Stages
                     hud.add_points((int) (*players.get_first())->get_position().x + enemies.get_nkilled() * 1000);
                     pSM->set_CurrentState(3);
                     pGM->reset_camera();
-                }   
+                } 
+                if (finish < TIMETOFINISH)
+                    finish--;  
             }
         }
-        else{}
-            //pGM->reset_camera();
         players.draw();
         enemies.draw();
         obstacles.draw();

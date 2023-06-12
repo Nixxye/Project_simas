@@ -6,7 +6,7 @@ namespace Entes
     {
         Enemy1:: Enemy1(sf::Vector2f pos, sf::Vector2f velocity, sf::Vector2f size):
         Enemy(1, pos, velocity, size),
-        motion_counter(TIME)
+        motion_counter(TIME_MOTION)
         {
             damage = 2;
             life = 10;
@@ -103,13 +103,13 @@ namespace Entes
                 if (direction == "Right")
                 {
                     vel.x = -SPEED;
-                    motion_counter = -TIME;
+                    motion_counter = -TIME_MOTION;
                 }
                 else if (direction == "Left")
                 {
                     //Arrumar:
                     vel.x = SPEED;
-                    motion_counter = TIME;
+                    motion_counter = TIME_MOTION;
                 }       
                 break;
             }

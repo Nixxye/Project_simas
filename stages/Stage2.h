@@ -22,14 +22,14 @@ namespace Stages
 {
     class Stage2: public Stage
     {
+    private:
+        bool anyEnemyAlive;
     public:
         Stage2();
         Stage2(int n_players);
         ~Stage2();
         void execute();
         void save();
-        //CARREGAR NO INÍCIO DO JOGO APENAS AS PLATAFORMAS:
-        //Colocar um bool reset para saber se é para continuar ou dar new game
         void load();
         void reset();
     };

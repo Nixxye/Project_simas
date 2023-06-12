@@ -17,9 +17,9 @@ namespace Entes
                 virtual void execute() = 0;
                 virtual void save(std::ofstream& file) = 0;
                 virtual void collide(Entity* other, std::string direction = "") = 0;
+                void inflict_damage(int dmg) { life-= dmg; }
                 void set_alive(bool a) { alive = a; }
                 virtual void draw();
-                void inflict_damage(int dmg) { life -= dmg; }
                 sf::Vector2f get_position() { return body.getPosition(); }
                 sf::Vector2f get_size() {return body.getSize();} 
                 void set_position(sf::Vector2f pos) { body.setPosition(pos); }

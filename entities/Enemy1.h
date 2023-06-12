@@ -1,7 +1,7 @@
 #pragma once 
 #include "Enemy.h"
 
-#define TIME 200
+#define TIME_MOTION 200
 
 namespace Entes
 {

@@ -3,13 +3,15 @@
 namespace Stages
 {
     Stage2::Stage2():
-    Stage(2)
+    Stage(2),
+    anyEnemyAlive(true)
     {
         texture = pGM->load_textures("../assets/stage2.png");
         body.setTexture(texture);  
     }
     Stage2::Stage2(int n_players):
-    Stage(5)
+    Stage(5),
+    anyEnemyAlive(true)
     {
         texture = pGM->load_textures("../assets/stage2.png");
         body.setTexture(texture);  
@@ -79,35 +81,33 @@ namespace Stages
                     pGM->center((*players.get_first())->get_position());*/
             }
             Lists::List<Entes::Entity>::Iterator<Entes::Entity> it_enemies;
-            bool anyEnemyAlive = false;
+            anyEnemyAlive = false;
 
-                for (it_enemies = enemies.get_first(); it_enemies != nullptr; it_enemies++)
+            for (it_enemies = enemies.get_first(); it_enemies != nullptr; it_enemies++)
+            {
+                if ((*it_enemies)->get_alive())
                 {
-                    if ((*it_enemies)->get_alive())
-                    {
-                        anyEnemyAlive = true;
-                        break;
-                    }
+                    anyEnemyAlive = true;
+                    break;
                 }
+            }
+            if (!anyEnemyAlive)
+            {
+                Entes::Hud::set_win(true);
+                std::cout<<"Matou "<<enemies.get_nkilled()<<std::endl;
+                hud.add_points((int) (*players.get_first())->get_position().x + enemies.get_nkilled() * 1000 + 3000);
 
-                if (!anyEnemyAlive)
-                {
-                    std::cout<<"Matou "<<enemies.get_nkilled()<<std::endl;
-                    hud.add_points((int) (*players.get_first())->get_position().x + enemies.get_nkilled() * 1000 + 3000);
-                    Entes::Hud::set_win(true);
-                    std::cout<<"Bacana"<<std::endl;
-                    pSM->set_CurrentState(3);
-                    pGM->reset_camera();
-                }
-
-
+                pSM->set_CurrentState(3);
+                pGM->reset_camera();
+            }
+ 
         }
-        else{}
            // pGM->reset_camera();
         players.draw();
         enemies.draw();
         //std::cout<<(*enemies.get_first())->get_size().x<<" "<<(*enemies.get_first())->get_size().y<<std::endl;
         obstacles.draw();
+        hud.draw();
     }
     void Stage2::save()
     {

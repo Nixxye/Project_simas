@@ -8,7 +8,7 @@ namespace Entes
     lifetime(time), 
     body(10),
     friendly(false),
-    damage(0.5),
+    damage(1),
     alive(true)
     {
         body.setPosition(pos);
@@ -43,12 +43,13 @@ namespace Entes
     }
     void Bullet::set_alive(bool a)
     {
-        lifetime = TIME;
+        lifetime = LIFETIME;
         alive = a;
     }
     void Bullet::draw()
     {
-        pGM->draw(&body);
+        if (alive)
+            pGM->draw(&body);
     }
     void Bullet::move()
     {
@@ -80,8 +81,8 @@ namespace Entes
                 friendly = true;
                 body.setFillColor(sf::Color::Magenta);
             }
-            //if (!friendly)
-                //other->inflict_damage(damage);
+            if (!friendly)
+                other->inflict_damage(damage);
             break;
             //Boss:
         case 3:
@@ -90,6 +91,7 @@ namespace Entes
                 colision_manager->elastic_colision(this, other);
                 alive = false;
                 other->inflict_damage(damage);
+                std::cout<<"Machucou "<<damage<<std::endl;
             }
         case 11:
             if (direction == "Right" || direction == "Left")
