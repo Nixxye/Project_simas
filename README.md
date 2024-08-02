@@ -1,5 +1,5 @@
 # TimeAdventure++
-Projeto para a disciplina Técnicas de programação realizado pelos alunos Jean e Isabela (Turma S71).
+Jogo projeto para a disciplina Técnicas de programação realizado pelos alunos Jean e Isabela (Turma S71).
 # Créditos dos Sprites
 O seguinte sprite foi utilizado neste projeto, e gostaríamos de agradecer ao seu criador pela disponibilização:
 
